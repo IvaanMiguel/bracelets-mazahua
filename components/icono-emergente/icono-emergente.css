@@ -1,0 +1,16 @@
+div {
+    position: absolute;
+    box-sizing: border-box;
+    padding: var(--espaciado-grande);
+    background-color: var(--clr-superficie-90);
+    box-shadow: var(--bs-elevacion-2);
+    max-width: 21.75rem;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    font-size: var(--fs-cuerpo-chico);
+    line-height: var(--lh-cuerpo-chico);
+    letter-spacing: var(--ls-cuerpo-chico);
+    color: var(--clr-superficie-30);
+}

@@ -1,3 +1,4 @@
+/* Clase que por defecto todos los botones deberían tener. Aplica estilos generales. */
 .boton {
     display: inline-flex;
     align-items: center;
@@ -26,20 +27,22 @@
         max-width .2s ease 0s;
 }
 
-.boton:is(:hover, :focus-visible) {
-    outline: none;
-    box-shadow: var(--bs-elevacion-1);
-}
-
+/* Clase utilizada cuando en un botón se encuentra un icono y una etiqueta. */
 .boton--icono-texto {
     padding: 0 1.5rem 0 1rem;
     gap: .5rem;
 }
 
+/* Clase utilizada cuando en un botón solo se encuentra un icono. */
 .boton--icono {
     padding: 0 1rem;
     max-width: min-content;
     gap: 0;
+}
+
+.boton:is(:hover, :focus-visible) {
+    outline: none;
+    box-shadow: var(--bs-elevacion-1);
 }
 
 .boton--active-primario:active {

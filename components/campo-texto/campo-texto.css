@@ -4,9 +4,6 @@
     gap: var(--espaciado-chico);
 
     text-align: left;
-
-    /* width: 0;
-    min-width: min-content; */
 }
 
 .etiqueta {
@@ -15,7 +12,6 @@
     gap: var(--espaciado-chico);
 }
 
-.campo,
 ::slotted([slot='campo']) {
     height: 2.5rem;
     padding: 0 var(--espaciado-jumbo);
@@ -25,10 +21,8 @@
     border-radius: var(--br-borde);
 }
 
-.campo:focus-visible,
 ::slotted([slot='campo']:focus-visible) {
     border: 2px solid var(--clr-primario-40);
     padding: 0 calc(var(--espaciado-jumbo) - 1px);
-    /* padding-right: calc(var(--espaciado-mediano) + var(--tam-icono-mediano) + var(--espaciado-jumbo) - 1px); */
     outline: none;
 }

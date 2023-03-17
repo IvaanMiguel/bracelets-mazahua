@@ -41,7 +41,7 @@
         inset 0 0 0 1px var(--clr-borde);
 }
 
-.secciones__boton[name='inicio'] {
+[name='inicio'] {
     background-color: #fff;
     color: var(--clr-primario-40);
     box-shadow: var(--bs-elevacion-1);

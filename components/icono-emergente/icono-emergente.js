@@ -11,7 +11,7 @@ import { componentsUtil } from '../components-util.js';
  * </icono-emergente>
  */
 class IconoEmergente extends MdIcono {
-  constructor() {
+  constructor () {
     super();
 
     /**
@@ -28,11 +28,11 @@ class IconoEmergente extends MdIcono {
 
     componentsUtil.establecerAtributos(this.estilosLink, {
       rel: 'stylesheet',
-      href: 'components/icono-emergente/icono-emergente.css',
+      href: 'components/icono-emergente/icono-emergente.css'
     });
   }
 
-  connectedCallback() {
+  connectedCallback () {
     this.shadowRoot.appendChild(this.estilosLink);
     super.connectedCallback();
 
@@ -49,7 +49,7 @@ class IconoEmergente extends MdIcono {
    * Agrega al `DOM` el `div` emergente con la información siempre y
    * cuando este se encuentre.
    * */
-  agregarInfo() {
+  agregarInfo () {
     if (!this.div) return;
 
     this.shadowRoot.append(this.div);
@@ -61,7 +61,7 @@ class IconoEmergente extends MdIcono {
    * @param {number} x Posición horizontal en el DOM.
    * @param {number} y Posición vertical en el DOM.
    */
-  actualizarPosicion(x, y) {
+  actualizarPosicion (x, y) {
     if (!this.div) return;
 
     this.div.style.left = `${x}px`;
@@ -72,7 +72,7 @@ class IconoEmergente extends MdIcono {
    * Remueve del `DOM` el div emergente con la información siempre y
    * cuando este se encuentre.
    */
-  removerInfo() {
+  removerInfo () {
     if (!this.div) return;
 
     this.div.remove();

@@ -1,5 +1,6 @@
+// eslint-disable-next-line no-unused-vars
 class Notificacion {
-  constructor(mensaje, ambito) {
+  constructor (mensaje, ambito) {
     this.mensaje = mensaje;
     this.ambito = ambito;
 
@@ -8,12 +9,12 @@ class Notificacion {
     this.elemento.className = `notificaciones notificacion-${ambito}`;
   }
 
-  agregarMensaje(mensaje) {
-    let texto = document.createTextNode(mensaje);
+  agregarMensaje (mensaje) {
+    const texto = document.createTextNode(mensaje);
     this.elemento.appendChild(texto);
   }
 
-  insertarAmbito() {
+  insertarAmbito () {
     document.querySelector(`[name="${this.ambito}"]`).after(this.elemento);
   }
 }

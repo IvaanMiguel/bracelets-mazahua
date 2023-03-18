@@ -5,13 +5,13 @@ import { BotonComun } from '../boton-comun/boton-comun.js';
  * de la clase `BotonComun`. Para más información ver la clase mencionada.
  */
 class MdBoton extends HTMLButtonElement {
-  constructor() {
+  constructor () {
     super();
 
     this.botonComun = new BotonComun(this);
   }
 
-  connectedCallback() {
+  connectedCallback () {
     this.botonComun.connectedCallback();
   }
 }

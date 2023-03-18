@@ -9,7 +9,7 @@ import { componentsUtil } from '../components-util.js';
  * </md-icono>
  */
 export class MdIcono extends HTMLElement {
-  constructor() {
+  constructor () {
     super();
 
     /**
@@ -42,7 +42,7 @@ export class MdIcono extends HTMLElement {
     this.crearEstilos();
   }
 
-  connectedCallback() {
+  connectedCallback () {
     this.span.textContent = this.dataIcono;
 
     const shadow = this.shadowRoot;
@@ -58,20 +58,20 @@ export class MdIcono extends HTMLElement {
    * cuestión, además de agregar a dicho componente las configuraciones de variación
    * de la fuente definidas por los atributos `data-fill`, `data-wght`, `data-grad` y `data-opsz`.
    */
-  crearEstilos() {
+  crearEstilos () {
     componentsUtil.establecerAtributos(this.googleLink, {
       rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200',
+      href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200'
     });
 
     componentsUtil.establecerAtributos(this.clasesLink, {
       rel: 'stylesheet',
-      href: 'css/clases.css',
+      href: 'css/clases.css'
     });
 
     componentsUtil.establecerAtributos(this.estilosIcono, {
       rel: 'stylesheet',
-      href: 'components/md-icono/md-icono.css',
+      href: 'components/md-icono/md-icono.css'
     });
 
     this.span.classList.add('material-symbols-outlined');
@@ -89,23 +89,23 @@ export class MdIcono extends HTMLElement {
     }
   }
 
-  get dataIcono() {
+  get dataIcono () {
     return (this.dataset.icono || '×').trim();
   }
 
-  get dataFill() {
+  get dataFill () {
     return (this.dataset.fill || '0').trim();
   }
 
-  get dataWght() {
+  get dataWght () {
     return (this.dataset.wght || '400').trim();
   }
 
-  get dataGrad() {
+  get dataGrad () {
     return (this.dataset.grad || '0').trim();
   }
 
-  get dataOpsz() {
+  get dataOpsz () {
     return (this.dataset.opsz || '48').trim();
   }
 }

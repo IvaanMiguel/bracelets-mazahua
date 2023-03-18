@@ -16,7 +16,7 @@ import { componentsUtil } from '../components-util.js';
  * </campo-texto>
  */
 class CampoTexto extends HTMLElement {
-  constructor() {
+  constructor () {
     super();
 
     /** @type {HTMLTemplateElement} */
@@ -60,7 +60,7 @@ class CampoTexto extends HTMLElement {
 
     componentsUtil.establecerAtributos(this.estilosLink, {
       rel: 'stylesheet',
-      href: 'components/campo-texto/campo-texto.css',
+      href: 'components/campo-texto/campo-texto.css'
     });
 
     if (!this.etiquetaTexto && !this.etiquetaIcono) {
@@ -68,14 +68,14 @@ class CampoTexto extends HTMLElement {
     }
   }
 
-  connectedCallback() {
+  connectedCallback () {
     const shadow = this.shadowRoot;
 
     shadow.appendChild(this.estilosLink);
     shadow.appendChild(this.template.content.cloneNode(true));
   }
 
-  get claseEtiqueta() {
+  get claseEtiqueta () {
     return (this.dataset.claseEtiqueta || '').trim();
   }
 }

@@ -7,13 +7,13 @@ import { componentsUtil } from '../components-util.js';
  * </menu-lateral>
  */
 class MenuLateral extends HTMLElement {
-  constructor() {
+  constructor () {
     super();
 
     componentsUtil.cargarEstilos(this, 'components/menu-lateral/menu-lateral.css');
   }
 
-  connectedCallback() {
+  connectedCallback () {
     this.addEventListener('alternarmenu', () => this.alternarMenu());
     this.addEventListener('cargarseccion', (e) => this.cargarSeccion(e.detail.pagina));
     this.addEventListener('cerrarsesion', () => this.cerrarSesion());
@@ -23,7 +23,7 @@ class MenuLateral extends HTMLElement {
    * Cambia el estado en el que el menú lateral y sus hijos se encuentran, alternando
    * entre un estado reducido y uno expandido.
    */
-  alternarMenu() {
+  alternarMenu () {
     if (this.claseReducido) {
       this.classList.toggle(this.claseReducido);
     }
@@ -35,13 +35,13 @@ class MenuLateral extends HTMLElement {
     });
   }
 
-  cargarSeccion(pagina) {
+  cargarSeccion (pagina) {
     fetch('php/includes/index.inc.php', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: 'pagina=' + encodeURIComponent(pagina),
+      body: 'pagina=' + encodeURIComponent(pagina)
     })
       .then((respuesta) => respuesta.text())
       .then((pagina) => {
@@ -49,13 +49,13 @@ class MenuLateral extends HTMLElement {
       });
   }
 
-  cerrarSesion() {
+  cerrarSesion () {
     fetch('php/includes/cerrarsesion.inc.php')
       .then((respuesta) => respuesta.json())
       .then((datos) => (location.href = datos.contenido));
   }
 
-  get claseReducido() {
+  get claseReducido () {
     return (this.dataset.claseReducido || '').trim();
   }
 }

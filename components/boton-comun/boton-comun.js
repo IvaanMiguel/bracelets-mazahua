@@ -9,7 +9,7 @@ import { componentsUtil } from '../components-util.js';
  * botón y eventos personalizados en base a su propiedad `data-evento`.
  */
 export class BotonComun {
-  constructor(elemento) {
+  constructor (elemento) {
     /**
      * Elemento HTML del DOM.
      * @type {HTMLElement}
@@ -27,7 +27,7 @@ export class BotonComun {
    * Añade un event listener de clic al elemento que ejecutará un evento
    * personalizado cuando este sea presionado.
    */
-  connectedCallback() {
+  connectedCallback () {
     if (!this.elemento.dataset.evento) return;
 
     this.elemento.addEventListener('click', () => {
@@ -42,7 +42,7 @@ export class BotonComun {
    * @return {CustomEvent} Un nuevo objeto de la clase `CustomEvent` con el atributo `bubbles` como `true`
    * y una serie de detalles según la propiedad `data-evento` del botón.
    */
-  crearEvento() {
+  crearEvento () {
     const nombreEvento = this.elemento.dataset.evento;
     let detallesEvento = {};
 
@@ -61,7 +61,7 @@ export class BotonComun {
 
     return new CustomEvent(nombreEvento, {
       bubbles: true,
-      detail: detallesEvento,
+      detail: detallesEvento
     });
   }
 }

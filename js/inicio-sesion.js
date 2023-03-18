@@ -3,7 +3,7 @@ document.querySelector('.boton-inicio-sesion').addEventListener('click', (e) => 
 
   fetch('php/includes/iniciosesion.inc.php', {
     method: 'POST',
-    body: new FormData(document.querySelector('.formulario')),
+    body: new FormData(document.querySelector('.formulario'))
   })
     .then((respuesta) => respuesta.json())
     .then((datos) => {
@@ -15,10 +15,10 @@ document.querySelector('.boton-inicio-sesion').addEventListener('click', (e) => 
           break;
 
         case 'mensaje':
-          let mensaje = datos.contenido.mensaje;
-          let ambito = datos.contenido.ambito;
-          let notificacion = new Notificacion(mensaje, ambito);
-          let notificaciones = document.querySelector(`.notificacion-${ambito}`);
+          const mensaje = datos.contenido.mensaje;
+          const ambito = datos.contenido.ambito;
+          const notificacion = new Notificacion(mensaje, ambito);
+          const notificaciones = document.querySelector(`.notificacion-${ambito}`);
 
           if (!notificaciones) {
             document.querySelector('.campos').after(notificacion.elemento);
@@ -31,8 +31,8 @@ document.querySelector('.boton-inicio-sesion').addEventListener('click', (e) => 
 
         case 'array':
           datos.contenido.forEach((item) => {
-            let notificacion = new Notificacion(item.mensaje, item.ambito);
-            let notificaciones = document.querySelector(`.notificacion-${notificacion.ambito}`);
+            const notificacion = new Notificacion(item.mensaje, item.ambito);
+            const notificaciones = document.querySelector(`.notificacion-${notificacion.ambito}`);
 
             if (!notificaciones) {
               document.querySelector('.campos').after(notificacion.elemento);
@@ -47,7 +47,7 @@ document.querySelector('.boton-inicio-sesion').addEventListener('click', (e) => 
     });
 });
 
-let mostrarClave = document.querySelector('.icono-visibilidad');
+const mostrarClave = document.querySelector('.icono-visibilidad');
 
 mostrarClave.addEventListener('mousedown', () => {
   document.querySelector('[name=clave]').type = 'text';
@@ -60,7 +60,7 @@ mostrarClave.addEventListener('mouseup', () => {
 });
 
 mostrarClave.addEventListener('mouseleave', () => {
-  let clave = document.querySelector('[name=clave]');
+  const clave = document.querySelector('[name=clave]');
 
   if (clave.type === 'text') {
     document.querySelector('[name=clave]').type = 'password';

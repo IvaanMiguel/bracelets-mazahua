@@ -17,7 +17,7 @@ export const componentsUtil = (function () {
 
     establecerAtributos(link, {
       rel: 'stylesheet',
-      href: ruta,
+      href: ruta
     });
 
     const htmlRaiz = elemento.getRootNode();
@@ -49,13 +49,13 @@ export const componentsUtil = (function () {
    *     cuestión y su valor.
    */
   const establecerAtributos = (elemento, atributos) => {
-    for (let atributo in atributos) {
+    for (const atributo in atributos) {
       elemento.setAttribute(atributo, atributos[atributo]);
     }
   };
 
   return {
     cargarEstilos,
-    establecerAtributos,
+    establecerAtributos
   };
 })();

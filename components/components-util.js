@@ -41,7 +41,6 @@ export const componentsUtil = (function () {
         }
     }
 
-    
     /**
      * Recibe un objeto con los atributos y sus respectivos valores para ser añadidos
      * a un elemento `HTML`. Su funcionamiento es similar al del método `setAttribute()`.

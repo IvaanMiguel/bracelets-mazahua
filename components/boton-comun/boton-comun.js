@@ -51,6 +51,7 @@ export class BotonComun {
             case 'cargarseccion':
                 detallesEvento = { pagina: this.elemento.name };
                 break;
+
             case 'alternarmenu':
             case 'cerrarsesion':
                 break;

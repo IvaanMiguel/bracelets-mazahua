@@ -18,10 +18,9 @@ export class BotonComun {
 
         componentsUtil.cargarEstilos(this.elemento, 'components/boton-comun/boton-comun.css');
 
-        this.elemento.setAttribute('title',
-            this.elemento.getAttribute('title') ??
-            this.elemento.innerText
-        );
+        if (!this.elemento.hasAttribute('title') && this.elemento.innerText) {
+            this.elemento.setAttribute('title', this.elemento.innerText);
+        }
     }
 
     /**

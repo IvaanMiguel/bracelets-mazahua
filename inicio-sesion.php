@@ -6,12 +6,12 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 
     <!-- Roboto Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap' rel='stylesheet'>
 
     <!-- Material Design Google Icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200' />
 
     <link rel='stylesheet' href='css/global.css'>
     <link rel='stylesheet' href='css/estilos.css'>
@@ -30,32 +30,24 @@
             <form class='formulario'>
                 <h2 class='titulo-grande'>Iniciar sesión</h2>
                 <div class='campos'>
-                    <campo-texto>
+                    <campo-texto data-clase-etiqueta='etiqueta'>
                         <span class='cuerpo-mediano' slot='etiqueta-texto'>Nombre de usuario o dirección de email</span>
                         <input
-                            class='cuerpo-mediano fondo fondo-2-texto'
+                            class='fondo fondo-2-texto cuerpo-mediano'
                             slot='campo'
                             type='text'
                             value='<?= ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['nombreUsuario'])) ? $_GET['nombreUsuario'] : '' ?>'
                             name='idUsuario'>
                     </campo-texto>
-                    <!-- <label class='input'>
-                        <span class='cuerpo-mediano'>Nombre de usuario o dirección de email</span>
-                            <input
-                                class='input__campo cuerpo-mediano fondo fondo-2-texto'
-                                type='text'
-                                value='<?= ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['nombreUsuario'])) ? $_GET['nombreUsuario'] : '' ?>'
-                                name='idUsuario'>
-                    </label> -->
                     <label class='input'>
                         <span class='cuerpo-mediano'>Contraseña</span>
                         <div class='input-clave'>
                             <input class='input__campo campo--clave cuerpo-mediano fondo fondo-2-texto' type='password' name='clave'>
-                            <span class="material-symbols-outlined icono icono-visibilidad icono-mediano icono--absolute" title='Mostrar contraseña'>visibility</span>
+                            <span class='material-symbols-outlined icono icono-visibilidad icono-mediano icono--absolute' title='Mostrar contraseña'>visibility</span>
                         </div>
                     </label>
                 </div>
-                <button is='md-boton' class='boton-inicio-sesion  primario primario-2-texto boton--active-primario'>
+                <button class='boton boton-inicio-sesion primario primario-2-texto boton--active-primario' is='md-boton'>
                     <span class='etiqueta-grande'>Iniciar sesión</span>
                 </button>
             </form>
@@ -66,7 +58,7 @@
                 <span class='texto cuerpo-chico'>¿No tienes una cuenta?</span>
                 <div class='linea'></div>
             </div>
-            <a is='md-enlace' class='primario primario-2-texto boton--active-primario' href='registro.php'>
+            <a class='boton primario primario-2-texto boton--active-primario' is='md-enlace' href='registro.php'>
                 <span class='etiqueta-grande'>Crear una cuenta</span>
             </a>
         </div>

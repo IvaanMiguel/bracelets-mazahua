@@ -1,48 +1,46 @@
 .pedidos {
-    display: flex;
-    flex-direction: column;
-    gap: var(--espaciado-chico);
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaciado-chico);
 }
 
 .pedidos-pendientes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--espaciado-mediano);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaciado-mediano);
 
-    padding: var(--espaciado-mediano);
-    border-radius: var(--br-borde);
-    background-color: #b800710d;
+  padding: var(--espaciado-mediano);
+  border-radius: var(--br-borde);
+  background-color: #b800710d;
 }
 
 .sin-pedidos {
-    /* text-align: center; */
-    padding: var(--espaciado-jumbo);
-    margin: auto;
+  /* text-align: center; */
+  padding: var(--espaciado-jumbo);
+  margin: auto;
 }
 
 .pedido-info {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    width: 12.5rem;
-    padding: var(--espaciado-grande);
-    border-radius: var(--br-borde);
-    box-sizing: border-box;
+  width: 12.5rem;
+  padding: var(--espaciado-grande);
+  border-radius: var(--br-borde);
+  box-sizing: border-box;
 
-    user-select: none;
-    cursor: pointer;
+  user-select: none;
+  cursor: pointer;
 
-    transition: box-shadow .2s ease 0s;
+  transition: box-shadow 0.2s ease 0s;
 }
 
 .pedido-info:hover {
-    box-shadow:
-        var(--bs-elevacion-1),
-        inset 0 0 0 1px var(--clr-borde);
+  box-shadow: var(--bs-elevacion-1), inset 0 0 0 1px var(--clr-borde);
 }
 
-.secciones__boton[name='inicio'] {
-    background-color: #fff;
-    color: var(--clr-primario-40);
-    box-shadow: var(--bs-elevacion-1);
+[name='inicio'] {
+  background-color: #fff;
+  color: var(--clr-primario-40);
+  box-shadow: var(--bs-elevacion-1);
 }

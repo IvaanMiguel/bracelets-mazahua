@@ -2,43 +2,66 @@ import { componentsUtil } from '../components-util.js';
 
 /**
  * Clase creada para ser utilizada en conjunto por los componentes
- * md-boton y md-enlace, esto significa que ambos compoentes se
+ * `md-boton` y `md-enlace`, esto significa que ambos compoentes se
  * comportarán y verán de maneras exactamente iguales.
  * Esta clase no es usada para crear un componente con la misma.
+ * Permite inicializar elementos con los estilos y propiedades de un
+ * botón y eventos personalizados en base a su propiedad `data-evento`.
  */
 export class BotonComun {
-    constructor(elemento) {
-        this.elemento = elemento;
-
-        this.elemento.classList.add('boton');
-        componentsUtil.cargarEstilos(this.elemento, 'components/boton-comun/boton-comun.css');
-        this.establecerTipo(this.elemento);
-
-        if (!this.elemento.hasAttribute('title')) {
-            this.elemento.setAttribute('title', this.elemento.innerText);
-        }
-    }
-
+  constructor (elemento) {
     /**
-     * Se encarga de establecer la clase que tendrá el boton o enlace en
-     * cuestión en base a los elementos dentro del componente. Si no se
-     * encuentra ningún elemento dentro del componente, simplemente se agrega
-     * un elemento span con un texto por defecto.
+     * Elemento HTML del DOM.
+     * @type {HTMLElement}
      */
-    establecerTipo() {
-        let icono = this.elemento.querySelector('md-icono');
-        let etiqueta = this.elemento.querySelector('span');
+    this.elemento = elemento;
 
-        if (!etiqueta && icono) {
-            this.elemento.classList.add('boton--icono');
-        } else if (etiqueta && icono) {
-            this.elemento.classList.add('boton--icono-texto');
-        } else if (!etiqueta && !icono) {
-            const span = document.createElement('span');
-            span.classList.add('etiqueta', 'etiqueta-grande');
-            span.textContent = 'Botón';
+    componentsUtil.cargarEstilos(this.elemento, 'components/boton-comun/boton-comun.css');
 
-            this.elemento.appendChild(span);
-        }
+    if (!this.elemento.hasAttribute('title') && this.elemento.innerText) {
+      this.elemento.setAttribute('title', this.elemento.innerText);
     }
+  }
+
+  /**
+   * Añade un event listener de clic al elemento que ejecutará un evento
+   * personalizado cuando este sea presionado.
+   */
+  connectedCallback () {
+    if (!this.elemento.dataset.evento) return;
+
+    this.elemento.addEventListener('click', () => {
+      this.elemento.dispatchEvent(this.crearEvento());
+    });
+  }
+
+  /**
+   * Crea un objeto `CustomEvent` que puede ser disparado por el botón que haya llamado al método.
+   * El nombre del evento es determinado por la propiedad `data-evento` del elemento, además de establecer
+   * ciertos detalles en base a dicho nombre.
+   * @return {CustomEvent} Un nuevo objeto de la clase `CustomEvent` con el atributo `bubbles` como `true`
+   * y una serie de detalles según la propiedad `data-evento` del botón.
+   */
+  crearEvento () {
+    const nombreEvento = this.elemento.dataset.evento;
+    let detallesEvento = {};
+
+    switch (nombreEvento) {
+      case 'cargarseccion':
+        detallesEvento = { pagina: this.elemento.name };
+        break;
+
+      case 'alternarmenu':
+      case 'cerrarsesion':
+        break;
+
+      default:
+        return null;
+    }
+
+    return new CustomEvent(nombreEvento, {
+      bubbles: true,
+      detail: detallesEvento
+    });
+  }
 }

@@ -1,62 +1,65 @@
+/* Clase que por defecto todos los botones deberían tener. Aplica estilos generales. */
 .boton {
-    display: inline-flex;
-    align-items: center;
+  display: inline-flex;
+  align-items: center;
 
-    text-align: left;
-    text-decoration: none;
-    font-family: inherit;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  text-align: left;
+  text-decoration: none;
+  font-family: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
-    height: 2.5rem;
-    box-sizing: border-box;
-    padding: 0 1.5rem;
-    cursor: pointer;
+  height: 2.5rem;
+  box-sizing: border-box;
+  padding: 0 1.5rem;
+  cursor: pointer;
 
-    border: none;
-    border-radius: 1.25rem;
+  border: none;
+  border-radius: 1.25rem;
 
-    transition:
-        box-shadow .2s ease 0s,
-        background-color .2s ease 0s,
-        color .2s ease 0s,
-        padding .2s ease 0s,
-        gap .2s ease 0s,
-        max-width .2s ease 0s;
+  transition:
+    box-shadow 0.2s ease 0s,
+    background-color 0.2s ease 0s,
+    color 0.2s ease 0s,
+    padding 0.2s ease 0s,
+    gap 0.2s ease 0s,
+    max-width 0.2s ease 0s;
+}
+
+/* Clase utilizada cuando en un botón se encuentra un icono y una etiqueta. */
+.boton--icono-texto {
+  padding: 0 1.5rem 0 1rem;
+  gap: 0.5rem;
+}
+
+/* Clase utilizada cuando en un botón solo se encuentra un icono. */
+.boton--icono {
+  padding: 0 1rem;
+  max-width: min-content;
+  gap: 0;
 }
 
 .boton:is(:hover, :focus-visible) {
-    outline: none;
-    box-shadow: var(--bs-elevacion-1);
-}
-
-.boton--icono-texto {
-    padding: 0 1.5rem 0 1rem;
-    gap: .5rem;
-}
-
-.boton--icono {
-    padding: 0 1rem;
-    max-width: min-content;
-    gap: 0;
+  outline: none;
+  box-shadow: var(--bs-elevacion-1);
 }
 
 .boton--active-primario:active {
-    background-color: #fff;
-    color: var(--clr-primario-40);
+  background-color: #fff;
+  color: var(--clr-primario-40);
 }
 
 .etiqueta {
-    opacity: 1;
-    transition:
-        width .2s ease 0s,
-        font-size .2s ease 0s,
-        opacity .2s ease 0s;
+  opacity: 1;
+  transition:
+    width 0.2s ease 0s,
+    font-size 0.2s ease 0s,
+    opacity 0.2s ease 0s;
 }
 
 .etiqueta--oculto {
-    width: 0;
-    opacity: 0;
-    font-size: 0;
+  width: 0;
+  opacity: 0;
+  font-size: 0;
 }

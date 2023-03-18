@@ -1,75 +1,113 @@
+import { componentsUtil } from '../components-util.js';
+
+/**
+ * Permite crear un elemento inicializado con los estilos por defecto de
+ * Material Design de Google. Cada atributo puede ser omitido, pero será reemplazado
+ * por los valores por defecto mostrados a continuación.
+ * @example
+ * <md-icono data-icono='×' data-fill='0' data-wght='400' data-grad='0' data-opsz='48'>
+ * </md-icono>
+ */
 export class MdIcono extends HTMLElement {
-    constructor() {
-        super();
+  constructor () {
+    super();
 
-        this.attachShadow({ mode: 'open' });
+    /**
+     * Tendrá la referencia a la API de Material Design Icons.
+     * @type {HTMLLinkElement}
+     */
+    this.googleLink = document.createElement('link');
 
-        this.style.display = 'flex';
-        this.style.cursor = this.dataCursor;
+    /**
+     * Tendrá la referencia al estilos globales CSS `clases.css`.
+     * @type {HTMLLinkElement}
+     */
+    this.clasesLink = document.createElement('link');
 
-        this.googleLink = document.createElement('link');
-        this.clasesLink = document.createElement('link');
-        this.estilos = document.createElement('style');
-        this.span = document.createElement('span');
+    /**
+     * Tendrá la referencia a los estilos locales CSS `md-icono.css`.
+     * @type {HTMLLinkElement}
+     */
+    this.estilosIcono = document.createElement('link');
 
-        this.crearEstilos();
+    /**
+     * Contenedor principal del icono.
+     * @type {HTMLSpanElement}
+     */
+    this.span = document.createElement('span');
+
+    this.attachShadow({ mode: 'open' });
+
+    this.style.display = 'flex';
+    this.crearEstilos();
+  }
+
+  connectedCallback () {
+    this.span.textContent = this.dataIcono;
+
+    const shadow = this.shadowRoot;
+    shadow.appendChild(this.googleLink);
+    shadow.appendChild(this.clasesLink);
+
+    shadow.appendChild(this.estilosIcono);
+    shadow.appendChild(this.span);
+  }
+
+  /**
+   * Inicializa los elementos de estilos que serán usados en el componente en
+   * cuestión, además de agregar a dicho componente las configuraciones de variación
+   * de la fuente definidas por los atributos `data-fill`, `data-wght`, `data-grad` y `data-opsz`.
+   */
+  crearEstilos () {
+    componentsUtil.establecerAtributos(this.googleLink, {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200'
+    });
+
+    componentsUtil.establecerAtributos(this.clasesLink, {
+      rel: 'stylesheet',
+      href: 'css/clases.css'
+    });
+
+    componentsUtil.establecerAtributos(this.estilosIcono, {
+      rel: 'stylesheet',
+      href: 'components/md-icono/md-icono.css'
+    });
+
+    this.span.classList.add('material-symbols-outlined');
+    this.classList.forEach((clase) => this.span.classList.add(clase));
+
+    if (this.dataFill || this.dataWght || this.dataGrad || this.dataOpsz) {
+      const dataFill = this.dataFill || 0;
+      const dataWght = this.dataWght || 400;
+      const dataGrad = this.dataGrad || 0;
+      const dataOpsz = this.dataOpsz || 48;
+      this.span.setAttribute(
+        'style',
+        `font-variation-settings: 'FILL' ${dataFill}, 'wght' ${dataWght}, 'GRAD' ${dataGrad}, 'opsz' ${dataOpsz};`
+      );
     }
+  }
 
-    connectedCallback() {
-        this.span.textContent = this.dataIcono;
+  get dataIcono () {
+    return (this.dataset.icono || '×').trim();
+  }
 
-        const shadow = this.shadowRoot;
-        shadow.appendChild(this.googleLink);
-        shadow.appendChild(this.clasesLink)
-        shadow.appendChild(this.estilos);
-        shadow.appendChild(this.span);
-    }
+  get dataFill () {
+    return (this.dataset.fill || '0').trim();
+  }
 
-    crearEstilos() {
-        this.googleLink.setAttribute('rel', 'stylesheet');
-        this.googleLink.setAttribute('href', 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200')
+  get dataWght () {
+    return (this.dataset.wght || '400').trim();
+  }
 
-        this.clasesLink.setAttribute('rel', 'stylesheet');
-        this.clasesLink.setAttribute('href', 'css/clases.css');
+  get dataGrad () {
+    return (this.dataset.grad || '0').trim();
+  }
 
-        this.span.classList.add('material-symbols-outlined');
-        this.classList.forEach(clase => this.span.classList.add(clase));
-
-        this.estilos.textContent = `
-            span {
-                user-select: none;
-                font-variation-settings:
-                'FILL' ${this.dataFill},
-                'wght' ${this.dataWght},
-                'GRAD' ${this.dataGrad},
-                'opsz' ${this.dataOpsz}
-            };
-        `;
-    }
-
-    get dataIcono() {
-        return this.dataset.icono || '×';
-    }
-
-    get dataFill() {
-        return this.dataset.fill || 0;
-    }
-
-    get dataWght() {
-        return this.dataset.wght || 400;
-    }
-    
-    get dataGrad() {
-        return this.dataset.grad || 0;
-    }
-
-    get dataOpsz() {
-        return this.dataset.opsz || 48;
-    }
-
-    get dataCursor() {
-        return this.dataset.cursor || 'auto';
-    }
+  get dataOpsz () {
+    return (this.dataset.opsz || '48').trim();
+  }
 }
 
 customElements.define('md-icono', MdIcono);

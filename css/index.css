@@ -1,29 +1,29 @@
 .contenedor {
-    display: flex;
+  display: flex;
 
-    height: 100vh;
-    height: 100svh;
-    box-sizing: border-box;
+  height: 100vh;
+  height: 100svh;
+  box-sizing: border-box;
 }
 
 .contenido {
-    display: flex;
-    flex-direction: column;
-    flex: 2;
+  display: flex;
+  flex-direction: column;
+  flex: 2;
 
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .cabecera {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    padding: var(--espaciado-jumbo);
-    border-bottom: 1px solid var(--clr-borde);
+  padding: var(--espaciado-jumbo);
+  border-bottom: 1px solid var(--clr-borde);
 }
 
 .seccion {
-    padding: var(--espaciado-jumbo);
-    overflow: auto;
+  padding: var(--espaciado-jumbo);
+  overflow: auto;
 }

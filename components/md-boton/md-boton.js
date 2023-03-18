@@ -1,16 +1,18 @@
 import { BotonComun } from '../boton-comun/boton-comun.js';
 
 /**
- * Clase que hereda del elemento "button", utilizada para crear
- * botones que se inicialicen con estilos predeterminados
- * según su contenido y con propiedades por defecto.
- * El contenido de esta clase y los estilos del componente se encuentran
- * en la carpeta components/boton-comun.
+ * Encargada de establecer botones que adopten el comportamiento en común
+ * de la clase `BotonComun`. Para más información ver la clase mencionada.
  */
 class MdBoton extends HTMLButtonElement {
     constructor() {
         super();
+
         this.botonComun = new BotonComun(this);
+    }
+
+    connectedCallback() {
+        this.botonComun.connectedCallback();
     }
 }
 

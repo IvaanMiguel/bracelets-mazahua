@@ -9,59 +9,59 @@ import { componentsUtil } from '../components-util.js';
  * botón y eventos personalizados en base a su propiedad `data-evento`.
  */
 export class BotonComun {
-    constructor(elemento) {
-        /**
-         * Elemento HTML del DOM.
-         * @type {HTMLElement}
-         */
-        this.elemento = elemento;
-
-        componentsUtil.cargarEstilos(this.elemento, 'components/boton-comun/boton-comun.css');
-
-        if (!this.elemento.hasAttribute('title') && this.elemento.innerText) {
-            this.elemento.setAttribute('title', this.elemento.innerText);
-        }
-    }
-
+  constructor(elemento) {
     /**
-     * Añade un event listener de clic al elemento que ejecutará un evento
-     * personalizado cuando este sea presionado.
+     * Elemento HTML del DOM.
+     * @type {HTMLElement}
      */
-    connectedCallback() {
-        if (!this.elemento.dataset.evento) return;
+    this.elemento = elemento;
 
-        this.elemento.addEventListener('click', () => {
-            this.elemento.dispatchEvent(this.crearEvento());
-        });
+    componentsUtil.cargarEstilos(this.elemento, 'components/boton-comun/boton-comun.css');
+
+    if (!this.elemento.hasAttribute('title') && this.elemento.innerText) {
+      this.elemento.setAttribute('title', this.elemento.innerText);
+    }
+  }
+
+  /**
+   * Añade un event listener de clic al elemento que ejecutará un evento
+   * personalizado cuando este sea presionado.
+   */
+  connectedCallback() {
+    if (!this.elemento.dataset.evento) return;
+
+    this.elemento.addEventListener('click', () => {
+      this.elemento.dispatchEvent(this.crearEvento());
+    });
+  }
+
+  /**
+   * Crea un objeto `CustomEvent` que puede ser disparado por el botón que haya llamado al método.
+   * El nombre del evento es determinado por la propiedad `data-evento` del elemento, además de establecer
+   * ciertos detalles en base a dicho nombre.
+   * @return {CustomEvent} Un nuevo objeto de la clase `CustomEvent` con el atributo `bubbles` como `true`
+   * y una serie de detalles según la propiedad `data-evento` del botón.
+   */
+  crearEvento() {
+    const nombreEvento = this.elemento.dataset.evento;
+    let detallesEvento = {};
+
+    switch (nombreEvento) {
+      case 'cargarseccion':
+        detallesEvento = { pagina: this.elemento.name };
+        break;
+
+      case 'alternarmenu':
+      case 'cerrarsesion':
+        break;
+
+      default:
+        return null;
     }
 
-    /**
-     * Crea un objeto `CustomEvent` que puede ser disparado por el botón que haya llamado al método.
-     * El nombre del evento es determinado por la propiedad `data-evento` del elemento, además de establecer
-     * ciertos detalles en base a dicho nombre.
-     * @return {CustomEvent} Un nuevo objeto de la clase `CustomEvent` con el atributo `bubbles` como `true`
-     * y una serie de detalles según la propiedad `data-evento` del botón.
-     */
-    crearEvento() {
-        const nombreEvento = this.elemento.dataset.evento;
-        let detallesEvento = {};
-
-        switch(nombreEvento) {
-            case 'cargarseccion':
-                detallesEvento = { pagina: this.elemento.name };
-                break;
-
-            case 'alternarmenu':
-            case 'cerrarsesion':
-                break;
-
-            default:
-                return null;
-        }
-
-        return new CustomEvent(nombreEvento, {
-            bubbles: true,
-            detail: detallesEvento
-        });
-    }
+    return new CustomEvent(nombreEvento, {
+      bubbles: true,
+      detail: detallesEvento,
+    });
+  }
 }

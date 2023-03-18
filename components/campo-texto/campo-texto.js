@@ -16,68 +16,68 @@ import { componentsUtil } from '../components-util.js';
  * </campo-texto>
  */
 class CampoTexto extends HTMLElement {
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        /** @type {HTMLTemplateElement} */
-        this.template = document.createElement('template');
+    /** @type {HTMLTemplateElement} */
+    this.template = document.createElement('template');
 
-        /**
-         * Elemento HTML `Link` que tendrá la referencia a los estilos locales CSS `campo-texto.css`.
-         * @type {HTMLLinkElement}
-         */
-        this.estilosLink = document.createElement('link');
+    /**
+     * Elemento HTML `Link` que tendrá la referencia a los estilos locales CSS `campo-texto.css`.
+     * @type {HTMLLinkElement}
+     */
+    this.estilosLink = document.createElement('link');
 
-        /**
-         * Elemento HTML representante del texto en la etiqueta del campo.
-         * @type {HTMLElement}
-         */
-        this.etiquetaTexto = this.querySelector('[slot="etiqueta-texto"]');
+    /**
+     * Elemento HTML representante del texto en la etiqueta del campo.
+     * @type {HTMLElement}
+     */
+    this.etiquetaTexto = this.querySelector('[slot="etiqueta-texto"]');
 
-        /**
-         * Elemento HTML representante del icono en la etiqueta del campo.
-         * @type {HTMLElement}
-         */
-        this.etiquetaIcono = this.querySelector('[slot="etiqueta-icono"]');
+    /**
+     * Elemento HTML representante del icono en la etiqueta del campo.
+     * @type {HTMLElement}
+     */
+    this.etiquetaIcono = this.querySelector('[slot="etiqueta-icono"]');
 
-        /**
-         * Elemento HTML representante del campo del elemento.
-         * @type {HTMLElement}
-         */
-        this.campo = this.querySelector('[slot="campo"]');
+    /**
+     * Elemento HTML representante del campo del elemento.
+     * @type {HTMLElement}
+     */
+    this.campo = this.querySelector('[slot="campo"]');
 
-        this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: 'open' });
 
-        this.template.innerHTML = `
-            <div ${this.claseEtiqueta ? `class=${this.claseEtiqueta}` : ''}>
-                <slot name='etiqueta-texto'></slot>
-                <slot name='etiqueta-icono'></slot>
-            </div>
-            <slot name='campo'>
-                <input type='text'>
-            </slot>
-        `;
+    this.template.innerHTML = `
+      <div ${this.claseEtiqueta ? `class=${this.claseEtiqueta}` : ''}>
+        <slot name='etiqueta-texto'></slot>
+        <slot name='etiqueta-icono'></slot>
+      </div>
+      <slot name='campo'>
+        <input type='text'>
+      </slot>
+    `;
 
-        componentsUtil.establecerAtributos(this.estilosLink, {
-            rel: 'stylesheet',
-            href: 'components/campo-texto/campo-texto.css'
-        })
+    componentsUtil.establecerAtributos(this.estilosLink, {
+      rel: 'stylesheet',
+      href: 'components/campo-texto/campo-texto.css',
+    });
 
-        if (!this.etiquetaTexto && !this.etiquetaIcono) {
-            this.style.gap = 0;
-        }
+    if (!this.etiquetaTexto && !this.etiquetaIcono) {
+      this.style.gap = 0;
     }
+  }
 
-    connectedCallback() {
-        const shadow = this.shadowRoot;
+  connectedCallback() {
+    const shadow = this.shadowRoot;
 
-        shadow.appendChild(this.estilosLink);
-        shadow.appendChild(this.template.content.cloneNode(true));
-    }
+    shadow.appendChild(this.estilosLink);
+    shadow.appendChild(this.template.content.cloneNode(true));
+  }
 
-    get claseEtiqueta() {
-        return (this.dataset.claseEtiqueta || '').trim();
-    }
+  get claseEtiqueta() {
+    return (this.dataset.claseEtiqueta || '').trim();
+  }
 }
 
 customElements.define('campo-texto', CampoTexto);

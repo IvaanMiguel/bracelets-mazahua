@@ -5,15 +5,15 @@ import { BotonComun } from '../boton-comun/boton-comun.js';
  * de la clase `BotonComun`. Para más información ver la clase mencionada.
  */
 class MdBoton extends HTMLButtonElement {
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        this.botonComun = new BotonComun(this);
-    }
+    this.botonComun = new BotonComun(this);
+  }
 
-    connectedCallback() {
-        this.botonComun.connectedCallback();
-    }
+  connectedCallback() {
+    this.botonComun.connectedCallback();
+  }
 }
 
 customElements.define('md-boton', MdBoton, { extends: 'button' });

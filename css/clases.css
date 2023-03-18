@@ -1,159 +1,159 @@
 .icono-grande {
-    font-size: var(--tam-icono-grande);
+  font-size: var(--tam-icono-grande);
 }
 
 .icono-mediano {
-    font-size: var(--tam-icono-mediano);
+  font-size: var(--tam-icono-mediano);
 }
 
 .icono-chico {
-    font-size: var(--tam-icono-chico);
+  font-size: var(--tam-icono-chico);
 }
 
 .titulo-grande {
-    font-size: var(--fs-titulo-grande);
-    line-height: var(--lh-titulo-grande);
-    letter-spacing: 0;
+  font-size: var(--fs-titulo-grande);
+  line-height: var(--lh-titulo-grande);
+  letter-spacing: 0;
 }
 
 .titulo-mediano {
-    font-size: var(--fs-titulo-mediano);
-    line-height: var(--lh-titulo-mediano);
-    letter-spacing: var(--ls-tiulo-mediano);
-    font-weight: 500;
+  font-size: var(--fs-titulo-mediano);
+  line-height: var(--lh-titulo-mediano);
+  letter-spacing: var(--ls-tiulo-mediano);
+  font-weight: 500;
 }
 
 .cuerpo-mediano {
-    font-size: var(--fs-cuerpo-mediano);
-    line-height: var(--lh-cuerpo-mediano);
-    letter-spacing: var(--ls-cuerpo-mediano);
+  font-size: var(--fs-cuerpo-mediano);
+  line-height: var(--lh-cuerpo-mediano);
+  letter-spacing: var(--ls-cuerpo-mediano);
 }
 
 .cuerpo-chico {
-    font-size: var(--fs-cuerpo-chico);
-    line-height: var(--lh-cuerpo-chico);
-    letter-spacing: var(--ls-cuerpo-chico);
+  font-size: var(--fs-cuerpo-chico);
+  line-height: var(--lh-cuerpo-chico);
+  letter-spacing: var(--ls-cuerpo-chico);
 }
 
 .etiqueta-grande {
-    font-size: var(--fs-etiqueta-grande);
-    line-height: var(--lh-etiqueta-grande);
-    letter-spacing: var(--ls-etiqueta-grande);
-    font-weight: 500;
+  font-size: var(--fs-etiqueta-grande);
+  line-height: var(--lh-etiqueta-grande);
+  letter-spacing: var(--ls-etiqueta-grande);
+  font-weight: 500;
 }
 
 .primario {
-    background-color: var(--clr-primario-40);
+  background-color: var(--clr-primario-40);
 }
 
 .primario-texto {
-    color: var(--clr-primario-40);
+  color: var(--clr-primario-40);
 }
 
 .primario-2,
 .secundario-2,
 .terciario-2 {
-    background-color: #fff;
+  background-color: #fff;
 }
 
 .primario-2-texto,
 .secundario-2-texto,
 .terciario-2-texto {
-    color: #fff;
+  color: #fff;
 }
 
 .primario-alternativo {
-    background-color: var(--clr-primario-90);
+  background-color: var(--clr-primario-90);
 }
 
 .primario-alternativo-texto {
-    color: var(--clr-primario-90);
+  color: var(--clr-primario-90);
 }
 
 .primario-alternativo-2 {
-    background-color: var(--clr-primario-10);
+  background-color: var(--clr-primario-10);
 }
 
 .primario-alternativo-2-texto {
-    color: var(--clr-primario-10);
+  color: var(--clr-primario-10);
 }
 
 .secundario {
-    background-color: var(--clr-secundario-40);
+  background-color: var(--clr-secundario-40);
 }
 
 .secundario-texto {
-    color: var(--clr-secundario-40);
+  color: var(--clr-secundario-40);
 }
 
 .secundario-alternativo {
-    background-color: var(--clr-secundario-90);
+  background-color: var(--clr-secundario-90);
 }
 
 .secundario-alternativo-texto {
-    color: var(--clr-secundario-90);
+  color: var(--clr-secundario-90);
 }
 
 .secundario-alternativo-2 {
-    background-color: var(--clr-secundario-10);
+  background-color: var(--clr-secundario-10);
 }
 
 .secundario-alternativo-2-texto {
-    color: var(--clr-secundario-10);
+  color: var(--clr-secundario-10);
 }
 
 .terciario {
-    background-color: var(--clr-terciario-40);
+  background-color: var(--clr-terciario-40);
 }
 
 .terciario-texto {
-    color: var(--clr-terciario-40);
+  color: var(--clr-terciario-40);
 }
 
 .terciario-alternativo {
-    background-color: var(--clr-terciario-90);
+  background-color: var(--clr-terciario-90);
 }
 
 .terciario-alternativo-texto {
-    color: var(--clr-terciario-90);
+  color: var(--clr-terciario-90);
 }
 
 .terciario-alternativo-2 {
-    background-color: var(--clr-terciario-10);
+  background-color: var(--clr-terciario-10);
 }
 
 .terciario-alternativo-2-texto {
-    color: var(--clr-terciario-10);
+  color: var(--clr-terciario-10);
 }
 
 .fondo {
-    background-color: var(--clr-fondo-99);
+  background-color: var(--clr-fondo-99);
 }
 
 .fondo-texto {
-    color: var(--clr-fondo-99);
+  color: var(--clr-fondo-99);
 }
 
 .fondo-2 {
-    background-color: var(--clr-fondo-10);
+  background-color: var(--clr-fondo-10);
 }
 
 .fondo-2-texto {
-    color: var(--clr-fondo-10);
+  color: var(--clr-fondo-10);
 }
 
 .superficie {
-    background-color: var(--clr-superficie-90);
+  background-color: var(--clr-superficie-90);
 }
 
 .superficie-texto {
-    color: var(--clr-superficie-90);
+  color: var(--clr-superficie-90);
 }
 
 .superficie-2 {
-    background-color: var(--clr-superficie-30);
+  background-color: var(--clr-superficie-30);
 }
 
 .superficie-2-texto {
-    color: var(--clr-superficie-30);
+  color: var(--clr-superficie-30);
 }

@@ -1,46 +1,46 @@
 .contenedor {
-    margin: auto;
-    margin-bottom: var(--espaciado-grande);
-    text-align: center;
-    width: 40%;
-    min-width: 18.75rem;
-    max-width: 25rem;
+  margin: auto;
+  margin-bottom: var(--espaciado-grande);
+  text-align: center;
+  width: 40%;
+  min-width: 18.75rem;
+  max-width: 25rem;
 }
 
 .contenido__logo {
-    height: 240px;
+  height: 240px;
 }
 
 .divisor__texto {
-    display: flex;
-    align-items: center;
-    gap: var(--espaciado-chico);
+  display: flex;
+  align-items: center;
+  gap: var(--espaciado-chico);
 
-    margin-bottom: var(--espaciado-mediano);
+  margin-bottom: var(--espaciado-mediano);
 }
 
 .linea {
-    border-bottom: 0.5px solid #000;
-    flex-grow: 1;
+  border-bottom: 0.5px solid #000;
+  flex-grow: 1;
 }
 
 .input-clave {
-    position: relative;
-    display: flex;
-    align-items: center;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .campo--clave {
-    flex-grow: 1;
-    padding-right: calc(var(--espaciado-mediano) + var(--tam-img-normal) + var(--espaciado-jumbo));
+  flex-grow: 1;
+  padding-right: calc(var(--espaciado-mediano) + var(--tam-img-normal) + var(--espaciado-jumbo));
 }
 
 .icono--absolute {
-    position: absolute;
-    right: var(--espaciado-jumbo);
+  position: absolute;
+  right: var(--espaciado-jumbo);
 }
 
 .icono-visibilidad {
-    cursor: pointer;
-    user-select: none;
+  cursor: pointer;
+  user-select: none;
 }

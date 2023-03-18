@@ -2,14 +2,15 @@
 @import url(clases.css);
 
 body {
-    margin: 0;
-    padding: 0;
-    background-color: var(--clr-fondo-99);
-    color: var(--clr-fondo-10);
-    font-family: 'Roboto', sans-serif;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: var(--clr-fondo-99);
+  color: var(--clr-fondo-10);
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
 }
 
-h1, h2 {
-    margin: 0;
+h1,
+h2 {
+  margin: 0;
 }

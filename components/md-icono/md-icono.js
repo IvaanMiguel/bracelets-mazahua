@@ -61,7 +61,7 @@ export class MdIcono extends HTMLElement {
   crearEstilos () {
     componentsUtil.establecerAtributos(this.googleLink, {
       rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200'
+      href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200'
     });
 
     componentsUtil.establecerAtributos(this.clasesLink, {
@@ -74,7 +74,7 @@ export class MdIcono extends HTMLElement {
       href: 'components/md-icono/md-icono.css'
     });
 
-    this.span.classList.add('material-symbols-outlined');
+    this.span.classList.add('material-symbols-rounded');
     this.classList.forEach((clase) => this.span.classList.add(clase));
 
     if (this.dataFill || this.dataWght || this.dataGrad || this.dataOpsz) {

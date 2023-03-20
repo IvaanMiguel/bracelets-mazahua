@@ -12,19 +12,20 @@
   <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap' rel='stylesheet'>
 
   <!-- Material Design Google Icons -->
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200' />
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200' />
 
   <link rel='stylesheet' href='css/global.css'>
   <link rel='stylesheet' href='css/estilos.css'>
   <link rel='stylesheet' href='css/formularios-usuario.css'>
+
+  
+  <title>Bracelets Mazahua</title>
 
   <script src='components/md-boton/md-boton.js' type='module' defer></script>
   <script src='components/md-enlace/md-enlace.js' type='module' defer></script>
   <script src='components/md-icono/md-icono.js' type='module' defer></script>
   <script src='components/icono-emergente/icono-emergente.js' type='module' defer></script>
   <script src='components/campo-texto/campo-texto.js' type='module' defer></script>
-
-  <title>Bracelets Mazahua</title>
 </head>
 
 <body>
@@ -37,9 +38,8 @@
           <div class='campo'>
             <campo-texto data-clase-etiqueta='etiqueta'>
               <span class='cuerpo-mediano' slot='etiqueta-texto'>Nombre de usuario</span>
-              <icono-emergente class='icono-chico cursor-pointer' slot='etiqueta-icono' data-icono='help'>
-                Debe tener mínimo 4 caracteres y máximo 15 caracteres.<br>
-                Solo puede contener letras y números.
+              <icono-emergente class='icono-chico' slot='etiqueta-icono' data-icono='help'
+                data-mensaje='Debe tener mínimo 4 caracteres y máximo 15 caracteres.&#xa;Solo puede contener letras y números.'>
               </icono-emergente>
               <input class='fondo fondo-2-texto cuerpo-mediano' slot='campo' type='text' name='nombreUsuario'>
             </campo-texto>
@@ -51,22 +51,20 @@
             </campo-texto>
           </div>
           <div class='campo'>
-            <label class='input'>
-              <div class='etiqueta'>
-                <span class='cuerpo-mediano'>Contraseña</span>
-                <span class='material-symbols-outlined ayuda ayuda-clave icono icono-chico'>help</span>
-              </div>
-              <div class='input-clave'>
-                <input class='input__campo campo--clave fondo fondo-2-texto' type='password' name='clave'>
-                <span class='material-symbols-outlined icono icono-visibilidad icono-mediano icono--absolute' title='Mostrar contraseña'>visibility</span>
-              </div>
-            </label>
+            <campo-texto data-clase-etiqueta='etiqueta' data-clase-campo='campo' data-tipo='clave'>
+              <span class='cuerpo-mediano' slot='etiqueta-texto'>Contraseña</span>
+              <icono-emergente class='icono-chico' slot='etiqueta-icono' data-icono='help'
+                data-mensaje='Debe tener mínimo 8 caracteres y máximo 20 caracteres.&#xa;Debe contener al menos una letra mayúscula y un número.'>
+              </icono-emergente>
+              <input class='padding-derecho fondo fondo-2-texto cuerpo-mediano' slot='campo' type='password' name='clave'>
+              <md-icono class='icono-mediano cursor-pointer' slot='icono-visibilidad' data-icono='visibility'></md-icono>
+            </campo-texto>
           </div>
           <div class='campo'>
-            <label class='input'>
-              <span class='cuerpo-mediano'>Vuelve a escribir la contraseña</span>
-              <input class='input__campo fondo fondo-2-texto' type='password' name='claveVerificacion'>
-            </label>
+            <campo-texto data-clase-etiqueta='etiqueta'>
+              <span class='cuerpo-mediano' slot='etiqueta-texto'>Vuelve a escribir la contraseña</span>
+              <input class='fondo fondo-2-texto cuerpo-mediano' slot='campo' type='password' name='claveVerificacion'>
+            </campo-texto>
           </div>
         </div>
         <button class='boton primario primario-2-texto boton--active-primario boton-registro' is='md-boton'>

@@ -46,24 +46,3 @@ document.querySelector('.boton-inicio-sesion').addEventListener('click', (e) => 
       }
     });
 });
-
-const mostrarClave = document.querySelector('.icono-visibilidad');
-
-mostrarClave.addEventListener('mousedown', () => {
-  document.querySelector('[name=clave]').type = 'text';
-  mostrarClave.innerText = 'visibility_off';
-});
-
-mostrarClave.addEventListener('mouseup', () => {
-  document.querySelector('[name=clave]').type = 'password';
-  mostrarClave.innerText = 'visibility';
-});
-
-mostrarClave.addEventListener('mouseleave', () => {
-  const clave = document.querySelector('[name=clave]');
-
-  if (clave.type === 'text') {
-    document.querySelector('[name=clave]').type = 'password';
-    mostrarClave.innerText = 'visibility';
-  }
-});

@@ -23,6 +23,8 @@
 
   <script src='components/md-icono/md-icono.js' type='module' defer></script>
   <script src='components/md-boton/md-boton.js' type='module' defer></script>
+  <script src='components/campo-texto/campo-texto.js' type='module' defer></script>
+  <script src='components/campo-clave/campo-clave.js' type='module' defer></script>
   <script src='components/menu-lateral/menu-lateral.js' type='module' defer></script>
 </head>
 

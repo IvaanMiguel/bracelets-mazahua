@@ -26,6 +26,7 @@
   <script src='components/md-icono/md-icono.js' type='module' defer></script>
   <script src='components/icono-emergente/icono-emergente.js' type='module' defer></script>
   <script src='components/campo-texto/campo-texto.js' type='module' defer></script>
+  <script src='components/campo-clave/campo-clave.js' type='module' defer></script>
 </head>
 
 <body>
@@ -36,7 +37,7 @@
         <h2 class='titulo--grande'>Crear cuenta</h2>
         <div class='campos'>
           <div class='campo'>
-            <campo-texto data-clase-etiqueta='etiqueta'>
+            <campo-texto>
               <span class='cuerpo-mediano' slot='etiqueta-texto'>Nombre de usuario</span>
               <icono-emergente class='icono-chico' slot='etiqueta-icono' data-icono='help'
                 data-mensaje='Debe tener mínimo 4 caracteres y máximo 15 caracteres.&#xa;Solo puede contener letras y números.'>
@@ -45,26 +46,26 @@
             </campo-texto>
           </div>
           <div class='campo'>
-            <campo-texto data-clase-etiqueta='etiqueta'>
+            <campo-texto>
               <span class='cuerpo-mediano' slot='etiqueta-texto'>Dirección de email</span>
               <input class='fondo fondo-2-texto cuerpo-mediano' slot='campo' type='text' name='email'>
             </campo-texto>
           </div>
           <div class='campo'>
-            <campo-texto data-clase-etiqueta='etiqueta' data-clase-campo='campo' data-tipo='clave'>
+            <campo-clave>
               <span class='cuerpo-mediano' slot='etiqueta-texto'>Contraseña</span>
               <icono-emergente class='icono-chico' slot='etiqueta-icono' data-icono='help'
                 data-mensaje='Debe tener mínimo 8 caracteres y máximo 20 caracteres.&#xa;Debe contener al menos una letra mayúscula y un número.'>
               </icono-emergente>
               <input class='padding-derecho fondo fondo-2-texto cuerpo-mediano' slot='campo' type='password' name='clave'>
               <md-icono class='icono-mediano cursor-pointer' slot='icono-visibilidad' data-icono='visibility'></md-icono>
-            </campo-texto>
+            </campo-clave>
           </div>
           <div class='campo'>
-            <campo-texto data-clase-etiqueta='etiqueta'>
+            <campo-clave>
               <span class='cuerpo-mediano' slot='etiqueta-texto'>Vuelve a escribir la contraseña</span>
               <input class='fondo fondo-2-texto cuerpo-mediano' slot='campo' type='password' name='claveVerificacion'>
-            </campo-texto>
+            </campo-clave>
           </div>
         </div>
         <button class='boton primario primario-2-texto boton--active-primario boton-registro' is='md-boton'>

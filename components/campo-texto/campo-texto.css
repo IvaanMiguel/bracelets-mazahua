@@ -12,16 +12,7 @@
   gap: var(--espaciado-chico);
 }
 
-.campo {
-  display: flex;
-  align-items: center;
-
-  position: relative;
-}
-
 ::slotted([slot='campo']) {
-  flex-grow: 1;
-
   height: 2.5rem;
   padding: 0 var(--espaciado-jumbo);
   box-sizing: border-box;
@@ -30,17 +21,8 @@
   border-radius: var(--br-borde);
 }
 
-::slotted(.padding-derecho[slot='campo']) {
-  padding-right: calc(var(--espaciado-mediano) + var(--tam-icono-mediano) + var(--espaciado-jumbo));
-}
-
 ::slotted([slot='campo']:focus-visible) {
   border: 2px solid var(--clr-primario-40);
   padding: 0 calc(var(--espaciado-jumbo) - 1px);
   outline: none;
-}
-
-::slotted([slot='icono-visibilidad']) {
-  position: absolute;
-  right: var(--espaciado-jumbo);
 }

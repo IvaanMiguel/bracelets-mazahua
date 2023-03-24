@@ -24,6 +24,7 @@
   <script src='components/md-boton/md-boton.js' type='module' defer></script>
   <script src='components/md-enlace/md-enlace.js' type='module' defer></script>
   <script src='components/campo-texto/campo-texto.js' type='module' defer></script>
+  <script src='components/campo-clave/campo-clave.js' type='module' defer></script>
 </head>
 
 <body>
@@ -42,11 +43,11 @@
               value='<?= ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['nombreUsuario'])) ? $_GET['nombreUsuario'] : '' ?>'
               name='idUsuario'>
           </campo-texto>
-          <campo-texto data-clase-etiqueta='etiqueta' data-clase-campo='campo' data-tipo='clave'>
+          <campo-clave>
             <span class='cuerpo-mediano' slot='etiqueta-texto'>Contraseña</span>
             <input class='padding-derecho fondo fondo-2-texto cuerpo-mediano' slot='campo' type='password' name='clave'>
             <md-icono class='icono-mediano cursor-pointer' slot='icono-visibilidad' data-icono='visibility'></md-icono>
-          </campo-texto>
+          </campo-clave>
         </div>
         <button class='boton boton-inicio-sesion primario primario-2-texto boton--active-primario' is='md-boton'>
           <span class='etiqueta-grande'>Iniciar sesión</span>

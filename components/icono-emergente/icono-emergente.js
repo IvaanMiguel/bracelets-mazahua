@@ -36,7 +36,7 @@ class IconoEmergente extends MdIcono {
     this.shadowRoot.appendChild(this.estilosLink);
     super.connectedCallback();
 
-    this.div.textContent = this.textContent;
+    this.div.textContent = this.dataset.mensaje;
 
     if (!this.span) return;
 

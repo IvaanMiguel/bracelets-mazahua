@@ -23,24 +23,3 @@
   border-bottom: 0.5px solid #000;
   flex-grow: 1;
 }
-
-.input-clave {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.campo--clave {
-  flex-grow: 1;
-  padding-right: calc(var(--espaciado-mediano) + var(--tam-img-normal) + var(--espaciado-jumbo));
-}
-
-.icono--absolute {
-  position: absolute;
-  right: var(--espaciado-jumbo);
-}
-
-.icono-visibilidad {
-  cursor: pointer;
-  user-select: none;
-}

@@ -14,7 +14,7 @@
   <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap' rel='stylesheet'>
 
   <!-- Material Design Google Icons -->
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200' />
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200' />
 
   <link rel='stylesheet' href='css/global.css'>
   <link rel='stylesheet' href='css/index.css'>
@@ -23,6 +23,8 @@
 
   <script src='components/md-icono/md-icono.js' type='module' defer></script>
   <script src='components/md-boton/md-boton.js' type='module' defer></script>
+  <script src='components/campo-texto/campo-texto.js' type='module' defer></script>
+  <script src='components/campo-clave/campo-clave.js' type='module' defer></script>
   <script src='components/menu-lateral/menu-lateral.js' type='module' defer></script>
 </head>
 

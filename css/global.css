@@ -6,7 +6,7 @@ body {
   padding: 0;
   background-color: var(--clr-fondo-99);
   color: var(--clr-fondo-10);
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--ff-principal);
   box-sizing: border-box;
 }
 

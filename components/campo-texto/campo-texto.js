@@ -6,16 +6,16 @@ import { componentsUtil } from '../components-util.js';
  * ordenada.
  * Es posible omitir cada elemento a excepción del campo, el cual será agregado como un input por defecto
  * si es ignorado.
- * El atributo `data-clase-etiqueta` es utilizado para estilizar el contenedor padre de
- * `etiqueta-texto` y `etiqueta-icono`.
  * @example
- * <campo-texto data-clase-etiquta='clase'>
+ * <campo-texto>
+ *   <div class='etiqueta'>
  *     <span slot='etiqueta-texto'></span>
  *     <md-icono slot='etiqueta-icono'></md-icono>
- *     <input slot='campo'></input>
+ *   </div>
+ *   <input slot='campo'></input>
  * </campo-texto>
  */
-class CampoTexto extends HTMLElement {
+export class CampoTexto extends HTMLElement {
   constructor () {
     super();
 
@@ -40,43 +40,40 @@ class CampoTexto extends HTMLElement {
      */
     this.etiquetaIcono = this.querySelector('[slot="etiqueta-icono"]');
 
-    /**
-     * Elemento HTML representante del campo del elemento.
-     * @type {HTMLElement}
-     */
-    this.campo = this.querySelector('[slot="campo"]');
-
     this.attachShadow({ mode: 'open' });
-
-    this.template.innerHTML = `
-      <div ${this.claseEtiqueta ? `class=${this.claseEtiqueta}` : ''}>
-        <slot name='etiqueta-texto'></slot>
-        <slot name='etiqueta-icono'></slot>
-      </div>
-      <slot name='campo'>
-        <input type='text'>
-      </slot>
-    `;
+    this.crearTemplate();
 
     componentsUtil.establecerAtributos(this.estilosLink, {
       rel: 'stylesheet',
       href: 'components/campo-texto/campo-texto.css'
     });
 
-    if (!this.etiquetaTexto && !this.etiquetaIcono) {
-      this.style.gap = 0;
-    }
+    this.shadowRoot.appendChild(this.estilosLink);
   }
 
   connectedCallback () {
-    const shadow = this.shadowRoot;
-
-    shadow.appendChild(this.estilosLink);
-    shadow.appendChild(this.template.content.cloneNode(true));
+    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }
 
-  get claseEtiqueta () {
-    return (this.dataset.claseEtiqueta || '').trim();
+  /**
+   * Crea un template para el componente en base al dataset tipo y a los elementos
+   * insertados en los slots.
+   */
+  crearTemplate () {
+    if (this.etiquetaTexto || this.etiquetaIcono) {
+      this.template.innerHTML = `
+        <div class='etiqueta'>
+          <slot name='etiqueta-texto'></slot>
+          <slot name='etiqueta-icono'></slot>
+        </div>
+      `;
+    }
+
+    this.template.innerHTML += `
+      <slot name='campo'>
+        <input type='text'>
+      </slot>
+    `;
   }
 }
 

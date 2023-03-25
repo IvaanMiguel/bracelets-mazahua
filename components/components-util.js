@@ -25,7 +25,8 @@ export const componentsUtil = (function () {
       // Si este se encuentra dentro de un Shadow DOM.
       case '[object ShadowRoot]':
         if (!htmlRaiz.querySelector(`link[href='${ruta}']`)) {
-          htmlRaiz.prepend(link);
+          const links = htmlRaiz.querySelectorAll('link');
+          links[links.length - 1].after(link);
         }
         break;
 

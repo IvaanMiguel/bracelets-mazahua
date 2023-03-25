@@ -1,0 +1,21 @@
+/* Hereda los estilos de campo-texto */
+
+.campo-contenedor {
+  display: flex;
+  align-items: center;  
+
+  position: relative;
+}
+
+::slotted([slot='campo']) {
+  flex-grow: 1;
+}
+
+::slotted(.padding-derecho[slot='campo']) {
+  padding-right: calc(var(--espaciado-mediano) + var(--tam-icono-mediano) + var(--espaciado-jumbo));
+}
+
+::slotted([slot='icono-visibilidad']) {
+  position: absolute;
+  right: var(--espaciado-jumbo);
+}

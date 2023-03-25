@@ -34,7 +34,7 @@
       <form class='formulario'>
         <h2 class='titulo-grande'>Iniciar sesión</h2>
         <div class='campos'>
-          <campo-texto data-clase-etiqueta='etiqueta'>
+          <campo-texto>
             <span class='cuerpo-mediano' slot='etiqueta-texto'>Nombre de usuario o dirección de email</span>
             <input
               class='fondo fondo-2-texto cuerpo-mediano'
@@ -57,7 +57,7 @@
     <div class='divisor'>
       <div class='divisor__texto'>
         <div class='linea'></div>
-        <span class='texto cuerpo-chico'>¿No tienes una cuenta?</span>
+        <span class='cuerpo-chico'>¿No tienes una cuenta?</span>
         <div class='linea'></div>
       </div>
       <a class='boton primario primario-2-texto boton--active-primario' is='md-enlace' href='registro.php'>

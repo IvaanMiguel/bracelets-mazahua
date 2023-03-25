@@ -34,7 +34,7 @@
     <div class='contenido'>
       <img class='contenido__logo' src='images/logo.png' alt='Bracelets Mazahua'>
       <form class='formulario'>
-        <h2 class='titulo--grande'>Crear cuenta</h2>
+        <h2 class='titulo-grande'>Crear cuenta</h2>
         <div class='campos'>
           <div class='campo'>
             <campo-texto>
@@ -76,7 +76,7 @@
     <div class='divisor'>
       <div class='divisor__texto'>
         <div class='linea'></div>
-        <span class='texto cuerpo-chico'>Ya tienes una cuenta?</span>
+        <span class='cuerpo-chico'>Ya tienes una cuenta?</span>
         <div class='linea'></div>
       </div>
       <a class='boton primario primario-2-texto boton--active-primario' href='inicio-sesion.php' is='md-enlace'>

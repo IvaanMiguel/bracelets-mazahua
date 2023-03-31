@@ -1,3 +1,5 @@
+import { NotificacionError } from '../components/notificacion-error/notificacion-error.js';
+
 document.querySelector('.boton-registro').addEventListener('click', (e) => {
   e.preventDefault();
 
@@ -7,7 +9,7 @@ document.querySelector('.boton-registro').addEventListener('click', (e) => {
   })
     .then((respuesta) => respuesta.json())
     .then((datos) => {
-      document.querySelectorAll('.notificaciones').forEach((e) => e.remove());
+      document.querySelectorAll('.notificacion-error').forEach((e) => e.remove());
 
       switch (datos.tipo) {
         case 'url':
@@ -15,44 +17,34 @@ document.querySelector('.boton-registro').addEventListener('click', (e) => {
           break;
 
         case 'mensaje':
-          const mensaje = datos.contenido.mensaje;
-          const ambito = datos.contenido.ambito;
-          const notificacion = new Notificacion(mensaje, ambito);
-          const notificaciones = document.querySelector(`.notificacion-${ambito}`);
+          const notificacionError = new NotificacionError();
+          const span = document.createElement('span');
 
-          if (!notificaciones) {
-            document.querySelector('.campos').after(notificacion.elemento);
-            return;
-          }
+          span.setAttribute('slot', 'error');
+          span.innerText = item.mensaje;
+          notificacionError.appendChild(span);
 
-          notificaciones.appendChild(document.createElement('br'));
-          notificaciones.appendChild(document.createTextNode(notificacion.mensaje));
+          document.querySelector('.campos').after(notificacionError);
           break;
 
         case 'array':
           datos.contenido.forEach((item) => {
-            const notificacion = new Notificacion(item.mensaje, item.ambito);
-            const notificaciones = document.querySelector(`.notificacion-${notificacion.ambito}`);
+            const notificacionError = new NotificacionError();
+            const span = document.createElement('span');
 
-            if (!notificaciones) {
-              switch (notificacion.ambito) {
-                case 'clave':
-                  document.querySelector('.input-clave').after(notificacion.elemento);
-                  break;
+            span.setAttribute('slot', 'error');
+            span.innerText = item.mensaje;
+            notificacionError.appendChild(span);
 
-                case 'general':
-                  document.querySelector('.campos').after(notificacion.elemento);
-                  break;
+            switch (item.ambito) {
+              case 'general':
+                document.querySelector('.campos').after(notificacionError);
+                break;
 
-                default:
-                  notificacion.insertarAmbito();
-                  break;
-              }
-              return;
+              default:
+                document.querySelector(`[name='${item.ambito}']`).parentElement.after(notificacionError);
+                break;
             }
-
-            notificaciones.appendChild(document.createElement('br'));
-            notificaciones.appendChild(document.createTextNode(notificacion.mensaje));
           });
           break;
       }

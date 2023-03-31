@@ -1,3 +1,5 @@
+import { NotificacionError } from '../components/notificacion-error/notificacion-error.js';
+
 document.querySelector('.boton-inicio-sesion').addEventListener('click', (e) => {
   e.preventDefault();
 
@@ -7,7 +9,7 @@ document.querySelector('.boton-inicio-sesion').addEventListener('click', (e) => 
   })
     .then((respuesta) => respuesta.json())
     .then((datos) => {
-      document.querySelectorAll('.notificaciones').forEach((e) => e.remove());
+      document.querySelectorAll('.notificacion-error').forEach((e) => e.remove());
 
       switch (datos.tipo) {
         case 'url':
@@ -15,32 +17,26 @@ document.querySelector('.boton-inicio-sesion').addEventListener('click', (e) => 
           break;
 
         case 'mensaje':
-          const mensaje = datos.contenido.mensaje;
-          const ambito = datos.contenido.ambito;
-          const notificacion = new Notificacion(mensaje, ambito);
-          const notificaciones = document.querySelector(`.notificacion-${ambito}`);
+          const notificacionError = new NotificacionError();
+          const span = document.createElement('span');
 
-          if (!notificaciones) {
-            document.querySelector('.campos').after(notificacion.elemento);
-            return;
-          }
+          span.setAttribute('slot', 'error');
+          span.innerText = datos.contenido.mensaje;
+          notificacionError.appendChild(span);
 
-          notificaciones.appendChild(document.createElement('br'));
-          notificaciones.appendChild(document.createTextNode(notificacion.mensaje));
+          document.querySelector('.campos').after(notificacionError);
           break;
 
         case 'array':
           datos.contenido.forEach((item) => {
-            const notificacion = new Notificacion(item.mensaje, item.ambito);
-            const notificaciones = document.querySelector(`.notificacion-${notificacion.ambito}`);
+            const notificacionError = new NotificacionError();
+            const span = document.createElement('span');
 
-            if (!notificaciones) {
-              document.querySelector('.campos').after(notificacion.elemento);
-              return;
-            }
+            span.setAttribute('slot', 'error');
+            span.innerText = item.mensaje;
+            notificacionError.appendChild(span);
 
-            notificaciones.appendChild(document.createElement('br'));
-            notificaciones.appendChild(document.createTextNode(notificacion.mensaje));
+            document.querySelector('.campos').after(notificacionError);
           });
           break;
       }

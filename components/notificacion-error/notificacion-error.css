@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  gap: var(--espaciado-chico);
+
+  color: var(--clr-error-40);
+  margin-right: auto;
+}
+
+span,
+::slotted([slot='error']) {
+  display: flex;
+
+  font-size: var(--fs-cuerpo-chico);
+  line-height: var(--lh-cuerpo-chico);
+  letter-spacing: var(--ls-cuerpo-chico);
+
+  text-align: start;
+}

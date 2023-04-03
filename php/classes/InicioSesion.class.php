@@ -9,7 +9,7 @@ class InicioSesion extends Dbh
         $tuplas = $stmt->fetchAll();
 
         if (count($tuplas) <= 0 || !password_verify(hash('sha512', $clave), $tuplas[0]['clave'])) {
-            $respuesta = new Respuesta(Respuesta::MENSAJE, Respuesta::INICIO_SESION_FALLIDO);
+            $respuesta = new Respuesta(Respuesta::ARRAY, array(Respuesta::INICIO_SESION_FALLIDO));
             exit($respuesta->Json());
         }
 

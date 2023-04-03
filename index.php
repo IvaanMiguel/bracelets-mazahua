@@ -21,11 +21,11 @@
 
   <title>Bracelets Mazahua</title>
 
-  <script src='components/md-icono/md-icono.js' type='module' defer></script>
-  <script src='components/md-boton/md-boton.js' type='module' defer></script>
-  <script src='components/campo-texto/campo-texto.js' type='module' defer></script>
-  <script src='components/campo-clave/campo-clave.js' type='module' defer></script>
-  <script src='components/menu-lateral/menu-lateral.js' type='module' defer></script>
+  <script defer type='module' src='components/md-icono/md-icono.js'></script>
+  <script defer type='module' src='components/md-boton/md-boton.js'></script>
+  <script defer type='module' src='components/campo-texto/campo-texto.js'></script>
+  <script defer type='module' src='components/campo-clave/campo-clave.js'></script>
+  <script defer type='module' src='components/menu-lateral/menu-lateral.js'></script>
 </head>
 
 <body>

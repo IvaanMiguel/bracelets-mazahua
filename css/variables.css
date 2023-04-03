@@ -28,6 +28,7 @@
   --ls-etiqueta-grande: 0.0063rem;
 
   /* Tamaño de iconos de Google */
+  --tam-icono-x-chico: 1rem;
   --tam-icono-chico: 1.125rem;
   --tam-icono-mediano: 1.375rem;
   --tam-icono-grande: 1.5rem;
@@ -38,7 +39,7 @@
   --espaciado-mediano: 0.5rem;
   --espaciado-chico: 0.25rem;
 
-  --br-borde: 5px;
+  --br-borde: 8px;
 
   --clr-borde: #837378; /* Outline */
   --clr-error-40: #ba1a1a;

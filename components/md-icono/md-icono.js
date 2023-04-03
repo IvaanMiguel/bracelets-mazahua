@@ -42,6 +42,10 @@ export class MdIcono extends HTMLElement {
     this.crearEstilos();
   }
 
+  static get observedAttributes () {
+    return ['data-icono', 'data-fill', 'data-wght', 'data-grad', 'data-opsz'];
+  }
+
   connectedCallback () {
     this.span.textContent = this.dataIcono;
 
@@ -51,6 +55,10 @@ export class MdIcono extends HTMLElement {
 
     shadow.appendChild(this.estilosIcono);
     shadow.appendChild(this.span);
+  }
+
+  attributeChangedCallback (name, oldValue, newValue) {
+    this.crearFontVariation();
   }
 
   /**
@@ -77,6 +85,10 @@ export class MdIcono extends HTMLElement {
     this.span.classList.add('material-symbols-rounded');
     this.classList.forEach((clase) => this.span.classList.add(clase));
 
+    this.crearFontVariation();
+  }
+
+  crearFontVariation () {
     if (this.dataFill || this.dataWght || this.dataGrad || this.dataOpsz) {
       const dataFill = this.dataFill || 0;
       const dataWght = this.dataWght || 400;

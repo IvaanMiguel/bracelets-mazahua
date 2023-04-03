@@ -1,9 +1,9 @@
 <?php
 class Respuesta
 {
-    public const URL = 'url';
-    public const ARRAY = 'array';
-    public const MENSAJE = 'mensaje';
+    public const URL = 0;
+    public const ARRAY = 1;
+
     public const BD_ERROR = [
         'titulo' => 'Error',
         'mensaje' => 'Algo ha salido mal.',
@@ -75,20 +75,20 @@ class Respuesta
         'ambito' => 'clave',
     ];
 
-    private ?string $tipo;
-    private array|string|null $contenido;
+    private int $tipo;
+    private array|string $contenido;
 
-    public function __construct(?string $tipo = null, array|string|null $contenido = null)
+    public function __construct(int $tipo, array|string $contenido)
     {
         $this->tipo = $tipo;
         $this->contenido = $contenido;
     }
 
-    public function setRespuesta(string $tipo, array|string $contenido): void
-    {
-        $this->tipo = $tipo;
-        $this->contenido = $contenido;
-    }
+    // public function setRespuesta(string $tipo, array|string $contenido): void
+    // {
+    //     $this->tipo = $tipo;
+    //     $this->contenido = $contenido;
+    // }
 
     public function Json(): bool|string
     {

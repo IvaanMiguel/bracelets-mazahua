@@ -20,11 +20,11 @@
 
   <title>Bracelets Mazahua</title>
 
-  <script src='components/md-icono/md-icono.js' type='module' defer></script>
-  <script src='components/md-boton/md-boton.js' type='module' defer></script>
-  <script src='components/md-enlace/md-enlace.js' type='module' defer></script>
-  <script src='components/campo-texto/campo-texto.js' type='module' defer></script>
-  <script src='components/campo-clave/campo-clave.js' type='module' defer></script>
+  <script defer type='module' src='components/md-icono/md-icono.js'></script>
+  <script defer type='module' src='components/md-boton/md-boton.js'></script>
+  <script defer type='module' src='components/md-enlace/md-enlace.js'></script>
+  <script defer type='module' src='components/campo-texto/campo-texto.js'></script>
+  <script defer type='module' src='components/campo-clave/campo-clave.js'></script>
 </head>
 
 <body>
@@ -65,8 +65,7 @@
       </a>
     </div>
   </main>
-  <script src='js/classes/notificacion.class.js'></script>
-  <script src='js/inicio-sesion.js'></script>
+  <script type='module' src='js/inicio-sesion.js'></script>
 </body>
 
 </html>

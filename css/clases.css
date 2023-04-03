@@ -10,6 +10,10 @@
   font-size: var(--tam-icono-chico);
 }
 
+.icono-x-chico { 
+  font-size: var(--tam-icono-x-chico);
+}
+
 .titulo-grande {
   font-size: var(--fs-titulo-grande);
   line-height: var(--lh-titulo-grande);

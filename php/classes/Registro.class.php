@@ -15,7 +15,7 @@ class Registro extends Dbh
         $this->ejecutarSentencia($stmt, array($nombreUsuario));
         $tuplas = $stmt->fetchAll();
 
-        return count($tuplas) > 0 ? true : false;
+        return count($tuplas) > 0;
     }
 
     protected function emailExistente(string $email): bool
@@ -24,6 +24,6 @@ class Registro extends Dbh
         $this->ejecutarSentencia($stmt, array($email));
         $tuplas = $stmt->fetchAll();
 
-        return count($tuplas) > 0 ? true : false;
+        return count($tuplas) > 0;
     }
 }

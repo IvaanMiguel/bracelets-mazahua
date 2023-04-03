@@ -8,7 +8,7 @@ class Pedido extends Dbh
         $tuplas = $stmt->fetchAll();
 
         if (count($tuplas) <= 0) {
-            $respuesta = new Respuesta(Respuesta::MENSAJE, 'Sin pedidos pendientes.');
+            $respuesta = new Respuesta(Respuesta::ARRAY, array('Sin pedidos pendientes.'));
             return $respuesta;
         }
 

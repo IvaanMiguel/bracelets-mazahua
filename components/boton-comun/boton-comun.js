@@ -16,7 +16,13 @@ export class BotonComun {
      */
     this.elemento = elemento;
 
-    componentsUtil.cargarEstilos(this.elemento, 'components/boton-comun/boton-comun.css');
+    /**
+     * Callback utilizado para agregar y remover event listeners.
+     * @type {Function}
+     */
+    this.clickCallback = this.dispararEvento.bind(this); // No entiendo qué es esto, pero sin ello peta todo.
+
+    // componentsUtil.cargarEstilos(this.elemento, 'components/boton-comun/boton-comun.css');
 
     if (!this.elemento.hasAttribute('title') && this.elemento.innerText) {
       this.elemento.setAttribute('title', this.elemento.innerText);
@@ -28,11 +34,19 @@ export class BotonComun {
    * personalizado cuando este sea presionado.
    */
   connectedCallback () {
+    componentsUtil.cargarEstilos(this.elemento, 'components/boton-comun/boton-comun.css');
+
     if (!this.elemento.dataset.evento) return;
 
-    this.elemento.addEventListener('click', () => {
-      this.elemento.dispatchEvent(this.crearEvento());
-    });
+    this.elemento.addEventListener('click', this.clickCallback);
+  }
+
+  disconnectedCallback () {
+    this.elemento.removeEventListener('click', this.clickCallback);
+  }
+
+  dispararEvento () {
+    this.elemento.dispatchEvent(this.crearEvento());
   }
 
   /**
@@ -53,6 +67,8 @@ export class BotonComun {
 
       case 'alternarmenu':
       case 'cerrarsesion':
+      case 'confirmarcierresesion':
+      case 'cerrarventana':
         break;
 
       default:

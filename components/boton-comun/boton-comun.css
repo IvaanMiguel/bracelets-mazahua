@@ -1,3 +1,17 @@
+.etiqueta {
+  opacity: 1;
+  transition:
+    width 0.2s ease 0s,
+    font-size 0.2s ease 0s,
+    opacity 0.2s ease 0s;
+}
+
+.etiqueta--oculto {
+  width: 0;
+  opacity: 0;
+  font-size: 0;
+}
+
 /* Clase que por defecto todos los botones deberían tener. Aplica estilos generales. */
 .boton {
   display: inline-flex;
@@ -7,24 +21,83 @@
   text-decoration: none;
   font-family: inherit;
   white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
-
+  
+  overflow: hidden;
   height: 2.5rem;
   box-sizing: border-box;
   padding: 0 1.5rem;
   cursor: pointer;
+  position: relative;
 
   border: none;
   border-radius: 1.25rem;
 
-  transition:
+  transition: 
     box-shadow 0.2s ease 0s,
     background-color 0.2s ease 0s,
     color 0.2s ease 0s,
     padding 0.2s ease 0s,
     gap 0.2s ease 0s,
     max-width 0.2s ease 0s;
+}
+
+/* Capa de opacidad */
+.boton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  transition: background-color .2s ease 0s;
+}
+
+.boton-primario-rellenado:hover {
+  box-shadow: var(--bs-elevacion-3);
+}
+
+.boton-primario-rellenado:hover::after {
+  background-color: var(--clr-blanco-opacidad-1);
+}
+
+.boton-primario-rellenado:active {
+  box-shadow: unset;
+}
+
+.boton-primario-rellenado:active::after {
+  background-color: var(--clr-blanco-opacidad-2);
+}
+
+.boton-primario-rellenado:focus-visible {
+  outline: none;
+  box-shadow: unset;
+}
+
+.boton-primario-rellenado:focus-visible::after {
+  background-color: var(--clr-blanco-opacidad-1);
+}
+
+.boton-delineado {
+  border: 1px solid var(--clr-borde);
+}
+
+.boton-primario-delineado:hover::after {
+  background-color: var(--clr-primario-opacidad-1);
+}
+
+.boton-primario-delineado:active::after {
+  background-color: var(--clr-primario-opacidad-2);
+}
+
+.boton-primario-delineado:focus-visible {
+  outline: none;
+  border-color: var(--clr-primario-40);
+}
+
+.boton-primario-delineado:focus-visible::after {
+  background-color: var(--clr-primario-opacidad-2);
 }
 
 /* Clase utilizada cuando en un botón se encuentra un icono y una etiqueta. */
@@ -38,28 +111,4 @@
   padding: 0 1rem;
   max-width: min-content;
   gap: 0;
-}
-
-.boton:is(:hover, :focus-visible) {
-  outline: none;
-  box-shadow: var(--bs-elevacion-1);
-}
-
-.boton--active-primario:active {
-  background-color: #fff;
-  color: var(--clr-primario-40);
-}
-
-.etiqueta {
-  opacity: 1;
-  transition:
-    width 0.2s ease 0s,
-    font-size 0.2s ease 0s,
-    opacity 0.2s ease 0s;
-}
-
-.etiqueta--oculto {
-  width: 0;
-  opacity: 0;
-  font-size: 0;
 }

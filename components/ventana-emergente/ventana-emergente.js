@@ -1,4 +1,5 @@
 import { componentsUtil } from '../components-util.js';
+import { cerrarSesion } from '../../js/cerrar-sesion.js';
 
 export class VentanaEmergente extends HTMLElement {
   constructor () {
@@ -29,7 +30,7 @@ export class VentanaEmergente extends HTMLElement {
 
   connectedCallback () {
     this.shadowRoot.addEventListener('cerrarventana', () => this.cerrarVentana());
-    this.shadowRoot.addEventListener('cerrarsesion', () => this.cerrarSesion());
+    this.shadowRoot.addEventListener('cerrarsesion', () => cerrarSesion());
   }
 
   cerrarVentana () {
@@ -38,12 +39,6 @@ export class VentanaEmergente extends HTMLElement {
     if (host.getAttribute('style').indexOf('display: flex;') > -1) {
       host.removeAttribute('style');
     }
-  }
-
-  cerrarSesion () {
-    fetch('php/includes/cerrarsesion.inc.php')
-      .then((respuesta) => respuesta.json())
-      .then((datos) => (location.href = datos.contenido));
   }
 }
 

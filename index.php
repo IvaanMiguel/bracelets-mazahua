@@ -31,39 +31,39 @@
 
 <body>
   <main class='contenedor'>
-    <menu-lateral class='menu-lateral primario' data-clase-reducido='menu-lateral--reducido'>
-      <button class='boton boton--icono primario primario-2-texto boton--active-primario' is='md-boton' data-evento='alternarmenu'>
+    <menu-lateral class='menu-lateral bg-primario' data-clase-reducido='menu-lateral--reducido'>
+      <button class='boton boton--icono bg-primario txt-blanco boton-primario-rellenado' is='md-boton' data-evento='alternarmenu'>
         <md-icono class='icono-chico' data-icono='menu'></md-icono>
       </button>
       <div class='menu-lateral__secciones'>
-        <button class='boton boton--icono-texto primario primario-2-texto boton--active-primario' data-clase-reducido='boton--icono' is='md-boton' data-evento='cargarseccion' name='inicio'>
+        <button class='boton boton--icono-texto bg-primario txt-blanco boton-primario-rellenado' data-clase-reducido='boton--icono' is='md-boton' data-evento='cargarseccion' name='inicio'>
           <md-icono class='icono-chico' data-icono='home'></md-icono>
           <span class='etiqueta etiqueta-grande' data-clase-reducido='etiqueta--oculto' data-rol='etiqueta'>Inicio</span>
         </button>
-        <button class='boton boton--icono-texto primario primario-2-texto boton--active-primario' data-clase-reducido='boton--icono' is='md-boton' data-evento='cargarseccion' name='nuevoPedido'>
+        <button class='boton boton--icono-texto bg-primario txt-blanco boton-primario-rellenado' data-clase-reducido='boton--icono' is='md-boton' data-evento='cargarseccion' name='nuevoPedido'>
           <md-icono class='icono-chico' data-icono='shopping_basket'></md-icono>
           <span class='etiqueta etiqueta-grande' data-clase-reducido='etiqueta--oculto' data-rol='etiqueta'>Nuevo pedido</span>
         </button>
-        <button class='boton boton--icono-texto primario primario-2-texto boton--active-primario' data-clase-reducido='boton--icono' is='md-boton' data-evento='cargarseccion' name='clientes'>
+        <button class='boton boton--icono-texto bg-primario txt-blanco boton-primario-rellenado' data-clase-reducido='boton--icono' is='md-boton' data-evento='cargarseccion' name='clientes'>
           <md-icono class='icono-chico' data-icono='groups'></md-icono>
           <span class='etiqueta etiqueta-grande' data-clase-reducido='etiqueta--oculto' data-rol='etiqueta'>Clientes</span>
         </button>
-        <button class='boton boton--icono-texto primario primario-2-texto boton--active-primario' data-clase-reducido='boton--icono' is='md-boton' data-evento='cargarseccion' name='productos'>
+        <button class='boton boton--icono-texto bg-primario txt-blanco boton-primario-rellenado' data-clase-reducido='boton--icono' is='md-boton' data-evento='cargarseccion' name='productos'>
           <md-icono class='icono-chico' data-icono='inventory_2'></md-icono>
           <span class='etiqueta etiqueta-grande' data-clase-reducido='etiqueta--oculto' data-rol='etiqueta'>Productos</span>
         </button>
-        <button class='boton boton--icono-texto primario primario-2-texto boton--active-primario' data-clase-reducido='boton--icono' is='md-boton' data-evento='cargarseccion' name='pedidos'>
+        <button class='boton boton--icono-texto bg-primario txt-blanco boton-primario-rellenado' data-clase-reducido='boton--icono' is='md-boton' data-evento='cargarseccion' name='pedidos'>
           <md-icono class='icono-chico' data-icono='inventory'></md-icono>
           <span class='etiqueta etiqueta-grande' data-clase-reducido='etiqueta--oculto' data-rol='etiqueta'>Pedidos</span>
         </button>
       </div>
-      <button class='boton boton--icono-texto primario primario-2-texto boton--active-primario' data-clase-reducido='boton--icono' is='md-boton' data-evento='confirmarcierresesion'>
+      <button class='boton boton--icono-texto bg-primario txt-blanco boton-primario-rellenado' data-clase-reducido='boton--icono' is='md-boton' data-evento='confirmarcierresesion'>
         <md-icono class='icono-chico' data-icono='logout'></md-icono>
         <span class='etiqueta etiqueta-grande' data-clase-reducido='etiqueta--oculto' data-rol='etiqueta'>Cerrar sesión</span>
       </button>
     </menu-lateral>
     <div class='contenido'>
-      <div class='cabecera fondo-2-texto'>
+      <div class='cabecera'>
         <h1 class='cabecera__titulo titulo-grande'>Bracelets Mazahua</h1>
         <span class='cabecera__nombre titulo-mediano'>
           <?= isset($_SESSION['nombreUsuario']) ? $_SESSION['nombreUsuario'] : '' ?>
@@ -80,8 +80,8 @@
       <span class='titulo-grande'>Cerrar sesión</span>
       <span class='cuerpo-mediano'>¿Deseas salir y cerrar la sesión actual?</span>
       <div class='botones-contenedor botones-contenedor--flex-end'>
-        <button class='boton primario primario-2-texto boton-primario' is='md-boton' data-evento='cerrarsesion'>Sí</button>
-        <button class='boton boton-delineado primario-2 primario-texto' is='md-boton' data-evento='cerrarventana'>No</button>
+        <button class='boton bg-primario txt-blanco boton-primario-rellenado' is='md-boton' data-evento='cerrarsesion'>Sí</button>
+        <button class='boton boton-delineado bg-transparente txt-primario boton-primario-delineado' is='md-boton' data-evento='cerrarventana'>No</button>
       </div>
     </div>
   </ventana-emergente>

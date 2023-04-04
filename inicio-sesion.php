@@ -30,14 +30,14 @@
 <body>
   <main class='contenedor'>
     <div class='contenido'>
-      <img class='contenido__logo' src='images/logo.png' alt='Bracelets Mazahua'>
+      <img class='contenido__logo' src='images/logo.png' alt='Logo de Bracelets Mazahua'>
       <form class='formulario'>
         <h2 class='titulo-grande'>Iniciar sesión</h2>
         <div class='campos'>
           <campo-texto>
             <span class='cuerpo-mediano' slot='etiqueta-texto'>Nombre de usuario o dirección de email</span>
             <input
-              class='fondo fondo-2-texto cuerpo-mediano'
+              class='bg-fondo txt-fondo-alternativo cuerpo-mediano'
               slot='campo'
               type='text'
               value='<?= ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['nombreUsuario'])) ? $_GET['nombreUsuario'] : '' ?>'
@@ -45,11 +45,11 @@
           </campo-texto>
           <campo-clave>
             <span class='cuerpo-mediano' slot='etiqueta-texto'>Contraseña</span>
-            <input class='padding-derecho fondo fondo-2-texto cuerpo-mediano' slot='campo' type='password' name='clave'>
+            <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano padding-derecho' slot='campo' type='password' name='clave'>
             <md-icono class='icono-mediano cursor-pointer' slot='icono-visibilidad' data-icono='visibility'></md-icono>
           </campo-clave>
         </div>
-        <button class='boton boton-inicio-sesion primario primario-2-texto boton--active-primario' is='md-boton'>
+        <button class='boton bg-primario txt-blanco boton-primario-rellenado boton-inicio-sesion' is='md-boton'>
           <span class='etiqueta-grande'>Iniciar sesión</span>
         </button>
       </form>
@@ -60,7 +60,7 @@
         <span class='cuerpo-chico'>¿No tienes una cuenta?</span>
         <div class='linea'></div>
       </div>
-      <a class='boton primario primario-2-texto boton--active-primario' is='md-enlace' href='registro.php'>
+      <a class='boton bg-primario txt-blanco boton-primario-rellenado' is='md-enlace' href='registro.php'>
         <span class='etiqueta-grande'>Crear una cuenta</span>
       </a>
     </div>

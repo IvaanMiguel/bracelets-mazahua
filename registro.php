@@ -42,13 +42,13 @@
               <icono-emergente class='icono-chico' slot='etiqueta-icono' data-icono='help'
                 data-mensaje='Debe tener mínimo 4 caracteres y máximo 15 caracteres.&#xa;Solo puede contener letras y números.'>
               </icono-emergente>
-              <input class='fondo fondo-2-texto cuerpo-mediano' slot='campo' type='text' name='nombreUsuario'>
+              <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' slot='campo' type='text' name='nombreUsuario'>
             </campo-texto>
           </div>
           <div class='campo'>
             <campo-texto>
               <span class='cuerpo-mediano' slot='etiqueta-texto'>Dirección de email</span>
-              <input class='fondo fondo-2-texto cuerpo-mediano' slot='campo' type='text' name='email'>
+              <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' slot='campo' type='text' name='email'>
             </campo-texto>
           </div>
           <div class='campo'>
@@ -57,18 +57,18 @@
               <icono-emergente class='icono-chico' slot='etiqueta-icono' data-icono='help'
                 data-mensaje='Debe tener mínimo 8 caracteres y máximo 20 caracteres.&#xa;Debe contener al menos una letra mayúscula y un número.'>
               </icono-emergente>
-              <input class='padding-derecho fondo fondo-2-texto cuerpo-mediano' slot='campo' type='password' name='clave'>
+              <input class='padding-derecho bg-fondo txt-fondo-alternativo cuerpo-mediano' slot='campo' type='password' name='clave'>
               <md-icono class='icono-mediano cursor-pointer' slot='icono-visibilidad' data-icono='visibility'></md-icono>
             </campo-clave>
           </div>
           <div class='campo'>
             <campo-clave>
               <span class='cuerpo-mediano' slot='etiqueta-texto'>Vuelve a escribir la contraseña</span>
-              <input class='fondo fondo-2-texto cuerpo-mediano' slot='campo' type='password' name='claveVerificacion'>
+              <input class='bg-fondo txt-primario-alternativo cuerpo-mediano' slot='campo' type='password' name='claveVerificacion'>
             </campo-clave>
           </div>
         </div>
-        <button class='boton primario primario-2-texto boton--active-primario boton-registro' is='md-boton'>
+        <button class='boton bg-primario txt-blanco boton-primario-rellenado boton-registro' is='md-boton'>
           <span class='etiqueta-grande'>Crear cuenta</span>
         </button>
       </form>
@@ -79,7 +79,7 @@
         <span class='cuerpo-chico'>Ya tienes una cuenta?</span>
         <div class='linea'></div>
       </div>
-      <a class='boton primario primario-2-texto boton--active-primario' href='inicio-sesion.php' is='md-enlace'>
+      <a class='boton bg-primario txt-blanco boton-primario-rellenado' href='inicio-sesion.php' is='md-enlace'>
         <span class='etiqueta-grande'>Iniciar sesión</span>
       </a>
     </div>

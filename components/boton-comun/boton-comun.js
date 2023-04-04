@@ -56,19 +56,8 @@ export class BotonComun {
     const nombreEvento = this.elemento.dataset.evento;
     let detallesEvento = {};
 
-    switch (nombreEvento) {
-      case 'cargarseccion':
-        detallesEvento = { pagina: this.elemento.name };
-        break;
-
-      case 'alternarmenu':
-      case 'cerrarsesion':
-      case 'confirmarcierresesion':
-      case 'cerrarventana':
-        break;
-
-      default:
-        return null;
+    if (nombreEvento === 'cargarseccion') {
+      detallesEvento = { pagina: this.elemento.name };
     }
 
     return new CustomEvent(nombreEvento, {

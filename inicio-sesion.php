@@ -49,7 +49,7 @@
             <md-icono class='icono-mediano cursor-pointer' slot='icono-visibilidad' data-icono='visibility'></md-icono>
           </campo-clave>
         </div>
-        <button class='boton bg-primario txt-blanco boton-primario-rellenado boton-inicio-sesion' is='md-boton'>
+        <button class='boton bg-primario txt-blanco boton-primario-rellenado boton-inicio-sesion' is='md-boton' data-evento='iniciarsesion'>
           <span class='etiqueta-grande'>Iniciar sesión</span>
         </button>
       </form>
@@ -65,7 +65,7 @@
       </a>
     </div>
   </main>
-  <script type='module' src='js/inicio-sesion.js'></script>
+  <script type='module' src='js/iniciar-sesion.js'></script>
 </body>
 
 </html>

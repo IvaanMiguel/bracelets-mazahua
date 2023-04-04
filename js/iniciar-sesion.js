@@ -1,11 +1,13 @@
 import { utils } from './utils.js';
 
-document.querySelector('.boton-registro').addEventListener('click', (e) => {
+document.querySelector('[data-evento="iniciarsesion"]').addEventListener('click', (e) => {
   e.preventDefault();
+});
 
-  fetch('php/includes/registro.inc.php', {
+document.addEventListener('iniciarsesion', () => {
+  fetch('php/includes/iniciosesion.inc.php', {
     method: 'POST',
-    body: new FormData(document.querySelector('.formulario'))
+    body: new FormData(document.querySelector('form'))
   })
     .then((respuesta) => respuesta.json())
     .then((datos) => {

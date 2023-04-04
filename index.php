@@ -26,6 +26,7 @@
   <script defer type='module' src='components/campo-texto/campo-texto.js'></script>
   <script defer type='module' src='components/campo-clave/campo-clave.js'></script>
   <script defer type='module' src='components/menu-lateral/menu-lateral.js'></script>
+  <script defer type='module' src='components/ventana-emergente/ventana-emergente.js'></script>
 </head>
 
 <body>
@@ -56,7 +57,7 @@
           <span class='etiqueta etiqueta-grande' data-clase-reducido='etiqueta--oculto' data-rol='etiqueta'>Pedidos</span>
         </button>
       </div>
-      <button class='boton boton--icono-texto primario primario-2-texto boton--active-primario' data-clase-reducido='boton--icono' is='md-boton' data-evento='cerrarsesion'>
+      <button class='boton boton--icono-texto primario primario-2-texto boton--active-primario' data-clase-reducido='boton--icono' is='md-boton' data-evento='confirmarcierresesion'>
         <md-icono class='icono-chico' data-icono='logout'></md-icono>
         <span class='etiqueta etiqueta-grande' data-clase-reducido='etiqueta--oculto' data-rol='etiqueta'>Cerrar sesión</span>
       </button>
@@ -73,6 +74,17 @@
       </div>
     </div>
   </main>
+
+  <ventana-emergente data-id='cerrar-sesion'>
+    <div class='contenido'>
+      <span class='titulo-grande'>Cerrar sesión</span>
+      <span class='cuerpo-mediano'>¿Deseas salir y cerrar la sesión actual?</span>
+      <div class='botones-contenedor botones-contenedor--flex-end'>
+        <button class='boton primario primario-2-texto boton-primario' is='md-boton' data-evento='cerrarsesion'>Sí</button>
+        <button class='boton boton-delineado primario-2 primario-texto' is='md-boton' data-evento='cerrarventana'>No</button>
+      </div>
+    </div>
+  </ventana-emergente>
 </body>
 
 </html>

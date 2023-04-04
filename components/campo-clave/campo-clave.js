@@ -25,6 +25,12 @@ class CampoClave extends CampoTexto {
   constructor () {
     super();
 
+    /** @type {Function} */
+    this.mostrarCampoCallback = this.mostrarCampo.bind(this);
+
+    /** @type {Function} */
+    this.ocultarCampoCallback = this.ocultarCampo.bind(this);
+
     /**
      * Elemento HTML `Link` que tendrá la referencia a los estilos locales CSS `campo-clave.css`.
      * @type {HTMLLinkElement}
@@ -37,20 +43,19 @@ class CampoClave extends CampoTexto {
      */
     this.iconoVisibilidad = this.querySelector('[slot="icono-visibilidad"]');
 
-    componentsUtil.cargarEstilos(this.shadowRoot, 'components/campo-clave/campo-clave.css');
+    this.modificarTemplate();
 
     if (!this.grupo) this.dataset.grupo = 1;
-
-    this.modificarTemplate();
   }
 
   connectedCallback () {
-    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+    super.connectedCallback();
+    componentsUtil.cargarEstilos(this.shadowRoot, 'components/campo-clave/campo-clave.css');
 
     if (this.iconoVisibilidad) {
-      this.iconoVisibilidad.span.addEventListener('mousedown', () => this.mostrarCampo());
-      this.iconoVisibilidad.span.addEventListener('mouseup', () => this.ocultarCampo());
-      this.iconoVisibilidad.span.addEventListener('mouseleave', () => this.ocultarCampo());
+      this.iconoVisibilidad.span.addEventListener('mousedown', this.mostrarCampoCallback);
+      this.iconoVisibilidad.span.addEventListener('mouseup', this.ocultarCampoCallback);
+      this.iconoVisibilidad.span.addEventListener('mouseleave', this.ocultarCampoCallback);
     }
   }
 
@@ -68,8 +73,6 @@ class CampoClave extends CampoTexto {
     campoContenedor.appendChild(iconoSlot);
 
     this.template.content.appendChild(campoContenedor);
-
-    console.log(this.template.content);
   }
 
   /**
@@ -77,10 +80,11 @@ class CampoClave extends CampoTexto {
    * mismo grupo definito en el atributo `data-grupo`.
    */
   mostrarCampo () {
-    document.querySelectorAll(`[data-grupo='${this.grupo}']`).forEach((elemento) => {
-      elemento.querySelector('[slot="campo"]').setAttribute('type', 'text');
-      this.iconoVisibilidad.span.innerText = 'visibility_off';
-    });
+    this.shadowRoot.host.getRootNode()
+      .querySelectorAll(`[data-grupo='${this.grupo}']`).forEach((elemento) => {
+        elemento.querySelector('[slot="campo"]').setAttribute('type', 'text');
+        this.iconoVisibilidad.span.innerText = 'visibility_off';
+      });
   }
 
   /**
@@ -88,10 +92,11 @@ class CampoClave extends CampoTexto {
    * mismo grupo definito en el atributo `data-grupo`.
    */
   ocultarCampo () {
-    document.querySelectorAll(`[data-grupo='${this.grupo}']`).forEach((elemento) => {
-      elemento.querySelector('[slot="campo"]').setAttribute('type', 'password');
-      this.iconoVisibilidad.span.innerText = this.iconoVisibilidad.dataIcono;
-    });
+    this.shadowRoot.host.getRootNode()
+      .querySelectorAll(`[data-grupo='${this.grupo}']`).forEach((elemento) => {
+        elemento.querySelector('[slot="campo"]').setAttribute('type', 'password');
+        this.iconoVisibilidad.span.innerText = this.iconoVisibilidad.dataIcono;
+      });
   }
 
   get grupo () {

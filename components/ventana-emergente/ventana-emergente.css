@@ -1,0 +1,37 @@
+:host {
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+  height: 100svh;
+  width: 100%;
+
+  position: fixed;
+  top: 0;
+  
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.contenido {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaciado-grande);
+
+  background-color: #fff;
+
+  width: clamp(18.75rem, 50%, 30rem);
+  padding: var(--espaciado-jumbo);
+  box-sizing: border-box;
+
+  border-radius: var(--br-borde);
+}
+
+.botones-contenedor {
+  display: flex;
+  gap: var(--espaciado-chico);
+}
+
+.botones-contenedor--flex-end {
+  justify-content: flex-end;
+}

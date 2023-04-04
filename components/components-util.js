@@ -6,7 +6,7 @@ export const componentsUtil = (function () {
    * Carga los estilos del elemento en cuestión según
    * el DOM en el que se encuentre, ubicando dichos estilos dentro de la etiqueta
    * `head` del `DOM` o, si por el encontrario este se encuentra dentro de un `Shadow DOM`,
-   * los agrega al inicio de este.
+   * los agrega después del último elemento link que se encuentre.
    * @param {HTMLElement} elemento Elemento del `DOM` que se usará como referencia para
    *     cargar los estilos.
    * @param {string} ruta  Directorio en el que se encuentran los estilos `CSS` que se

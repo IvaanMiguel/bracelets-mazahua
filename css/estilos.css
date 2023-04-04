@@ -25,15 +25,3 @@
   flex-direction: column;
   gap: var(--espaciado-chico);
 }
-
-.notificaciones {
-  text-align: left;
-  color: var(--clr-error-40);
-  font-size: var(--fs-cuerpo-chico);
-  line-height: var(--lh-cuerpo-chico);
-  letter-spacing: var(--ls-cuerpo-chico);
-
-  padding: 0 var(--espaciado-jumbo);
-  box-sizing: border-box;
-  width: 100%;
-}

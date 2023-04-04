@@ -68,7 +68,7 @@
             </campo-clave>
           </div>
         </div>
-        <button class='boton bg-primario txt-blanco boton-primario-rellenado boton-registro' is='md-boton'>
+        <button class='boton bg-primario txt-blanco boton-primario-rellenado boton-registro' is='md-boton' data-evento='registrarusuario'>
           <span class='etiqueta-grande'>Crear cuenta</span>
         </button>
       </form>
@@ -84,7 +84,7 @@
       </a>
     </div>
   </main>
-  <script type='module' src='js/registro.js'></script>
+  <script type='module' src='js/registrar-usuario.js'></script>
 </body>
 
 </html>

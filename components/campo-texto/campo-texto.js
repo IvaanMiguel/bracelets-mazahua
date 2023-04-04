@@ -47,12 +47,15 @@ export class CampoTexto extends HTMLElement {
       rel: 'stylesheet',
       href: 'components/campo-texto/campo-texto.css'
     });
-
-    this.shadowRoot.appendChild(this.estilosLink);
   }
 
   connectedCallback () {
+    this.shadowRoot.appendChild(this.estilosLink);
     this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+  }
+
+  disconnectedCallback () {
+    this.shadowRoot.replaceChildren();
   }
 
   /**

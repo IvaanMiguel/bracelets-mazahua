@@ -29,7 +29,7 @@
 
 .botones-contenedor {
   display: flex;
-  gap: var(--espaciado-chico);
+  gap: var(--espaciado-grande);
 }
 
 .botones-contenedor--flex-end {

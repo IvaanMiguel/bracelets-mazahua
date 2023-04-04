@@ -19,7 +19,7 @@
 }
 
 .menu-lateral > .boton:first-child {
-  margin-bottom: var(--espaciado-chico);
+  margin-bottom: var(--espaciado-grande);
 }
 
 .menu-lateral > .boton:last-child {
@@ -29,5 +29,5 @@
 .menu-lateral__secciones {
   display: flex;
   flex-direction: column;
-  gap: var(--espaciado-chico);
+  gap: var(--espaciado-grande);
 }

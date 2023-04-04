@@ -14,9 +14,9 @@ class MenuLateral extends HTMLElement {
   }
 
   connectedCallback () {
-    this.addEventListener('alternarmenu', () => this.alternarMenu());
-    this.addEventListener('cargarseccion', (e) => this.cargarSeccion(e.detail.pagina));
-    this.addEventListener('cerrarsesion', () => this.cerrarSesion());
+    this.addEventListener('alternarmenu', this.alternarMenu);
+    document.body.addEventListener('cargarseccion', this.cargarSeccion);
+    document.body.addEventListener('confirmarcierresesion', this.confirmarCerrarSesion);
   }
 
   /**
@@ -28,31 +28,29 @@ class MenuLateral extends HTMLElement {
       this.classList.toggle(this.claseReducido);
     }
 
-    this.querySelectorAll('[name], [data-evento="cerrarsesion"]').forEach((boton) => {
+    this.querySelectorAll('[name], [data-evento="confirmarcierresesion"]').forEach((boton) => {
       boton.classList.toggle(boton.dataset.claseReducido);
       const etiqueta = boton.querySelector('[data-rol="etiqueta"]');
       etiqueta.classList.toggle(etiqueta.dataset.claseReducido);
     });
   }
 
-  cargarSeccion (pagina) {
+  confirmarCerrarSesion () {
+    document.querySelector('[data-id="cerrar-sesion"]').setAttribute('style', 'display: flex;');
+  }
+
+  cargarSeccion (e) {
     fetch('php/includes/index.inc.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: 'pagina=' + encodeURIComponent(pagina)
+      body: 'pagina=' + encodeURIComponent(e.detail.pagina)
     })
       .then((respuesta) => respuesta.text())
       .then((pagina) => {
         document.querySelector('[data-rol="secciones"]').innerHTML = pagina;
       });
-  }
-
-  cerrarSesion () {
-    fetch('php/includes/cerrarsesion.inc.php')
-      .then((respuesta) => respuesta.json())
-      .then((datos) => (location.href = datos.contenido));
   }
 
   get claseReducido () {

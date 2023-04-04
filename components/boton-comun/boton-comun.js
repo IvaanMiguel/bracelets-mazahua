@@ -41,10 +41,6 @@ export class BotonComun {
     this.elemento.addEventListener('click', this.clickCallback);
   }
 
-  disconnectedCallback () {
-    this.elemento.removeEventListener('click', this.clickCallback);
-  }
-
   dispararEvento () {
     this.elemento.dispatchEvent(this.crearEvento());
   }

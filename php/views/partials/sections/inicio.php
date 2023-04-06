@@ -14,7 +14,7 @@ $resultado = $pedido->obtenerPedidosPendientes();
   <div class='pedidos-pendientes'>
     <?php switch ($resultado['tipo']):
       case 1:
-        foreach ($resultado['contenido'] as $pedidoPendiente) : ?>
+        foreach ($resultado['contenido'] as $pedidoPendiente): ?>
           <div class='pedido-info' title='Clic para más información'>
             <span class='cuerpo-mediano'>
               <?= $pedidoPendiente['nombreCliente'] ?>

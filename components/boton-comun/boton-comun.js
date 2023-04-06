@@ -57,7 +57,7 @@ export class BotonComun {
     let detallesEvento = {};
 
     if (nombreEvento === 'cargarseccion') {
-      detallesEvento = { pagina: this.elemento.name };
+      detallesEvento = { paginaSolicitada: this.elemento.name };
     }
 
     return new CustomEvent(nombreEvento, {

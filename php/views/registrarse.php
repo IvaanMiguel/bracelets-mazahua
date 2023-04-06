@@ -1,25 +1,13 @@
+<?php require_once 'php/includes/comprobar_sesion.inc.php'; ?>
+
 <!DOCTYPE html>
 <html lang='es'>
 
 <head>
-  <meta charset='UTF-8'>
-  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <?php require_once META_LINKS ?>
 
-  <!-- Roboto Google Fonts -->
-  <link rel='preconnect' href='https://fonts.googleapis.com'>
-  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
-  <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap' rel='stylesheet'>
-
-  <!-- Material Design Google Icons -->
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200' />
-
-  <link rel='stylesheet' href='css/global.css'>
   <link rel='stylesheet' href='css/estilos.css'>
   <link rel='stylesheet' href='css/formularios-usuario.css'>
-
-  
-  <title>Bracelets Mazahua</title>
 
   <script defer type='module' src='components/md-boton/md-boton.js'></script>
   <script defer type='module' src='components/md-enlace/md-enlace.js'></script>
@@ -79,7 +67,7 @@
         <span class='cuerpo-chico'>Ya tienes una cuenta?</span>
         <div class='linea'></div>
       </div>
-      <a class='boton bg-primario txt-blanco boton-primario-rellenado' href='inicio-sesion.php' is='md-enlace'>
+      <a class='boton bg-primario txt-blanco boton-primario-rellenado' href=<?= URL_INICIAR_SESION ?> is='md-enlace'>
         <span class='etiqueta-grande'>Iniciar sesión</span>
       </a>
     </div>

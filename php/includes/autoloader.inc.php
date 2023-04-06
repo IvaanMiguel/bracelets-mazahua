@@ -1,13 +1,16 @@
 <?php
-spl_autoload_register(function(string $clase) {
-    $carpeta = 'classes';
-    $extension = '.class.php';
-    $directorio = dirname(__DIR__) . "/{$carpeta}/{$clase}{$extension}";
+require_once dirname(__DIR__) . '/constantes.php';
 
-    if (!file_exists($directorio)) {
-        echo "El directorio {$directorio} no ha podido encontrarse.";
-        return;
-    }
+spl_autoload_register(function (string $clase) {
+  $clase = str_replace('\\', '/', $clase);
+  $extension = '.class.php';
 
-    include_once $directorio;
+  $directorio = DIR_PHP . "/{$clase}{$extension}";
+
+  if (file_exists($directorio)) {
+    require_once $directorio;
+    return;
+  }
+
+  die("La clase \"{$clase}\" no ha podido encontrarse.");
 });

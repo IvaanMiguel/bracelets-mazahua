@@ -45,12 +45,10 @@ class MenuLateral extends HTMLElement {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: 'pagina=' + encodeURIComponent(e.detail.pagina)
+      body: 'paginaSolicitada=' + encodeURIComponent(e.detail.paginaSolicitada)
     })
       .then((respuesta) => respuesta.text())
-      .then((pagina) => {
-        document.querySelector('[data-rol="secciones"]').innerHTML = pagina;
-      });
+      .then((paginaSolicitada) => (document.querySelector('[data-rol="secciones"]').innerHTML = paginaSolicitada));
   }
 
   get claseReducido () {

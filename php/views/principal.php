@@ -10,7 +10,7 @@ require_once 'php/includes/comprobar_sesion.inc.php';
 <head>
   <?php require_once META_LINKS ?>
 
-  <link rel='stylesheet' href='css/index.css'>
+  <link rel='stylesheet' href='css/principal.css'>
 
   <script defer type='module' src='components/md-icono/md-icono.js'></script>
   <script defer type='module' src='components/md-boton/md-boton.js'></script>

@@ -5,7 +5,7 @@ document.querySelector('[data-evento="registrarusuario"]').addEventListener('cli
 });
 
 document.addEventListener('registrarusuario', () => {
-  fetch('php/includes/registro.inc.php', {
+  fetch('php/includes/registrar_usuario.inc.php', {
     method: 'POST',
     body: new FormData(document.querySelector('form'))
   })

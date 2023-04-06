@@ -5,7 +5,7 @@ document.querySelector('[data-evento="iniciarsesion"]').addEventListener('click'
 });
 
 document.addEventListener('iniciarsesion', () => {
-  fetch('php/includes/iniciosesion.inc.php', {
+  fetch('php/includes/iniciar_sesion.inc.php', {
     method: 'POST',
     body: new FormData(document.querySelector('form'))
   })

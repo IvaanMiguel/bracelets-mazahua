@@ -45,14 +45,18 @@
 
   --br-borde: 8px;
 
-  --opacidad-1: .12;
-  --opacidad-2: .16;
+  --opacidad-1: .08;
+  --opacidad-2: .12;
 
   --clr-blanco-opacidad-1: rgba(255, 255, 255, var(--opacidad-1));
   --clr-blanco-opacidad-2: rgba(255, 255, 255, var(--opacidad-2));
-
   --clr-primario-opacidad-1: rgba(183, 0, 112, var(--opacidad-1));
   --clr-primario-opacidad-2: rgba(183, 0, 112, var(--opacidad-2));
+  --clr-fondo-alternativo-opacidad-1: rgba(32, 26, 28, var(--opacidad-1));
+  --clr-fondo-alternativo-opacidad-2: rgba(32, 26, 28, var(--opacidad-2));
+
+  --clr-superficie-primario-5: rgb(183, 0, 113, .05);
+  --clr-superficie-primario-9: rgb(183, 0, 113, .09);
 
   --clr-borde: #837378; /* Outline */
   --clr-error-40: #ba1a1a;

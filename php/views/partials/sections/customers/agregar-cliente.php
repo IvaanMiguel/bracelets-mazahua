@@ -28,7 +28,7 @@
         </campo-texto>
         <campo-texto>
           <span class='etiqueta-grande' slot='etiqueta-texto'>Edad</span>
-          <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' type='text' slot='campo' name='edad'>
+          <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' type='number' slot='campo' name='edad'>
         </campo-texto>
       </div>
     </div>
@@ -51,15 +51,15 @@
       <div class='campos-horizontal'>
         <campo-texto>
           <span class='etiqueta-grande' slot='etiqueta-texto'>Número exterior</span>
-          <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' type='text' slot='campo'>
+          <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' type='number' slot='campo'>
         </campo-texto>
         <campo-texto>
           <span class='etiqueta-grande' slot='etiqueta-texto'>Número interior</span>
-          <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' type='text' slot='campo'>
+          <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' type='number' slot='campo'>
         </campo-texto>
         <campo-texto>
           <span class='etiqueta-grande' slot='etiqueta-texto'>Código postal</span>
-          <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' type='text' slot='campo'>
+          <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' type='number' slot='campo'>
         </campo-texto>
       </div>
     </div>

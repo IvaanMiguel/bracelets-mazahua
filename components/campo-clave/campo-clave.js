@@ -53,9 +53,9 @@ class CampoClave extends CampoTexto {
     componentsUtil.cargarEstilos(this.shadowRoot, 'components/campo-clave/campo-clave.css');
 
     if (this.iconoVisibilidad) {
-      this.iconoVisibilidad.span.addEventListener('mousedown', this.mostrarCampoCallback);
-      this.iconoVisibilidad.span.addEventListener('mouseup', this.ocultarCampoCallback);
-      this.iconoVisibilidad.span.addEventListener('mouseleave', this.ocultarCampoCallback);
+      this.iconoVisibilidad.addEventListener('mousedown', this.mostrarCampoCallback);
+      this.iconoVisibilidad.addEventListener('mouseup', this.ocultarCampoCallback);
+      this.iconoVisibilidad.addEventListener('mouseleave', this.ocultarCampoCallback);
     }
   }
 

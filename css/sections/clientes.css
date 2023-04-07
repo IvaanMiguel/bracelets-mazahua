@@ -1,0 +1,14 @@
+.clientes {
+  display: flex;
+
+  padding: var(--espaciado-chico) var(--espaciado-jumbo) 0;
+  height: 100%;
+  box-sizing: border-box;
+  /* overflow: hidden; */
+}
+
+[name='clientes'] {
+  background-color: #fff;
+  color: var(--clr-primario-40);
+  box-shadow: var(--bs-elevacion-1);
+}

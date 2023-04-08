@@ -63,7 +63,7 @@
         </campo-texto>
       </div>
     </div>
-    <button class='boton boton--icono-texto' is='md-boton' type='button' style='width: min-content;'>
+    <button class='boton boton--icono-texto boton-secundario-contenedor-tonal bg-secundario-contenedor txt-secundario-contenedor-alternativo' is='md-boton' type='button' style='width: min-content;'>
       <md-icono class='icono-chico' data-icono='add_location' data-opsz='20'></md-icono>
       <span class='etiqueta-grande'>Agregar ubicación</span>
     </button>

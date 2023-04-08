@@ -11,11 +11,7 @@
     </button>
 
     <div data-id='contenido-administrar'>
-      <campo-clave>
-        <md-icono slot='icono-visibilidad' data-icono='home'></md-icono>
-        <span slot='etiqueta-texto'>Test</span>
-        <input slot='campo'>
-      </campo-clave>
+      <?php include_once 'customers/administrar-clientes.php' ?>
     </div>
     <div data-id='contenido-agregar'>
       <?php include_once 'customers/agregar-cliente.php' ?>

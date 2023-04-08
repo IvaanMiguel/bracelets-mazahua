@@ -19,6 +19,7 @@ require_once 'php/includes/comprobar_sesion.inc.php';
   <script defer type='module' src='components/menu-lateral/menu-lateral.js'></script>
   <script defer type='module' src='components/ventana-emergente/ventana-emergente.js'></script>
   <script defer type='module' src='components/tab-secciones/tab-secciones.js'></script>
+  <script defer type='module' src='components/lista-desplegable/lista-desplegable.js'></script>
 </head>
 
 <body>
@@ -74,11 +75,6 @@ require_once 'php/includes/comprobar_sesion.inc.php';
         <button class='boton bg-primario txt-blanco boton-primario-rellenado' is='md-boton' data-evento='cerrarsesion'>Sí</button>
         <button class='boton boton-delineado bg-transparente txt-primario boton-primario-delineado' is='md-boton' data-evento='cerrarventana'>No</button>
       </div>
-      <!-- <campo-clave>
-        <span slot='etiqueta-texto'>Test</span>
-        <input slot='campo'></input>
-        <md-icono slot='icono-visibilidad' data-icono='home'></md-icono>
-      </campo-clave> -->
     </div>
   </ventana-emergente>
 </body>

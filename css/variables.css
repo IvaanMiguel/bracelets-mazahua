@@ -54,6 +54,8 @@
   --clr-primario-opacidad-2: rgba(183, 0, 112, var(--opacidad-2));
   --clr-fondo-alternativo-opacidad-1: rgba(32, 26, 28, var(--opacidad-1));
   --clr-fondo-alternativo-opacidad-2: rgba(32, 26, 28, var(--opacidad-2));
+  --clr-secundario-contenedor-alternativo-opacidad-1: rgba(60, 0, 43, var(--opacidad-1));
+  --clr-secundario-contenedor-alternativo-opacidad-2: rgba(60, 0, 43, var(--opacidad-2));
 
   --clr-superficie-primario-5: rgb(183, 0, 113, .05);
   --clr-superficie-primario-9: rgb(183, 0, 113, .09);

@@ -1,0 +1,29 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+::slotted([slot='cabecera']) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 3.5rem;
+  padding: 0 var(--espaciado-jumbo);
+  border-radius: var(--br-borde);
+  cursor: pointer;
+  user-select: none;
+}
+
+::slotted(.cabecera-pequeña) {
+  height: 2.5rem;
+}
+
+::slotted([slot='lista-elementos']) {
+  display: flex;
+  max-height: 100vh;
+  background-color: red;
+  overflow: hidden;
+
+  transition: max-height .2s ease 0s;
+}

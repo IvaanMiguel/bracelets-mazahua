@@ -164,3 +164,11 @@
 .txt-superficie-alternativo {
   color: var(--clr-superficie-30);
 }
+
+.bg-error {
+  background-color: var(--clr-error-40);
+}
+
+.txt-error {
+  color: var(--clr-error-40);
+}

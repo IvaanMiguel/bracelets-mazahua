@@ -2,21 +2,19 @@ const template = document.createElement('template');
 template.innerHTML = /*html*/`
 <style>
   :host {
-    --clr-divisor: var(--clr-neutral-80);
-
     display: block;
   }
 
   :host([data-orientacion='horizontal']) {
     width: 100%;
     max-height: 0px;
-    border-bottom: 1px solid var(--clr-divisor);
+    border-bottom: 1px solid var(var(--clr-neutral-80));
   }
 
   :host([data-orientacion='vertical']) {
     height: 100%;
     max-width:0px;
-    border-left: 1px solid var(--clr-divisor);
+    border-left: 1px solid var(var(--clr-neutral-80));
   }
 </style>
 `;

@@ -8,13 +8,13 @@ template.innerHTML = /*html*/`
   :host([data-orientacion='horizontal']) {
     width: 100%;
     max-height: 0px;
-    border-bottom: 1px solid var(var(--clr-neutral-80));
+    border-bottom: 1px solid var(--clr-neutral-80);
   }
 
   :host([data-orientacion='vertical']) {
     height: 100%;
     max-width:0px;
-    border-left: 1px solid var(var(--clr-neutral-80));
+    border-left: 1px solid var(--clr-neutral-80);
   }
 </style>
 `;

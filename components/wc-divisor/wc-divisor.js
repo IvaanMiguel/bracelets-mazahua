@@ -2,7 +2,7 @@ const template = document.createElement('template');
 template.innerHTML = /*html*/`
 <style>
   :host {
-    --clr-divisor: var(--clr-primario-40);
+    --clr-divisor: var(--clr-neutral-80);
 
     display: block;
   }

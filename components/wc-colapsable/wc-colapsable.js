@@ -24,6 +24,7 @@ class WCColapsable extends HTMLElement {
     this._childListObserver = new MutationObserver(() => {
       this.listaElementos.style.maxHeight = this.listaElementos.scrollHeight + 'px';
     });
+
     this._eventoClick = this.alternarVisibilidad.bind(this);
 
     this.cabecera = this.querySelector('[slot="cabecera"]');
@@ -32,9 +33,7 @@ class WCColapsable extends HTMLElement {
     this.icono.style.transition = 'transform .3s ease 0s';
   }
 
-  alternarVisibilidad () {
-    this.dataOculto = !this.dataOculto;
-  }
+  alternarVisibilidad () { this.dataOculto = !this.dataOculto; }
 
   colapsar () {
     this.listaElementos.style.maxHeight = 0;
@@ -42,6 +41,7 @@ class WCColapsable extends HTMLElement {
   }
 
   expandir () {
+    // this.listaElementos.style.maxHeight = '100vh';
     this.listaElementos.style.maxHeight = this.listaElementos.scrollHeight + 'px';
     this.icono.style.transform = 'rotate(0deg)';
   }
@@ -51,7 +51,10 @@ class WCColapsable extends HTMLElement {
   set dataOculto (bool) { this.toggleAttribute('data-oculto', Boolean(bool)); }
 
   connectedCallback () {
-    this._childListObserver.observe(this, { childList: true });
+    this._childListObserver.observe(this, {
+      subtree: true,
+      childList: true
+    });
 
     this.cabecera.addEventListener('click', this._eventoClick);
   }

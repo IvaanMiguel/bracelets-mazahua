@@ -49,6 +49,13 @@
   font-weight: var(--fw-medio);
 }
 
+.etiqueta-chica {
+  font-size: var(--fs-etiqueta-chica);
+  line-height: var(--lh-etiqueta-chica);
+  letter-spacing: var(--ls-etiqueta-chica);
+  font-weight: var(--fw-medio);
+}
+
 .bg-transparente {
   background-color: transparent;
 }

@@ -1,10 +1,9 @@
 const template = document.createElement('template');
 template.innerHTML = /*html*/`
   <link rel='stylesheet' href='components/item-removible/item-removible.css'>
-  <div data-id='contenido'>
+  <div>
     <slot name='info'></slot>
-    <slot name='boton-remover'>
-    </slot>
+    <slot name='boton-remover'></slot>
   </div>
 `;
 

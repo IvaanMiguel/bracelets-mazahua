@@ -1,0 +1,32 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+}
+
+[data-id='contenido'] {
+  display: flex;
+  gap: var(--espaciado-chico);
+  align-items: center;
+
+  flex: 1;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  padding: var(--espaciado-chico) var(--espaciado-jumbo);
+}
+
+::slotted([slot='info']) {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-id='linea'] {
+  height: 0;
+  border-bottom: 1px solid #000;
+}

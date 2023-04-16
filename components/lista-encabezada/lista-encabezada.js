@@ -33,7 +33,7 @@ template.innerHTML = /*html*/`
   <slot name='extra'></slot>
 </div>
 <slot name='lista'>
-  <span>Aún no se ha añadido ningún cliente</span>
+  <span>Aún no se ha añadido nada.</span>
 </slot>
 `;
 

@@ -14,6 +14,7 @@
   /* Tamaño de fuente */
   --fs-titulo-grande: 1.375rem;
   --fs-titulo-mediano: 1rem;
+  --fs-titulo-chico: .875rem;
   --fs-cuerpo-mediano: 0.875rem;
   --fs-cuerpo-chico: 0.75rem;
   --fs-etiqueta-grande: 0.875rem;
@@ -22,6 +23,7 @@
   /* Altura de línea */
   --lh-titulo-grande: 1.75rem;
   --lh-titulo-mediano: 1.5rem;
+  --lh-titulo-chico: 1.25rem;
   --lh-cuerpo-mediano: 1.25rem;
   --lh-cuerpo-chico: 1rem;
   --lh-etiqueta-grande: 1.25rem;
@@ -29,6 +31,7 @@
 
   /* Espaciado de letras */
   --ls-tiulo-mediano: 0.0094rem;
+  --ls-titulo-chico: .0063rem;
   --ls-cuerpo-mediano: 0.0156rem;
   --ls-cuerpo-chico: 0.025rem;
   --ls-etiqueta-grande: 0.0063rem;

@@ -28,6 +28,13 @@
   font-weight: var(--fw-medio);
 }
 
+.titulo-chico {
+  font-size: var(--fs-titulo-chico);
+  line-height: var(--lh-titulo-chico);
+  letter-spacing: var(--ls-tiulo-chico);
+  font-weight: var(--fw-medio);
+}
+
 .cuerpo-mediano {
   font-size: var(--fs-cuerpo-mediano);
   line-height: var(--lh-cuerpo-mediano);

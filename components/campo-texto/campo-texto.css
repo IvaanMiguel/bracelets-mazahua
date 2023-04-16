@@ -13,9 +13,10 @@
 }
 
 ::slotted([slot='campo']) {
-  height: 2.5rem;
+  min-height: 2.5rem;
   padding: 0 var(--espaciado-jumbo);
   box-sizing: border-box;
+  width: 100%;
 
   border: 1px solid var(--clr-borde);
   border-radius: var(--br-borde);

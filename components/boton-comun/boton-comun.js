@@ -56,12 +56,18 @@ export class BotonComun {
     const nombreEvento = this.elemento.dataset.evento;
     let detallesEvento = {};
 
-    if (nombreEvento === 'cargarseccion') {
-      detallesEvento = { paginaSolicitada: this.elemento.name };
+    switch (nombreEvento) {
+      case 'cargarseccion':
+        detallesEvento = { paginaSolicitada: this.elemento.name };
+        break;
+      case 'confirmarremoverubicacion':
+        detallesEvento = { ubicacion: this.elemento.parentElement };
+        break;
     }
 
     return new CustomEvent(nombreEvento, {
       bubbles: true,
+      composed: true,
       detail: detallesEvento
     });
   }

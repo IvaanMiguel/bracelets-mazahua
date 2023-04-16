@@ -12,12 +12,20 @@ require_once 'php/includes/comprobar_sesion.inc.php';
 
   <link rel='stylesheet' href='css/principal.css'>
 
-  <script defer type='module' src='components/md-icono/md-icono.js'></script>
-  <script defer type='module' src='components/md-boton/md-boton.js'></script>
-  <script defer type='module' src='components/campo-texto/campo-texto.js'></script>
-  <script defer type='module' src='components/campo-clave/campo-clave.js'></script>
-  <script defer type='module' src='components/menu-lateral/menu-lateral.js'></script>
-  <script defer type='module' src='components/ventana-emergente/ventana-emergente.js'></script>
+  <script type='module' src='components/md-icono/md-icono.js'></script>
+  <script type='module' src='components/md-boton/md-boton.js'></script>
+  <script type='module' src='components/campo-texto/campo-texto.js'></script>
+  <script type='module' src='components/campo-clave/campo-clave.js'></script>
+  <script type='module' src='components/menu-lateral/menu-lateral.js'></script>
+  <script type='module' src='components/ventana-emergente/ventana-emergente.js'></script>
+  <script type='module' src='components/tab-secciones/tab-secciones.js'></script>
+  <script type='module' src='components/wc-colapsable/wc-colapsable.js'></script>
+  <script type='module' src='components/item-removible/item-removible.js'></script>
+  <script type='module' src='components/wc-divisor/wc-divisor.js'></script>
+  <script type='module' src='components/item-divisor/item-divisor.js'></script>
+  <script type='module' src='components/item-detalles/item-detalles.js'></script>
+  <script type='module' src='components/lista-controlador/lista-controlador.js'></script>
+  <script type='module' src='components/lista-encabezada/lista-encabezada.js'></script>
 </head>
 
 <body>
@@ -28,7 +36,7 @@ require_once 'php/includes/comprobar_sesion.inc.php';
       </button>
       <div class='menu-lateral__secciones'>
 
-        <?php foreach (Principal::$menuBotones as $boton) : ?>
+        <?php foreach (Principal::$menuBotones as $boton): ?>
           <button class='boton boton--icono-texto bg-primario txt-blanco boton-primario-rellenado'
               data-clase-reducido='boton--icono'
               is='md-boton'
@@ -70,8 +78,35 @@ require_once 'php/includes/comprobar_sesion.inc.php';
       <span class='titulo-grande'>Cerrar sesión</span>
       <span class='cuerpo-mediano'>¿Deseas salir y cerrar la sesión actual?</span>
       <div class='botones-contenedor botones-contenedor--flex-end'>
-        <button class='boton bg-primario txt-blanco boton-primario-rellenado' is='md-boton' data-evento='cerrarsesion'>Sí</button>
-        <button class='boton boton-delineado bg-transparente txt-primario boton-primario-delineado' is='md-boton' data-evento='cerrarventana'>No</button>
+        <button
+          class='boton bg-primario txt-blanco boton-primario-rellenado'
+          is='md-boton'
+          data-evento='cerrarsesion'>Sí
+        </button>
+        <button
+          class='boton boton-delineado bg-transparente txt-primario boton-primario-delineado'
+          is='md-boton'
+          data-evento='cerrarventana'>No
+        </button>
+      </div>
+    </div>
+  </ventana-emergente>
+
+  <ventana-emergente data-id='remover-ubicacion'>
+    <div class='contenido'>
+      <span class='titulo-grande'>Remover ubicación</span>
+      <span class='cuerpo-mediano'>La información de dicha ubicación ya no se guardará junto con el cliente si es removida, ¿deseas continuar?</span>
+      <div class='botones-contenedor botones-contenedor--flex-end'>
+        <button
+          class='boton bg-primario txt-blanco boton-primario-rellenado'
+          is='md-boton'
+          data-evento='removerubicacion'>Sí
+        </button>
+        <button
+          class='boton boton-delineado bg-transparente txt-primario boton-primario-delineado'
+          is='md-boton'
+          data-evento='cerrarventana'>No
+        </button>
       </div>
     </div>
   </ventana-emergente>

@@ -14,22 +14,28 @@
   /* Tamaño de fuente */
   --fs-titulo-grande: 1.375rem;
   --fs-titulo-mediano: 1rem;
+  --fs-titulo-chico: .875rem;
   --fs-cuerpo-mediano: 0.875rem;
   --fs-cuerpo-chico: 0.75rem;
   --fs-etiqueta-grande: 0.875rem;
+  --fs-etiqueta-chica: 0.6875rem;
 
   /* Altura de línea */
   --lh-titulo-grande: 1.75rem;
   --lh-titulo-mediano: 1.5rem;
+  --lh-titulo-chico: 1.25rem;
   --lh-cuerpo-mediano: 1.25rem;
   --lh-cuerpo-chico: 1rem;
   --lh-etiqueta-grande: 1.25rem;
+  --lh-etiqueta-chica: 1rem;
 
   /* Espaciado de letras */
   --ls-tiulo-mediano: 0.0094rem;
+  --ls-titulo-chico: .0063rem;
   --ls-cuerpo-mediano: 0.0156rem;
   --ls-cuerpo-chico: 0.025rem;
   --ls-etiqueta-grande: 0.0063rem;
+  --ls-etiqueta-chica: 0.0313rem;
 
   /* Tamaño de iconos de Google */
   --tam-icono-x-chico: 1rem;
@@ -45,14 +51,20 @@
 
   --br-borde: 8px;
 
-  --opacidad-1: .12;
-  --opacidad-2: .16;
+  --opacidad-1: .08;
+  --opacidad-2: .12;
 
   --clr-blanco-opacidad-1: rgba(255, 255, 255, var(--opacidad-1));
   --clr-blanco-opacidad-2: rgba(255, 255, 255, var(--opacidad-2));
-
   --clr-primario-opacidad-1: rgba(183, 0, 112, var(--opacidad-1));
   --clr-primario-opacidad-2: rgba(183, 0, 112, var(--opacidad-2));
+  --clr-fondo-alternativo-opacidad-1: rgba(32, 26, 28, var(--opacidad-1));
+  --clr-fondo-alternativo-opacidad-2: rgba(32, 26, 28, var(--opacidad-2));
+  --clr-secundario-contenedor-alternativo-opacidad-1: rgba(60, 0, 43, var(--opacidad-1));
+  --clr-secundario-contenedor-alternativo-opacidad-2: rgba(60, 0, 43, var(--opacidad-2));
+
+  --clr-superficie-primario-5: rgb(183, 0, 113, .05);
+  --clr-superficie-primario-9: rgb(183, 0, 113, .09);
 
   --clr-borde: #837378; /* Outline */
   --clr-error-40: #ba1a1a;
@@ -73,4 +85,8 @@
   --clr-terciario-10: #001a41; /* On tertiary container */
   --clr-terciario-40: #005ac1; /* Tertiary */
   --clr-terciario-90: #d8e2ff; /* Tertiary container */
+  
+  --clr-neutral-80: #cfc4c6;
+  
+  --clr-fondo-hover: #f6f6f6;
 }

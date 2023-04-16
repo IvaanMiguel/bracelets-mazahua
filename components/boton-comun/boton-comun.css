@@ -100,10 +100,42 @@
   background-color: var(--clr-primario-opacidad-2);
 }
 
+.boton-fondo-texto:focus-visible {
+  outline: none;
+}
+
+.boton-fondo-texto:hover::after {
+  background-color: var(--clr-fondo-alternativo-opacidad-1);
+}
+
+.boton-fondo-texto:active::after,
+.boton-fondo-texto:focus-visible::after {
+  background-color: var(--clr-fondo-alternativo-opacidad-2);
+}
+
+.boton-secundario-contenedor-tonal:hover {
+  box-shadow: var(--bs-elevacion-1);
+}
+
+.boton-secundario-contenedor-tonal:hover::after {
+  background-color: var(--clr-secundario-contenedor-alternativo-opacidad-1);
+}
+
+.boton-secundario-contenedor-tonal:active,
+.boton-secundario-contenedor-tonal:focus-visible {
+  box-shadow: none;
+  outline: none;
+}
+
+.boton-secundario-contenedor-tonal:active::after,
+.boton-secundario-contenedor-tonal:focus-visible::after {
+  background-color: var(--clr-secundario-contenedor-alternativo-opacidad-2);
+}
+
 /* Clase utilizada cuando en un botón se encuentra un icono y una etiqueta. */
 .boton--icono-texto {
   padding: 0 1.5rem 0 1rem;
-  gap: 0.5rem;
+  gap: var(--espaciado-mediano);
 }
 
 /* Clase utilizada cuando en un botón solo se encuentra un icono. */

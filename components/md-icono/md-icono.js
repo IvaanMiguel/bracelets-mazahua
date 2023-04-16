@@ -58,6 +58,11 @@ export class MdIcono extends HTMLElement {
   }
 
   attributeChangedCallback (name, oldValue, newValue) {
+    if (name === 'data-icono') {
+      this.span.textContent = newValue;
+      return;
+    }
+
     this.crearFontVariation();
   }
 
@@ -99,6 +104,10 @@ export class MdIcono extends HTMLElement {
         `font-variation-settings: 'FILL' ${dataFill}, 'wght' ${dataWght}, 'GRAD' ${dataGrad}, 'opsz' ${dataOpsz};`
       );
     }
+  }
+
+  set dataIcono (icono) {
+    this.dataset.icono = icono;
   }
 
   get dataIcono () {

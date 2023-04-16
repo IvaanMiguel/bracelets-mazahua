@@ -8,7 +8,7 @@ $pedido = new Pedido();
 $resultado = $pedido->obtenerPedidosPendientes();
 ?>
 
-<link rel='stylesheet' href='css/inicio.css'>
+<link rel='stylesheet' href='css/sections/inicio.css'>
 <div class='pedidos'>
   <h1 class='titulo-grande txt-fondo-alternativo'>Pedidos pendientes</h1>
   <div class='pedidos-pendientes'>

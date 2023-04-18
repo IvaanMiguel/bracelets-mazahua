@@ -31,7 +31,7 @@ class IniciarSesion extends \models\IniciarSesion
 
     $this->obtenerUsuario($this->idUsuario, $this->clave);
 
-    echo (new Respuesta(Respuesta::URL, URL_PRINCIPAL))->Json();
+    echo (new Respuesta(Respuesta::URL, URL_INICIO))->Json();
   }
 
   private function camposVacios(): bool

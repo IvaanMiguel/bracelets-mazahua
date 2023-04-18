@@ -1,10 +1,9 @@
-<?php require_once 'php/includes/comprobar_sesion.inc.php'; ?>
+<?php require_once COMPROBAR_SESION ?>
 
 <!DOCTYPE html>
 <html lang='es'>
-
 <head>
-  <?php require_once META_LINKS ?>
+  <?php require_once HEAD_TAGS ?>
 
   <link rel='stylesheet' href='css/estilos.css'>
   <link rel='stylesheet' href='css/formularios-usuario.css'>
@@ -16,7 +15,6 @@
   <script defer type='module' src='components/campo-texto/campo-texto.js'></script>
   <script defer type='module' src='components/campo-clave/campo-clave.js'></script>
 </head>
-
 <body>
   <main class='contenedor'>
     <div class='contenido'>
@@ -74,5 +72,4 @@
   </main>
   <script type='module' src='js/registrar-usuario.js'></script>
 </body>
-
 </html>

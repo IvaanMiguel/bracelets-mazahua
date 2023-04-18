@@ -1,6 +1,5 @@
 <?php
 
-use \controllers\Principal;
 use \classes\Enrutador;
 
 require_once __DIR__ . '/php/constantes.php';
@@ -8,7 +7,11 @@ require_once AUTOLOADER;
 
 $enrutador = new Enrutador();
 
-$enrutador->agregarRuta(URL_PRINCIPAL, function() { Principal::inicio(); });
+$enrutador->agregarRuta(URL_INICIO, INICIO);
+$enrutador->agregarRuta(URL_CLIENTES, CLIENTES);
+$enrutador->agregarRuta(URL_PRODUCTOS, PRODUCTOS);
+$enrutador->agregarRuta(URL_CATEGORIAS, CATEGORIAS);
+$enrutador->agregarRuta(URL_PEDIDOS, PEDIDOS);
 $enrutador->agregarRuta(URL_REGISTRARSE, REGISTRARSE);
 $enrutador->agregarRuta(URL_INICIAR_SESION, INICIAR_SESION);
 

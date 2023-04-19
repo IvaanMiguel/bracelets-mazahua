@@ -1,7 +1,7 @@
 import WCBoton from './wc-boton.js';
 
-const CSS = new CSSStyleSheet();
-CSS.replaceSync(/*css*/`
+const hojaCSS = new CSSStyleSheet();
+hojaCSS.replaceSync(/*css*/`
 button:hover::after, a:hover::after {
   background-color: var(--clr-hover);
 }
@@ -24,7 +24,7 @@ class BotonTexto extends WCBoton {
   constructor () {
     super();
 
-    this.shadowRoot.adoptedStyleSheets = [...this.shadowRoot.adoptedStyleSheets, CSS];
+    this.shadowRoot.adoptedStyleSheets = [...this.shadowRoot.adoptedStyleSheets, hojaCSS];
   }
 
   attributeChangedCallback (name, oldValue, newValue) {

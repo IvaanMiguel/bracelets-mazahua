@@ -1,7 +1,7 @@
 import WCBoton from './wc-boton.js';
 
-const CSS = new CSSStyleSheet();
-CSS.replaceSync(/*css*/`
+const hojaCSS = new CSSStyleSheet();
+hojaCSS.replaceSync(/*css*/`
 button, a {
   box-shadow: var(--bs-elevacion-1);
 }
@@ -36,7 +36,7 @@ class BotonElevado extends WCBoton {
   constructor () {
     super();
 
-    this.shadowRoot.adoptedStyleSheets = [...this.shadowRoot.adoptedStyleSheets, CSS];
+    this.shadowRoot.adoptedStyleSheets = [...this.shadowRoot.adoptedStyleSheets, hojaCSS];
   }
 }
 

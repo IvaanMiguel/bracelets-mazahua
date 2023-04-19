@@ -1,7 +1,7 @@
 import WCBoton from './wc-boton.js';
 
-const CSS = new CSSStyleSheet();
-CSS.replaceSync(/*css*/`
+const hojaCSS = new CSSStyleSheet();
+hojaCSS.replaceSync(/*css*/`
 :host {
   --clr-contorno: var(--clr-borde);
 }
@@ -43,11 +43,11 @@ class BotonDelineado extends WCBoton {
   constructor () {
     super();
 
-    this._reglaCSSHostLocal = Array.from(CSS.cssRules).find(reglaCSS => {
+    this._reglaCSSHostLocal = Array.from(hojaCSS.cssRules).find(reglaCSS => {
       return reglaCSS.selectorText === ':host';
     });
 
-    this.shadowRoot.adoptedStyleSheets = [...this.shadowRoot.adoptedStyleSheets, CSS];
+    this.shadowRoot.adoptedStyleSheets = [...this.shadowRoot.adoptedStyleSheets, hojaCSS];
   }
 
   attributeChangedCallback (name, oldValue, newValue) {

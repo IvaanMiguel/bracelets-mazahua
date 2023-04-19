@@ -1,5 +1,6 @@
 export default class WCBoton extends HTMLElement {
-  static observedAttributes = ['href', 'type', 'data-color-fondo', 'data-color-texto'];
+  static observedAttributes = ['href', 'type', 'data-color-fondo', 'data-color-texto',
+    'data-variante'];
 
   constructor () {
     if (new.target === WCBoton) {
@@ -50,6 +51,11 @@ export default class WCBoton extends HTMLElement {
         max-width 0.2s ease 0s;
     }
     
+    :host([data-variante='icono']) button, :host([data-variante='icono']) a {
+      padding: 0 1.5rem 0 1rem;
+      gap: .5rem;
+    }
+
     button::after, a::after {
       content: '';
       position: absolute;
@@ -68,6 +74,10 @@ export default class WCBoton extends HTMLElement {
       letter-spacing: var(--ls-etiqueta-grande);
       font-weight: var(--fw-medio);
     }
+
+    ::slotted([slot='icono']) {
+      font-size: var(--tam-icono-chico);
+    }
     `);
 
     this._onClick = this._onClick.bind(this);
@@ -75,11 +85,11 @@ export default class WCBoton extends HTMLElement {
       return reglaCSS.selectorText === ':host';
     });
 
-    this._etiquetaSlot = document.createElement('slot');
-    this._etiquetaSlot.setAttribute('name', 'etiqueta');
-
     this._iconoSlot = document.createElement('slot');
     this._iconoSlot.setAttribute('name', 'icono');
+
+    this._etiquetaSlot = document.createElement('slot');
+    this._etiquetaSlot.setAttribute('name', 'etiqueta');
 
     this.attachShadow({ mode: 'open' }).adoptedStyleSheets = [this._CSS];
 
@@ -105,8 +115,8 @@ export default class WCBoton extends HTMLElement {
       this._botonSchrodinger = document.createElement('button');
     }
 
-    this._botonSchrodinger.appendChild(this._etiquetaSlot);
     this._botonSchrodinger.appendChild(this._iconoSlot);
+    this._botonSchrodinger.appendChild(this._etiquetaSlot);
   }
 
   _reconstruirBotonSchrodinger (esBoton) {
@@ -139,6 +149,10 @@ export default class WCBoton extends HTMLElement {
   get dataColorTexto () { return this.dataset.colorTexto; }
 
   set dataColorTexto (color) { this.dataset.colorTexto = color; }
+
+  get dataVariante () { return this.getAttribute('data-variante'); }
+
+  set dataVariante (variante) { this.dataset.variante = variante; }
 
   connectedCallback () {
     this._botonSchrodinger.addEventListener('click', this._onClick);

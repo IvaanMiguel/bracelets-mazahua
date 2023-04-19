@@ -1,6 +1,6 @@
 export default class WCBoton extends HTMLElement {
   static observedAttributes = ['href', 'type', 'data-color-fondo', 'data-color-texto',
-    'data-variante'];
+    'data-variante', 'data-evento'];
 
   constructor () {
     if (new.target === WCBoton) {
@@ -97,7 +97,26 @@ export default class WCBoton extends HTMLElement {
     this.shadowRoot.appendChild(this._botonSchrodinger);
   }
 
+  _crearEvento () {
+    const nombreEvento = this.dataEvento;
+    let detallesEvento;
+
+    switch (nombreEvento) {
+      case 'confirmarremoverubicacion':
+        detallesEvento = this.parentElement;
+        break;
+    }
+
+    return new CustomEvent(nombreEvento, {
+      bubbles: true,
+      composed: true,
+      detail: detallesEvento
+    });
+  }
+
   _onClick () {
+    if (this.dataEvento) this._botonSchrodinger.dispatchEvent(this._crearEvento());
+
     const formulario = this.closest('form');
 
     if (!this.type || this.type === 'submit') {
@@ -153,6 +172,10 @@ export default class WCBoton extends HTMLElement {
   get dataVariante () { return this.getAttribute('data-variante'); }
 
   set dataVariante (variante) { this.dataset.variante = variante; }
+
+  get dataEvento () { return this.dataset.evento; }
+
+  set dataEvento (evento) { this.dataset.evento = evento; }
 
   connectedCallback () {
     this._botonSchrodinger.addEventListener('click', this._onClick);

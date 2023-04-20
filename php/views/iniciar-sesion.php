@@ -36,9 +36,9 @@
             <md-icono class='icono-mediano cursor-pointer' slot='icono-visibilidad' data-icono='visibility'></md-icono>
           </campo-clave>
         </div>
-        <button class='boton bg-primario txt-blanco boton-primario-rellenado boton-inicio-sesion' is='md-boton' data-evento='iniciarsesion'>
-          <span class='etiqueta-grande'>Iniciar sesión</span>
-        </button>
+        <boton-rellenado data-color-fondo='var(--clr-primario-40)' data-color-texto='#ffffff' data-evento='iniciarsesion' type='button'>
+          <span slot='etiqueta'>Iniciar sesión</span>
+        </boton-rellenado>
       </form>
     </div>
     <div class='divisor'>

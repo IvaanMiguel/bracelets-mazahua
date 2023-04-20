@@ -14,6 +14,7 @@
   <script defer type='module' src='components/icono-emergente/icono-emergente.js'></script>
   <script defer type='module' src='components/campo-texto/campo-texto.js'></script>
   <script defer type='module' src='components/campo-clave/campo-clave.js'></script>
+  <script type='module' src='components/boton-rellenado.js'></script>
 </head>
 <body>
   <main class='contenedor'>
@@ -54,9 +55,9 @@
             </campo-clave>
           </div>
         </div>
-        <button class='boton bg-primario txt-blanco boton-primario-rellenado boton-registro' is='md-boton' data-evento='registrarusuario'>
-          <span class='etiqueta-grande'>Crear cuenta</span>
-        </button>
+        <boton-rellenado data-color-fondo='var(--clr-primario-40)' data-color-texto='#ffffff' type='button' data-evento='registrarusuario'>
+          <span slot='etiqueta'>Crear cuenta</span>
+        </boton-rellenado>
       </form>
     </div>
     <div class='divisor'>

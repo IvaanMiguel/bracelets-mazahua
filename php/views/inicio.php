@@ -8,10 +8,11 @@
   <link rel='stylesheet' href='css/principal.css'>
   <link rel='stylesheet' href='css/sections/inicio.css'>
 
-  <script type='module' src='components/md-icono/md-icono.js'></script>
   <script type='module' src='components/md-boton/md-boton.js'></script>
-  <script type='module' src='components/menu-lateral.js'></script>
   <script type='module' src='components/wc-boton.js'></script>
+  <script type='module' src='components/boton-delineado.js'></script>
+  <script type='module' src='components/boton-elevado.js'></script>
+  <script type='module' src='components/boton-texto.js'></script>
   <script type='module' src='components/ventana-emergente/ventana-emergente.js'></script>
 </head>
 <body>
@@ -67,11 +68,6 @@
               <?php endswitch; ?>
             </div>
           </div>
-          <form action=''>
-            <wc-boton>
-              <span slot='etiqueta'>Botón</span>
-            </wc-boton>
-          </form>
       </div>
     </div>
   </main>
@@ -94,5 +90,7 @@
       </div>
     </div>
   </ventana-emergente>
+  
+  <script src='js/cerrar-sesion.js'></script>
 </body>
 </html>

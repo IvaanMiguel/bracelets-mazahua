@@ -32,10 +32,9 @@ template.innerHTML = /*html*/`
   }
 </style>
 <div>
-  <slot name='boton-menu'></slot>
   <slot></slot>
 </div>
-<slot name='boton-cerrar-sesion'></slot>
+<slot name='menu-final'></slot>
 `;
 
 class MenuLateral extends HTMLElement {
@@ -56,9 +55,18 @@ class MenuLateral extends HTMLElement {
 
   actualizarBotones () {
     this.querySelectorAll('[href], [data-evento="confirmarcierresesion"]').forEach((boton) => {
-      boton.classList.toggle(boton.dataset.claseReducido);
-      const etiqueta = boton.querySelector('[data-rol="etiqueta"]');
-      etiqueta.classList.toggle(etiqueta.dataset.claseReducido);
+      const etiqueta = boton.querySelector('[slot="etiqueta"]');
+
+      if (this.dataRetraido) {
+        boton.dataVariante = 'icono';
+        etiqueta.style.width = '0';
+        etiqueta.style.opacity = '0';
+        etiqueta.style.fontSize = '0';
+        return;
+      }
+
+      boton.dataVariante = 'texto-icono';
+      etiqueta.style = null;
     });
   }
 

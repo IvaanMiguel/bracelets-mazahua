@@ -15,7 +15,7 @@ class MenuLateral extends HTMLElement {
 
   connectedCallback () {
     this.addEventListener('alternarmenu', this.alternarMenu);
-    document.body.addEventListener('cargarseccion', this.cargarSeccion);
+    // document.body.addEventListener('cargarseccion', this.cargarSeccion);
     document.body.addEventListener('confirmarcierresesion', this.confirmarCerrarSesion);
   }
 
@@ -28,7 +28,7 @@ class MenuLateral extends HTMLElement {
       this.classList.toggle(this.claseReducido);
     }
 
-    this.querySelectorAll('[name], [data-evento="confirmarcierresesion"]').forEach((boton) => {
+    this.querySelectorAll('[href], [data-evento="confirmarcierresesion"]').forEach((boton) => {
       boton.classList.toggle(boton.dataset.claseReducido);
       const etiqueta = boton.querySelector('[data-rol="etiqueta"]');
       etiqueta.classList.toggle(etiqueta.dataset.claseReducido);
@@ -39,17 +39,17 @@ class MenuLateral extends HTMLElement {
     document.querySelector('[data-id="cerrar-sesion"]').setAttribute('style', 'display: flex;');
   }
 
-  cargarSeccion (e) {
-    fetch('php/includes/index.inc.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: 'paginaSolicitada=' + encodeURIComponent(e.detail.paginaSolicitada)
-    })
-      .then((respuesta) => respuesta.text())
-      .then((paginaSolicitada) => (document.querySelector('[data-rol="secciones"]').innerHTML = paginaSolicitada));
-  }
+  // cargarSeccion (e) {
+  //   fetch('php/includes/index.inc.php', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/x-www-form-urlencoded'
+  //     },
+  //     body: 'paginaSolicitada=' + encodeURIComponent(e.detail.paginaSolicitada)
+  //   })
+  //     .then((respuesta) => respuesta.text())
+  //     .then((paginaSolicitada) => (document.querySelector('[data-rol="secciones"]').innerHTML = paginaSolicitada));
+  // }
 
   get claseReducido () {
     return (this.dataset.claseReducido || '').trim();

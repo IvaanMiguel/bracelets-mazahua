@@ -1,6 +1,6 @@
 export default class WCBoton extends HTMLElement {
   static observedAttributes = ['href', 'type', 'data-color-fondo', 'data-color-texto',
-    'data-variante', 'data-evento'];
+    'data-variante', 'data-evento', 'data-expandir'];
 
   constructor () {
     if (new.target === WCBoton) {
@@ -51,9 +51,19 @@ export default class WCBoton extends HTMLElement {
         max-width 0.2s ease 0s;
     }
     
-    :host([data-variante='icono']) button, :host([data-variante='icono']) a {
+    :host([data-variante='texto-icono']) button, :host([data-variante='texto-icono']) a {
       padding: 0 1.5rem 0 1rem;
-      gap: .5rem;
+      gap: var(--espaciado-mediano);
+    }
+
+    :host([data-variante='icono']) button, :host([data-variante='icono']) a {
+      padding: 0 1rem;
+      gap: 0;
+      max-width: min-content;
+    }
+
+    :host([data-expandir]) button, :host([data-expandir]) a {
+      flex: 1;
     }
 
     button::after, a::after {
@@ -73,6 +83,11 @@ export default class WCBoton extends HTMLElement {
       line-height: var(--lh-etiqueta-grande);
       letter-spacing: var(--ls-etiqueta-grande);
       font-weight: var(--fw-medio);
+
+      transition:
+        width 0.2s ease 0s,
+        font-size 0.2s ease 0s,
+        opacity 0.2s ease 0s;
     }
 
     ::slotted([slot='icono']) {
@@ -119,9 +134,9 @@ export default class WCBoton extends HTMLElement {
 
     const formulario = this.closest('form');
 
-    if (!this.type || this.type === 'submit') {
+    if ((!this.type || this.type === 'submit') && formulario) {
       formulario.submit();
-    } else if (this.type === 'reset') {
+    } else if (this.type === 'reset' && formulario) {
       formulario.reset();
     }
   }
@@ -149,8 +164,8 @@ export default class WCBoton extends HTMLElement {
 
     this.shadowRoot.querySelector(this._botonSchrodinger.tagName).replaceWith(nuevoBotonSchrodinger);
     this._botonSchrodinger = nuevoBotonSchrodinger;
-    this._botonSchrodinger.appendChild(this._etiquetaSlot);
     this._botonSchrodinger.appendChild(this._iconoSlot);
+    this._botonSchrodinger.appendChild(this._etiquetaSlot);
   }
 
   get href () { return this.getAttribute('href'); }
@@ -176,6 +191,10 @@ export default class WCBoton extends HTMLElement {
   get dataEvento () { return this.dataset.evento; }
 
   set dataEvento (evento) { this.dataset.evento = evento; }
+
+  get dataExpandir () { return this.hasAttribute('data-expandir'); }
+
+  set dataExpandir (bool) { this.toggleAttribute('data-expandir', Boolean(bool)); }
 
   connectedCallback () {
     this._botonSchrodinger.addEventListener('click', this._onClick);

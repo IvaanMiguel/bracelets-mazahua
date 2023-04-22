@@ -1,19 +1,21 @@
 const template = document.createElement('template');
 template.innerHTML = /*html*/`
-<style>
+  <slot></slot>
+`;
+
+const hojaCSS = new CSSStyleSheet();
+hojaCSS.replaceSync(/*css*/`
   :host {
     display: flex;
     flex-direction: column;
   }
-</style>
-<slot></slot>
-`;
+`);
 
 class ListaControlador extends HTMLElement {
   constructor () {
     super();
 
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: 'open' }).adoptedStyleSheets = [hojaCSS];
     this.shadowRoot.appendChild(template.content.cloneNode(true));
 
     this._childListObserver = new MutationObserver(() => {

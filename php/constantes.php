@@ -20,6 +20,7 @@ define('INICIAR_SESION', DIR_VISTAS . '/iniciar-sesion.php');
 define('HEAD_TAGS', DIR_PARCIALES . '/head-tags.php');
 define('MENU', DIR_PARCIALES . '/menu.php');
 define('CABECERA', DIR_PARCIALES . '/cabecera.php');
+define('PIE_PAGINA', DIR_PARCIALES . '/pie-pagina.php');
 
 define('URL_RAIZ', '/braceletsmazahua');
 define('URL_INICIO', URL_RAIZ . '/');

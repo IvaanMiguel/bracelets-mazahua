@@ -1,6 +1,5 @@
-const template = document.createElement('template');
-template.innerHTML = /*html*/`
-<style>
+const hojaCSS = new CSSStyleSheet();
+hojaCSS.replaceSync(/*css*/`
   :host {
     display: flex;
     flex-direction: column;
@@ -27,21 +26,24 @@ template.innerHTML = /*html*/`
     letter-spacing: var(--ls-etiqueta-grande);
     font-weight: var(--fw-medio);
   }
-</style>
-<div>
-  <slot name='titulo'></slot>
-  <slot name='extra'></slot>
-</div>
-<slot name='lista'>
-  <span>Aún no se ha añadido nada.</span>
-</slot>
+`);
+
+const template = document.createElement('template');
+template.innerHTML = /*html*/`
+  <div>
+    <slot name='titulo'></slot>
+    <slot name='extra'></slot>
+  </div>
+  <slot name='lista'>
+    <span>Aún no se ha añadido nada.</span>
+  </slot>
 `;
 
 class ListaEncabezada extends HTMLElement {
   constructor () {
     super();
 
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: 'open' }).adoptedStyleSheets = [hojaCSS];
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 }

@@ -2,22 +2,22 @@ import WCBoton from './wc-boton.js';
 
 const hojaCSS = new CSSStyleSheet();
 hojaCSS.replaceSync(/*css*/`
-button:hover::after, a:hover::after {
-  background-color: var(--clr-hover);
-}
+  button:hover::after, a:hover::after {
+    background-color: var(--clr-hover);
+  }
 
-button:active::after, a:active::after {
-  background-color: var(--clr-active);
-}
+  button:active::after, a:active::after {
+    background-color: var(--clr-active);
+  }
 
-button:focus-visible, a:focus-visible {
-  outline: none;
-  box-shadow: unset;
-}
+  button:focus-visible, a:focus-visible {
+    outline: none;
+    box-shadow: unset;
+  }
 
-button:focus-visible::after, a:focus-visible::after {
-  background-color: var(--clr-active);
-}
+  button:focus-visible::after, a:focus-visible::after {
+    background-color: var(--clr-active);
+  }
 `);
 
 class BotonTexto extends WCBoton {

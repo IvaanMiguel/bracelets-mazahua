@@ -2,39 +2,39 @@ import WCBoton from './wc-boton.js';
 
 const hojaCSS = new CSSStyleSheet();
 hojaCSS.replaceSync(/*css*/`
-:host {
-  --clr-contorno: var(--clr-borde);
-}
+  :host {
+    --clr-contorno: var(--clr-borde);
+  }
 
-button, a {
-  border: 1px solid var(--clr-contorno);
-}
+  button, a {
+    border: 1px solid var(--clr-contorno);
+  }
 
-button:hover::after, a:hover::after {
-  background-color: var(--clr-hover);
-}
+  button:hover::after, a:hover::after {
+    background-color: var(--clr-hover);
+  }
 
-button:hover, a:hover {
-  box-shadow: var(--bs-elevacion-1);
-}
+  button:hover, a:hover {
+    box-shadow: var(--bs-elevacion-1);
+  }
 
-button:active, a:active {
-  box-shadow: unset;
-}
+  button:active, a:active {
+    box-shadow: unset;
+  }
 
-button:active::after, a:active::after {
-  background-color: var(--clr-active);
-}
+  button:active::after, a:active::after {
+    background-color: var(--clr-active);
+  }
 
-button:focus-visible, a:focus-visible {
-  outline: none;
-  box-shadow: unset;
-  border-color: var(--clr-texto);
-}
+  button:focus-visible, a:focus-visible {
+    outline: none;
+    box-shadow: unset;
+    border-color: var(--clr-texto);
+  }
 
-button:focus-visible::after, a:focus-visible::after {
-  background-color: var(--clr-active);
-}
+  button:focus-visible::after, a:focus-visible::after {
+    background-color: var(--clr-active);
+  }
 `);
 
 class BotonDelineado extends WCBoton {

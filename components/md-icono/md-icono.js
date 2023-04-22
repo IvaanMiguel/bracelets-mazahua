@@ -131,4 +131,4 @@ export class MdIcono extends HTMLElement {
   }
 }
 
-customElements.define('md-icono', MdIcono);
+// customElements.define('md-icono', MdIcono);

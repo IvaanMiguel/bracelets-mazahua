@@ -15,5 +15,11 @@ $enrutador->agregarRuta(URL_PEDIDOS, PEDIDOS);
 $enrutador->agregarRuta(URL_REGISTRARSE, REGISTRARSE);
 $enrutador->agregarRuta(URL_INICIAR_SESION, INICIAR_SESION);
 
+$enrutador->solicitarSesion(URL_INICIO);
+$enrutador->solicitarSesion(URL_CLIENTES);
+$enrutador->solicitarSesion(URL_PRODUCTOS);
+$enrutador->solicitarSesion(URL_CATEGORIAS);
+$enrutador->solicitarSesion(URL_PEDIDOS);
+
 $url = parse_url($_SERVER['REQUEST_URI'])['path'];
 $enrutador->enrutar($url);

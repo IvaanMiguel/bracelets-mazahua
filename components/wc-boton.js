@@ -11,88 +11,84 @@ export default class WCBoton extends HTMLElement {
 
     this._CSS = new CSSStyleSheet();
     this._CSS.replaceSync(/*css*/`
-    :host {
-      --clr-hover: transparent;
-      --clr-active: transparent;
-      --clr-fondo: transparent;
-      --clr-texto: #000000;
-    
-      display: inline-flex;
-    }
-    
-    button, a {
-      display: inline-flex;
-      align-items: center;
-    
-      text-align: left;
-      text-decoration: none;
-      font-family: inherit;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      color: var(--clr-texto);
+      :host {
+        --clr-hover: transparent;
+        --clr-active: transparent;
+        --clr-fondo: transparent;
+        --clr-texto: #000000;
       
-      overflow: hidden;
-      height: 2.5rem;
-      box-sizing: border-box;
-      padding: 0 1.5rem;
-      cursor: pointer;
-      position: relative;
-    
-      border: none;
-      border-radius: 1.25rem;
-      background-color: var(--clr-fondo);
-    
-      transition: 
-        box-shadow 0.2s ease 0s,
-        background-color 0.2s ease 0s,
-        color 0.2s ease 0s,
-        padding 0.2s ease 0s,
-        gap 0.2s ease 0s,
-        max-width 0.2s ease 0s;
-    }
-    
-    :host([data-variante='texto-icono']) button, :host([data-variante='texto-icono']) a {
-      padding: 0 1.5rem 0 1rem;
-      gap: var(--espaciado-mediano);
-    }
+        display: inline-flex;
+      }
+      
+      button, a {
+        display: inline-flex;
+        align-items: center;
+      
+        text-align: left;
+        text-decoration: none;
+        font-family: inherit;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: var(--clr-texto);
+        
+        overflow: hidden;
+        height: 2.5rem;
+        box-sizing: border-box;
+        padding: 0 1.5rem;
+        cursor: pointer;
+        position: relative;
+      
+        border: none;
+        border-radius: 1.25rem;
+        background-color: var(--clr-fondo);
+      
+        transition: 
+          box-shadow 0.2s ease 0s,
+          background-color 0.2s ease 0s,
+          color 0.2s ease 0s,
+          padding 0.2s ease 0s,
+          gap 0.2s ease 0s,
+          max-width 0.2s ease 0s;
+      }
+      
+      :host([data-variante='texto-icono']) button, :host([data-variante='texto-icono']) a {
+        padding: 0 1.5rem 0 1rem;
+        gap: var(--espaciado-mediano);
+      }
 
-    :host([data-variante='icono']) button, :host([data-variante='icono']) a {
-      padding: 0 1rem;
-      gap: 0;
-      max-width: min-content;
-    }
+      :host([data-variante='icono']) button, :host([data-variante='icono']) a {
+        padding: 0 1rem;
+        gap: 0;
+        max-width: min-content;
+      }
 
-    :host([data-expandir]) button, :host([data-expandir]) a {
-      flex: 1;
-    }
+      :host([data-expandir]) button, :host([data-expandir]) a {
+        flex: 1;
+      }
 
-    button::after, a::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background-color: transparent;
-    
-      transition: background-color .2s ease 0s;
-    }
-    
-    ::slotted([slot='etiqueta']) {
-      font-size: var(--fs-etiqueta-grande);
-      line-height: var(--lh-etiqueta-grande);
-      letter-spacing: var(--ls-etiqueta-grande);
-      font-weight: var(--fw-medio);
+      button::after, a::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: transparent;
+      
+        transition: background-color .2s ease 0s;
+      }
+      
+      ::slotted([slot='etiqueta']) {
+        font-size: var(--fs-etiqueta-grande);
+        line-height: var(--lh-etiqueta-grande);
+        letter-spacing: var(--ls-etiqueta-grande);
+        font-weight: var(--fw-medio);
 
-      transition:
-        width 0.2s ease 0s,
-        font-size 0.2s ease 0s,
-        opacity 0.2s ease 0s;
-    }
-
-    ::slotted([slot='icono']) {
-      font-size: var(--tam-icono-chico);
-    }
+        transition:
+          width 0.2s ease 0s,
+          font-size 0.2s ease 0s,
+          opacity 0.2s ease 0s;
+[]      }
     `);
 
     this._onClick = this._onClick.bind(this);

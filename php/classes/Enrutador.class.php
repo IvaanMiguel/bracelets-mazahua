@@ -4,6 +4,7 @@ namespace classes;
 class Enrutador
 {
   private array $rutas = [];
+  public static array $sesionRequerida = [];
 
   public function agregarRuta($url, $destino) {
     $this->rutas[$url] = $destino;
@@ -17,5 +18,13 @@ class Enrutador
     }
 
     die('Url no encontrada.');
+  }
+
+  public function solicitarSesion($url) {
+    self::$sesionRequerida[] = $url;
+  }
+
+  public static function requiereSesion($url) {
+    return in_array($url, self::$sesionRequerida);
   }
 }

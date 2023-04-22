@@ -1,6 +1,13 @@
 const template = document.createElement('template');
 template.innerHTML = /*html*/`
-<style>
+  <div>
+    <slot></slot>
+  </div>
+  <slot name='menu-final'></slot>
+`;
+
+const hojaCSS = new CSSStyleSheet();
+hojaCSS.replaceSync(/*css*/`
   :host {
     --transiciones: flex .2s ease 0s;
 
@@ -30,12 +37,7 @@ template.innerHTML = /*html*/`
 
     margin-bottom: auto;
   }
-</style>
-<div>
-  <slot></slot>
-</div>
-<slot name='menu-final'></slot>
-`;
+`);
 
 class MenuLateral extends HTMLElement {
   static observedAttributes = ['data-retraido'];
@@ -45,7 +47,7 @@ class MenuLateral extends HTMLElement {
 
     this._actualizarMenu = this.actualizarMenu.bind(this);
 
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: 'open' }).adoptedStyleSheets = [hojaCSS];
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 

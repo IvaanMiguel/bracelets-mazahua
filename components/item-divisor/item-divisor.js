@@ -4,23 +4,25 @@ template.innerHTML = /*html*/`
   <wc-divisor></wc-divisor>
 `;
 
+const hojaCSS = new CSSStyleSheet();
+hojaCSS.replaceSync(/*css*/`
+  :host([data-no-divisor]) wc-divisor {
+    display: none;
+  }
+`);
+
 class ItemDivisor extends HTMLElement {
   static observedAttributes = ['data-no-divisor'];
 
   constructor () {
     super();
 
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: 'open' }).adoptedStyleSheets = [hojaCSS];
     this.shadowRoot.appendChild(template.content.cloneNode(true));
 
     this._childListObserver = new MutationObserver(() => {
       if (this.childElementCount === 0) this.remove();
     });
-  }
-
-  _actualizarDivisor () {
-    const divisor = this.shadowRoot.querySelector('wc-divisor');
-    this.dataNoDivisor ? divisor.style.display = 'none' : divisor.style.display = null;
   }
 
   get dataNoDivisor () { return this.hasAttribute('data-no-divisor'); }
@@ -33,14 +35,6 @@ class ItemDivisor extends HTMLElement {
 
   disconnectedCallback () {
     this._childListObserver.disconnect();
-  }
-
-  attributeChangedCallback (name, oldValue, newValue) {
-    switch (name) {
-      case 'data-no-divisor':
-        this._actualizarDivisor();
-        break;
-    }
   }
 }
 

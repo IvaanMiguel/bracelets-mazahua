@@ -1,7 +1,7 @@
 const template = document.createElement('template');
 template.innerHTML = /*html*/`
-<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200'>
-<span class='material-symbols-rounded'></span>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200'>
+  <span class='material-symbols-rounded'></span>
 `;
 
 class MDIcono extends HTMLElement {
@@ -13,29 +13,29 @@ class MDIcono extends HTMLElement {
 
     this._CSS = new CSSStyleSheet();
     this._CSS.replaceSync(/*css*/`
-    :host {
-      display: inline-flex;
-    }
+      :host {
+        display: inline-flex;
+      }
 
-    :host([data-cursor]) {
-      cursor: pointer;
-    }
+      :host([data-cursor]) {
+        cursor: pointer;
+      }
 
-    :host([data-escala='s']) span {
-      font-size: var(--tam-icono-x-chico);
-    }
+      :host([data-escala='s']) span {
+        font-size: var(--tam-icono-x-chico);
+      }
 
-    :host([data-escala='m']) span {
-      font-size: var(--tam-icono-chico);
-    }
+      :host([data-escala='m']) span {
+        font-size: var(--tam-icono-chico);
+      }
 
-    :host([data-escala='l']) span {
-      font-size: var(--tam-icono-mediano);
-    }
+      :host([data-escala='l']) span {
+        font-size: var(--tam-icono-mediano);
+      }
 
-    span {
-      user-select: none;
-    }
+      span {
+        user-select: none;
+      }
     `);
 
     this._reglaCSSSpan = Array.from(this._CSS.cssRules).find(reglaCSS => {

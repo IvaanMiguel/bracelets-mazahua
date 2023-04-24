@@ -2,6 +2,8 @@ const hojaCSS = new CSSStyleSheet();
 hojaCSS.replaceSync(/*css*/`
   :host {
     display: block;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
   :host([data-orientacion='horizontal']) {

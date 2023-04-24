@@ -1,9 +1,3 @@
-const template = document.createElement('template');
-template.innerHTML = /*html*/`
-  <slot name='icono'></slot>
-  <slot name='error'></slot>
-`;
-
 const hojaCSS = new CSSStyleSheet();
 hojaCSS.replaceSync(/*css*/`
   :host {
@@ -24,6 +18,12 @@ hojaCSS.replaceSync(/*css*/`
     text-align: start;
   }
 `);
+
+const template = document.createElement('template');
+template.innerHTML = /*html*/`
+  <slot name='icono'></slot>
+  <slot name='error'></slot>
+`;
 
 export default class ItemError extends HTMLElement {
   constructor () {

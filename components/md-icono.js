@@ -4,7 +4,7 @@ template.innerHTML = /*html*/`
   <span class='material-symbols-rounded'></span>
 `;
 
-class MDIcono extends HTMLElement {
+export default class MDIcono extends HTMLElement {
   static observedAttributes = ['data-icono', 'data-fill', 'data-wght', 'data-grad', 'data-opsz',
     'data-cursor', 'data-escala'];
 
@@ -22,15 +22,15 @@ class MDIcono extends HTMLElement {
       }
 
       :host([data-escala='s']) span {
-        font-size: var(--tam-icono-x-chico);
-      }
-
-      :host([data-escala='m']) span {
         font-size: var(--tam-icono-chico);
       }
 
-      :host([data-escala='l']) span {
+      :host([data-escala='m']) span {
         font-size: var(--tam-icono-mediano);
+      }
+
+      :host([data-escala='l']) span {
+        font-size: var(--tam-icono-grande);
       }
 
       span {

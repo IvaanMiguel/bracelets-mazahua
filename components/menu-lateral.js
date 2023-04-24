@@ -1,11 +1,3 @@
-const template = document.createElement('template');
-template.innerHTML = /*html*/`
-  <div>
-    <slot></slot>
-  </div>
-  <slot name='menu-final'></slot>
-`;
-
 const hojaCSS = new CSSStyleSheet();
 hojaCSS.replaceSync(/*css*/`
   :host {
@@ -39,6 +31,14 @@ hojaCSS.replaceSync(/*css*/`
   }
 `);
 
+const template = document.createElement('template');
+template.innerHTML = /*html*/`
+  <div>
+    <slot></slot>
+  </div>
+  <slot name='menu-final'></slot>
+`;
+
 class MenuLateral extends HTMLElement {
   static observedAttributes = ['data-retraido'];
 
@@ -57,7 +57,7 @@ class MenuLateral extends HTMLElement {
 
   actualizarBotones () {
     this.querySelectorAll('[href], [data-evento="confirmarcierresesion"]').forEach((boton) => {
-      const etiqueta = boton.querySelector('[slot="etiqueta"]');
+      const etiqueta = boton.shadowRoot.querySelector('span');
 
       if (this.dataRetraido) {
         boton.dataVariante = 'icono';

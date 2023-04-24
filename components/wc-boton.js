@@ -1,6 +1,8 @@
+import MDIcono from './md-icono.js';
+
 export default class WCBoton extends HTMLElement {
   static observedAttributes = ['href', 'type', 'data-color-fondo', 'data-color-texto',
-    'data-variante', 'data-evento', 'data-expandir'];
+    'data-variante', 'data-evento', 'data-expandir', 'data-etiqueta', 'data-icono'];
 
   constructor () {
     if (new.target === WCBoton) {
@@ -12,6 +14,10 @@ export default class WCBoton extends HTMLElement {
     this._CSS = new CSSStyleSheet();
     this._CSS.replaceSync(/*css*/`
       :host {
+        --boton-alto: 2.5rem;
+        --boton-radio-borde: calc(var(--boton-alto) / 2);
+        --boton-justify-content: flex-start;
+
         --clr-hover: transparent;
         --clr-active: transparent;
         --clr-fondo: transparent;
@@ -20,11 +26,19 @@ export default class WCBoton extends HTMLElement {
         display: inline-flex;
       }
       
+      :host([data-etiqueta]) span {
+        display: block;
+      }
+
+      :host([data-icono]) md-icono {
+        display: inline-flex;
+      }
+
       button, a {
         display: inline-flex;
         align-items: center;
+        justify-content: var(--boton-justify-content);
       
-        text-align: left;
         text-decoration: none;
         font-family: inherit;
         white-space: nowrap;
@@ -32,14 +46,14 @@ export default class WCBoton extends HTMLElement {
         color: var(--clr-texto);
         
         overflow: hidden;
-        height: 2.5rem;
+        height: var(--boton-alto);
         box-sizing: border-box;
         padding: 0 1.5rem;
         cursor: pointer;
         position: relative;
       
         border: none;
-        border-radius: 1.25rem;
+        border-radius: var(--boton-radio-borde);
         background-color: var(--clr-fondo);
       
         transition: 
@@ -78,7 +92,13 @@ export default class WCBoton extends HTMLElement {
         transition: background-color .2s ease 0s;
       }
       
-      ::slotted([slot='etiqueta']) {
+      md-icono {
+        display: none;
+      }
+
+      span {
+        display: none;
+
         font-size: var(--fs-etiqueta-grande);
         line-height: var(--lh-etiqueta-grande);
         letter-spacing: var(--ls-etiqueta-grande);
@@ -88,7 +108,7 @@ export default class WCBoton extends HTMLElement {
           width 0.2s ease 0s,
           font-size 0.2s ease 0s,
           opacity 0.2s ease 0s;
-[]      }
+      }
     `);
 
     this._onClick = this._onClick.bind(this);
@@ -96,11 +116,13 @@ export default class WCBoton extends HTMLElement {
       return reglaCSS.selectorText === ':host';
     });
 
-    this._iconoSlot = document.createElement('slot');
-    this._iconoSlot.setAttribute('name', 'icono');
+    this._icono = new MDIcono();
+    this._icono.setAttribute('data-opsz', '20');
+    this._icono.setAttribute('data-escala', 'm');
+    this._icono.setAttribute('data-icono', this.dataIcono);
 
-    this._etiquetaSlot = document.createElement('slot');
-    this._etiquetaSlot.setAttribute('name', 'etiqueta');
+    this._etiqueta = document.createElement('span');
+    this._etiqueta.textContent = this.dataEtiqueta;
 
     this.attachShadow({ mode: 'open' }).adoptedStyleSheets = [this._CSS];
 
@@ -145,8 +167,8 @@ export default class WCBoton extends HTMLElement {
       this._botonSchrodinger = document.createElement('button');
     }
 
-    this._botonSchrodinger.appendChild(this._iconoSlot);
-    this._botonSchrodinger.appendChild(this._etiquetaSlot);
+    this._botonSchrodinger.appendChild(this._icono);
+    this._botonSchrodinger.appendChild(this._etiqueta);
   }
 
   _reconstruirBotonSchrodinger (esBoton) {
@@ -160,8 +182,8 @@ export default class WCBoton extends HTMLElement {
 
     this.shadowRoot.querySelector(this._botonSchrodinger.tagName).replaceWith(nuevoBotonSchrodinger);
     this._botonSchrodinger = nuevoBotonSchrodinger;
-    this._botonSchrodinger.appendChild(this._iconoSlot);
-    this._botonSchrodinger.appendChild(this._etiquetaSlot);
+    this._botonSchrodinger.appendChild(this._icono);
+    this._botonSchrodinger.appendChild(this._etiqueta);
   }
 
   get href () { return this.getAttribute('href'); }
@@ -191,6 +213,14 @@ export default class WCBoton extends HTMLElement {
   get dataExpandir () { return this.hasAttribute('data-expandir'); }
 
   set dataExpandir (bool) { this.toggleAttribute('data-expandir', Boolean(bool)); }
+
+  get dataIcono () { return this.dataset.icono; }
+
+  set dataIcono (icono) { this.dataset.icono = icono; }
+
+  get dataEtiqueta () { return this.dataset.etiqueta; }
+
+  set dataEtiqueta (etiqueta) { this.dataset.etiqueta = etiqueta; }
 
   connectedCallback () {
     this._botonSchrodinger.addEventListener('click', this._onClick);
@@ -228,8 +258,14 @@ export default class WCBoton extends HTMLElement {
         const colorActive = getComputedStyle(this).getPropertyValue('--clr-texto') + '1f'; // .12
         this._reglaCSSHost.style.setProperty('--clr-active', !newValue ? 'transparent' : colorActive);
         break;
+
+      case 'data-etiqueta':
+        this._etiqueta.textContent = newValue;
+        break;
+
+      case 'data-icono':
+        this._icono.setAttribute('data-icono', newValue);
+        break;
     }
   }
 }
-
-customElements.define('wc-boton', WCBoton);

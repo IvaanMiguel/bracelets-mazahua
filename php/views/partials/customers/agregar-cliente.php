@@ -1,34 +1,33 @@
-<link rel='stylesheet' href='css/sections/customers/agregar-cliente.css'>
 <form>
   <div class='formulario-contenedor'>
-    <h1 class='titulo-grande'>Datos personales</h1>
+    <wc-texto data-tipo-fuente='titulo-l'>Datos personales</wc-texto>
     <div class='campos'>
       <campo-texto>
-        <span class='etiqueta-grande' slot='etiqueta-texto'>Nombre(s)</span>
-        <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' type='text' slot='campo' name='nombre'>
+        <span slot='etiqueta'>Nombre(s)</span>
+        <input slot='campo' type='text' name='nombre'>
       </campo-texto>
       <div class='campos-horizontal'>
         <campo-texto>
-          <span class='etiqueta-grande' slot='etiqueta-texto'>Apellido paterno</span>
-          <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' type='text' slot='campo' name='apellidoPaterno'>
+          <span slot='etiqueta'>Apellido paterno</span>
+          <input slot='campo' type='text' name='apellidoPaterno'>
         </campo-texto>
         <campo-texto>
-          <span class='etiqueta-grande' slot='etiqueta-texto'>Apellido materno</span>
-          <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' type='text' slot='campo' name='apellidoMaterno'>
+          <span slot='etiqueta'>Apellido materno</span>
+          <input slot='campo' type='text' name='apellidoMaterno'>
         </campo-texto>
       </div>
       <campo-texto>
-        <span class='etiqueta-grande' slot='etiqueta-texto'>Dirección de email</span>
-        <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' type='text' slot='campo' name='email'>
+        <span slot='etiqueta'>Dirección de email</span>
+        <input slot='campo' type='text' name='email'>
       </campo-texto>
       <div class='campos-horizontal'>
         <campo-texto>
-          <span class='etiqueta-grande' slot='etiqueta-texto'>Número de celular</span>
-          <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' type='text' slot='campo' name='celular'>
+          <span slot='etiqueta'>Número de celular</span>
+          <input slot='campo' type='text' name='celular'>
         </campo-texto>
         <campo-texto>
-          <span class='etiqueta-grande' slot='etiqueta-texto'>Edad</span>
-          <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' type='number' slot='campo' name='edad'>
+          <span slot='etiqueta'>Edad</span>
+          <input slot='campo' type='text' name='edad'>
         </campo-texto>
       </div>
     </div>
@@ -37,74 +36,92 @@
     <h1 class='titulo-grande'>Ubicaciones</h1>
     <div class='campos'>
       <campo-texto>
-        <span class='etiqueta-grande' slot='etiqueta-texto'>Calle Principal</span>
-        <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' type='text' slot='campo'>
+        <span slot='etiqueta'>Calle principal</span>
+        <input slot='campo' type='text' name='callePrincipal'>
       </campo-texto>
       <campo-texto>
-        <span class='etiqueta-grande' slot='etiqueta-texto'>Calle(s) adyacente(s)</span>
-        <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' type='text' slot='campo'>
+        <span slot='etiqueta'>Calle(s) adyacente(s)</span>
+        <input slot='campo' type='text' name='callesAdyacentes'>
       </campo-texto>
       <campo-texto>
-        <span class='etiqueta-grande' slot='etiqueta-texto'>Colonia</span>
-        <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' type='text' slot='campo'>
+        <span slot='etiqueta'>Colonia</span>
+        <input slot='campo' type='text' name='colonia'>
       </campo-texto>
       <div class='campos-horizontal'>
         <campo-texto>
-          <span class='etiqueta-grande' slot='etiqueta-texto'>Número exterior</span>
-          <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' type='number' slot='campo'>
+          <span slot='etiqueta'>Número exterior</span>
+          <input slot='campo' type='text' name='numeroExterior'>
         </campo-texto>
         <campo-texto>
-          <span class='etiqueta-grande' slot='etiqueta-texto'>Número interior</span>
-          <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' type='number' slot='campo'>
+          <span slot='etiqueta'>Número interior</span>
+          <input slot='campo' type='text' name='numeroInterior'>
         </campo-texto>
         <campo-texto>
-          <span class='etiqueta-grande' slot='etiqueta-texto'>Código postal</span>
-          <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' type='number' slot='campo'>
+          <span slot='etiqueta'>Código postal</span>
+          <input slot='campo' type='text' name='codigoPostal'>
         </campo-texto>
       </div>
-      <wc-colapsable>
-        <div class='bg-terciario-contenedor txt-terciario-contenedor-alternativo cabecera-pequeña' slot='cabecera'>
-          <span class='titulo-mediano'>Ubicaciones añadidas</span>
-          <md-icono data-icono='expand_less' data-opsz='24'></md-icono>
-        </div>
-        <lista-controlador slot='lista-elemento'>
+      <wc-colapsable data-minicabecera>
+        <span slot='texto-cabecera'>Ubicaciones añadidas</span>
+        <md-icono slot='icono-cabecera' data-icono='expand_less' data-opsz='24'></md-icono>
+        <lista-controlador>
           <item-divisor>
-            <item-removible>
-              <span slot='info'>Elemento 1</span>
-              <span slot='info'>Item 1</span>
-              <boton-texto slot='boton-remover' data-color-texto='var(--clr-error-40)' data-evento='confirmarremoverubicacion' type='button'>
-                <md-icono slot='icono' data-icono='delete' data-opsz='24'></md-icono>
-              </boton-texto>
-            </item-removible>
+            <item-detalles>
+              <span>Elemento 1</span>
+              <span>Item 1</span>
+              <boton-icono
+                  slot='final'
+                  type='button'
+                  data-icono='delete'
+                  data-color-texto='var(--clr-error-40)'
+                  data-evento='confirmarremoverubicacion'>
+              </boton-icono>
+            </item-detalles>
           </item-divisor>
           <item-divisor>
-            <item-removible>
-              <span slot='info'>Elemento 1</span>
-              <span slot='info'>Item 1</span>
-              <boton-texto slot='boton-remover' data-color-texto='var(--clr-error-40)' data-evento='confirmarremoverubicacion' type='button'>
-                <md-icono slot='icono' data-icono='delete' data-opsz='24'></md-icono>
-              </boton-texto>
-            </item-removible>
+            <item-detalles>
+              <span>Elemento 1</span>
+              <span>Item 1</span>
+              <boton-icono
+                  slot='final'
+                  type='button'
+                  data-icono='delete'
+                  data-color-texto='var(--clr-error-40)'
+                  data-evento='confirmarremoverubicacion'>
+              </boton-icono>
+            </item-detalles>
           </item-divisor>
           <item-divisor>
-            <item-removible>
-              <span slot='info'>Elemento 1</span>
-              <span slot='info'>Item 1</span>
-              <boton-texto slot='boton-remover' data-color-texto='var(--clr-error-40)' data-evento='confirmarremoverubicacion' type='button'>
-                <md-icono slot='icono' data-icono='delete' data-opsz='24'></md-icono>
-              </boton-texto>
-            </item-removible>
+            <item-detalles>
+              <span>Elemento 1</span>
+              <span>Item 1</span>
+              <boton-icono
+                  slot='final'
+                  type='button'
+                  data-icono='delete'
+                  data-color-texto='var(--clr-error-40)'
+                  data-evento='confirmarremoverubicacion'>
+              </boton-icono>
+            </item-detalles>
           </item-divisor>
         </lista-controlador>
       </wc-colapsable>
     </div>
-    <button class='boton boton--icono-texto boton-secundario-contenedor-tonal bg-secundario-contenedor txt-secundario-contenedor-alternativo' is='md-boton' type='button' style='width: min-content;'>
-      <md-icono class='icono-chico' data-icono='add_location' data-opsz='20'></md-icono>
-      <span class='etiqueta-grande'>Agregar ubicación</span>
-    </button>
+    <boton-rellenado
+        data-color-fondo='var(--clr-secundario-90)'
+        data-color-texto='var(--clr-secundario-10)'
+        type='button'
+        data-variante='texto-icono'
+        data-icono='add_location'
+        data-etiqueta='Agregar ubicación'>
+    </boton-rellenado>
   </div>
-  <button class='boton boton--icono-texto bg-primario txt-blanco boton-primario-rellenado' is='md-boton' style='width: min-content;'>
-    <md-icono class='icono-chico' data-icono='save' data-opsz='20'></md-icono>
-    <span class='etiqueta-grande'>Guardar cliente</span>
-  </button>
+  <boton-rellenado
+      data-color-fondo='var(--clr-primario-40)'
+      data-color-texto='#ffffff'
+      type='button'
+      data-variante='texto-icono'
+      data-icono='save'
+      data-etiqueta='Guardar cliente'>
+  </boton-rellenado>
 </form>

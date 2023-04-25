@@ -1,1 +1,0 @@
-Los estilos de este componente se encuentran en la carpeta components/boton-comun/estilos.css.

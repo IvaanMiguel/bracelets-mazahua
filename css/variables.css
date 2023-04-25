@@ -15,33 +15,38 @@
   --fs-titulo-grande: 1.375rem;
   --fs-titulo-mediano: 1rem;
   --fs-titulo-chico: .875rem;
+  --fs-cuerpo-grande: 1rem;
   --fs-cuerpo-mediano: 0.875rem;
   --fs-cuerpo-chico: 0.75rem;
   --fs-etiqueta-grande: 0.875rem;
+  --fs-etiqueta-mediana: .75rem;
   --fs-etiqueta-chica: 0.6875rem;
 
   /* Altura de línea */
   --lh-titulo-grande: 1.75rem;
   --lh-titulo-mediano: 1.5rem;
   --lh-titulo-chico: 1.25rem;
+  --lh-cuerpo-grande: 1.5rem;
   --lh-cuerpo-mediano: 1.25rem;
   --lh-cuerpo-chico: 1rem;
   --lh-etiqueta-grande: 1.25rem;
+  --lh-etiqueta-mediana: 1rem;
   --lh-etiqueta-chica: 1rem;
 
   /* Espaciado de letras */
   --ls-tiulo-mediano: 0.0094rem;
   --ls-titulo-chico: .0063rem;
+  --ls-cuerpo-grande: .0313rem;
   --ls-cuerpo-mediano: 0.0156rem;
   --ls-cuerpo-chico: 0.025rem;
   --ls-etiqueta-grande: 0.0063rem;
+  --ls-etiqueta-mediana: .0313rem;
   --ls-etiqueta-chica: 0.0313rem;
 
   /* Tamaño de iconos de Google */
-  --tam-icono-x-chico: 1rem;
-  --tam-icono-chico: 1.125rem;
-  --tam-icono-mediano: 1.375rem;
-  --tam-icono-grande: 1.5rem;
+  --tam-icono-chico: 1rem;
+  --tam-icono-mediano: 1.125rem;
+  --tam-icono-grande: 1.375rem;
 
   /* Espaciados generales (Margins, paddings, etc.) */
   --espaciado-jumbo: 1rem;

@@ -8,12 +8,15 @@
   <link rel='stylesheet' href='css/principal.css'>
   <link rel='stylesheet' href='css/sections/inicio.css'>
 
-  <script type='module' src='components/md-boton/md-boton.js'></script>
   <script type='module' src='components/wc-boton.js'></script>
+  <script type='module' src='components/wc-divisor.js'></script>
   <script type='module' src='components/boton-delineado.js'></script>
   <script type='module' src='components/boton-elevado.js'></script>
+  <script type='module' src='components/boton-icono.js'></script>
   <script type='module' src='components/boton-texto.js'></script>
-  <script type='module' src='components/ventana-emergente/ventana-emergente.js'></script>
+  <script type='module' src='components/item-error.js'></script>
+  <script type='module' src='components/ventana-emergente.js'></script>
+  <!-- <script type='module' src='components/ventana-emergente/ventana-emergente.js'></script> -->
 </head>
 <body>
   <main class='contenedor'>
@@ -72,25 +75,6 @@
     </div>
   </main>
 
-  <ventana-emergente data-id='cerrar-sesion'>
-    <div class='contenido'>
-      <span class='titulo-grande'>Cerrar sesión</span>
-      <span class='cuerpo-mediano'>¿Deseas salir y cerrar la sesión actual?</span>
-      <div class='botones-contenedor botones-contenedor--flex-end'>
-        <button
-          class='boton bg-primario txt-blanco boton-primario-rellenado'
-          is='md-boton'
-          data-evento='cerrarsesion'>Sí
-        </button>
-        <button
-          class='boton boton-delineado bg-transparente txt-primario boton-primario-delineado'
-          is='md-boton'
-          data-evento='cerrarventana'>No
-        </button>
-      </div>
-    </div>
-  </ventana-emergente>
-  
-  <script src='js/cerrar-sesion.js'></script>
+  <?php require_once PIE_PAGINA ?>
 </body>
 </html>

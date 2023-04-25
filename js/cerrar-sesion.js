@@ -1,9 +1,16 @@
-document.addEventListener('confirmarcierresesion', () => {
-  document.querySelector('[data-id="cerrar-sesion"]').setAttribute('style', 'display: flex;');
-});
+(() => {
+  const ventanaEmergente = document.body.querySelector('#cerrar-sesion');
 
-document.addEventListener('cerrarsesion', () => {
-  fetch('php/includes/cerrar_sesion.inc.php')
-    .then((respuesta) => respuesta.json())
-    .then((datos) => (location.href = datos.contenido));
-});
+  ventanaEmergente.querySelector('boton-delineado').addEventListener('click', () => ventanaEmergente.cerrarVentana());
+  ventanaEmergente.querySelector('boton-icono').addEventListener('click', () => ventanaEmergente.cerrarVentana());
+
+  document.addEventListener('confirmarcierresesion', () => {
+    ventanaEmergente.mostrarVentana();
+  });
+
+  document.addEventListener('cerrarsesion', () => {
+    fetch('php/includes/cerrar_sesion.inc.php')
+      .then((respuesta) => respuesta.json())
+      .then((datos) => (location.href = datos.contenido));
+  });
+})();

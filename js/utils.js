@@ -1,4 +1,4 @@
-import { NotificacionError } from '../components/notificacion-error/notificacion-error.js';
+import ItemError from '../components/item-error.js';
 
 export const utils = (function () {
   const obtenerRespuesta = (datos) => {
@@ -9,12 +9,11 @@ export const utils = (function () {
 
       case 1: // Array de respuestas por parte del servidor.
         datos.contenido.forEach((item) => {
-          const notificacionError = new NotificacionError();
-          const span = document.createElement('span');
-
-          span.setAttribute('slot', 'error');
-          span.innerText = item.mensaje;
-          notificacionError.appendChild(span);
+          const notificacionError = new ItemError();
+          notificacionError.innerHTML = /*html*/`
+            <md-icono slot='icono' data-icono='error' data-opsz='20' data-escala='s'></md-icono>
+            <span slot='error'>${item.mensaje}</span>
+          `;
 
           switch (item.ambito) {
             case 'general':

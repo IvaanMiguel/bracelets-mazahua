@@ -8,13 +8,9 @@
   <link rel='stylesheet' href='css/estilos.css'>
   <link rel='stylesheet' href='css/formularios-usuario.css'>
 
-  <script defer type='module' src='components/md-boton/md-boton.js'></script>
-  <script defer type='module' src='components/md-enlace/md-enlace.js'></script>
-  <script defer type='module' src='components/md-icono/md-icono.js'></script>
-  <script defer type='module' src='components/icono-emergente/icono-emergente.js'></script>
-  <script defer type='module' src='components/campo-texto/campo-texto.js'></script>
-  <script defer type='module' src='components/campo-clave/campo-clave.js'></script>
-  <script type='module' src='components/boton-rellenado.js'></script>
+  <script type='module' src='components/campo-texto.js'></script>
+  <script type='module' src='components/campo-clave.js'></script>
+  <script type='module' src='components/wc-emergente.js'></script>
 </head>
 <body>
   <main class='contenedor'>
@@ -25,38 +21,44 @@
         <div class='campos'>
           <div class='campo'>
             <campo-texto>
-              <span class='cuerpo-mediano' slot='etiqueta-texto'>Nombre de usuario</span>
-              <icono-emergente class='icono-chico' slot='etiqueta-icono' data-icono='help'
-                data-mensaje='Debe tener mínimo 4 caracteres y máximo 15 caracteres.&#xa;Solo puede contener letras y números.'>
-              </icono-emergente>
-              <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' slot='campo' type='text' name='nombreUsuario'>
+              <span slot='etiqueta'>Nombre de usuario</span>
+              <wc-emergente slot='etiqueta'
+                  data-mensaje='Debe tener mínimo 4 caracteres y máximo 15 caracteres.&#xa;Solo puede contener letras y números.'>
+                <md-icono data-icono='help' data-opsz='20' data-escala='m'></md-icono>
+              </wc-emergente>
+              <input slot='campo' type='text' name='nombreUsuario'>
             </campo-texto>
           </div>
           <div class='campo'>
             <campo-texto>
-              <span class='cuerpo-mediano' slot='etiqueta-texto'>Dirección de email</span>
-              <input class='bg-fondo txt-fondo-alternativo cuerpo-mediano' slot='campo' type='text' name='email'>
+              <span slot='etiqueta'>Dirección de email</span>
+              <input slot='campo' type='text' name='email'>
             </campo-texto>
           </div>
           <div class='campo'>
             <campo-clave>
-              <span class='cuerpo-mediano' slot='etiqueta-texto'>Contraseña</span>
-              <icono-emergente class='icono-chico' slot='etiqueta-icono' data-icono='help'
-                data-mensaje='Debe tener mínimo 8 caracteres y máximo 20 caracteres.&#xa;Debe contener al menos una letra mayúscula y un número.'>
-              </icono-emergente>
-              <input class='padding-derecho bg-fondo txt-fondo-alternativo cuerpo-mediano' slot='campo' type='password' name='clave'>
-              <md-icono class='icono-mediano cursor-pointer' slot='icono-visibilidad' data-icono='visibility'></md-icono>
+              <span slot='etiqueta'>Contraseña</span>
+              <wc-emergente slot='etiqueta'
+                  data-mensaje='Debe tener mínimo 8 caracteres y máximo 20 caracteres.&#xa;Debe contener al menos una letra mayúscula y un número.'>
+                <md-icono data-icono='help' data-opsz='20' data-escala='m'></md-icono>
+              </wc-emergente>
+              <input slot='campo' type='password' name='clave'>
+              <md-icono slot='icono-visibilidad' data-icono='visibility' data-opsz='22' data-escala='l' data-cursor></md-icono>
             </campo-clave>
           </div>
           <div class='campo'>
             <campo-clave>
-              <span class='cuerpo-mediano' slot='etiqueta-texto'>Vuelve a escribir la contraseña</span>
-              <input class='bg-fondo txt-primario-alternativo cuerpo-mediano' slot='campo' type='password' name='claveVerificacion'>
+              <span slot='etiqueta'>Vuelve a escribir la contraseña</span>
+              <input slot='campo' type='password' name='claveVerificacion'>
             </campo-clave>
           </div>
         </div>
-        <boton-rellenado data-color-fondo='var(--clr-primario-40)' data-color-texto='#ffffff' type='button' data-evento='registrarusuario'>
-          <span slot='etiqueta'>Crear cuenta</span>
+        <boton-rellenado
+            data-color-fondo='var(--clr-primario-40)'
+            data-color-texto='#ffffff'
+            data-etiqueta='Crear cuenta'
+            type='button'
+            data-evento='registrarusuario'>
         </boton-rellenado>
       </form>
     </div>
@@ -66,9 +68,12 @@
         <span class='cuerpo-chico'>Ya tienes una cuenta?</span>
         <div class='linea'></div>
       </div>
-      <a class='boton bg-primario txt-blanco boton-primario-rellenado' href=<?= URL_INICIAR_SESION ?> is='md-enlace'>
-        <span class='etiqueta-grande'>Iniciar sesión</span>
-      </a>
+      <boton-rellenado
+          data-color-fondo='var(--clr-primario-40)'
+          data-color-texto='#ffffff'
+          href=<?= URL_INICIAR_SESION ?>
+          data-etiqueta='Iniciar sesión'>
+      </boton-rellenado>
     </div>
   </main>
   <script type='module' src='js/registrar-usuario.js'></script>

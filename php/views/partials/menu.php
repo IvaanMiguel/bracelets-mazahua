@@ -33,8 +33,8 @@ $menuBotones = [
       data-color-fondo='var(--clr-primario-40)'
       data-color-texto='#ffffff'
       data-evento='alternarmenu'
-      data-variante='icono'>
-    <md-icono slot='icono' data-icono='menu' data-opsz='20' data-escala='m'></md-icono>
+      data-variante='icono'
+      data-icono='menu'>
   </boton-rellenado>
 
   <?php foreach ($menuBotones as $boton): ?>
@@ -43,9 +43,9 @@ $menuBotones = [
         data-color-texto='#ffffff'
         href=<?= $boton['href'] ?>
         data-variante='texto-icono'
+        data-icono=<?= $boton['icono'] ?>
+        data-etiqueta=<?= $boton['etiqueta'] ?>
         data-expandir>
-      <md-icono slot='icono' data-icono=<?= $boton['icono'] ?> data-opsz='20' data-escala='m'></md-icono>
-      <span slot='etiqueta'><?= $boton['etiqueta'] ?></span>
     </boton-rellenado>
   <?php endforeach; ?>
 
@@ -55,8 +55,8 @@ $menuBotones = [
       data-color-texto='#ffffff'
       data-variante='texto-icono'
       data-evento='confirmarcierresesion'
+      data-icono='logout'
+      data-etiqueta='Cerrar sesión'
       data-expandir>
-    <md-icono slot='icono' data-icono='logout' data-opsz='20' data-escala='m'></md-icono>
-    <span slot='etiqueta'>Cerrar sesión</span>
   </boton-rellenado>
 </menu-lateral>

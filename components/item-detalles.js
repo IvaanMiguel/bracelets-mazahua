@@ -22,7 +22,7 @@ hojaCSS.replaceSync(/*css*/`
   }
 
   slot:not([name='final'])::slotted(*) {
-    flex: 1;
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -37,7 +37,7 @@ template.innerHTML = /*html*/`
   </div>
 `;
 
-class itemDetalles extends HTMLElement {
+export default class ItemDetalles extends HTMLElement {
   constructor () {
     super();
 
@@ -46,4 +46,4 @@ class itemDetalles extends HTMLElement {
   }
 }
 
-customElements.define('item-detalles', itemDetalles);
+customElements.define('item-detalles', ItemDetalles);

@@ -5,7 +5,7 @@ hojaCSS.replaceSync(/*css*/`
   }
 
   :host,
-  :host([data-tipo-fuente='cuerpo-mediano']) {
+  :host([data-tipo-fuente='cuerpo-m']) {
     --font-size: var(--fs-cuerpo-mediano);
     --line-height: var(--lh-cuerpo-mediano);
     --letter-spacing: var(--ls-cuerpo-mediano);
@@ -17,56 +17,56 @@ hojaCSS.replaceSync(/*css*/`
     font-weight: var(--font-weight);
   }
 
-  :host([data-tipo-fuente='titulo-grande']) {
+  :host([data-tipo-fuente='titulo-l']) {
     --font-size: var(--fs-titulo-grande);
     --line-height: var(--lh-titulo-grande);
     --letter-spacing: var(--ls-titulo-grande);
     --font-weight: var(--fw-normal);
   }
 
-  :host([data-tipo-fuente='titulo-mediano']) {
+  :host([data-tipo-fuente='titulo-m']) {
     --font-size: var(--fs-titulo-mediano);
     --line-height: var(--lh-titulo-mediano);
     --letter-spacing: var(--ls-titulo-mediano);
     --font-weight: var(--fw-medio);
   }
 
-  :host([data-tipo-fuente='titulo-chico']) {
+  :host([data-tipo-fuente='titulo-s']) {
     --font-size: var(--fs-titulo-chico);
     --line-height: var(--lh-titulo-chico);
     --letter-spacing: var(--ls-titulo-chico);
     --font-weight: var(--fw-medio);
   }
 
-  :host([data-tipo-fuente='cuerpo-grande']) {
+  :host([data-tipo-fuente='cuerpo-l']) {
     font-size: var(--fs-cuerpo-grande);
     line-height: var(--lh-cuerpo-grande);
     letter-spacing: var(--ls-cuerpo-grande);
     font-weight: var(--fw-normal);
   }
 
-  :host([data-tipo-fuente='cuerpo-chico']) {
+  :host([data-tipo-fuente='cuerpo-s']) {
     font-size: var(--fs-cuerpo-chico);
     line-height: var(--lh-cuerpo-chico);
     letter-spacing: var(--ls-cuerpo-chico);
     font-weight: var(--fw-normal);
   }
 
-  :host([data-tipo-fuente='etiqueta-grande']) {
+  :host([data-tipo-fuente='etiqueta-l']) {
     font-size: var(--fs-etiqueta-grande);
     line-height: var(--lh-etiqueta-grande);
     letter-spacing: var(--ls-etiqueta-grande);
     font-weight: var(--fw-medio);
   }
 
-  :host([data-tipo-fuente='etiqueta-mediana']) {
+  :host([data-tipo-fuente='etiqueta-m']) {
     font-size: var(--fs-etiqueta-mediana);
     line-height: var(--lh-etiqueta-mediana);
     letter-spacing: var(--ls-etiqueta-mediana);
     font-weight: var(--fw-medio);
   }
 
-  :host([data-tipo-fuente='etiqueta-chica']) {
+  :host([data-tipo-fuente='etiqueta-s']) {
     font-size: var(--fs-etiqueta-chica);
     line-height: var(--lh-etiqueta-chica);
     letter-spacing: var(--ls-etiqueta-chica);

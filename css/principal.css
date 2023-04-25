@@ -39,3 +39,13 @@ menu-lateral:not(:defined) {
   max-width: 15rem;
   min-width: min-content;
 }
+
+wc-tabs {
+  transition: opacity .2s ease 0s;
+}
+
+wc-tabs:not(:defined) {
+  opacity: 0;
+  flex: 1;
+  width: 100%;
+}

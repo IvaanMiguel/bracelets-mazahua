@@ -26,15 +26,8 @@ hojaCSS.replaceSync(/*css*/`
     background-color: var(--clr-terciario-90);
     color: var(--clr-terciario-10);
   }
-  
-  ::slotted([slot='texto-cabecera']) {
-    font-size: var(--fs-titulo-mediano);
-    line-height: var(--lh-titulo-mediano);
-    letter-spacing: var(--ls-tiulo-mediano);
-    font-weight: var(--fw-medio);
-  }
 
-  .lista {
+  .contenido {
     display: flex;
     flex-direction: column;
   
@@ -49,10 +42,12 @@ const template = document.createElement('template');
 template.innerHTML = /*html*/`
   <div class='cabecera'>
     <slot name='texto-cabecera'></slot>
-    <slot name='icono-cabecera'></slot>
+    <slot name='icono-cabecera'>
+      <md-icono data-icono='expand_less' data-opsz='24'></md-icono>
+    </slot>
   </div>
-  <div class='lista'>
-    <slot name='lista'></slot>
+  <div class='contenido'>
+    <slot></slot>
   </div>
 `;
 
@@ -65,7 +60,7 @@ class WCColapsable extends HTMLElement {
     this.attachShadow({ mode: 'open' }).adoptedStyleSheets = [hojaCSS];
     this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-    this._listaElementos = this.shadowRoot.querySelector('.lista');
+    this._listaElementos = this.shadowRoot.querySelector('.contenido');
 
     this._childListObserver = new MutationObserver(() => {
       this._listaElementos.style.maxHeight = `${this._listaElementos.scrollHeight}px`;
@@ -75,7 +70,7 @@ class WCColapsable extends HTMLElement {
 
     this._cabecera = this.shadowRoot.querySelector('.cabecera');
 
-    this._icono = this.querySelector('md-icono');
+    this._icono = this.querySelector('[slot="icono-cabecera"]') ?? this.shadowRoot.querySelector('md-icono');
     this._icono.style.transition = 'transform .3s ease 0s';
   }
 

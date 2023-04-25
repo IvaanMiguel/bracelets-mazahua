@@ -279,3 +279,8 @@
     </wc-tabs>
   </contenedor-flex>
 </wc-colapsable>
+<boton-rellenado
+    data-color-fondo='var(--clr-primario-40)'
+    data-color-texto='#ffffff'
+    data-etiqueta='Hacer pedido'>
+</boton-rellenado>

@@ -1,5 +1,5 @@
 <wc-colapsable slot='lista'>
-  <span slot='texto-cabecera'>Cliente</span>
+  <wc-texto slot='texto-cabecera' data-tipo-fuente='titulo-m'>Cliente</wc-texto>
   <md-icono slot='icono-cabecera' data-icono='expand_less' data-opsz='24'></md-icono>
   <contenedor-flex class='pedido-contenedor' flex-direction='column' gap='var(--espaciado-grande)' padding='var(--espaciado-grande)'>
     <boton-rellenado
@@ -30,7 +30,7 @@
   </contenedor-flex>
 </wc-colapsable>
 <wc-colapsable slot='lista'>
-  <span slot='texto-cabecera'>Productos</span>
+  <wc-texto slot='texto-cabecera' data-tipo-fuente='titulo-m'>Productos</wc-texto>
   <md-icono slot='icono-cabecera' data-icono='expand_less' data-opsz='24'></md-icono>
   <contenedor-flex class='pedido-contenedor' flex-direction='column' gap='var(--espaciado-grande)' padding='var(--espaciado-grande)'>
     <boton-rellenado
@@ -92,7 +92,7 @@
 </contenedor-flex>
 </wc-colapsable>
 <wc-colapsable slot='lista'>
-  <span slot='texto-cabecera'>Entrega</span>
+  <wc-texto slot='texto-cabecera' data-tipo-fuente='titulo-m'>Entrega</wc-texto>
   <md-icono slot='icono-cabecera' data-icono='expand_less' data-opsz='24'></md-icono>
   <contenedor-flex class='pedido-contenedor' flex-direction='column' gap='var(--espaciado-grande)' padding='var(--espaciado-grande)'>
     <wc-tabs>
@@ -229,7 +229,7 @@
   </contenedor-flex>
 </wc-colapsable>
 <wc-colapsable slot='lista'>
-  <span slot='texto-cabecera'>Método de pago</span>
+  <wc-texto slot='texto-cabecera' data-tipo-fuente='titulo-m'>Método de pago</wc-texto>
   <md-icono slot='icono-cabecera' data-icono='expand_less' data-opsz='24'></md-icono>
   <contenedor-flex class='pedido-contenedor' flex-direction='column' gap='var(--espaciado-grande)' padding='var(--espaciado-grande)'>
     <wc-tabs>

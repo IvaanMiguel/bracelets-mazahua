@@ -18,3 +18,4 @@
 <script type='module' src='components/md-icono.js'></script>
 <script type='module' src='components/boton-rellenado.js'></script>
 <script type='module' src='components/contenedor-flex.js'></script>
+<script type='module' src='components/wc-texto.js'></script>

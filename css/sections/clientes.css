@@ -1,19 +1,5 @@
-.clientes {
-  display: flex;
-
-  padding: var(--espaciado-chico) var(--espaciado-jumbo) 0;
-  height: 100%;
-  box-sizing: border-box;
-}
-
 wc-colapsable {
   border: 1px solid var(--clr-neutral-80);
-}
-
-[name='clientes'] {
-  background-color: #fff;
-  color: var(--clr-primario-40);
-  box-shadow: var(--bs-elevacion-1);
 }
 
 form {
@@ -25,26 +11,12 @@ form {
 }
 
 .formulario-contenedor {
-  display: flex;
-  flex-direction: column;
-  gap: var(--espaciado-grande);
-
-  padding: var(--espaciado-jumbo);
   border: 1px solid var(--clr-borde);
   border-radius: var(--br-borde);
 }
 
 .campos {
-  display: flex;
-  flex-direction: column;
-  gap: var(--espaciado-mediano);
-
   max-width: 35rem;
-}
-
-.campos-horizontal {
-  display: flex;
-  gap: var(--espaciado-mediano);
 }
 
 .campos-horizontal > * {

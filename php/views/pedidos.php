@@ -23,7 +23,6 @@
   <script type='module' src='components/ventana-emergente.js'></script>
   <script type='module' src='components/wc-tabs.js'></script>
   <script type='module' src='components/info-detalles.js'></script>
-  <script type='module' src='components/wc-texto.js'></script>
 </head>
 <body>
   <main class='contenedor'>

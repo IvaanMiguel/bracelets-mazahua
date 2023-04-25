@@ -6,7 +6,7 @@
   <?php require_once HEAD_TAGS ?>
 
   <link rel='stylesheet' href='css/principal.css'>
-  <link rel='stylesheet' href='css/sections/clientes.css'>
+  <link rel='stylesheet' href='css/sections/productos.css'>
 
   <script type='module' src='components/wc-divisor.js'></script>
   <script type='module' src='components/boton-delineado.js'></script>

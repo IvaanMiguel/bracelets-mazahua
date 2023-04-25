@@ -22,7 +22,6 @@
   <script type='module' src='components/boton-icono.js'></script>
   <script type='module' src='components/ventana-emergente.js'></script>
   <script type='module' src='components/wc-tabs.js'></script>
-  <script type='module' src='components/wc-texto.js'></script>
 </head>
 <body>
   <main class='contenedor'>
@@ -32,7 +31,7 @@
       <?php require_once CABECERA ?>
 
       <div class='seccion' data-rol='secciones'>
-        <div class='clientes'>
+        <contenedor-flex padding='var(--espaciado-chico) var(--espaciado-jumbo) 0'>
           <wc-tabs>
             <boton-texto
                 slot='tab'
@@ -57,7 +56,9 @@
               <?php include 'partials/customers/agregar-cliente.php' ?>
             </div>
           </wc-tabs>
-        </div>
+        </contenedor-flex>
+        <!-- <div class='clientes'>
+        </div> -->
       </div>
     </div>
   </main>

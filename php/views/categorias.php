@@ -31,7 +31,8 @@
       <?php require_once CABECERA ?>
 
       <div class='seccion' data-rol='secciones'>
-        <div class='categorias'>
+        <contenedor-flex flex-direction='column' gap='var(--espaciado-jumbo)' padding='var(--espaciado-jumbo) var(--espaciado-jumbo) 0'>
+
           <form>
             <campo-texto>
               <span slot='etiqueta'>Nueva categoría</span>
@@ -77,38 +78,14 @@
                   <span slot='info-principal'>Item 1</span>
                 </lista-item>
               </item-divisor>
-              <item-divisor>
+              <item-divisor data-no-divisor>
                 <lista-item>
                   <span slot='info-principal'>Item 1</span>
                 </lista-item>
               </item-divisor>
             </lista-controlador>
           </lista-encabezada>
-          <!-- <wc-tabs>
-            <boton-texto
-                slot='tab'
-                data-color-texto='var(--clr-fondo-10)'
-                data-variante='texto-icono'
-                data-icono='settings'
-                data-etiqueta='Administrar clientes'
-                data-expandir>
-            </boton-texto>
-            <div>
-              <?php require_once 'partials/customers/administrar-clientes.php' ?>
-            </div>
-            <boton-texto
-                slot='tab'
-                data-color-texto='var(--clr-fondo-10)'
-                data-variante='texto-icono'
-                data-icono='add'
-                data-etiqueta='Agregar cliente'
-                data-expandir>
-            </boton-texto>
-            <div>
-              <?php include 'partials/customers/agregar-cliente.php' ?>
-            </div>
-          </wc-tabs> -->
-        </div>
+        </contenedor-flex>
       </div>
     </div>
   </main>

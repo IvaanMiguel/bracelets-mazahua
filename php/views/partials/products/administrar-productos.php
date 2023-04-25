@@ -2,7 +2,7 @@
   <h1 class='titulo-grande' slot='titulo'>14 productos</h1>
   <span class='titulo-chico' slot='extra'>en 2 categorías</span>
   <wc-colapsable slot='lista'>
-    <span slot='texto-cabecera'>Collares</span>
+    <wc-texto slot='texto-cabecera' data-tipo-fuente='titulo-m'>Collares</wc-texto>
     <md-icono slot='icono-cabecera' data-icono='expand_less' data-opsz='24'></md-icono>
     <lista-controlador>
       <item-divisor>
@@ -41,7 +41,7 @@
     </lista-controlador>
   </wc-colapsable>
   <wc-colapsable slot='lista'>
-    <span slot='texto-cabecera'>Pulseras</span>
+    <wc-texto slot='texto-cabecera' data-tipo-fuente='titulo-m'>Pulseras</wc-texto>
     <md-icono slot='icono-cabecera' data-icono='expand_less' data-opsz='24'></md-icono>
     <lista-controlador>
       <item-divisor>

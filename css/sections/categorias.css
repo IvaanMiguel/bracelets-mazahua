@@ -1,0 +1,12 @@
+.categorias {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaciado-jumbo);
+
+  padding: var(--espaciado-jumbo) var(--espaciado-jumbo) 0;
+}
+
+campo-texto {
+  max-width: 35rem;
+  margin-bottom: var(--espaciado-mediano);
+}

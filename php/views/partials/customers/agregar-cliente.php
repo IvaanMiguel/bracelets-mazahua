@@ -91,7 +91,7 @@
               </boton-icono>
             </item-detalles>
           </item-divisor>
-          <item-divisor>
+          <item-divisor data-no-divisor>
             <item-detalles>
               <span>Elemento 1</span>
               <span>Item 1</span>

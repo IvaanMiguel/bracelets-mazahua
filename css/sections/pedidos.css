@@ -33,7 +33,7 @@
   text-overflow: ellipsis;
 }
 
-#aplicacion-entrega .aplicaciones {
+#aplicaciones {
   display: flex;
   gap: var(--espaciado-chico);
 }

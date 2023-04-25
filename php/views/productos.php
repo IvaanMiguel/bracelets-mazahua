@@ -31,7 +31,7 @@
       <?php require_once CABECERA ?>
 
       <div class='seccion' data-rol='secciones'>
-        <div class='clientes'>
+        <contenedor-flex padding='var(--espaciado-chico) var(--espaciado-jumbo) 0'>
           <wc-tabs>
             <boton-texto
                 slot='tab'
@@ -56,35 +56,11 @@
               <?php include 'partials/products/agregar-producto.php' ?>
             </div>
           </wc-tabs>
-        </div>
+        </contenedor-flex>
       </div>
     </div>
   </main>
 
-  <!-- <ventana-emergente id='remover-ubicacion'>
-    <span slot='cabecera-inicio'>Remover ubicación</span>
-    <boton-icono slot='cabecera-final' data-icono='close' data-color-texto='#ffffff'></boton-icono>
-    <span>
-      La información de dicha ubicación ya no se guardará junto con el cliente si es removida, ¿deseas continuar?
-    </span>
-    <boton-rellenado
-        slot='pie-final'
-        data-evento='removerubicacion'
-        data-color-fondo='var(--clr-primario-40)'
-        data-color-texto='#ffffff'>
-      <span slot='etiqueta'>Sí</span>
-    </boton-rellenado>
-    <boton-delineado
-        slot='pie-final'
-        data-evento='cerrarventana'
-        data-color-texto='var(--clr-primario-40)'
-        data-color-fondo="#ffffff">
-      <span slot='etiqueta'>No</span>
-    </boton-delineado>
-  </ventana-emergente> -->
-
   <?php require_once PIE_PAGINA ?>
-
-  <!-- <script src='js/clientes/confirmar-remover-ubicacion.js'></script> -->
 </body>
 </html>

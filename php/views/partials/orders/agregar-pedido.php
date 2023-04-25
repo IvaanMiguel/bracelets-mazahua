@@ -175,7 +175,7 @@
       <contenedor-flex flex-direction='column' gap='var(--espaciado-grande)'>
         <contenedor-flex flex-direction='column' gap='var(--espaciado-chico)'>
           <wc-texto data-tipo-fuente='etiqueta-l'>Aplicación de entrega</wc-texto>
-          <contenedor-flex flex-direction='row' gap='var(--espaciado-chico)'>
+          <contenedor-flex id='aplicaciones' flex-direction='row' gap='var(--espaciado-chico)'>
             <label>
               <input type='radio' name='aplicacion'>
               <wc-texto data-tipo-fuente='etiqueta-l'>Uber</wc-texto>
@@ -282,5 +282,7 @@
 <boton-rellenado
     data-color-fondo='var(--clr-primario-40)'
     data-color-texto='#ffffff'
-    data-etiqueta='Hacer pedido'>
+    data-etiqueta='Hacer pedido'
+    data-variante='texto-icono'
+    data-icono='task'>
 </boton-rellenado>

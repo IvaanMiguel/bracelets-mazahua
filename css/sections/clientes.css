@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+wc-colapsable {
+  border: 1px solid var(--clr-neutral-80);
+}
+
 [name='clientes'] {
   background-color: #fff;
   color: var(--clr-primario-40);

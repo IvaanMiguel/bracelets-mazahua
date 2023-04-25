@@ -6,7 +6,6 @@
   <?php require_once HEAD_TAGS ?>
 
   <link rel='stylesheet' href='css/principal.css'>
-  <link rel='stylesheet' href='css/sections/clientes.css'>
   <link rel='stylesheet' href='css/sections/pedidos.css'>
 
   <script type='module' src='components/wc-divisor.js'></script>
@@ -34,7 +33,7 @@
       <?php require_once CABECERA ?>
 
       <div class='seccion' data-rol='secciones'>
-        <div class='clientes'>
+        <contenedor-flex padding='var(--espaciado-chico) var(--espaciado-jumbo) 0'>
           <wc-tabs>
             <boton-texto
                 slot='tab'
@@ -59,7 +58,7 @@
               <?php require_once 'partials/orders/agregar-pedido.php' ?>
             </div>
           </wc-tabs>
-        </div>
+        </contenedor-flex>
       </div>
     </div>
   </main>

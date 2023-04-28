@@ -1,7 +1,9 @@
 <ventana-emergente id='cerrar-sesion'>
-  <span slot='cabecera-inicio'>Cerrar sesión</span>
+  <wc-texto slot='cabecera-inicio' data-tipo-fuente='titulo-l'>Cerrar sesión</wc-texto>
   <boton-icono slot='cabecera-final' data-icono='close' data-color-texto='#ffffff'></boton-icono>
-  <span>¿Deseas salir y cerrar la sesión actual?</span>
+  <wc-texto data-tipo-fuente='cuerpo-m'>
+    ¿Deseas salir y cerrar la sesión actual?
+  </wc-texto>
   <boton-rellenado
       slot='pie-final'
       data-evento='cerrarsesion'
@@ -11,7 +13,6 @@
   </boton-rellenado>
   <boton-delineado
       slot='pie-final'
-      data-evento='cerrarventana'
       data-color-texto='var(--clr-primario-40)'
       data-color-fondo="#ffffff"
       data-etiqueta='No'>

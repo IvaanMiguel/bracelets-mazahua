@@ -57,8 +57,6 @@
             </div>
           </wc-tabs>
         </contenedor-flex>
-        <!-- <div class='clientes'>
-        </div> -->
       </div>
     </div>
   </main>

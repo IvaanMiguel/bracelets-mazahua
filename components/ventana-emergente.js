@@ -32,7 +32,7 @@ hojaCSS.replaceSync(/*css*/`
     flex-direction: column;
 
     background-color: #fff;
-    width: clamp(18.75rem, 50%, 30rem);
+    width: clamp(18.75rem, 50%, 40rem);
     box-sizing: border-box;
     border-radius: var(--br-borde);
     overflow: hidden;
@@ -50,19 +50,7 @@ hojaCSS.replaceSync(/*css*/`
 
     background-color: var(--clr-primario-40);
     color: #ffffff;
-    padding: var(--espaciado-chico) var(--espaciado-jumbo);
-
-    font-size: var(--fs-titulo-mediano);
-    line-height: var(--lh-titulo-mediano);
-    letter-spacing: var(--ls-tiulo-mediano);
-    font-weight: var(--fw-medio);
-  }
-
-  .cuerpo {
-    font-size: var(--fs-cuerpo-mediano);
-    line-height: var(--lh-cuerpo-mediano);
-    letter-spacing: var(--ls-cuerpo-mediano);
-    font-weight: var(--fw-normal);
+    padding: var(--espaciado-grande) var(--espaciado-jumbo);
   }
 
   .pie {
@@ -80,7 +68,7 @@ template.innerHTML = /*html*/`
       <slot name='cabecera-inicio'></slot>
       <slot name='cabecera-final'></slot>
     </div>
-    <div class='cuerpo'>
+    <div>
       <slot></slot>
     </div>
     <wc-divisor></wc-divisor>

@@ -16,7 +16,6 @@
   <script type='module' src='components/boton-texto.js'></script>
   <script type='module' src='components/item-error.js'></script>
   <script type='module' src='components/ventana-emergente.js'></script>
-  <!-- <script type='module' src='components/ventana-emergente/ventana-emergente.js'></script> -->
 </head>
 <body>
   <main class='contenedor'>
@@ -33,8 +32,7 @@
 
           $pedido = new Pedido();
           $resultado = $pedido->obtenerPedidosPendientes();
-          ?>
-
+        ?>
           <div class='pedidos'>
             <h1 class='titulo-grande txt-fondo-alternativo'>Pedidos pendientes</h1>
             <div class='pedidos-pendientes'>

@@ -21,13 +21,6 @@ hojaCSS.replaceSync(/*css*/`
     flex-direction: column;
   }
 
-  ::slotted([slot='info-principal']) {
-    font-size: var(--fs-titulo-mediano);
-    line-height: var(--lh-titulo-mediano);
-    letter-spacing: var(--ls-titulo-mediano);
-    font-weight: var(--fw-medio);
-  }
-
   ::slotted([slot='info-extra']) {
     font-size: var(--fs-etiqueta-chica);
     line-height: var(--lh-etiqueta-chica);
@@ -39,7 +32,7 @@ hojaCSS.replaceSync(/*css*/`
 const template = document.createElement('template');
 template.innerHTML = /*html*/`
 <div>
-  <slot name='info-principal'></slot>
+  <slot></slot>
   <slot name='info-extra'></slot>
 </div>
 <slot name='icono'>

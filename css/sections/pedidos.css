@@ -1,0 +1,47 @@
+.pedido-contenedor {
+  max-width: 35rem;
+}
+
+.pedido-contenedor info-detalles {
+  border: 1px solid var(--clr-neutral-80);
+  border-radius: var(--br-borde);
+}
+
+#agregar-pedido > boton-rellenado {
+  margin: var(--espaciado-jumbo) 0;
+}
+
+#agregar-pedido wc-colapsable {
+  border: 1px solid var(--clr-neutral-80);
+}
+
+#agregar-pedido wc-colapsable + wc-colapsable {
+  margin-top: var(--espaciado-chico);
+}
+
+#total {
+  display: flex;
+  align-items: center;
+  gap: var(--espaciado-chico);
+}
+
+#total > * {
+  flex: 1;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#aplicaciones {
+  display: flex;
+  gap: var(--espaciado-chico);
+}
+
+#aplicaciones > * {
+  cursor: pointer;
+}
+
+#tarjeta-campos > * {
+  flex: 1;
+}

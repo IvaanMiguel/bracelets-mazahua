@@ -1,13 +1,15 @@
 <?php
+
+use \classes\Enrutador;
+
 session_start();
 
-if (isset($_SESSION['idUsuario']) && $_SERVER['REQUEST_URI'] !== URL_PRINCIPAL) {
-  header('Location: ' . URL_PRINCIPAL);
+if (isset($_SESSION['idUsuario']) && !Enrutador::requiereSesion($_SERVER['REQUEST_URI'])) {
+  header('Location: ' . URL_INICIO);
   exit();
 }
 
-if (!isset($_SESSION['idUsuario']) &&
-    $_SERVER['REQUEST_URI'] !== URL_INICIAR_SESION && $_SERVER['REQUEST_URI'] !== URL_REGISTRARSE) {
+if (!isset($_SESSION['idUsuario']) && Enrutador::requiereSesion($_SERVER['REQUEST_URI'])) {
   header('Location: ' . URL_INICIAR_SESION);
   exit();
 }

@@ -1,9 +1,5 @@
 import { utils } from './utils.js';
 
-document.querySelector('[data-evento="registrarusuario"]').addEventListener('click', (e) => {
-  e.preventDefault();
-});
-
 document.addEventListener('registrarusuario', () => {
   fetch('php/includes/registrar_usuario.inc.php', {
     method: 'POST',

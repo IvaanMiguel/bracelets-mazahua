@@ -1,115 +1,80 @@
-<?php
-use \controllers\Principal;
-
-require_once 'php/includes/comprobar_sesion.inc.php';
-?>
+<?php require_once COMPROBAR_SESION ?>
 
 <!DOCTYPE html>
 <html lang='es'>
-
 <head>
-  <?php require_once META_LINKS ?>
+  <?php require_once HEAD_TAGS ?>
 
   <link rel='stylesheet' href='css/principal.css'>
+  <link rel='stylesheet' href='css/sections/inicio.css'>
 
-  <script type='module' src='components/md-icono/md-icono.js'></script>
-  <script type='module' src='components/md-boton/md-boton.js'></script>
-  <script type='module' src='components/campo-texto/campo-texto.js'></script>
-  <script type='module' src='components/campo-clave/campo-clave.js'></script>
-  <script type='module' src='components/menu-lateral/menu-lateral.js'></script>
-  <script type='module' src='components/ventana-emergente/ventana-emergente.js'></script>
-  <script type='module' src='components/tab-secciones/tab-secciones.js'></script>
-  <script type='module' src='components/wc-colapsable/wc-colapsable.js'></script>
-  <script type='module' src='components/item-removible/item-removible.js'></script>
-  <script type='module' src='components/wc-divisor/wc-divisor.js'></script>
-  <script type='module' src='components/item-divisor/item-divisor.js'></script>
-  <script type='module' src='components/item-detalles/item-detalles.js'></script>
-  <script type='module' src='components/lista-controlador/lista-controlador.js'></script>
-  <script type='module' src='components/lista-encabezada/lista-encabezada.js'></script>
+  <script type='module' src='components/wc-boton.js'></script>
+  <script type='module' src='components/wc-divisor.js'></script>
+  <script type='module' src='components/boton-delineado.js'></script>
+  <script type='module' src='components/boton-elevado.js'></script>
+  <script type='module' src='components/boton-icono.js'></script>
+  <script type='module' src='components/boton-texto.js'></script>
+  <script type='module' src='components/item-error.js'></script>
+  <script type='module' src='components/ventana-emergente.js'></script>
+  <!-- <script type='module' src='components/ventana-emergente/ventana-emergente.js'></script> -->
 </head>
-
 <body>
   <main class='contenedor'>
-    <menu-lateral class='menu-lateral bg-primario' data-clase-reducido='menu-lateral--reducido'>
-      <button class='boton boton--icono bg-primario txt-blanco boton-primario-rellenado' is='md-boton' data-evento='alternarmenu'>
-        <md-icono class='icono-chico' data-icono='menu' data-opsz='20'></md-icono>
-      </button>
-      <div class='menu-lateral__secciones'>
+    <?php require_once MENU ?>
 
-        <?php foreach (Principal::$menuBotones as $boton): ?>
-          <button class='boton boton--icono-texto bg-primario txt-blanco boton-primario-rellenado'
-              data-clase-reducido='boton--icono'
-              is='md-boton'
-              data-evento='cargarseccion'
-              name=<?= $boton['nombreBoton']; ?>>
-            <md-icono class='icono-chico' data-icono=<?= $boton['icono']; ?> data-opsz='20'></md-icono>
-            <span class='etiqueta etiqueta-grande' data-clase-reducido='etiqueta--oculto' data-rol='etiqueta'>
-              <?= $boton['etiqueta']; ?>
-            </span>
-          </button>
-        <?php endforeach; ?>
-
-      </div>
-      <button class='boton boton--icono-texto bg-primario txt-blanco boton-primario-rellenado'
-          data-clase-reducido='boton--icono'
-          is='md-boton'
-          data-evento='confirmarcierresesion'>
-        <md-icono class='icono-chico' data-icono='logout' data-opsz='20'></md-icono>
-        <span class='etiqueta etiqueta-grande' data-clase-reducido='etiqueta--oculto' data-rol='etiqueta'>
-          Cerrar sesión
-        </span>
-      </button>
-    </menu-lateral>
     <div class='contenido'>
-      <div class='cabecera'>
-        <h1 class='cabecera__titulo titulo-grande'>Bracelets Mazahua</h1>
-        <span class='cabecera__nombre titulo-mediano'>
-          <?= isset($_SESSION['nombreUsuario']) ? $_SESSION['nombreUsuario'] : ''; ?>
-        </span>
-      </div>
+      <?php require_once CABECERA ?>
+
       <div class='seccion' data-rol='secciones'>
-        <?php include_once INICIO; ?>
+        <?php
+          require_once AUTOLOADER;
+
+          use \controllers\Pedido;
+
+          $pedido = new Pedido();
+          $resultado = $pedido->obtenerPedidosPendientes();
+          ?>
+
+          <div class='pedidos'>
+            <h1 class='titulo-grande txt-fondo-alternativo'>Pedidos pendientes</h1>
+            <div class='pedidos-pendientes'>
+              <?php switch ($resultado['tipo']):
+                case 1:
+                  foreach ($resultado['contenido'] as $pedidoPendiente): ?>
+                    <div class='pedido-info' title='Clic para más información'>
+                      <span class='cuerpo-mediano'>
+                        <?= $pedidoPendiente['nombreCliente'] ?>
+                      </span>
+                      <span class='cuerpo-mediano'>
+                        <?= $pedidoPendiente['tipoEntrega']; ?>
+                      </span>
+                      <span class='cuerpo-mediano'>
+                        <?= $pedidoPendiente['tipoPago']; ?>
+                      </span>
+                      <span class='cuerpo-mediano'>
+                        <?= $pedidoPendiente['estadoPedido'] ?>
+                      </span>
+                    </div>
+                  <?php endforeach;
+                  break;
+
+                case 2: ?>
+                  <span class='titulo-mediano sin-pedidos'>
+                    <?= $resultado['contenido'] ?>
+                  </span>
+                  <?php break;
+
+                default: ?>
+                  <span class='titulo-mediano sin-pedidos'>
+                    Ha habido un problema para recuperar los pedidos pendientes.
+                  </span>
+              <?php endswitch; ?>
+            </div>
+          </div>
       </div>
     </div>
   </main>
 
-  <ventana-emergente data-id='cerrar-sesion'>
-    <div class='contenido'>
-      <span class='titulo-grande'>Cerrar sesión</span>
-      <span class='cuerpo-mediano'>¿Deseas salir y cerrar la sesión actual?</span>
-      <div class='botones-contenedor botones-contenedor--flex-end'>
-        <button
-          class='boton bg-primario txt-blanco boton-primario-rellenado'
-          is='md-boton'
-          data-evento='cerrarsesion'>Sí
-        </button>
-        <button
-          class='boton boton-delineado bg-transparente txt-primario boton-primario-delineado'
-          is='md-boton'
-          data-evento='cerrarventana'>No
-        </button>
-      </div>
-    </div>
-  </ventana-emergente>
-
-  <ventana-emergente data-id='remover-ubicacion'>
-    <div class='contenido'>
-      <span class='titulo-grande'>Remover ubicación</span>
-      <span class='cuerpo-mediano'>La información de dicha ubicación ya no se guardará junto con el cliente si es removida, ¿deseas continuar?</span>
-      <div class='botones-contenedor botones-contenedor--flex-end'>
-        <button
-          class='boton bg-primario txt-blanco boton-primario-rellenado'
-          is='md-boton'
-          data-evento='removerubicacion'>Sí
-        </button>
-        <button
-          class='boton boton-delineado bg-transparente txt-primario boton-primario-delineado'
-          is='md-boton'
-          data-evento='cerrarventana'>No
-        </button>
-      </div>
-    </div>
-  </ventana-emergente>
+  <?php require_once PIE_PAGINA ?>
 </body>
-
 </html>

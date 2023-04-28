@@ -1,5 +1,6 @@
-wc-colapsable {
+.formulario-contenedor {
   border: 1px solid var(--clr-neutral-80);
+  border-radius: var(--br-borde);
 }
 
 form {
@@ -10,15 +11,10 @@ form {
   margin-bottom: var(--espaciado-jumbo);
 }
 
-.formulario-contenedor {
-  border: 1px solid var(--clr-borde);
-  border-radius: var(--br-borde);
-}
-
 .campos {
   max-width: 35rem;
 }
 
-.campos-horizontal > * {
+#producto-campos > * {
   flex: 1;
 }

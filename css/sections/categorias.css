@@ -1,0 +1,4 @@
+campo-texto {
+  max-width: 35rem;
+  margin-bottom: var(--espaciado-mediano);
+}

@@ -19,39 +19,30 @@
       <form class='formulario'>
         <h2 class='titulo-grande'>Crear cuenta</h2>
         <div class='campos'>
-          <div class='campo'>
-            <campo-texto>
-              <span slot='etiqueta'>Nombre de usuario</span>
-              <wc-emergente slot='etiqueta'
-                  data-mensaje='Debe tener mínimo 4 caracteres y máximo 15 caracteres.&#xa;Solo puede contener letras y números.'>
-                <md-icono data-icono='help' data-opsz='20' data-escala='m'></md-icono>
-              </wc-emergente>
-              <input slot='campo' type='text' name='nombreUsuario'>
-            </campo-texto>
-          </div>
-          <div class='campo'>
-            <campo-texto>
-              <span slot='etiqueta'>Dirección de email</span>
-              <input slot='campo' type='text' name='email'>
-            </campo-texto>
-          </div>
-          <div class='campo'>
-            <campo-clave>
-              <span slot='etiqueta'>Contraseña</span>
-              <wc-emergente slot='etiqueta'
-                  data-mensaje='Debe tener mínimo 8 caracteres y máximo 20 caracteres.&#xa;Debe contener al menos una letra mayúscula y un número.'>
-                <md-icono data-icono='help' data-opsz='20' data-escala='m'></md-icono>
-              </wc-emergente>
-              <input slot='campo' type='password' name='clave'>
-              <md-icono slot='icono-visibilidad' data-icono='visibility' data-opsz='22' data-escala='l' data-cursor></md-icono>
-            </campo-clave>
-          </div>
-          <div class='campo'>
-            <campo-clave>
-              <span slot='etiqueta'>Vuelve a escribir la contraseña</span>
-              <input slot='campo' type='password' name='claveVerificacion'>
-            </campo-clave>
-          </div>
+          <campo-texto>
+            <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>Nombre de usuario</wc-texto>
+            <wc-emergente slot='etiqueta'
+                data-mensaje='Debe tener mínimo 4 caracteres y máximo 15 caracteres.&#xa;Solo puede contener letras y números.'>
+              <md-icono data-icono='help' data-opsz='20' data-escala='m'></md-icono>
+            </wc-emergente>
+            <input type='text' name='nombreUsuario'>
+          </campo-texto>
+          <campo-texto>
+            <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>Dirección de email</wc-texto>
+            <input type='text' name='email'>
+          </campo-texto>
+          <campo-clave>
+            <span slot='etiqueta'>Contraseña</span>
+            <wc-emergente slot='etiqueta'
+                data-mensaje='Debe tener mínimo 8 caracteres y máximo 20 caracteres.&#xa;Debe contener al menos una letra mayúscula y un número.'>
+              <md-icono data-icono='help' data-opsz='20' data-escala='m'></md-icono>
+            </wc-emergente>
+            <input slot='campo' type='password' name='clave'>
+          </campo-clave>
+          <campo-clave data-no-icono>
+            <span slot='etiqueta'>Vuelve a escribir la contraseña</span>
+            <input slot='campo' type='password' name='claveVerificacion'>
+          </campo-clave>
         </div>
         <boton-rellenado
             data-color-fondo='var(--clr-primario-40)'

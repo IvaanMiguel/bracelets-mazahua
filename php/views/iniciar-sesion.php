@@ -22,17 +22,15 @@
         <h2 class='titulo-grande'>Iniciar sesión</h2>
         <div class='campos'>
           <campo-texto>
-            <span slot='etiqueta'>Nombre de usuario o dirección de email</span>
+            <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>Nombre de usuario o dirección de email</wc-texto>
             <input
-                slot='campo'
                 type='text'
                 name='idUsuario'
                 value=<?= ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['nombreUsuario'])) ? $_GET['nombreUsuario'] : '' ?>>
           </campo-texto>
           <campo-clave>
-            <span slot='etiqueta'>Contraseña</span>
+            <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>Contraseña</wc-texto>
             <input slot='campo' type='password' name='clave'>
-            <md-icono slot='icono-visibilidad' data-icono='visibility' data-opsz='22' data-escala='l' data-cursor></md-icono>
           </campo-clave>
         </div>
         <boton-rellenado

@@ -8,6 +8,14 @@ hojaCSS.replaceSync(/*css*/`
     text-align: left;
   }
 
+  :host([data-no-icono]) md-icono {
+    display: none;
+  }
+
+  :host([data-no-icono]) slot:not([name='etiqueta'], [name='error'])::slotted(*) {
+    padding-right: var(--espaciado-jumbo);
+  }
+
   :host([data-focus]) .campo {
     outline: 2px solid var(--clr-primario-40);
     outline-offset: -2px;
@@ -19,17 +27,9 @@ hojaCSS.replaceSync(/*css*/`
     gap: var(--espaciado-chico);
   }
 
-  ::slotted([slot='etiqueta']) {
-    font-size: var(--fs-etiqueta-grande);
-    line-height: var(--lh-etiqueta-grande);
-    letter-spacing: var(--ls-etiqueta-grande);
-    font-weight: var(--fw-medio);
-  }
-
   .campo {
     display: flex;
     min-height: 2.5rem;
-    padding-right: var(--espaciado-jumbo);
     box-sizing: border-box;
     width: 100%;
     flex-grow: 1;
@@ -56,8 +56,8 @@ hojaCSS.replaceSync(/*css*/`
     outline: none;
   }
 
-  ::slotted([slot='icono-visibilidad']) {
-    margin: auto 0 auto var(--espaciado-mediano);
+  md-icono {
+    margin: auto var(--espaciado-jumbo) auto var(--espaciado-mediano);
   }
 `);
 
@@ -68,8 +68,9 @@ template.innerHTML = /*html*/`
   </div>
   <div class='campo'>
     <slot name='campo'></slot>
-    <slot name='icono-visibilidad'></slot>
+    <md-icono data-icono='visibility' data-opsz='22' data-escala='l' data-cursor></md-icono>
   </div>
+  <slot name='error'></slot>
 `;
 
 class CampoClave extends HTMLElement {
@@ -89,7 +90,7 @@ class CampoClave extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
 
     this._campo = this.querySelector('[slot="campo"]');
-    this._iconoVisibilidad = this.querySelector('[slot="icono-visibilidad"]');
+    this._iconoVisibilidad = this.shadowRoot.querySelector('md-icono');
   }
 
   _mostrarCampo () { this._actualizarCampo(true); }

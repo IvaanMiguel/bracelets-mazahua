@@ -14,24 +14,18 @@ hojaCSS.replaceSync(/*css*/`
     gap: var(--espaciado-chico);
   }
 
-  ::slotted([slot='etiqueta']) {
-    font-size: var(--fs-etiqueta-grande);
-    line-height: var(--lh-etiqueta-grande);
-    letter-spacing: var(--ls-etiqueta-grande);
-    font-weight: var(--fw-medio);
-  }
-
-  ::slotted([slot='campo']) {
+  slot:not([name='etiqueta'], [name='error'])::slotted(*) {
+    background-color: transparent;
+    display: flex;
     min-height: 2.5rem;
     padding: 0 var(--espaciado-jumbo);
     box-sizing: border-box;
     width: 100%;
+    flex-grow: 1;
+    overflow: hidden;
 
     border: 1px solid var(--clr-borde);
     border-radius: var(--br-borde);
-
-    background-color: var(--clr-fondo-99);
-    color: var(--clr-fondo-10);
 
     font-size: var(--fs-cuerpo-mediano);
     line-height: var(--lh-cuerpo-mediano);
@@ -39,7 +33,7 @@ hojaCSS.replaceSync(/*css*/`
     font-weight: var(--fw-normal);
   }
 
-  ::slotted([slot='campo']:focus-visible) {
+  slot:not([name='etiqueta'], [name='error'])::slotted(*:focus-visible) {
     outline: 2px solid var(--clr-primario-40);
     outline-offset: -2px;
   }
@@ -50,7 +44,8 @@ template.innerHTML = /*html*/`
   <div>
     <slot name='etiqueta'></slot>
   </div>
-  <slot name='campo'></slot>
+  <slot></slot>
+  <slot name='error'></slot>
 `;
 
 export class CampoTexto extends HTMLElement {
@@ -59,6 +54,8 @@ export class CampoTexto extends HTMLElement {
 
     this.attachShadow({ mode: 'open' }).adoptedStyleSheets = [hojaCSS];
     this.shadowRoot.appendChild(template.content.cloneNode(true));
+
+    this._input = this.shadowRoot.querySelector('input');
   }
 }
 

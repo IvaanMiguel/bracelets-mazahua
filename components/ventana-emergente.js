@@ -51,6 +51,8 @@ hojaCSS.replaceSync(/*css*/`
     background-color: var(--clr-primario-40);
     color: #ffffff;
     padding: var(--espaciado-grande) var(--espaciado-jumbo);
+    min-height: 4rem;
+    box-sizing: border-box;
   }
 
   .pie {

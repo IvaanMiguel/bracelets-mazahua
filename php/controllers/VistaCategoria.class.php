@@ -10,6 +10,6 @@ class VistaCategoria extends \models\Categoria
   {
     $categorias = $this->obtenerCategorias();
 
-    return (new Respuesta(Respuesta::ARRAY, $categorias))->Json();
+    return (new Respuesta(Respuesta::STATUS_ERROR, Respuesta::ARRAY, $categorias))->Json();
   }
 }

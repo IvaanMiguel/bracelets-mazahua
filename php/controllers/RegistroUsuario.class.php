@@ -40,14 +40,14 @@ class RegistroUsuario extends \models\RegistroUsuario
     $this->validarClave();
 
     if (count($this->errores) > 0) {
-      $respuesta = new Respuesta(Respuesta::ARRAY, $this->errores);
+      $respuesta = new Respuesta(Respuesta::STATUS_ERROR, Respuesta::ARRAY, $this->errores);
       exit($respuesta->Json());
     }
 
     $this->crearUsuario($this->nombreUsuario, $this->email, $this->clave);
     $nombreUsuarioUrl = "nombreUsuario={$this->nombreUsuario}";
 
-    echo (new Respuesta(Respuesta::URL, URL_INICIAR_SESION . "?{$nombreUsuarioUrl}"))->Json();
+    echo (new Respuesta(Respuesta::STATUS_EXITO, Respuesta::URL, URL_INICIAR_SESION . "?{$nombreUsuarioUrl}"))->Json();
   }
 
   private function camposVacios(): bool

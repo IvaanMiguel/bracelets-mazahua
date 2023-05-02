@@ -25,13 +25,13 @@ class IniciarSesion extends \models\IniciarSesion
     }
 
     if (count($this->errores) > 0) {
-      $respuesta = new Respuesta(Respuesta::ARRAY, $this->errores);
+      $respuesta = new Respuesta(Respuesta::STATUS_ERROR, Respuesta::ARRAY, $this->errores);
       exit($respuesta->Json());
     }
 
     $this->obtenerUsuario($this->idUsuario, $this->clave);
 
-    echo (new Respuesta(Respuesta::URL, URL_INICIO))->Json();
+    echo (new Respuesta(Respuesta::STATUS_EXITO, Respuesta::URL, URL_INICIO))->Json();
   }
 
   private function camposVacios(): bool

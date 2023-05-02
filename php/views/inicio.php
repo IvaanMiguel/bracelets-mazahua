@@ -28,6 +28,7 @@
         <?php
           require_once AUTOLOADER;
 
+          use classes\Respuesta;
           use \controllers\Pedido;
 
           $pedido = new Pedido();
@@ -37,7 +38,7 @@
             <h1 class='titulo-grande txt-fondo-alternativo'>Pedidos pendientes</h1>
             <div class='pedidos-pendientes'>
               <?php switch ($resultado['tipo']):
-                case 1:
+                case Respuesta::ARRAY:
                   foreach ($resultado['contenido'] as $pedidoPendiente): ?>
                     <div class='pedido-info' title='Clic para más información'>
                       <span class='cuerpo-mediano'>
@@ -56,7 +57,7 @@
                   <?php endforeach;
                   break;
 
-                case 2: ?>
+                case Respuesta::MENSAJE: ?>
                   <span class='titulo-mediano sin-pedidos'>
                     <?= $resultado['contenido'] ?>
                   </span>

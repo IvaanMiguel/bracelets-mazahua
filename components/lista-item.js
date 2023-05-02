@@ -8,17 +8,28 @@ hojaCSS.replaceSync(/*css*/`
     min-height: 3.5rem;
     padding: 0 1rem;
     cursor: pointer;
+    user-select: none;
 
     transition: background-color .2s ease 0s;
   }
 
+  
   :host(:hover) {
     background-color: var(--clr-fondo-hover);
   }
+  
+  :host([data-no-cursor]) {
+    cursor: unset;
+  }
 
-  div {
+  .inicio {
     display: flex;
     flex-direction: column;
+  }
+
+  .final {
+    display: flex;
+    gap: var(--espaciado-mediano);
   }
 
   ::slotted([slot='info-extra']) {
@@ -31,13 +42,15 @@ hojaCSS.replaceSync(/*css*/`
 
 const template = document.createElement('template');
 template.innerHTML = /*html*/`
-<div>
+<div class='inicio'>
   <slot></slot>
   <slot name='info-extra'></slot>
 </div>
-<slot name='icono'>
-  <md-icono data-icono='chevron_right' data-opsz='24'></md-icono>
-</slot>
+<div class='final'>
+  <slot name='final'>
+    <md-icono data-icono='chevron_right' data-opsz='24'></md-icono>
+  </slot>
+</div>
 `;
 
 class ListaItem extends HTMLElement {

@@ -9,6 +9,9 @@ class Respuesta
   public const URL = 0;
   public const ARRAY = 1;
   public const MENSAJE = 2;
+  
+  public const STATUS_ERROR = 0;
+  public const STATUS_EXITO = 1;
 
   public const BD_ERROR = [
     'titulo' => 'Error',
@@ -80,12 +83,19 @@ class Respuesta
     'mensaje' => 'La contraseña debe tener al menos un número.',
     'ambito' => 'clave',
   ];
+  public const CATEGORIA_INVALIDA = [
+    'titulo' => 'Nombre de categoría inválida',
+    'mensaje' => 'El nombre de la categoría solo puede contener letras.',
+    'ambito' => 'general',
+  ];
 
+  private int $status;
   private int $tipo;
   private array|string $contenido;
 
-  public function __construct(int $tipo, array|string $contenido)
+  public function __construct(int|null $status = null, int $tipo, array|string $contenido)
   {
+    $this->status = $status;
     $this->tipo = $tipo;
     $this->contenido = $contenido;
   }

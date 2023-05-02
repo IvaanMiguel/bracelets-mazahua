@@ -11,7 +11,7 @@ template.innerHTML = /*html*/`
   <wc-divisor></wc-divisor>
 `;
 
-class ItemDivisor extends HTMLElement {
+export default class ItemDivisor extends HTMLElement {
   static observedAttributes = ['data-no-divisor'];
 
   constructor () {

@@ -9,7 +9,7 @@ export default (function () {
         location.href = datos.contenido;
         break;
 
-      case 1: // Array de respuestas por parte del servidor.
+      case 1: // Array de errores por parte del servidor.
         datos.contenido.forEach((item) => {
           const itemError = new ItemError();
           itemError.setAttribute('slot', 'error');
@@ -32,7 +32,17 @@ export default (function () {
     }
   };
 
+  const ordenarLista = (listaItems, callback) => {
+    Array.prototype.slice.call(listaItems).sort((primerItem, segundoItem) => {
+      const primerItemTexto = primerItem.innerText;
+      const segundoItemTexto = segundoItem.innerText;
+
+      return primerItemTexto.toLowerCase().localeCompare(segundoItemTexto.toLowerCase());
+    }).forEach((item) => callback(item));
+  };
+
   return {
-    obtenerRespuesta
+    obtenerRespuesta,
+    ordenarLista
   };
 })();

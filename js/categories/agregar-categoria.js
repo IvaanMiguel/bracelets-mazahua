@@ -9,13 +9,11 @@ import ItemDivisor from '../../components/item-divisor.js';
     })
       .then((respuesta) => respuesta.json())
       .then((datos) => {
-        if (datos.status !== 1) {
-          utils.obtenerRespuesta(datos, (itemError) => {
-            document.querySelector('campo-texto').appendChild(itemError);
-          });
+        utils.obtenerRespuesta(datos, (itemError) => {
+          document.querySelector('campo-texto').appendChild(itemError);
+        });
 
-          return;
-        }
+        if (datos.status !== 1) return;
 
         const categoria = new ItemDivisor();
         categoria.innerHTML = /*html*/`
@@ -40,14 +38,14 @@ import ItemDivisor from '../../components/item-divisor.js';
         document.querySelector('lista-controlador').appendChild(categoria);
 
         /*
-        * El color del texto del botón se debe agregar justo después de que fue conectado al documento
-        * para que el método getComputedStyles pueda recuperar el valor hexadecimal correctamente.
-        */
+         * El color del texto del botón se debe agregar justo después de que fue conectado al documento
+         * para que el método getComputedStyles pueda recuperar el valor hexadecimal correctamente.
+         */
         const listaItem = categoria.querySelector('lista-item');
         listaItem.querySelector('.editar-categoria').dataColorTexto = 'var(--clr-secundario-40)';
         listaItem.querySelector('.eliminar-categoria').dataColorTexto = 'var(--clr-error-40)';
 
-        const categorias = document.querySelector('lista-controlador').querySelectorAll('item-divisor');
+        const categorias = document.querySelectorAll('lista-controlador item-divisor');
 
         // Actualización del contador de categorías en la parte superior de la lista.
         document.getElementById('categorias-titulo').innerText = categorias.length === 1

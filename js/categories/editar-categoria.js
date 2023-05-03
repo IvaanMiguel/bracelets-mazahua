@@ -28,6 +28,10 @@ import utils from '../utils.js';
   ventanaPrincipal.addEventListener('verificarcierre', () => {
     const nuevoNombreCategoria = ventanaPrincipal.querySelector('[name="nuevoNombreCategoria"]').value;
 
+    /*
+     * Si no hay nada escrito en el campo, simplemente cierra la ventana, caso
+     * contrario pide confirmación.
+     */
     !nuevoNombreCategoria ? ventanaPrincipal.cerrarVentana() : ventanaConfirmacion.mostrarVentana();
   });
 
@@ -44,13 +48,11 @@ import utils from '../utils.js';
     })
       .then((respuesta) => respuesta.json())
       .then((datos) => {
-        if (datos.status !== 1) {
-          utils.obtenerRespuesta(datos, (itemError) => {
-            ventanaPrincipal.querySelector('campo-texto').appendChild(itemError);
-          });
+        utils.obtenerRespuesta(datos, (itemError) => {
+          ventanaPrincipal.querySelector('campo-texto').appendChild(itemError);
+        });
 
-          return;
-        }
+        if (datos.status !== 1) return;
 
         ventanaPrincipal.listaItem.querySelector('wc-texto').innerText = nuevoNombreCategoria;
         const categorias = document.querySelector('lista-controlador').querySelectorAll('item-divisor');

@@ -1,10 +1,14 @@
+import utils from '../utils.js';
+
 (() => {
   const ventanaEliminar = document.getElementById('eliminar-categoria');
 
   document.addEventListener('eliminarcategoria', (e) => {
     const listaItem = e.target.parentElement;
 
-    ventanaEliminar.querySelectorAll('.nombre-categoria').forEach((elemento) => (elemento.innerText = listaItem.innerText));
+    ventanaEliminar.querySelectorAll('.nombre-categoria').forEach((elemento) => {
+      elemento.innerText = listaItem.innerText;
+    });
     ventanaEliminar.mostrarVentana();
     ventanaEliminar.idCategoria = listaItem.parentElement.querySelector('.id-categoria').value;
     ventanaEliminar.listaItem = listaItem;
@@ -22,13 +26,14 @@
     })
       .then((respuesta) => respuesta.json())
       .then((datos) => {
+        utils.obtenerRespuesta(datos);
+
         if (datos.status !== 1) return;
 
         ventanaEliminar.cerrarVentana();
         ventanaEliminar.listaItem.remove();
 
         const categorias = document.querySelectorAll('lista-controlador item-divisor lista-item');
-        console.log(categorias);
         document.getElementById('categorias-titulo').innerText = categorias.length === 1
           ? '1 categoría'
           : `${categorias.length} categorías`;

@@ -32,20 +32,19 @@ template.innerHTML = /*html*/`
   <contenedor-flex gap='var(--espaciado-mediano)'>
     <md-icono data-icono='error' data-escala='l' data-opsz='22'></md-icono>
     <contenedor-flex flex-direction='column' gap='var(--espaciado-chico)'>
-      <slot name='notificacion-titulo'><wc-texto data-tipo-fuente='titulo-m'>Categoría existente</wc-texto></slot>
-      <slot><wc-texto>Ya existe una categoría con ese nombre.</wc-texto></slot>
+      <slot></slot>
     </contenedor-flex>
   </contenedor-flex>
   <boton-icono data-icono='close' data-evento='cerrarnotificacion' data-color-texto='var(--_color-tipo)'></boton-icono>
 `;
 
-class NotificacionFlotante extends HTMLElement {
+export default class NotificacionFlotante extends HTMLElement {
   static observedAttributes = ['data-tipo'];
 
   constructor () {
     super();
 
-    this._notificacionDuracion = 3000;
+    this._notificacionDuracion = 5000; // ms.
 
     this._CSS = new CSSStyleSheet();
     this._CSS.replaceSync(hojaCSS);

@@ -4,7 +4,7 @@ const hojaCSS = /*css*/`
     flex-direction: column;
     gap: var(--espaciado-grande);
 
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
 
@@ -14,6 +14,8 @@ const hojaCSS = /*css*/`
     width: max-content;
     max-height: 100%;
     padding: var(--espaciado-jumbo);
+
+    z-index: 2000;
   }
 `;
 
@@ -22,7 +24,7 @@ template.innerHTML = /*html*/`
   <slot></slot>
 `;
 
-class GrupoNotificaciones extends HTMLElement {
+export default class GrupoNotificaciones extends HTMLElement {
   constructor () {
     super();
 

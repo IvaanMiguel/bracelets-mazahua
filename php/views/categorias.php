@@ -98,9 +98,6 @@
             </lista-controlador>
           </lista-encabezada>
         </contenedor-flex>
-        <grupo-notificaciones>
-          <notificacion-flotante data-tipo='exito'></notificacion-flotante>
-        </grupo-notificaciones>
       </div>
     </div>
   </main>
@@ -198,5 +195,6 @@
   <script type='module' src='js/categories/agregar-categoria.js'></script>
   <script type='module' src='js/categories/editar-categoria.js'></script>
   <script type='module' src='js/categories/eliminar-categoria.js'></script>
+  <script type='module' src='js/categories/ordenar-categorias.js'></script>
 </body>
 </html>

@@ -8,10 +8,19 @@ class Categoria extends Dbh
 {
   protected function obtenerCategorias(): array|false
   {
-    $stmt = $this->conectar()->prepare('SELECT * FROM categoriaproducto ORDER BY LOWER(nombreCategoria) ASC;');
+    $stmt = $this->conectar()->prepare('SELECT * FROM categoriaproducto;');
     $this->ejecutarSentencia($stmt);
 
     return $stmt->fetchAll();
+  }
+
+  protected function categoriaExistente(string $nombreCategoria): bool
+  {
+    $stmt = $this->conectar()->prepare('SELECT nombreCategoria FROM categoriaproducto WHERE nombreCategoria = ?;');
+    $this->ejecutarSentencia($stmt, array($nombreCategoria));
+    $tuplas = $stmt->fetchAll();
+
+    return count($tuplas) > 0;
   }
 
   protected function actualizarCategoria(int $idCategoria, string $nombreCategoria)

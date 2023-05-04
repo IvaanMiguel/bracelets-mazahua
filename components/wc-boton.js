@@ -131,19 +131,9 @@ export default class WCBoton extends HTMLElement {
   }
 
   _crearEvento () {
-    const nombreEvento = this.dataEvento;
-    let detallesEvento;
-
-    switch (nombreEvento) {
-      case 'confirmarremoverubicacion':
-        detallesEvento = this.parentElement;
-        break;
-    }
-
-    return new CustomEvent(nombreEvento, {
+    return new CustomEvent(this.dataEvento, {
       bubbles: true,
-      composed: true,
-      detail: detallesEvento
+      composed: true
     });
   }
 

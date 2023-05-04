@@ -9,4 +9,4 @@ session_start();
 session_unset();
 session_destroy();
 
-echo (new Respuesta(Respuesta::URL, URL_INICIAR_SESION))->Json();
+echo (new Respuesta(Respuesta::STATUS_EXITO, Respuesta::URL, URL_INICIAR_SESION))->Json();

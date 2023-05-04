@@ -30,7 +30,7 @@
     <div class='contenido'>
       <?php require_once CABECERA ?>
 
-      <div class='seccion' data-rol='secciones'>
+      <div class='seccion'>
         <contenedor-flex padding='var(--espaciado-chico) var(--espaciado-jumbo) 0'>
           <wc-tabs>
             <boton-texto
@@ -57,8 +57,6 @@
             </div>
           </wc-tabs>
         </contenedor-flex>
-        <!-- <div class='clientes'>
-        </div> -->
       </div>
     </div>
   </main>
@@ -87,6 +85,6 @@
 
   <?php require_once PIE_PAGINA ?>
 
-  <script src='js/clientes/confirmar-remover-ubicacion.js'></script>
+  <script src='js/customers/confirmar-remover-ubicacion.js'></script>
 </body>
 </html>

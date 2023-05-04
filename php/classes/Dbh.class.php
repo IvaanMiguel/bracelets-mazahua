@@ -25,7 +25,7 @@ class Dbh
 
       return $dbh;
     } catch (PDOException $error) {
-      $respuesta = new Respuesta(Respuesta::ARRAY, array(Respuesta::BD_ERROR));
+      $respuesta = new Respuesta(Respuesta::STATUS_ERROR, Respuesta::ARRAY, array(Respuesta::BD_ERROR));
       exit($respuesta->Json());
     }
   }
@@ -35,7 +35,7 @@ class Dbh
     try {
       $stmt->execute($valores);
     } catch (PDOException $error) {
-      $bd_error = $respuesta ?? new Respuesta(Respuesta::ARRAY, array(Respuesta::BD_ERROR));
+      $bd_error = $respuesta ?? new Respuesta(Respuesta::STATUS_ERROR, Respuesta::ARRAY, array(Respuesta::BD_ERROR));
       exit($bd_error->Json());
     }
   }

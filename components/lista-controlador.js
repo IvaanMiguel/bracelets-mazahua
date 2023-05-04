@@ -24,14 +24,14 @@ class ListaControlador extends HTMLElement {
       /* Si el último elemento dentro de la lista es un componente item-divisor y no tiene
       el atributo data-no-divisor, i.e., al eliminar el último elemento previo al actual,
       se le agrega. */
-      if (ultimoHijo.tagName === 'ITEM-DIVISOR' && !ultimoHijo.dataNoDivisor) {
+      if (ultimoHijo && ultimoHijo.tagName === 'ITEM-DIVISOR' && !ultimoHijo.dataNoDivisor) {
         ultimoHijo.dataNoDivisor = true;
       }
 
       /* Si el último elemento tiene el atributo data-no-divisor y su hermano anterior
           también lo tiene, i.e., al agregar un nuevo elemento, a dicho hermano se le remueve este
           atributo, mostrando así la línea divisora entre ámbos elementos. */
-      if (ultimoHijo.dataNoDivisor &&
+      if (ultimoHijo && ultimoHijo.dataNoDivisor &&
           (ultimoHijo.previousElementSibling && ultimoHijo.previousElementSibling.dataNoDivisor)) {
         ultimoHijo.previousElementSibling.dataNoDivisor = false;
       }

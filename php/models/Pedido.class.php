@@ -14,9 +14,9 @@ class Pedido extends Dbh
     $tuplas = $stmt->fetchAll();
 
     if (count($tuplas) <= 0) {
-      return (new Respuesta(Respuesta::MENSAJE, 'Sin pedidos pendientes'))->Json();
+      return (new Respuesta(Respuesta::STATUS_EXITO, Respuesta::MENSAJE, 'Sin pedidos pendientes'))->Json();
     }
 
-    return (new Respuesta(Respuesta::ARRAY, $tuplas))->Json();
+    return (new Respuesta(Respuesta::STATUS_EXITO, Respuesta::ARRAY, $tuplas))->Json();
   }
 }

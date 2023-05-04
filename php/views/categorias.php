@@ -1,5 +1,13 @@
 <?php require_once COMPROBAR_SESION ?>
 
+<?php
+  require_once AUTOLOADER;
+
+  $vistaCategoria = new \controllers\VistaCategoria();
+  
+  $resultado = json_decode($vistaCategoria->mostrarCategorias(), true);
+?>
+
 <!DOCTYPE html>
 <html lang='es'>
 <head>
@@ -22,6 +30,8 @@
   <script type='module' src='components/boton-icono.js'></script>
   <script type='module' src='components/ventana-emergente.js'></script>
   <script type='module' src='components/wc-tabs.js'></script>
+  <script type='module' src='components/notificacion-flotante.js'></script>
+  <script type='module' src='components/grupo-notificaciones.js'></script>
 </head>
 <body>
   <main class='contenedor'>
@@ -30,13 +40,12 @@
     <div class='contenido'>
       <?php require_once CABECERA ?>
 
-      <div class='seccion' data-rol='secciones'>
+      <div class='seccion'>
         <contenedor-flex flex-direction='column' gap='var(--espaciado-jumbo)' padding='var(--espaciado-jumbo) var(--espaciado-jumbo) 0'>
-
           <form>
             <campo-texto>
-              <span slot='etiqueta'>Nueva categoría</span>
-              <input slot='campo' type='text' name='nuevaCategoria'>
+              <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>Nueva categoría</wc-texto>
+              <input name='nuevaCategoria'>
             </campo-texto>
             <boton-rellenado
                 data-color-fondo='var(--clr-primario-40)'
@@ -44,45 +53,48 @@
                 type='button'
                 data-variante='texto-icono'
                 data-icono='save'
-                data-etiqueta='Guardar categoría'>
+                data-etiqueta='Guardar categoría'
+                data-evento='agregarcategoria'>
             </boton-rellenado>
           </form>
           <lista-encabezada>
-            <h1 class='titulo-grande' slot='titulo'>6 categorías</h1>
+            <wc-texto id='categorias-titulo' slot='titulo' data-tipo-fuente='titulo-l'>
+              <?php
+                $totalCategorias = count($resultado['contenido']);
+                echo $totalCategorias === 1
+                  ? '1 categoría'
+                  : $totalCategorias . ' categorías';
+              ?>
+            </wc-texto>
             <lista-controlador slot='lista'>
-              <item-divisor>
-                <lista-item>
-                  <span slot='info-principal'>Item 1</span>
-                  <span slot='info-extra'>Elemento 1</span>
-                </lista-item>
-              </item-divisor>
-              <item-divisor>
-                <lista-item>
-                  <span slot='info-principal'>Item 1</span>
-                  <span slot='info-extra'>Elemento 1</span>
-                </lista-item>
-              </item-divisor>
-              <item-divisor>
-                <lista-item>
-                  <span slot='info-principal'>Item 1</span>
-                  <span slot='info-extra'>Elemento 1</span>
-                </lista-item>
-              </item-divisor>
-              <item-divisor>
-                <lista-item>
-                  <span slot='info-principal'>Item 1</span>
-                </lista-item>
-              </item-divisor>
-              <item-divisor>
-                <lista-item>
-                  <span slot='info-principal'>Item 1</span>
-                </lista-item>
-              </item-divisor>
-              <item-divisor data-no-divisor>
-                <lista-item>
-                  <span slot='info-principal'>Item 1</span>
-                </lista-item>
-              </item-divisor>
+
+              <?php
+                $i = 0;
+                foreach($resultado['contenido'] as $categoria): ?>
+                  <item-divisor <?= ++$i === $totalCategorias ? 'data-no-divisor' : '' ?>>
+                    <lista-item data-no-cursor>
+                      <wc-texto data-tipo-fuente='titulo-m'>
+                        <?= $categoria['nombreCategoria'] ?>
+                      </wc-texto>
+                      <boton-icono
+                          slot='final'
+                          class='editar-categoria'
+                          data-evento='editarcategoria'
+                          data-icono='edit'
+                          data-color-texto='var(--clr-secundario-40)'>
+                      </boton-icono>
+                      <boton-icono
+                          slot='final'
+                          class='eliminar-categoria'
+                          data-evento='eliminarcategoria'
+                          data-icono='delete_forever'
+                          data-color-texto='var(--clr-error-40)'>
+                      </boton-icono>
+                      <input class='id-categoria' type='hidden' value=<?= $categoria['idCategoriaProducto'] ?>>
+                    </lista-item>
+                  </item-divisor>
+              <?php endforeach; ?>
+
             </lista-controlador>
           </lista-encabezada>
         </contenedor-flex>
@@ -90,30 +102,99 @@
     </div>
   </main>
 
-  <ventana-emergente id='remover-ubicacion'>
-    <span slot='cabecera-inicio'>Remover ubicación</span>
-    <boton-icono slot='cabecera-final' data-icono='close' data-color-texto='#ffffff'></boton-icono>
-    <span>
-      La información de dicha ubicación ya no se guardará junto con el cliente si es removida, ¿deseas continuar?
-    </span>
+  <ventana-emergente id='editar-categoria' data-cierre-explicito>
+    <wc-texto slot='cabecera-inicio' data-tipo-fuente='titulo-l'>
+      Editando categoría: <span class='nombre-categoria'></span>
+    </wc-texto>
+    <boton-icono
+        slot='cabecera-final'
+        data-icono='close'
+        data-color-texto='#ffffff'
+        data-evento='verificarcierre'>
+    </boton-icono>
+    <campo-texto>
+      <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>
+        Nuevo nombre de categoría
+      </wc-texto>
+      <input name='nuevoNombreCategoria'>
+    </campo-texto>
+    <boton-rellenado
+        slot='pie-inicio'
+        data-evento='actualizarcategoria'
+        data-color-fondo='var(--clr-primario-40)'
+        data-color-texto='#ffffff'
+        data-etiqueta='Guardar cambios'
+        data-variante='texto-icono'
+        data-icono='save'>
+    </boton-rellenado>
+    <boton-delineado
+        slot='pie-inicio'
+        data-evento='verificarcierre'
+        data-color-texto='var(--clr-primario-40)'
+        data-color-fondo='#ffffff'
+        data-etiqueta='Descartar cambios'
+        data-variante='texto-icono'
+        data-icono='close'>
+    </boton-delineado>
+  </ventana-emergente>
+
+  <ventana-emergente id='confirmar-descarte'>
+    <wc-texto slot='cabecera-inicio' data-tipo-fuente='titulo-l'>
+      ¿Descartar cambios?
+    </wc-texto>
+    <wc-texto data-tipo-fuente='cuerpo-m'>
+      ¿Descartar los cambios realizados sin guardar?
+    </wc-texto>
     <boton-rellenado
         slot='pie-final'
-        data-evento='removerubicacion'
         data-color-fondo='var(--clr-primario-40)'
-        data-color-texto='#ffffff'>
-      <span slot='etiqueta'>Sí</span>
+        data-color-texto='#ffffff'
+        data-evento='cerrarventanas'
+        data-etiqueta='Sí'>
     </boton-rellenado>
     <boton-delineado
         slot='pie-final'
-        data-evento='cerrarventana'
         data-color-texto='var(--clr-primario-40)'
-        data-color-fondo="#ffffff">
-      <span slot='etiqueta'>No</span>
+        data-color-fondo='#ffffff'
+        data-evento='cancelarcierre'
+        data-etiqueta='No'>
+    </boton-delineado>
+  </ventana-emergente>
+
+  <ventana-emergente id='eliminar-categoria'>
+    <wc-texto slot='cabecera-inicio' data-tipo-fuente='titulo-l'>
+      ¿Eliminar categoría <span class='nombre-categoria'></span>?
+    </wc-texto>
+    <boton-icono
+        slot='cabecera-final'
+        data-icono='close'
+        data-color-texto='#ffffff'
+        data-evento='cancelar'>
+    </boton-icono>
+    <wc-texto data-tipo-fuente='cuerpo-m'>
+      La categoría <strong class='nombre-categoria'></strong> será eliminada de forma permanente, ¿deseas continuar?
+    </wc-texto>
+    <boton-rellenado
+        slot='pie-final'
+        data-color-fondo='var(--clr-primario-40)'
+        data-color-texto='#ffffff'
+        data-evento='confirmareliminarcategoria'
+        data-etiqueta='Sí'>
+    </boton-rellenado>
+    <boton-delineado
+        slot='pie-final'
+        data-color-texto='var(--clr-primario-40)'
+        data-color-fondo='#ffffff'
+        data-evento='cancelar'
+        data-etiqueta='No'>
     </boton-delineado>
   </ventana-emergente>
 
   <?php require_once PIE_PAGINA ?>
 
-  <script src='js/clientes/confirmar-remover-ubicacion.js'></script>
+  <script type='module' src='js/categories/agregar-categoria.js'></script>
+  <script type='module' src='js/categories/editar-categoria.js'></script>
+  <script type='module' src='js/categories/eliminar-categoria.js'></script>
+  <script type='module' src='js/categories/ordenar-categorias.js'></script>
 </body>
 </html>

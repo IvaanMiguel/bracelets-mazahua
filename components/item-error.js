@@ -11,10 +11,6 @@ hojaCSS.replaceSync(/*css*/`
   ::slotted([slot='error']) {
     display: flex;
 
-    font-size: var(--fs-cuerpo-chico);
-    line-height: var(--lh-cuerpo-chico);
-    letter-spacing: var(--ls-cuerpo-chico);
-
     text-align: start;
   }
 `);

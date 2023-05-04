@@ -1,4 +1,4 @@
-import { utils } from './utils.js';
+import utils from './utils.js';
 
 document.addEventListener('registrarusuario', () => {
   fetch('php/includes/registrar_usuario.inc.php', {
@@ -7,8 +7,8 @@ document.addEventListener('registrarusuario', () => {
   })
     .then((respuesta) => respuesta.json())
     .then((datos) => {
-      document.querySelectorAll('.notificacion-error').forEach((e) => e.remove());
-
-      utils.obtenerRespuesta(datos);
+      utils.obtenerRespuesta(datos, (itemError) => {
+        document.querySelector('.campos').after(itemError);
+      });
     });
 });

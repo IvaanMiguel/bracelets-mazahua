@@ -119,7 +119,7 @@
       <input name='nuevoNombreCategoria'>
     </campo-texto>
     <boton-rellenado
-        slot='pie-final'
+        slot='pie-inicio'
         data-evento='actualizarcategoria'
         data-color-fondo='var(--clr-primario-40)'
         data-color-texto='#ffffff'
@@ -128,7 +128,7 @@
         data-icono='save'>
     </boton-rellenado>
     <boton-delineado
-        slot='pie-final'
+        slot='pie-inicio'
         data-evento='verificarcierre'
         data-color-texto='var(--clr-primario-40)'
         data-color-fondo='#ffffff'

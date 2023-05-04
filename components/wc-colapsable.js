@@ -12,6 +12,20 @@ hojaCSS.replaceSync(/*css*/`
     height: 2.5rem;
   }
 
+  :host([data-colapsado]) .contenido {
+    grid-template-rows: 0fr;
+  }
+
+  :host md-icono,
+  :host ::slotted([slot='icono-cabecera']) {
+    transition: transform .2s ease 0s;
+  }
+
+  :host([data-colapsado]) md-icono,
+  :host([data-colapsado]) ::slotted([slot='icono-cabecera']) {
+    transform: rotate(180deg);
+  }
+
   .cabecera {
     display: flex;
     justify-content: space-between;
@@ -28,13 +42,14 @@ hojaCSS.replaceSync(/*css*/`
   }
 
   .contenido {
-    display: flex;
-    flex-direction: column;
-  
-    max-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr;
+
+    transition: grid-template-rows .2s ease 0s;
+  }
+
+  .contenido > * {
     overflow: hidden;
-  
-    transition: max-height .2s ease 0s;
   }
 `);
 
@@ -47,12 +62,14 @@ template.innerHTML = /*html*/`
     </slot>
   </div>
   <div class='contenido'>
-    <slot></slot>
+    <div>
+      <slot></slot>
+    </div>
   </div>
 `;
 
 class WCColapsable extends HTMLElement {
-  static observedAttributes = ['data-oculto', 'data-minicabecera'];
+  static observedAttributes = ['data-colapsado', 'data-minicabecera'];
 
   constructor () {
     super();
@@ -60,62 +77,27 @@ class WCColapsable extends HTMLElement {
     this.attachShadow({ mode: 'open' }).adoptedStyleSheets = [hojaCSS];
     this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-    this._listaElementos = this.shadowRoot.querySelector('.contenido');
-
-    this._childListObserver = new MutationObserver(() => {
-      this._listaElementos.style.maxHeight = `${this._listaElementos.scrollHeight}px`;
-    });
-
-    this._eventoClick = this._alternarVisibilidad.bind(this);
+    this._onClick = this._onClick.bind(this);
 
     this._cabecera = this.shadowRoot.querySelector('.cabecera');
-
-    this._icono = this.querySelector('[slot="icono-cabecera"]') ?? this.shadowRoot.querySelector('md-icono');
-    this._icono.style.transition = 'transform .3s ease 0s';
   }
 
-  _alternarVisibilidad () { this.dataOculto = !this.dataOculto; }
+  _onClick () { this.dataColapsado = !this.dataColapsado; }
 
-  _colapsar () {
-    this._listaElementos.style.maxHeight = 0;
-    this._icono.style.transform = 'rotate(180deg)';
-  }
+  get dataColapsado () { return this.hasAttribute('data-colapsado'); }
 
-  _expandir () {
-    // this.listaElementos.style.maxHeight = '100vh';
-    this._listaElementos.style.maxHeight = `${this._listaElementos.scrollHeight}px`;
-    this._icono.style.transform = 'rotate(0deg)';
-  }
-
-  get dataOculto () { return this.hasAttribute('data-oculto'); }
-
-  set dataOculto (bool) { this.toggleAttribute('data-oculto', Boolean(bool)); }
+  set dataColapsado (bool) { this.toggleAttribute('data-colapsado', Boolean(bool)); }
 
   get dataMinicabecera () { return this.hasAttribute('data-minicabecera'); }
 
   set dataMinicabecera (bool) { this.toggleAttribute('data-minicabecera', Boolean(bool)); }
 
   connectedCallback () {
-    this._childListObserver.observe(this, {
-      subtree: true,
-      childList: true
-    });
-
-    this._cabecera.addEventListener('click', this._eventoClick);
+    this._cabecera.addEventListener('click', this._onClick);
   }
 
   disconnectedCallback () {
-    this._childListObserver.disconnect();
-
-    this._cabecera.removeEventListener('click', this._eventoClick);
-  }
-
-  attributeChangedCallback (name, oldValue, newValue) {
-    switch (name) {
-      case 'data-oculto':
-        this.dataOculto ? this._colapsar() : this._expandir();
-        break;
-    }
+    this._cabecera.removeEventListener('click', this._onClick);
   }
 }
 

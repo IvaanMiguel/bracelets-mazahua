@@ -31,11 +31,14 @@ hojaCSS.replaceSync(/*css*/`
     display: flex;
     flex-direction: column;
 
-    background-color: #fff;
     width: clamp(18.75rem, 50%, 40rem);
     box-sizing: border-box;
-    border-radius: var(--br-borde);
     overflow: hidden;
+
+    background-color: #fff;
+    border-radius: var(--br-borde);
+    box-shadow: var(--bs-elevacion-3);
+
     z-index: 1000;
   }
 
@@ -57,7 +60,7 @@ hojaCSS.replaceSync(/*css*/`
 
   .pie {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     gap: var(--espaciado-grande);
   }
 `);
@@ -75,7 +78,12 @@ template.innerHTML = /*html*/`
     </div>
     <wc-divisor></wc-divisor>
     <div class='pie'>
-      <slot name='pie-final'></slot>
+      <contenedor-flex gap='var(--espaciado-grande)'>
+        <slot name='pie-inicio'></slot>
+      </contenedor-flex>
+      <contenedor-flex gap='var(--espaciado-grande)'>
+        <slot name='pie-final'></slot>
+      </contenedor-flex>
     </div>
   </div>
 `;

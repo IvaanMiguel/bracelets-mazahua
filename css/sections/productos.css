@@ -1,9 +1,9 @@
-.formulario-contenedor {
+.contenedor-borde {
   border: 1px solid var(--clr-neutral-80);
   border-radius: var(--br-borde);
 }
 
-form {
+contenedor-colapsable form {
   display: flex;
   flex-direction: column;
   gap: var(--espaciado-jumbo);
@@ -15,6 +15,10 @@ form {
   max-width: 35rem;
 }
 
-#producto-campos > * {
+.producto-campos > * {
   flex: 1;
+}
+
+info-detalles {
+  max-width: 35rem;
 }

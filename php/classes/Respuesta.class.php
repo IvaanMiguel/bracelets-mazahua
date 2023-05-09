@@ -7,13 +7,6 @@ use \controllers\Categoria;
 
 class Respuesta
 {
-  public const URL = 0;
-  public const ARRAY = 1;
-  public const MENSAJE = 2;
-  
-  public const STATUS_ERROR = 0;
-  public const STATUS_EXITO = 1;
-
   public const BD_ERROR = [
     'titulo' => 'Error',
     'mensaje' => 'Algo ha salido mal.',
@@ -84,47 +77,13 @@ class Respuesta
     'mensaje' => 'La contraseña debe tener al menos un número.',
     'ambito' => 'clave'
   ];
-  public const CATEGORIA_INVALIDA = [
-    'titulo' => 'Nombre de categoría inválida',
-    'mensaje' => 'El nombre de la categoría solo puede contener letras.',
-    'ambito' => 'general'
-  ];
 
-  public const CATEGORIA_REGISTRADA = [
-    'titulo' => 'Nueva categoría añadida',
-    'mensaje' => 'La categoría ha sido añadida con éxito.',
-    'ambito' => 'notificacion'
-  ];
-
-  public const CATEGORIA_MODIFICADA = [
-    'titulo' => 'Categoría modificada',
-    'mensaje' => 'La categoría ha sido modificada con éxito.',
-    'ambito' => 'notificacion'
-  ];
-
-  public const CATEGORIA_ELIMINADA = [
-    'titulo' => 'Categoría eliminada',
-    'mensaje' => 'La categoría ha sido eliminada con éxito.',
-    'ambito' => 'notificacion'
-  ];
-
-  public const CATEGORIA_EXISTENTE = [
-    'titulo' => 'Categoría ya existente',
-    'mensaje' => 'La categoría ingresada ya existe.',
-    'ambito' => 'notificacion'
-  ];
-
-  public const CATEGORIA_NOMBRE_CORTO = [
-    'titulo' => 'Nombre muy corto',
-    'mensaje' => 'El nombre de la categoría debe tener como mínimo ' . Categoria::NOMBRE_MIN_LONGITUD . ' caracteres.',
-    'ambito' => 'general'
-  ];
-
-  public const CATEGORIA_NOMBRE_LARGO = [
-    'titulo' => 'Nombre muy largo',
-    'mensaje' => 'El nombre de la categoría debe tener como máximo ' . Categoria::NOMBRE_MAX_LONGITUD . ' caracteres.',
-    'ambito' => 'general'
-  ];
+  public const URL = 0;
+  public const ARRAY = 1;
+  public const MENSAJE = 2;
+  
+  public const STATUS_ERROR = 0;
+  public const STATUS_EXITO = 1;
 
   private int $status;
   private int $tipo;

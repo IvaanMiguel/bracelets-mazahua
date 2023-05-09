@@ -3,8 +3,8 @@ import GrupoNotificaciones from '../components/grupo-notificaciones.js';
 import NotificacionFlotante from '../components/notificacion-flotante.js';
 
 export default (() => {
-  const obtenerRespuesta = (datos, generalCallback) => {
-    document.querySelectorAll('[slot="error"]').forEach((itemError) => itemError.remove());
+  const obtenerRespuesta = (datos, generalCallback, scope = window.document) => {
+    document.querySelectorAll('item-error').forEach((itemError) => itemError.remove());
 
     switch (datos.tipo) {
       case 0: // URL
@@ -18,7 +18,6 @@ export default (() => {
           let itemError;
           if (item.ambito !== 'notificacion') {
             itemError = new ItemError();
-            itemError.setAttribute('slot', 'error');
             itemError.innerHTML = /*html*/`
               <md-icono slot='icono' data-icono='error' data-opsz='20' data-escala='s'></md-icono>
               <wc-texto slot='error' data-tipo-fuente='cuerpo-s'>${item.mensaje}</wc-texto>
@@ -48,7 +47,7 @@ export default (() => {
               break;
 
             default:
-              document.querySelector(`[name='${item.ambito}']`).after(itemError);
+              scope.querySelector(`[name='${item.ambito}']`).parentElement.after(itemError);
               break;
           }
         });
@@ -62,7 +61,7 @@ export default (() => {
       const segundoItemTexto = segundoItem.innerText;
 
       return primerItemTexto.toLowerCase().localeCompare(segundoItemTexto.toLowerCase());
-    }).forEach((item) => callback(item));
+    }).forEach((item, i) => callback(item, i));
   };
 
   return {

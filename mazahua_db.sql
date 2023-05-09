@@ -42,12 +42,12 @@ CREATE TABLE IF NOT EXISTS categoriaProducto(
 
 CREATE TABLE IF NOT EXISTS producto(
     idProducto INT AUTO_INCREMENT PRIMARY KEY,
-    nombreProducto VARCHAR(50) NOT NULL UNIQUE,
+    nombreProducto VARCHAR(20) NOT NULL UNIQUE,
     idCategoriaProducto INT NOT NULL,
     precio DECIMAL(5, 2) NOT NULL,
     existencias INT NOT NULL,
     FOREIGN KEY(idCategoriaProducto) REFERENCES categoriaProducto(idCategoriaProducto)
-        ON DELETE RESTRICT
+        ON DELETE NO ACTION
         ON UPDATE CASCADE
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 
@@ -138,11 +138,3 @@ CREATE TABLE IF NOT EXISTS pedidoEntrega(
         ON DELETE CASCADE
         ON UPDATE CASCADE
 ); */
-
-CREATE OR REPLACE VIEW vwPedidosPendientes AS
-SELECT CONCAT_WS(" ", nombreCliente, primerApellido) nombreCliente, tipoEntrega, tipoPago, estadoPedido
-FROM pedido p
-INNER JOIN cliente c ON p.idCliente = c.idCliente
-INNER JOIN pedidoEntrega pe ON p.idPedido = pe.idPedido
-INNER JOIN entrega e ON pe.idEntrega = e.idEntrega
-WHERE estadoPedido NOT LIKE 'Entregado';

@@ -4,6 +4,7 @@
   height: 100vh;
   height: 100svh;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .contenido {
@@ -26,7 +27,7 @@
 .seccion {
   position: relative;
 
-  overflow: auto;
+  overflow-y: auto;
   flex: 1;
 }
 

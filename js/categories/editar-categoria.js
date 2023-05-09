@@ -49,7 +49,7 @@ import utils from '../utils.js';
       .then((respuesta) => respuesta.json())
       .then((datos) => {
         utils.obtenerRespuesta(datos, (itemError) => {
-          ventanaPrincipal.querySelector('campo-texto').appendChild(itemError);
+          ventanaPrincipal.querySelector('campo-texto').after(itemError);
         });
 
         if (datos.status !== 1) return;

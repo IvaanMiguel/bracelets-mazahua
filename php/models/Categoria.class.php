@@ -16,7 +16,7 @@ class Categoria extends Dbh
 
   protected function categoriaExistente(string $nombreCategoria): bool
   {
-    $stmt = $this->conectar()->prepare('SELECT nombreCategoria FROM categoriaproducto WHERE nombreCategoria = ?;');
+    $stmt = $this->conectar()->prepare('SELECT nombreCategoria FROM categoriaproducto WHERE LOWER(nombreCategoria) = LOWER(?);');
     $this->ejecutarSentencia($stmt, array($nombreCategoria));
     $tuplas = $stmt->fetchAll();
 
@@ -32,7 +32,7 @@ class Categoria extends Dbh
   protected function crearCategoria(string $nombreCategoria): string|false
   {
     $conexion = $this->conectar();
-    $stmt = $conexion->prepare('INSERT INTO categoriaproducto VALUES(0, ?);');
+    $stmt = $conexion->prepare('INSERT INTO categoriaproducto VALUES (0, ?);');
     $this->ejecutarSentencia($stmt, array($nombreCategoria));
 
     return $conexion->lastInsertId();

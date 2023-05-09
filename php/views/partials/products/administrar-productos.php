@@ -1,82 +1,49 @@
+<?php
+  require_once AUTOLOADER;
+
+  use controllers\VistaProducto;
+  use controllers\Producto;
+
+  $vistaProducto = Producto::vistaProductoConstructor();
+  $categoriasActivas = json_decode($vistaProducto->mostrarCategoriasActivas(), true)['contenido'];
+  $productos = json_decode($vistaProducto->mostrarProductos(), true)['contenido'];
+?>
+
 <lista-encabezada>
-  <h1 class='titulo-grande' slot='titulo'>14 productos</h1>
-  <span class='titulo-chico' slot='extra'>en 2 categorías</span>
-  <wc-colapsable slot='lista'>
-    <wc-texto slot='texto-cabecera' data-tipo-fuente='titulo-m'>Collares</wc-texto>
-    <md-icono slot='icono-cabecera' data-icono='expand_less' data-opsz='24'></md-icono>
-    <lista-controlador>
-      <item-divisor>
-        <lista-item>
-          <span slot='info-principal'>Item 1</span>
-          <span slot='info-extra'>Elemento 1</span>
-        </lista-item>
-      </item-divisor>
-      <item-divisor>
-        <lista-item>
-          <span slot='info-principal'>Item 1</span>
-          <span slot='info-extra'>Elemento 1</span>
-        </lista-item>
-      </item-divisor>
-      <item-divisor>
-        <lista-item>
-          <span slot='info-principal'>Item 1</span>
-          <span slot='info-extra'>Elemento 1</span>
-        </lista-item>
-      </item-divisor>
-      <item-divisor>
-        <lista-item>
-          <span slot='info-principal'>Item 1</span>
-        </lista-item>
-      </item-divisor>
-      <item-divisor>
-        <lista-item>
-          <span slot='info-principal'>Item 1</span>
-        </lista-item>
-      </item-divisor>
-      <item-divisor data-no-divisor>
-        <lista-item>
-          <span slot='info-principal'>Item 1</span>
-        </lista-item>
-      </item-divisor>
-    </lista-controlador>
-  </wc-colapsable>
-  <wc-colapsable slot='lista'>
-    <wc-texto slot='texto-cabecera' data-tipo-fuente='titulo-m'>Pulseras</wc-texto>
-    <md-icono slot='icono-cabecera' data-icono='expand_less' data-opsz='24'></md-icono>
-    <lista-controlador>
-      <item-divisor>
-        <lista-item>
-          <span slot='info-principal'>Item 1</span>
-          <span slot='info-extra'>Elemento 1</span>
-        </lista-item>
-      </item-divisor>
-      <item-divisor>
-        <lista-item>
-          <span slot='info-principal'>Item 1</span>
-          <span slot='info-extra'>Elemento 1</span>
-        </lista-item>
-      </item-divisor>
-      <item-divisor>
-        <lista-item>
-          <span slot='info-principal'>Item 1</span>
-          <span slot='info-extra'>Elemento 1</span>
-        </lista-item>
-      </item-divisor>
-      <item-divisor>
-        <lista-item>
-          <span slot='info-principal'>Item 1</span>
-        </lista-item>
-      </item-divisor>
-      <item-divisor>
-        <lista-item>
-          <span slot='info-principal'>Item 1</span>
-        </lista-item>
-      </item-divisor>
-      <item-divisor data-no-divisor>
-        <lista-item>
-          <span slot='info-principal'>Item 1</span>
-        </lista-item>
-      </item-divisor>
-    </lista-controlador>
-  </wc-colapsable>
+  <wc-texto id='productos-titulo' slot='titulo' data-tipo-fuente='titulo-l'>
+    <span id='total-productos'><?= count($productos) ?></span>
+    <?= 'producto' . (count($productos) === 1 ? '' : 's') ?>
+  </wc-texto>
+  <wc-texto id='productos-extra' slot='extra' data-tipo-fuente='titulo-s'>
+    en <span id='total-categorias'><?= count($categoriasActivas) ?></span>
+    <?= 'categoría' . (count($categoriasActivas) === 1 ? '' : 's') ?>
+  </wc-texto>
+
+  <?php foreach($categoriasActivas as $categoriaActiva): ?>
+    <wc-colapsable>
+      <wc-texto slot='texto-cabecera' data-tipo-fuente='titulo-m'>
+        <?= $categoriaActiva['nombreCategoria'] ?>
+      </wc-texto>
+      <lista-controlador id=<?= $categoriaActiva['idCategoriaProducto'] ?>>
+
+        <?php $productosFiltrados = array_filter($productos, function($producto) use ($categoriaActiva) {
+          return $producto['idCategoriaProducto'] === $categoriaActiva['idCategoriaProducto'];
+        });
+
+        $i = 0;
+        ?>
+
+        <?php foreach($productosFiltrados as $producto): ?>
+          <item-divisor <?= ++$i === count($productosFiltrados) ? 'data-no-divisor' : '' ?>>
+            <lista-item>
+              <wc-texto data-tipo-fuente='titulo-s'><?= $producto['nombreProducto'] ?></wc-texto>
+              <input class='id-producto' type='hidden' value=<?= $producto['idProducto'] ?>>
+            </lista-item>
+          </item-divisor>
+         <?php endforeach; ?>
+
+      </lista-controlador>
+    </wc-colapsable>
+  <?php endforeach; ?>
+
 </lista-encabezada>

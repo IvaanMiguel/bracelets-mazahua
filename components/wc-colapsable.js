@@ -68,7 +68,7 @@ template.innerHTML = /*html*/`
   </div>
 `;
 
-class WCColapsable extends HTMLElement {
+export default class WCColapsable extends HTMLElement {
   static observedAttributes = ['data-colapsado', 'data-minicabecera'];
 
   constructor () {

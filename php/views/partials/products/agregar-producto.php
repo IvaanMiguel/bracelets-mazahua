@@ -1,31 +1,43 @@
 <form>
-  <contenedor-flex class='formulario-contenedor' flex-direction='column' gap='var(--espaciado-grande)' padding='var(--espaciado-jumbo)'>
+  <contenedor-flex id='formulario-producto' class='contenedor-borde' flex-direction='column' gap='var(--espaciado-grande)' padding='var(--espaciado-jumbo)'>
     <h1 class='titulo-grande'>Datos del producto</h1>
     <contenedor-flex class='campos' flex-direction='column' gap='var(--espaciado-grande)'>
-      <campo-texto>
-        <span slot='etiqueta'>Nombre</span>
-        <input slot='campo' type='text' name='nombre'>
-      </campo-texto>
-      <campo-texto>
-        <span slot='etiqueta'>Categoría</span>
-        <input slot='campo' type='text' name='categoria'>
-      </campo-texto>
-      <contenedor-flex id='producto-campos' flex-direction='row' gap='var(--espaciado-grande)'>
+      <contenedor-flex gap='var(--espaciado-chico)'>
         <campo-texto>
-          <span slot='etiqueta'>Precio</span>
-          <input slot='campo' type='text' name='precio'>
+          <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>
+            Nombre
+          </wc-texto>
+          <input name='nombre'>
         </campo-texto>
-        <campo-texto>
-          <span slot='etiqueta'>Existencias iniciales</span>
-          <input slot='campo' type='text' name='existenciasIniciales'>
-        </campo-texto>
+      </contenedor-flex>
+      <contenedor-flex gap='var(--espaciado-chico)'>
+        <?php require 'lista-categorias.php' ?>
+      </contenedor-flex>
+      <contenedor-flex class='producto-campos' flex-direction='row' gap='var(--espaciado-grande)'>
+        <contenedor-flex flex-direction='column' gap='var(--espaciado-chico)'>
+          <campo-texto>
+            <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>
+              Precio
+            </wc-texto>
+            <input name='precio'>
+          </campo-texto>
+        </contenedor-flex>
+        <contenedor-flex flex-direction='column' gap='var(--espaciado-chico)'>
+          <campo-texto>
+            <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>
+              Existencias iniciales
+            </wc-texto>
+            <input name='existenciasIniciales'>
+          </campo-texto>
+        </contenedor-flex>
       </contenedor-flex>
     </contenedor-flex>
   </contenedor-flex>
   <boton-rellenado
+      type='button'
+      data-evento='agregarproducto'
       data-color-fondo='var(--clr-primario-40)'
       data-color-texto='#ffffff'
-      type='button'
       data-variante='texto-icono'
       data-icono='save'
       data-etiqueta='Guardar producto'>

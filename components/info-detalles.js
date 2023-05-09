@@ -6,10 +6,6 @@ hojaCSS.replaceSync(/*css*/`
     display: flex;
     flex-direction: column;
   }
-
-  ::slotted(*) {
-    flex: 1;
-  }
 `);
 
 const template = document.createElement('template');
@@ -35,8 +31,8 @@ class InfoDetalles extends HTMLElement {
     for (const info in this._contenido) {
       const itemDetalles = new ItemDetalles();
       itemDetalles.innerHTML = /*html*/`
-        <wc-texto data-tipo-fuente='etiqueta-mediana'>${info}</wc-texto>
-        <wc-texto data-tipo-fuente='cuerpo-grande'>${this._contenido[info]}</wc-texto>
+        <wc-texto data-tipo-fuente='etiqueta-m'>${info}</wc-texto>
+        <wc-texto data-tipo-fuente='cuerpo-l'>${this._contenido[info]}</wc-texto>
       `;
 
       this.appendChild(itemDetalles);

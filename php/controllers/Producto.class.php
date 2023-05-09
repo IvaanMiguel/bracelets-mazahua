@@ -111,6 +111,11 @@ class Producto extends \models\Producto
 
   private function __construct() { }
 
+  public static function vistaProductoConstructor(): Producto
+  {
+    return new Producto();
+  }
+
   public static function crearProductoConstructor(
       string $nombre,
       string $idCategoria,
@@ -153,6 +158,20 @@ class Producto extends \models\Producto
     $producto->existencias = $existencias;
 
     return $producto;
+  }
+
+  public function mostrarCategoriasActivas()
+  {
+    $categorias = $this->obtenerCategoriasActivas();
+
+    return (new Respuesta(Respuesta::STATUS_EXITO, Respuesta::ARRAY, $categorias))->Json();
+  }
+
+  public function mostrarProductos()
+  {
+    $productos = $this->obtenerProductos();
+
+    return (new Respuesta(Respuesta::STATUS_EXITO, Respuesta::ARRAY, $productos))->Json();
   }
 
   public function registrarProducto(): void

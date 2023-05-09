@@ -22,7 +22,7 @@ hojaCSS.replaceSync(/*css*/`
   }
 
   slot:not([name='final'])::slotted(*) {
-    flex-grow: 1;
+    flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

@@ -43,10 +43,12 @@
       <div class='seccion'>
         <contenedor-flex flex-direction='column' gap='var(--espaciado-jumbo)' padding='var(--espaciado-jumbo) var(--espaciado-jumbo) 0'>
           <form>
-            <campo-texto>
-              <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>Nueva categoría</wc-texto>
-              <input name='nuevaCategoria'>
-            </campo-texto>
+            <contenedor-flex gap='var(--espaciado-chico)'>
+              <campo-texto>
+                <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>Nueva categoría</wc-texto>
+                <input name='nuevaCategoria'>
+              </campo-texto>
+            </contenedor-flex>
             <boton-rellenado
                 data-color-fondo='var(--clr-primario-40)'
                 data-color-texto='#ffffff'
@@ -66,7 +68,7 @@
                   : $totalCategorias . ' categorías';
               ?>
             </wc-texto>
-            <lista-controlador slot='lista'>
+            <lista-controlador>
 
               <?php
                 $i = 0;
@@ -112,12 +114,14 @@
         data-color-texto='#ffffff'
         data-evento='verificarcierre'>
     </boton-icono>
-    <campo-texto>
-      <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>
-        Nuevo nombre de categoría
-      </wc-texto>
-      <input name='nuevoNombreCategoria'>
-    </campo-texto>
+    <contenedor-flex flex-direction='column' gap='var(--espaciado-chico)'>
+      <campo-texto>
+        <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>
+          Nuevo nombre de categoría
+        </wc-texto>
+        <input name='nuevoNombreCategoria'>
+      </campo-texto>
+    </contenedor-flex>
     <boton-rellenado
         slot='pie-inicio'
         data-evento='actualizarcategoria'

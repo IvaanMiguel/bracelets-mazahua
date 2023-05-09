@@ -10,7 +10,7 @@ import ItemDivisor from '../../components/item-divisor.js';
       .then((respuesta) => respuesta.json())
       .then((datos) => {
         utils.obtenerRespuesta(datos, (itemError) => {
-          document.querySelector('campo-texto').appendChild(itemError);
+          document.querySelector('campo-texto').after(itemError);
         });
 
         if (datos.status !== 1) return;

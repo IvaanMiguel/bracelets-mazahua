@@ -4,7 +4,7 @@ import ItemDivisor from '../../components/item-divisor.js';
 import WCColapsable from '../../components/wc-colapsable.js';
 
 (() => {
-  const formularioProducto = document.getElementById('formulario-producto');
+  const formularioProducto = document.body.querySelector('form');
   const nombreInput = formularioProducto.querySelector('[name="nombre"]');
   const precioInput = formularioProducto.querySelector('[name="precio"]');
   const existenciasInput = formularioProducto.querySelector('[name="existenciasIniciales"]');
@@ -17,7 +17,7 @@ import WCColapsable from '../../components/wc-colapsable.js';
   document.addEventListener('agregarproducto', () => {
     fetch('php/includes/products/agregar_producto.inc.php', {
       method: 'POST',
-      body: new FormData(document.querySelector('form'))
+      body: new FormData(formularioProducto)
     })
       .then((respuesta) => respuesta.json())
       .then((datos) => {
@@ -32,7 +32,7 @@ import WCColapsable from '../../components/wc-colapsable.js';
         producto.innerHTML = /*html*/`
           <lista-item>
             <wc-texto data-tipo-fuente='titulo-s'>
-              ${document.querySelector('[name="nombre"]').value}
+              ${nombreInput.value}
             </wc-texto>
             <input class='id-producto' type='hidden' value=${datos.contenido[0]}>
           </lista-item>

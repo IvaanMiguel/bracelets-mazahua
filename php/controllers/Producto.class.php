@@ -113,7 +113,7 @@ class Producto extends \models\Producto
 
   public static function vistaProductoConstructor(): Producto
   {
-    return new Producto();
+    return new self();
   }
 
   public static function crearProductoConstructor(
@@ -193,9 +193,18 @@ class Producto extends \models\Producto
       exit($respuesta->Json());
     }
 
-    $idProducto = $this->crearProducto($this->nombre, $this->idCategoria, $this->precio, $this->existencias);
+    $idProducto = $this->crearProducto(
+        $this->nombre,
+        $this->idCategoria,
+        $this->precio,
+        $this->existencias
+    );
 
-    echo (new Respuesta(Respuesta::STATUS_EXITO, Respuesta::ARRAY, array($idProducto, self::PRODUCTO_REGISTRADO)))->Json();
+    echo (new Respuesta(
+        Respuesta::STATUS_EXITO,
+        Respuesta::ARRAY,
+        array($idProducto, self::PRODUCTO_REGISTRADO)
+    ))->Json();
   }
 
   public function mostrarProducto(): void
@@ -224,7 +233,13 @@ class Producto extends \models\Producto
       exit($respuesta->Json());
     }
 
-    $this->actualizarProducto($this->idProducto, $this->nombre, $this->idCategoria, $this->precio, $this->existencias);
+    $this->actualizarProducto(
+        $this->idProducto,
+        $this->nombre,
+        $this->idCategoria,
+        $this->precio,
+        $this->existencias
+    );
 
     echo (new Respuesta(Respuesta::STATUS_EXITO, Respuesta::ARRAY, array(self::PRODUCTO_ACTUALIZADO)))->Json();
   }

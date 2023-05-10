@@ -12,7 +12,7 @@ contenedor-colapsable form {
 }
 
 .campos {
-  max-width: 35rem;
+  max-width: var(--mw-formulario);
 }
 
 .producto-campos > * {
@@ -20,5 +20,5 @@ contenedor-colapsable form {
 }
 
 info-detalles {
-  max-width: 35rem;
+  max-width: var(--mw-formulario);
 }

@@ -3,5 +3,5 @@ form contenedor-flex {
 }
 
 form campo-texto {
-  max-width: 35rem;
+  max-width: var(--mw-formulario);
 }

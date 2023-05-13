@@ -1,10 +1,16 @@
-import utils from '../utils.js';
+import { ordenarItems } from '../vista-control.js';
 
-(() => {
-  const listaItems = document.body.querySelectorAll('lista-controlador item-divisor');
+const lista = document.body.querySelector('lista-controlador');
 
-  utils.ordenarLista(listaItems, (item, i) => {
+const ordenarCategorias = () => {
+  const listaItems = lista.querySelectorAll('item-divisor');
+
+  ordenarItems(listaItems, (item, i) => {
     item.dataNoDivisor = (listaItems.length === i);
-    document.querySelector('lista-controlador').appendChild(item);
+    lista.appendChild(item);
   });
-})();
+};
+
+ordenarCategorias();
+
+export default ordenarCategorias;

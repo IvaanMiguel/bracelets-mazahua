@@ -1,4 +1,4 @@
-import utils from './utils.js';
+import { obtenerRespuesta } from './vista-control.js';
 
 document.addEventListener('registrarusuario', () => {
   fetch('php/includes/registrar_usuario.inc.php', {
@@ -7,7 +7,7 @@ document.addEventListener('registrarusuario', () => {
   })
     .then((respuesta) => respuesta.json())
     .then((datos) => {
-      utils.obtenerRespuesta(datos, (itemError) => {
+      obtenerRespuesta(datos, (itemError) => {
         document.querySelector('.campos').after(itemError);
       });
     });

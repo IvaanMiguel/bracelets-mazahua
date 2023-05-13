@@ -1,5 +1,5 @@
-import utils from '../utils.js';
-import ordenar from './ordenar-productos.js';
+import { obtenerRespuesta } from '../vista-control.js';
+import { ordenarProductosCategorias, ordenarProductos } from './ordenar-productos.js';
 import ItemDivisor from '../../components/item-divisor.js';
 import WCColapsable from '../../components/wc-colapsable.js';
 
@@ -21,7 +21,7 @@ import WCColapsable from '../../components/wc-colapsable.js';
     })
       .then((respuesta) => respuesta.json())
       .then((datos) => {
-        utils.obtenerRespuesta(datos, (itemError) => {
+        obtenerRespuesta(datos, (itemError) => {
           formularioProducto.appendChild(itemError);
         });
 
@@ -55,7 +55,7 @@ import WCColapsable from '../../components/wc-colapsable.js';
          */
         if (listaCategoria) {
           listaCategoria.appendChild(producto);
-          ordenar.ordenarProductos(listaCategoria);
+          ordenarProductos(listaCategoria);
         } else {
           const categoriaColapsable = new WCColapsable();
           categoriaColapsable.innerHTML = /*html*/`
@@ -69,7 +69,7 @@ import WCColapsable from '../../components/wc-colapsable.js';
           categoriaColapsable.querySelector('lista-controlador').appendChild(producto);
           document.body.querySelector('lista-encabezada').appendChild(categoriaColapsable);
 
-          ordenar.ordenarProductosCategorias();
+          ordenarProductosCategorias();
 
           totalCategorias.innerText = +totalCategorias.innerText + 1;
           productosExtra

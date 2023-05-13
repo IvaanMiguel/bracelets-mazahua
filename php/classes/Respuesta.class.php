@@ -9,7 +9,7 @@ class Respuesta
 {
   public const BD_ERROR = [
     'titulo' => 'Error',
-    'mensaje' => 'Algo ha salido mal.',
+    'mensaje' => 'Algo ha salido mal: %s.',
     'ambito' => 'general'
   ];
   public const INICIO_SESION_FALLIDO = [

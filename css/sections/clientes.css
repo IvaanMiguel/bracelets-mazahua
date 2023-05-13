@@ -3,7 +3,7 @@
   border-radius: var(--br-borde);
 }
 
-lista-desplegable {
+:where(lista-desplegable, info-detalles, .campos) {
   max-width: var(--mw-formulario);
 }
 
@@ -22,10 +22,6 @@ form {
 .formulario-contenedor {
   border: 1px solid var(--clr-borde);
   border-radius: var(--br-borde);
-}
-
-.campos {
-  max-width: var(--mw-formulario);
 }
 
 .campos-horizontal > * {

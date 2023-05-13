@@ -24,8 +24,10 @@ class Dbh
       $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
       return $dbh;
-    } catch (PDOException $error) {
-      $respuesta = new Respuesta(Respuesta::STATUS_ERROR, Respuesta::ARRAY, array(Respuesta::BD_ERROR));
+    } catch (PDOException $e) {
+      $mensajeRespuesta = Respuesta::BD_ERROR;
+      $mensajeRespuesta['mensaje'] = vsprintf($mensajeRespuesta['mensaje'], array($e->getMessage()));
+      $respuesta = new Respuesta(Respuesta::STATUS_ERROR, Respuesta::ARRAY, array($mensajeRespuesta));
       exit($respuesta->Json());
     }
   }
@@ -34,8 +36,10 @@ class Dbh
   {
     try {
       $stmt->execute($valores);
-    } catch (PDOException $error) {
-      $bd_error = $respuesta ?? new Respuesta(Respuesta::STATUS_ERROR, Respuesta::ARRAY, array(Respuesta::BD_ERROR));
+    } catch (PDOException $e) {
+      $mensajeRespuesta = Respuesta::BD_ERROR;
+      $mensajeRespuesta['mensaje'] = vsprintf($mensajeRespuesta['mensaje'], array($e->getMessage()));
+      $bd_error = new Respuesta(Respuesta::STATUS_ERROR, Respuesta::ARRAY, array($mensajeRespuesta));
       exit($bd_error->Json());
     }
   }

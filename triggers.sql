@@ -1,4 +1,4 @@
-DROP TRIGGER IF EXISTS before_categoriaproducto_update;
+DROP TRIGGER IF EXISTS before_producto_update;
 
 DROP TRIGGER IF EXISTS before_producto_update;
 delimiter $$

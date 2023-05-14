@@ -1,7 +1,7 @@
 CREATE OR REPLACE VIEW vwPedidosPendientes AS
-SELECT CONCAT_WS(" ", nombreCliente, primerApellido) nombreCliente, tipoEntrega, tipoPago, estadoPedido
+SELECT CONCAT_WS(" ", nombre, apellidos) nombreCliente, tipoEntrega, tipoPago, estadoPedido
 FROM pedido p
-INNER JOIN cliente c ON p.idCliente = c.idCliente
+INNER JOIN cliente c ON p.idCliente = c.id
 INNER JOIN pedidoEntrega pe ON p.idPedido = pe.idPedido
 INNER JOIN entrega e ON pe.idEntrega = e.idEntrega
 WHERE estadoPedido NOT LIKE 'Entregado';

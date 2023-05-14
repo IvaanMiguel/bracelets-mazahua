@@ -10,27 +10,26 @@ CREATE TABLE IF NOT EXISTS usuario(
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 
 CREATE TABLE IF NOT EXISTS cliente(
-    idCliente INT AUTO_INCREMENT PRIMARY KEY,    
-    nombreCliente VARCHAR(50) NOT NULL,
-    primerApellido VARCHAR(40) NOT NULL,
-    segundoApellido VARCHAR(40) DEFAULT '' NOT NULL,
+    id INT AUTO_INCREMENT PRIMARY KEY,    
+    nombre VARCHAR(50) NOT NULL,
+    apellidos VARCHAR(80) NOT NULL,
     edad INT NOT NULL,
-    telefono VARCHAR(14) NOT NULL UNIQUE,
-    email VARCHAR(255) NOT NULL UNIQUE
+    celular VARCHAR(12) NOT NULL UNIQUE,
+    email VARCHAR(255) UNIQUE
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 
 CREATE TABLE IF NOT EXISTS ubicacionCliente(
-    idUbicacionCliente INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     callePrincipal VARCHAR(30) NOT NULL,
     callesAdyacentes VARCHAR(60) DEFAULT '' NOT NULL,
-    numExterior VARCHAR(6) DEFAULT '' NOT NULL,
-    numInterior VARCHAR(6) DEFAULT '' NOT NULL,
+    colonia VARCHAR(60) NOT NULL,
+    numeroExterior VARCHAR(6) DEFAULT '' NOT NULL,
+    numeroInterior VARCHAR(6) DEFAULT '' NOT NULL,
     cp CHAR(6) NOT NULL,
-    colonia VARCHAR(30) NOT NULL,
-	estado VARCHAR(30) NOT NULL,
-    ciudad VARCHAR(30) NOT NULL,
+	/* estado VARCHAR(30) NOT NULL, */
+    /* ciudad VARCHAR(30) NOT NULL, */
     idCliente INT NOT NULL,
-    FOREIGN KEY(idCliente) REFERENCES cliente(idCliente)
+    FOREIGN KEY(idCliente) REFERENCES cliente(id)
 		ON DELETE CASCADE
         ON UPDATE CASCADE
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
@@ -76,7 +75,7 @@ CREATE TABLE IF NOT EXISTS ubicacionEntrega(
     FOREIGN KEY(idEntrega) REFERENCES entrega(idEntrega)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
-    FOREIGN KEY(idUbicacionCliente) REFERENCES ubicacionCliente(idUbicacionCliente)
+    FOREIGN KEY(idUbicacionCliente) REFERENCES ubicacionCliente(id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
@@ -91,7 +90,7 @@ CREATE TABLE IF NOT EXISTS pedido(
     estadoPedido ENUM('Anticipo - sin entregar', 'Pagado - sin entregar', 'Entregado'),
     idUsuario INT NOT NULL,
     fechaCreacion DATETIME NOT NULL,
-    FOREIGN KEY(idCliente) REFERENCES cliente(idCliente)
+    FOREIGN KEY(idCliente) REFERENCES cliente(id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
     FOREIGN KEY(idUsuario) REFERENCES usuario(idUsuario)

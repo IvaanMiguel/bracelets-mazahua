@@ -11,20 +11,22 @@
     <info-detalles id='informacion-producto'></info-detalles>
     <input id='id-categoria' type='hidden'>
     <input id='id-producto' type='hidden'>
+  </contenedor-flex>
+  <contenedor-flex flex-direction='row' gap='var(--espaciado-grande)' margin='0 0 0 1px'>
     <boton-rellenado
         data-evento='editarproducto'
-        data-color-fondo='var(--clr-secundario-90)'
-        data-color-texto='var(--clr-secundario-10)'
+        data-color-fondo='var(--clr-primario-40)'
+        data-color-texto='#ffffff'
         data-variante='texto-icono'
         data-etiqueta='Editar datos del producto'
         data-icono='edit'>
     </boton-rellenado>
+    <boton-delineado
+        data-evento='eliminarproducto'
+        data-color-texto='var(--clr-error-40)'
+        data-variante='texto-icono'
+        data-etiqueta='Eliminar producto'
+        data-icono='delete_forever'>
+    </boton-delineado>
   </contenedor-flex>
-  <boton-delineado
-      data-evento='eliminarproducto'
-      data-color-texto='var(--clr-error-40)'
-      data-variante='texto-icono'
-      data-etiqueta='Eliminar producto'
-      data-icono='delete_forever'>
-  </boton-delineado>
 </contenedor-flex>

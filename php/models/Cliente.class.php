@@ -53,6 +53,20 @@ class Cliente extends Dbh
     return $id;
   }
 
+  protected function actualizarCliente(
+      int $id,
+      string $nombre,
+      string $apellidos,
+      string $edad,
+      string $celular,
+      string $email
+  ): void
+  {
+    $stmt = $this->conectar()->prepare('UPDATE cliente SET
+      nombre = ?, apellidos = ?, edad = ?, celular = ?, email = ? WHERE id = ?;');
+    $this->ejecutarSentencia($stmt, array($nombre, $apellidos, $edad, $celular, $email, $id));
+  }
+
   protected function emailExistente(
       string $email
   ): bool

@@ -22,10 +22,11 @@ function validarLongitud(
   int $maxLongitud,
   array $mensajeCorto,
   array $mensajeLargo,
-  array &$array
+  array &$array,
+  bool $esNumerico = false
 ): void
 {
-  $longitud = is_numeric($campo) ? $campo : strlen($campo);
+  $longitud = $esNumerico ? $campo : strlen($campo);
 
   if ($longitud < $minLongitud) {
     array_push($array, $mensajeCorto);

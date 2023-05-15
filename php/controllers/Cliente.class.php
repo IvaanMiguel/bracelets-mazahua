@@ -88,6 +88,12 @@ class Cliente extends \models\Cliente
     'ambito' => 'notificacion'
   ];
 
+  public const CLIENTE_ACTUALIZADO = [
+    'titulo' => 'Cliente actualizado',
+    'mensaje' => 'El cliente ha sido actualizado con éxito.',
+    'ambito' => 'notificacion'
+  ];
+
   private const NOMBRE_MIN_LONGITUD = 3;
   private const NOMBRE_MAX_LONGITUD = 50;
   private const APELLIDOS_MIN_LONGITUD = 4;
@@ -116,7 +122,7 @@ class Cliente extends \models\Cliente
       string $celular,
       string $edad,
       array $ubicaciones
-  )
+  ): Cliente
   {
     $cliente = new self();
     $cliente->nombre = reemplazarEspacios($nombre);
@@ -129,8 +135,28 @@ class Cliente extends \models\Cliente
     return $cliente;
   }
 
+  public static function editarClienteConstructor(
+      int $id,
+      string $nombre,
+      string $apellidos,
+      string $email,
+      string $celular,
+      string $edad,
+  ): Cliente
+  {
+    $cliente = new self();
+    $cliente->id = $id;
+    $cliente->nombre = reemplazarEspacios($nombre);
+    $cliente->apellidos = reemplazarEspacios($apellidos);
+    $cliente->email = reemplazarEspacios($email);
+    $cliente->celular = reemplazarEspacios($celular);
+    $cliente->edad = reemplazarEspacios($edad);
+
+    return $cliente;
+  }
+
   public static function idClienteConstructor(
-    int $id
+      int $id
   ): Cliente
   {
     $cliente = new self();
@@ -189,6 +215,49 @@ class Cliente extends \models\Cliente
       Respuesta::STATUS_EXITO,
       Respuesta::ARRAY,
       array($id, self::CLIENTE_REGISTRADO)
+    ))->Json();
+  }
+
+  public function modificarCliente(): void
+  {
+    if (!empty($this->nombre)) {
+      $this->validarNombre();
+    }
+    if (!empty($this->apellidos)) {
+      $this->validarApellidos();
+    }
+    if ($this->edad == 0 || !empty($this->edad)) {
+      $this->validarEdad();
+    }
+    if (!empty($this->celular)) {
+      $this->validarCelular();
+    }
+    if (!empty($this->email)) {
+      $this->validarEmail();
+    }
+
+    if (count($this->errores) > 0) {
+      $respuesta = new Respuesta(
+        Respuesta::STATUS_ERROR,
+        Respuesta::ARRAY,
+        $this->errores
+      );
+      exit($respuesta->Json());
+    }
+
+    $this->actualizarCliente(
+      $this->id,
+      $this->nombre,
+      $this->apellidos,
+      $this->edad,
+      $this->celular,
+      $this->email
+    );
+
+    echo (new Respuesta(
+      Respuesta::STATUS_EXITO,
+      Respuesta::ARRAY,
+      array(self::CLIENTE_ACTUALIZADO)
     ))->Json();
   }
 
@@ -288,7 +357,8 @@ class Cliente extends \models\Cliente
       self::EDAD_MAXIMA,
       self::EDAD_MUY_JOVEN,
       self::EDAD_MUY_VIEJO,
-      $this->errores
+      $this->errores,
+      true
     );
   }
 

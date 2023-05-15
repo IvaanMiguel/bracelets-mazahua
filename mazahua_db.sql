@@ -26,11 +26,11 @@ CREATE TABLE IF NOT EXISTS ubicacionCliente(
     numeroExterior VARCHAR(6) DEFAULT '' NOT NULL,
     numeroInterior VARCHAR(6) DEFAULT '' NOT NULL,
     cp CHAR(6) NOT NULL,
-	/* estado VARCHAR(30) NOT NULL, */
+    /* estado VARCHAR(30) NOT NULL, */
     /* ciudad VARCHAR(30) NOT NULL, */
     idCliente INT NOT NULL,
     FOREIGN KEY(idCliente) REFERENCES cliente(id)
-		ON DELETE CASCADE
+        ON DELETE CASCADE
         ON UPDATE CASCADE
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 

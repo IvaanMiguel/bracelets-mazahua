@@ -1,12 +1,9 @@
 import { obtenerRespuesta } from '../../vista-control.js';
-import eliminarUbicacionPopup from '../popups/eliminar-ubicacion.js';
+import popupEliminarUbicacion from '../popups/eliminar-ubicacion.js';
 
-const ventana = eliminarUbicacionPopup.ventana;
+const ventana = popupEliminarUbicacion.ventana;
 
-document.addEventListener('eliminarubicacion', () => {
-  eliminarUbicacionPopup.actualizarInfoUbicacion();
-  ventana.mostrarVentana();
-});
+document.addEventListener('eliminarubicacion', () => ventana.mostrarVentana());
 ventana.addEventListener('cancelar', () => ventana.cerrarVentana());
 
 const ubicacionesCliente = document.getElementById('ubicaciones-cliente');
@@ -31,7 +28,7 @@ ventana.addEventListener('confirmareliminarubicacion', () => {
       ubicacionesCliente.value = ubicacionesCliente.children[0].value;
       ubicacionesCliente.dispatchEvent(new Event('change'));
 
-      eliminarUbicacionPopup.reiniciar();
+      popupEliminarUbicacion.reiniciar();
       ventana.cerrarVentana();
     });
 });

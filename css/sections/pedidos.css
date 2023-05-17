@@ -33,3 +33,10 @@
 .campos-ubicacion * {
   flex: 1;
 }
+
+#lista-clientes,
+#contenedor-datos-personales {
+  border: 1px solid var(--clr-neutral-80);
+  border-radius: var(--br-borde);
+  overflow: hidden;
+}

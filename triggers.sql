@@ -23,3 +23,17 @@ BEGIN
     SET NEW.email= IF (NEW.email = '', OLD.email, NEW.email);
 END$$
 delimiter ;
+
+DROP TRIGGER IF EXISTS before_ubicacioncliente_update;
+delimiter $$
+CREATE TRIGGER before_ubicacioncliente_update
+BEFORE UPDATE ON ubicacioncliente FOR EACH ROW
+BEGIN
+    SET NEW.callePrincipal = IF (NEW.callePrincipal = '', OLD.callePrincipal, NEW.callePrincipal);
+    SET NEW.callesAdyacentes = IF (NEW.callesAdyacentes = '', OLD.callesAdyacentes, NEW.callesAdyacentes);
+    SET NEW.colonia = IF (NEW.colonia = '', OLD.colonia, NEW.colonia);
+    SET NEW.numeroExterior = IF (NEW.numeroExterior = '', OLD.numeroExterior, NEW.numeroExterior);
+    SET NEW.numeroInterior = IF (NEW.numeroInterior = '', OLD.numeroInterior, NEW.numeroInterior);
+    SET NEW.cp = IF (NEW.cp = '', OLD.cp, NEW.cp);
+END$$
+delimiter ;

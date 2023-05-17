@@ -21,13 +21,11 @@ CREATE TABLE IF NOT EXISTS cliente(
 CREATE TABLE IF NOT EXISTS ubicacionCliente(
     id INT AUTO_INCREMENT PRIMARY KEY,
     callePrincipal VARCHAR(30) NOT NULL,
-    callesAdyacentes VARCHAR(60) DEFAULT '' NOT NULL,
+    callesAdyacentes VARCHAR(60),
     colonia VARCHAR(60) NOT NULL,
-    numeroExterior VARCHAR(6) DEFAULT '' NOT NULL,
-    numeroInterior VARCHAR(6) DEFAULT '' NOT NULL,
+    numeroExterior VARCHAR(6),
+    numeroInterior VARCHAR(6),
     cp CHAR(6) NOT NULL,
-    /* estado VARCHAR(30) NOT NULL, */
-    /* ciudad VARCHAR(30) NOT NULL, */
     idCliente INT NOT NULL,
     FOREIGN KEY(idCliente) REFERENCES cliente(id)
         ON DELETE CASCADE

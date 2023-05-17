@@ -4,6 +4,7 @@ define('DIR_RAIZ', str_replace('\\', '/', dirname(__DIR__)));
 define('DIR_PHP', DIR_RAIZ . '/php');
 define('DIR_INCLUDES', DIR_PHP . '/includes');
 define('DIR_VISTAS', DIR_PHP . '/views');
+define('DIR_MENSAJES', DIR_PHP . '/messages');
 define('DIR_PARCIALES', DIR_VISTAS . '/partials');
 
 define('CONFIG_INI', DIR_PHP . '/config.ini');
@@ -23,6 +24,8 @@ define('HEAD_TAGS', DIR_PARCIALES . '/head-tags.php');
 define('MENU', DIR_PARCIALES . '/menu.php');
 define('CABECERA', DIR_PARCIALES . '/cabecera.php');
 define('PIE_PAGINA', DIR_PARCIALES . '/pie-pagina.php');
+
+define('POPUPS_CLIENTES', DIR_PARCIALES . '/customers/popups');
 
 define('URL_RAIZ', '/braceletsmazahua');
 define('URL_INICIO', URL_RAIZ . '/');

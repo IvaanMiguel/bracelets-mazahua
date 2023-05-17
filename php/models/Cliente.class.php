@@ -3,7 +3,6 @@
 namespace models;
 
 use \classes\Dbh;
-use \models\Ubicacion;
 
 class Cliente extends Dbh
 {
@@ -65,6 +64,14 @@ class Cliente extends Dbh
     $stmt = $this->conectar()->prepare('UPDATE cliente SET
       nombre = ?, apellidos = ?, edad = ?, celular = ?, email = ? WHERE id = ?;');
     $this->ejecutarSentencia($stmt, array($nombre, $apellidos, $edad, $celular, $email, $id));
+  }
+
+  protected function eliminarCliente(
+      int $id
+  ): void
+  {
+    $stmt = $this->conectar()->prepare('DELETE FROM cliente WHERE id = ?;');
+    $this->ejecutarSentencia($stmt, array($id));
   }
 
   protected function emailExistente(

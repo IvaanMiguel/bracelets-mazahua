@@ -1,5 +1,6 @@
 const ventanaEliminarUbicacion = {
   _ventana: document.getElementById('eliminar-ubicacion'),
+  _infoUbicacionRaiz: document.getElementById('informacion-ubicacion'),
 
   /** @type {NodeListOf} */
   _nombreClienteItems: null,
@@ -46,7 +47,7 @@ const ventanaEliminarUbicacion = {
   },
 
   actualizarInfoUbicacion () {
-    const clon = document.getElementById('informacion-ubicacion').cloneNode(true);
+    const clon = this._infoUbicacionRaiz.cloneNode(true);
     clon.id = 'info-ubicacion-ventana';
     this.infoUbicacion = clon;
   }

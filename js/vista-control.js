@@ -17,8 +17,8 @@ export const obtenerRespuesta = (datos, generalCallback, scope = window.document
         let itemError;
         if (item.ambito !== 'notificacion') {
           itemError = crearItemError(item.mensaje);
-          if (item.id) {
-            scope.getElementById(item.id).appendChild(itemError);
+          if (item.clase) {
+            scope.querySelector(`.${item.clase}`).appendChild(itemError);
             return;
           }
         }

@@ -44,6 +44,14 @@ ventanaEliminar.addEventListener('confirmareliminarcliente', () => {
       totalClientes.innerText = +totalClientes.innerText - 1;
       clientesTitulo.innerHTML = `${totalClientes.outerHTML} cliente${+totalClientes.innerText === 1 ? '' : 's'}`;
 
+      if (+totalClientes.innerText === 0) {
+        listaClientes.innerHTML = /*html*/`
+          <contenedor-flex margin='0 auto' padding='var(--espaciado-chico)'>
+            <wc-texto data-tipo-fuente='etiqueta-l'>Sin clientes registrados.</wc-texto>
+          </contenedor-flex>
+        `;
+      }
+
       idClienteInput.value = '';
       informacionCliente.contenido = null;
       informacionUbicacion.contenido = null;

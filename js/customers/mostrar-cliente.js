@@ -10,7 +10,6 @@ const ventanaEditarCliente = document.getElementById('editar-cliente');
 const nombreClienteEditar = ventanaEditarCliente.querySelector('.nombre-cliente');
 const informacionCliente = document.getElementById('informacion-cliente');
 const informacionUbicacion = document.getElementById('informacion-ubicacion');
-const nombreClienteEliminarUbicacion = document.body.querySelector('#eliminar-ubicacion .nombre-cliente');
 
 document.addEventListener('regresarclientes', () => {
   subtab.seleccionarTab(2);

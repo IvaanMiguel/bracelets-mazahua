@@ -14,12 +14,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $ubicaciones = json_decode($_POST['ubicaciones'], true);
 
   $cliente = Cliente::crearClienteConstructor(
-      $nombre,
-      $apellidos,
-      $email,
-      $celular,
-      $edad,
-      $ubicaciones
+    $nombre,
+    $apellidos,
+    $email,
+    $celular,
+    $edad,
+    $ubicaciones
   );
 
   $cliente->registrarCliente();

@@ -25,7 +25,7 @@ const reiniciarVentanaEditarCliente = () => {
   ventanaEditar.cerrarVentana();
 };
 
-const ventanaConfirmacion = document.getElementById('confirmar-descarte');
+const ventanaConfirmacion = document.getElementById('descartar-editar-cliente');
 
 ventanaEditar.addEventListener('verificarcierre', () => {
   if (nombreInput.value || apellidosInput.value || edadInput.value ||
@@ -62,8 +62,6 @@ ventanaEditar.addEventListener('actualizarcliente', () => {
       }, ventanaEditar);
 
       if (datos.status === 0) return;
-
-      console.log(informacionCliente);
 
       informacionCliente.contenido = {
         Nombre: nombreInput.value ? nombreInput.value : informacionCliente.contenido.Nombre,

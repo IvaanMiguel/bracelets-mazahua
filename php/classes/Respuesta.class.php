@@ -19,7 +19,7 @@ class Respuesta
   ];
   public const CAMPO_VACIO = [
     'titulo' => 'Campos vacíos',
-    'mensaje' => 'No se permiten campos vacíos.',
+    'mensaje' => 'Aún hay campos obligatorios vacíos.',
     'ambito' => 'general'
   ];
   public const CLAVES_DIFERENTES = [

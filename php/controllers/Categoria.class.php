@@ -4,6 +4,9 @@ namespace controllers;
 
 use \classes\Respuesta;
 
+require_once dirname(__DIR__) . '/constantes.php';
+require_once UTILS;
+
 class Categoria extends \models\Categoria
 {
   public const CATEGORIA_INVALIDA = [
@@ -36,13 +39,13 @@ class Categoria extends \models\Categoria
     'ambito' => 'notificacion'
   ];
 
-  public const CATEGORIA_NOMBRE_CORTO = [
+  public const NOMBRE_CORTO = [
     'titulo' => 'Nombre muy corto',
     'mensaje' => 'El nombre de la categoría debe tener como mínimo ' . self::NOMBRE_MIN_LONGITUD . ' caracteres.',
     'ambito' => 'general'
   ];
 
-  public const CATEGORIA_NOMBRE_LARGO = [
+  public const NOMBRE_LARGO = [
     'titulo' => 'Nombre muy largo',
     'mensaje' => 'El nombre de la categoría debe tener como máximo ' . self::NOMBRE_MAX_LONGITUD . ' caracteres.',
     'ambito' => 'general'
@@ -58,14 +61,11 @@ class Categoria extends \models\Categoria
   public function __construct(?string $nombreCategoria = null, ?int $idCategoria = null)
   {
     $this->idCategoria = $idCategoria;
-    $this->nombreCategoria = $nombreCategoria;
+    $this->nombreCategoria = reemplazarEspacios($nombreCategoria);
   }
 
   public function registrarCategoria(): void
   {
-    $this->nombreCategoria = trim($this->nombreCategoria);
-    $this->nombreCategoria = preg_replace('/\s+/', ' ', $this->nombreCategoria);
-
     if ($this->camposVacios()) {
       array_push($this->errores, Respuesta::CAMPO_VACIO);
     } else {
@@ -137,9 +137,9 @@ class Categoria extends \models\Categoria
   private function validarLongitud(): void
   {
     if (strlen($this->nombreCategoria) < self::NOMBRE_MIN_LONGITUD) {
-      array_push($this->errores, self::CATEGORIA_NOMBRE_CORTO);
+      array_push($this->errores, self::NOMBRE_CORTO);
     } else if (strlen($this->nombreCategoria) > self::NOMBRE_MAX_LONGITUD) {
-      array_push($this->errores, self::CATEGORIA_NOMBRE_LARGO);
+      array_push($this->errores, self::NOMBRE_LARGO);
     }
   }
 }

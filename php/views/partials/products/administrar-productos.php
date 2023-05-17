@@ -1,7 +1,6 @@
 <?php
   require_once AUTOLOADER;
 
-  use controllers\VistaProducto;
   use controllers\Producto;
 
   $vistaProducto = Producto::vistaProductoConstructor();
@@ -11,7 +10,9 @@
 
 <lista-encabezada>
   <wc-texto id='productos-titulo' slot='titulo' data-tipo-fuente='titulo-l'>
-    <span id='total-productos'><?= count($productos) ?></span>
+    <span id='total-productos'>
+      <?= count($productos) ?>
+    </span>
     <?= 'producto' . (count($productos) === 1 ? '' : 's') ?>
   </wc-texto>
   <wc-texto id='productos-extra' slot='extra' data-tipo-fuente='titulo-s'>
@@ -19,7 +20,7 @@
     <?= 'categoría' . (count($categoriasActivas) === 1 ? '' : 's') ?>
   </wc-texto>
 
-  <?php foreach($categoriasActivas as $categoriaActiva): ?>
+  <?php foreach ($categoriasActivas as $categoriaActiva): ?>
     <wc-colapsable>
       <wc-texto slot='texto-cabecera' data-tipo-fuente='titulo-m'>
         <?= $categoriaActiva['nombreCategoria'] ?>
@@ -33,7 +34,7 @@
         $i = 0;
         ?>
 
-        <?php foreach($productosFiltrados as $producto): ?>
+        <?php foreach ($productosFiltrados as $producto): ?>
           <item-divisor <?= ++$i === count($productosFiltrados) ? 'data-no-divisor' : '' ?>>
             <lista-item>
               <wc-texto data-tipo-fuente='titulo-s'><?= $producto['nombreProducto'] ?></wc-texto>

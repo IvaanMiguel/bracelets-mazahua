@@ -1,4 +1,4 @@
-import utils from '../js/utils.js';
+import { ordenarItems } from '../js/vista-control.js';
 
 const hojaCSS = /*css*/`
   :host {
@@ -70,7 +70,7 @@ class ListaDesplegable extends HTMLElement {
 
     this._lista = this.querySelector('select');
 
-    utils.ordenarLista(this._lista.querySelectorAll('option'), (opcion) => {
+    ordenarItems(this._lista.querySelectorAll('option'), (opcion) => {
       this._lista.appendChild(opcion);
     });
   }

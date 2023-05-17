@@ -1,5 +1,5 @@
-import utils from '../utils.js';
-import ordenar from './ordenar-productos.js';
+import { obtenerRespuesta } from '../vista-control.js';
+import { ordenarProductosCategorias, ordenarProductos } from './ordenar-productos.js';
 import WCColapsable from '../../components/wc-colapsable.js';
 
 (() => {
@@ -65,7 +65,7 @@ import WCColapsable from '../../components/wc-colapsable.js';
     })
       .then((respuesta) => respuesta.json())
       .then((datos) => {
-        utils.obtenerRespuesta(datos, (itemError) => {
+        obtenerRespuesta(datos, (itemError) => {
           ventanaEditarProducto.querySelector('form contenedor-flex').appendChild(itemError);
         }, ventanaEditarProducto);
 
@@ -122,10 +122,10 @@ import WCColapsable from '../../components/wc-colapsable.js';
 
             totalCategorias.innerText = +totalCategorias.innerText + 1;
 
-            ordenar.ordenarProductosCategorias();
+            ordenarProductosCategorias();
           } else {
             nuevaListaCategoria.appendChild(itemProducto);
-            ordenar.ordenarProductos(nuevaListaCategoria);
+            ordenarProductos(nuevaListaCategoria);
           }
 
           /*
@@ -146,7 +146,7 @@ import WCColapsable from '../../components/wc-colapsable.js';
           // Si se cambió el nombre del producto, su compoenente en la lista se actualizará.
           if (nombreInput.value) {
             itemProducto.querySelector('wc-texto').innerText = nombreInput.value;
-            ordenar.ordenarProductos(originalListaCategoria);
+            ordenarProductos(originalListaCategoria);
           }
         }
 

@@ -1,10 +1,10 @@
-import utils from '../utils.js';
-import ordenar from './ordenar-productos.js';
+import { obtenerRespuesta } from '../vista-control.js';
+import { ordenarProductosCategorias, ordenarProductos } from './ordenar-productos.js';
 import ItemDivisor from '../../components/item-divisor.js';
 import WCColapsable from '../../components/wc-colapsable.js';
 
 (() => {
-  const formularioProducto = document.getElementById('formulario-producto');
+  const formularioProducto = document.body.querySelector('form');
   const nombreInput = formularioProducto.querySelector('[name="nombre"]');
   const precioInput = formularioProducto.querySelector('[name="precio"]');
   const existenciasInput = formularioProducto.querySelector('[name="existenciasIniciales"]');
@@ -17,11 +17,11 @@ import WCColapsable from '../../components/wc-colapsable.js';
   document.addEventListener('agregarproducto', () => {
     fetch('php/includes/products/agregar_producto.inc.php', {
       method: 'POST',
-      body: new FormData(document.querySelector('form'))
+      body: new FormData(formularioProducto)
     })
       .then((respuesta) => respuesta.json())
       .then((datos) => {
-        utils.obtenerRespuesta(datos, (itemError) => {
+        obtenerRespuesta(datos, (itemError) => {
           formularioProducto.appendChild(itemError);
         });
 
@@ -32,7 +32,7 @@ import WCColapsable from '../../components/wc-colapsable.js';
         producto.innerHTML = /*html*/`
           <lista-item>
             <wc-texto data-tipo-fuente='titulo-s'>
-              ${document.querySelector('[name="nombre"]').value}
+              ${nombreInput.value}
             </wc-texto>
             <input class='id-producto' type='hidden' value=${datos.contenido[0]}>
           </lista-item>
@@ -55,7 +55,7 @@ import WCColapsable from '../../components/wc-colapsable.js';
          */
         if (listaCategoria) {
           listaCategoria.appendChild(producto);
-          ordenar.ordenarProductos(listaCategoria);
+          ordenarProductos(listaCategoria);
         } else {
           const categoriaColapsable = new WCColapsable();
           categoriaColapsable.innerHTML = /*html*/`
@@ -69,7 +69,7 @@ import WCColapsable from '../../components/wc-colapsable.js';
           categoriaColapsable.querySelector('lista-controlador').appendChild(producto);
           document.body.querySelector('lista-encabezada').appendChild(categoriaColapsable);
 
-          ordenar.ordenarProductosCategorias();
+          ordenarProductosCategorias();
 
           totalCategorias.innerText = +totalCategorias.innerText + 1;
           productosExtra

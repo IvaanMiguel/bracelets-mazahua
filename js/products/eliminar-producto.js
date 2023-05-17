@@ -1,4 +1,4 @@
-import utils from '../utils.js';
+import { obtenerRespuesta } from '../vista-control.js';
 
 (() => {
   const ventanaEliminar = document.getElementById('eliminar-producto');
@@ -32,7 +32,7 @@ import utils from '../utils.js';
     })
       .then((respuesta) => respuesta.json())
       .then((datos) => {
-        utils.obtenerRespuesta(datos);
+        obtenerRespuesta(datos);
 
         if (datos.status === 0) return;
 

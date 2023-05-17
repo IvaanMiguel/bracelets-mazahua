@@ -22,6 +22,8 @@
   <script type='module' src='components/boton-icono.js'></script>
   <script type='module' src='components/ventana-emergente.js'></script>
   <script type='module' src='components/wc-tabs.js'></script>
+  <script type='module' src='components/lista-desplegable.js'></script>
+  <script type='module' src='components/info-detalles.js'></script>
 </head>
 <body>
   <main class='contenedor'>
@@ -41,9 +43,10 @@
                 data-etiqueta='Administrar clientes'
                 data-expandir>
             </boton-texto>
-            <div>
-              <?php require_once 'partials/customers/administrar-clientes.php' ?>
-            </div>
+            <wc-tabs id='subtab' data-tab='2' data-no-cabecera>
+              <?php require 'partials/customers/cliente-vista.php' ?>
+              <?php require 'partials/customers/administrar-clientes.php' ?>
+            </wc-tabs>
             <boton-texto
                 slot='tab'
                 data-color-texto='var(--clr-fondo-10)'
@@ -52,39 +55,31 @@
                 data-etiqueta='Agregar cliente nuevo'
                 data-expandir>
             </boton-texto>
-            <div>
-              <?php include 'partials/customers/agregar-cliente.php' ?>
-            </div>
+            <?php require 'partials/customers/agregar-cliente.php' ?>
           </wc-tabs>
         </contenedor-flex>
       </div>
     </div>
   </main>
 
-  <ventana-emergente id='remover-ubicacion'>
-    <span slot='cabecera-inicio'>Remover ubicación</span>
-    <boton-icono slot='cabecera-final' data-icono='close' data-color-texto='#ffffff'></boton-icono>
-    <span>
-      La información de dicha ubicación ya no se guardará junto con el cliente si es removida, ¿deseas continuar?
-    </span>
-    <boton-rellenado
-        slot='pie-final'
-        data-evento='removerubicacion'
-        data-color-fondo='var(--clr-primario-40)'
-        data-color-texto='#ffffff'
-        data-etiqueta='Sí'>
-    </boton-rellenado>
-    <boton-delineado
-        slot='pie-final'
-        data-evento='cerrarventana'
-        data-color-texto='var(--clr-primario-40)'
-        data-color-fondo='#ffffff',
-        data-etiqueta='No'>
-    </boton-delineado>
-  </ventana-emergente>
+  <?php require_once POPUPS_CLIENTES . '/editar-cliente.php' ?>
+  <?php require_once POPUPS_CLIENTES . '/eliminar-cliente.php' ?>
+  <?php require_once POPUPS_CLIENTES . '/agregar-ubicacion.php' ?>
+  <?php require_once POPUPS_CLIENTES . '/eliminar-ubicacion.php' ?>
+  <?php require_once POPUPS_CLIENTES . '/remover-ubicacion.php' ?>
+  <?php require_once POPUPS_CLIENTES . '/editar-ubicacion.php' ?>
 
   <?php require_once PIE_PAGINA ?>
 
-  <script src='js/customers/confirmar-remover-ubicacion.js'></script>
+  <script type='module' src='js/customers/ordenar-clientes.js'></script>
+  <script type='module' src='js/customers/agregar-cliente.js'></script>
+  <script type='module' src='js/customers/mostrar-cliente.js'></script>
+  <script type='module' src='js/customers/editar-cliente.js'></script>
+  <script type='module' src='js/customers/eliminar-cliente.js'></script>
+  <script type='module' src='js/customers/validar-campos-ubicacion.js'></script>
+  <script type='module' src='js/customers/confirmar-remover-ubicacion.js'></script>
+  <script type='module' src='js/customers/locations/agregar-ubicacion.js'></script>
+  <script type='module' src='js/customers/locations/eliminar-ubicacion.js'></script>
+  <script type='module' src='js/customers/locations/editar-ubicacion.js'></script>
 </body>
 </html>

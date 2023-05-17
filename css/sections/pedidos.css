@@ -1,5 +1,5 @@
 .pedido-contenedor {
-  max-width: 35rem;
+  max-width: var(--mw-formulario);
 }
 
 .pedido-contenedor info-detalles {

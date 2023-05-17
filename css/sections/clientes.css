@@ -1,11 +1,20 @@
+.contenedor-borde {
+  border: 1px solid var(--clr-neutral-80);
+  border-radius: var(--br-borde);
+}
+
+:where(lista-desplegable, info-detalles, .campos) {
+  max-width: var(--mw-formulario);
+}
+
 wc-colapsable {
   border: 1px solid var(--clr-neutral-80);
 }
 
-form {
+wc-tabs form {
   display: flex;
   flex-direction: column;
-  gap: var(--espaciado-jumbo);
+  gap: var(--espaciado-grande);
 
   margin-bottom: var(--espaciado-jumbo);
 }
@@ -15,10 +24,14 @@ form {
   border-radius: var(--br-borde);
 }
 
-.campos {
-  max-width: 35rem;
+.campos-horizontal > *,
+.cliente-campos > * {
+  flex: 1;
 }
 
-.campos-horizontal > * {
-  flex: 1;
+#contenedor-ventana info-detalles {
+  max-width: unset;
+  width: 100%;
+  border: 1px solid var(--clr-neutral-80);
+  border-radius: var(--br-borde);
 }

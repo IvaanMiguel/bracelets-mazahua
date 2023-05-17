@@ -4,6 +4,9 @@ namespace controllers;
 
 use \classes\Respuesta;
 
+require_once dirname(__DIR__) . '/constantes.php';
+require_once UTILS;
+
 class Producto extends \models\Producto
 {
   public const PRODUCTO_REGISTRADO = [
@@ -113,7 +116,7 @@ class Producto extends \models\Producto
 
   public static function vistaProductoConstructor(): Producto
   {
-    return new Producto();
+    return new self();
   }
 
   public static function crearProductoConstructor(
@@ -124,7 +127,7 @@ class Producto extends \models\Producto
   ): Producto
   {
     $producto = new Producto();
-    $producto->nombre = $nombre;
+    $producto->nombre = reemplazarEspacios($nombre);
     $producto->idCategoria = $idCategoria;
     $producto->precio = $precio;
     $producto->existencias = $existencias;
@@ -152,7 +155,7 @@ class Producto extends \models\Producto
   {
     $producto = new Producto();
     $producto->idProducto = $idProducto;
-    $producto->nombre = $nombre;
+    $producto->nombre = reemplazarEspacios($nombre);
     $producto->idCategoria = $idCategoria;
     $producto->precio = $precio;
     $producto->existencias = $existencias;
@@ -189,13 +192,26 @@ class Producto extends \models\Producto
     $this->validarCantidadExistencias();
 
     if (count($this->errores) > 0) {
-      $respuesta = new Respuesta(Respuesta::STATUS_ERROR, Respuesta::ARRAY, $this->errores);
+      $respuesta = new Respuesta(
+          Respuesta::STATUS_ERROR,
+          Respuesta::ARRAY,
+          $this->errores
+      );
       exit($respuesta->Json());
     }
 
-    $idProducto = $this->crearProducto($this->nombre, $this->idCategoria, $this->precio, $this->existencias);
+    $idProducto = $this->crearProducto(
+        $this->nombre,
+        $this->idCategoria,
+        $this->precio,
+        $this->existencias
+    );
 
-    echo (new Respuesta(Respuesta::STATUS_EXITO, Respuesta::ARRAY, array($idProducto, self::PRODUCTO_REGISTRADO)))->Json();
+    echo (new Respuesta(
+        Respuesta::STATUS_EXITO,
+        Respuesta::ARRAY,
+        array($idProducto, self::PRODUCTO_REGISTRADO)
+    ))->Json();
   }
 
   public function mostrarProducto(): void
@@ -224,11 +240,16 @@ class Producto extends \models\Producto
       exit($respuesta->Json());
     }
 
-    $this->actualizarProducto($this->idProducto, $this->nombre, $this->idCategoria, $this->precio, $this->existencias);
+    $this->actualizarProducto(
+        $this->idProducto,
+        $this->nombre,
+        $this->idCategoria,
+        $this->precio,
+        $this->existencias
+    );
 
     echo (new Respuesta(Respuesta::STATUS_EXITO, Respuesta::ARRAY, array(self::PRODUCTO_ACTUALIZADO)))->Json();
   }
-
   
   public function removerProducto()
   {
@@ -237,8 +258,7 @@ class Producto extends \models\Producto
     echo (new Respuesta(Respuesta::STATUS_EXITO, Respuesta::ARRAY, array(self::PRODUCTO_ELIMINADO)))->Json();
   }
 
-
-  private function validarNombreProducto(): void
+  private function  validarNombreProducto(): void
   {
     $caracteresEspeciales = array('á', 'é', 'í', 'ó', 'ú', 'ñ', 'ü', 'Á', 'É', 'Í', 'Ó', 'Ú', 'Ñ', 'Ü', ' ');
     $caracteresNormalizados = array('a', 'e', 'i', 'o', 'u', 'n', 'u', 'A', 'E', 'I', 'O', 'U', 'N', 'U', '');

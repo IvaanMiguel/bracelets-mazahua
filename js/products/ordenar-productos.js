@@ -1,31 +1,26 @@
-import utils from '../utils.js';
+import { ordenarItems } from '../vista-control.js';
 
-export default (function () {
-  const ordenarProductosCategorias = () => {
-    const colapsables = document.body.querySelectorAll('wc-colapsable');
+const ordenarProductosCategorias = () => {
+  const colapsables = document.body.querySelectorAll('wc-colapsable');
 
-    utils.ordenarLista(Array.from(colapsables).map((colapsable) => {
-      return colapsable.querySelector('[slot="texto-cabecera"]');
-    }), (colapsableTitulo) => {
-      document.querySelector('lista-encabezada').appendChild(colapsableTitulo.parentElement);
-    });
-  };
+  ordenarItems(Array.from(colapsables).map((colapsable) => {
+    return colapsable.querySelector('[slot="texto-cabecera"]');
+  }), (colapsableTitulo) => {
+    document.querySelector('lista-encabezada').appendChild(colapsableTitulo.parentElement);
+  });
+};
 
-  const ordenarProductos = (listaCategoria) => {
-    const productos = listaCategoria.querySelectorAll('item-divisor');
-    utils.ordenarLista(productos, (producto, i) => {
-      producto.dataNoDivisor = (productos.length === i);
-      listaCategoria.appendChild(producto);
-    });
-  };
+const ordenarProductos = (listaCategoria) => {
+  const productos = listaCategoria.querySelectorAll('item-divisor');
+  ordenarItems(productos, (producto, i) => {
+    producto.dataNoDivisor = (productos.length === i);
+    listaCategoria.appendChild(producto);
+  });
+};
 
-  ordenarProductosCategorias();
+ordenarProductosCategorias();
 
-  document.body.querySelectorAll('wc-colapsable lista-controlador')
-    .forEach((listaCategoria) => ordenarProductos(listaCategoria));
+document.body.querySelectorAll('wc-colapsable lista-controlador')
+  .forEach((listaCategoria) => ordenarProductos(listaCategoria));
 
-  return {
-    ordenarProductosCategorias,
-    ordenarProductos
-  };
-})();
+export { ordenarProductosCategorias, ordenarProductos };

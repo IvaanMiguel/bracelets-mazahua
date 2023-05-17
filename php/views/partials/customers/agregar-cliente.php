@@ -1,7 +1,7 @@
 <form>
   <contenedor-flex class='formulario-contenedor' flex-direction='column' gap='var(--espaciado-grande)' padding='var(--espaciado-jumbo)'>
     <wc-texto data-tipo-fuente='titulo-l'>Datos personales</wc-texto>
-    <contenedor-flex id='campos-datos-personales' class='campos' flex-direction='column' gap='var(--espaciado-grande)'>
+    <contenedor-flex class='campos-datos-personales campos' flex-direction='column' gap='var(--espaciado-grande)'>
       <contenedor-flex gap='var(--espaciado-chico)'>
         <campo-texto>
           <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>Nombre(s)</wc-texto>
@@ -58,7 +58,7 @@
             <input type='text' name='colonia'>
           </campo-texto>
         </contenedor-flex>
-        <contenedor-flex id='multicampos' gap='var(--espaciado-chico)'>
+        <contenedor-flex class='multicampos' gap='var(--espaciado-chico)'>
           <contenedor-flex class='campos-horizontal' flex-direction='row' gap='var(--espaciado-grande)'>
             <campo-texto>
               <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>Número exterior</wc-texto>

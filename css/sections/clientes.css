@@ -11,7 +11,7 @@ wc-colapsable {
   border: 1px solid var(--clr-neutral-80);
 }
 
-form {
+wc-tabs form {
   display: flex;
   flex-direction: column;
   gap: var(--espaciado-grande);
@@ -24,6 +24,14 @@ form {
   border-radius: var(--br-borde);
 }
 
-.campos-horizontal > * {
+.campos-horizontal > *,
+.cliente-campos > * {
   flex: 1;
+}
+
+#contenedor-ventana info-detalles {
+  max-width: unset;
+  width: 100%;
+  border: 1px solid var(--clr-neutral-80);
+  border-radius: var(--br-borde);
 }

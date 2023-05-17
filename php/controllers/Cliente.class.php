@@ -12,7 +12,7 @@ class Cliente extends \models\Cliente
   public const CAMPOS_VACIOS  = [
     'titulo' => 'Campos vacíos',
     'mensaje' => 'Aún hay campos obligatorios vacíos.',
-    'id' => 'campos-datos-personales',
+    'clase' => 'campos-datos-personales',
     'ambito' => ''
   ];
 
@@ -91,6 +91,12 @@ class Cliente extends \models\Cliente
   public const CLIENTE_ACTUALIZADO = [
     'titulo' => 'Cliente actualizado',
     'mensaje' => 'El cliente ha sido actualizado con éxito.',
+    'ambito' => 'notificacion'
+  ];
+
+  public const CLIENTE_ELIMINADO = [
+    'titulo' => 'Cliente eliminado',
+    'mensaje' => 'El cliente ha sido eliminado con éxito.',
     'ambito' => 'notificacion'
   ];
 
@@ -258,6 +264,17 @@ class Cliente extends \models\Cliente
       Respuesta::STATUS_EXITO,
       Respuesta::ARRAY,
       array(self::CLIENTE_ACTUALIZADO)
+    ))->Json();
+  }
+
+  public function removerCliente(): void
+  {
+    $this->eliminarCliente($this->id);
+
+    echo (new Respuesta(
+      Respuesta::STATUS_EXITO,
+      Respuesta::ARRAY,
+      array(self::CLIENTE_ELIMINADO)
     ))->Json();
   }
 

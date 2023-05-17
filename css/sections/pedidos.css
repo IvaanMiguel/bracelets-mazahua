@@ -19,29 +19,17 @@
   margin-top: var(--espaciado-chico);
 }
 
-#total {
-  display: flex;
-  align-items: center;
-  gap: var(--espaciado-chico);
-}
-
-#total > * {
-  flex: 1;
-
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
 #aplicaciones {
   display: flex;
   gap: var(--espaciado-chico);
 }
 
-#aplicaciones > * {
+#aplicaciones > *,
+#tipos-entrega > * {
   cursor: pointer;
 }
 
-#tarjeta-campos > * {
+#tarjeta-campos *,
+.campos-ubicacion * {
   flex: 1;
 }

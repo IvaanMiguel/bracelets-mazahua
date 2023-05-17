@@ -27,10 +27,9 @@
       </select>
     </lista-desplegable>
     <info-detalles id='informacion-ubicacion'></info-detalles>
-    <input id='id-ubicacion' type='hidden'> <!-- Probablemente útil. Eliminar si no es necesario. -->
     <contenedor-flex flex-direction='row' gap='var(--espaciado-grande)'>
       <boton-rellenado
-          data-evento='agregarubicacion'
+          data-evento='agregarnuevaubicacion'
           data-color-fondo='var(--clr-secundario-90)'
           data-color-texto='var(--clr-secundario-10)'
           data-variante='texto-icono'

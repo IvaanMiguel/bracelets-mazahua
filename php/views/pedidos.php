@@ -63,8 +63,11 @@
     </div>
   </main>
 
+  <?php require_once POPUPS_PEDIDOS . '/buscar-cliente.php' ?>
+
   <?php require_once PIE_PAGINA ?>
 
   <script type='module' src='js/orders/tabs-controlador.js'></script>
+  <script type='module' src='js/orders/lista-clientes.js'></script>
 </body>
 </html>

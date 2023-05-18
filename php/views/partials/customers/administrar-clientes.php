@@ -12,17 +12,6 @@
     <span id='total-clientes'><?= count($clientes)  ?></span>
     <?= 'cliente' . (count($clientes) === 1 ? '' : 's') ?>
   </wc-texto>
-  <lista-controlador id='lista-clientes'>
-
-    <?php $i = 0;
-    foreach ($clientes as $cliente): ?>
-      <item-divisor <?= ++$i === count($clientes) ? 'data-no-divisor' : '' ?>>
-        <lista-item>
-          <wc-texto data-tipo-fuente='titulo-s'><?= $cliente['nombre'] ?></wc-texto>
-          <input class='id-cliente' type='hidden' value=<?= $cliente['id'] ?>>
-        </lista-item>
-      </item-divisor>
-    <?php endforeach; ?>
-
-  </lista-controlador>
+  
+  <?php require_once DIR_PARCIALES . '/customers/lista-clientes.php' ?>
 </lista-encabezada>

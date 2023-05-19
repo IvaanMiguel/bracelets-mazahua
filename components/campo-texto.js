@@ -8,6 +8,10 @@ hojaCSS.replaceSync(/*css*/`
     text-align: left;
   }
 
+  :host([data-no-etiqueta]) div {
+    display: none;
+  }
+
   div {
     display: flex;
     align-items: center;

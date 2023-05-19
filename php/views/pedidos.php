@@ -64,10 +64,12 @@
   </main>
 
   <?php require_once POPUPS_PEDIDOS . '/buscar-cliente.php' ?>
+  <?php require_once POPUPS_PEDIDOS . '/buscar-producto.php' ?>
 
   <?php require_once PIE_PAGINA ?>
 
   <script type='module' src='js/orders/tabs-controlador.js'></script>
-  <script type='module' src='js/orders/lista-clientes.js'></script>
+  <script type='module' src='js/orders/buscar-cliente.js'></script>
+  <script type='module' src='js/orders/seleccionar-productos.js'></script>
 </body>
 </html>

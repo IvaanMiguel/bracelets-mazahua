@@ -12,7 +12,7 @@ hojaCSS.replaceSync(/*css*/`
     padding: var(--espaciado-chico) var(--espaciado-jumbo);
   }
 
-  slot:not([name='final'])::slotted(*) {
+  slot:not([name='inicio'], [name='final'])::slotted(*) {
     flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -22,6 +22,7 @@ hojaCSS.replaceSync(/*css*/`
 
 const template = document.createElement('template');
 template.innerHTML = /*html*/`
+  <slot name='inicio'></slot>
   <slot></slot>
   <slot name='final'></slot>
 `;

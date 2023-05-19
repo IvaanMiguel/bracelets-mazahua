@@ -12,12 +12,15 @@ hojaCSS.replaceSync(/*css*/`
 
     transition: background-color .2s ease 0s;
   }
-
   
   :host(:hover) {
     background-color: var(--clr-fondo-hover);
   }
-  
+
+  :host([data-no-final]) .final {
+    display: none;
+  }
+
   :host([data-no-cursor]) {
     cursor: unset;
   }
@@ -25,6 +28,8 @@ hojaCSS.replaceSync(/*css*/`
   .inicio {
     display: flex;
     flex-direction: column;
+
+    flex: 1;
   }
 
   .final {

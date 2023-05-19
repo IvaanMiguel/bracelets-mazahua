@@ -2,9 +2,11 @@
   max-width: var(--mw-formulario);
 }
 
-.pedido-contenedor info-detalles {
+.pedido-contenedor info-detalles,
+#productos-contenido {
   border: 1px solid var(--clr-neutral-80);
   border-radius: var(--br-borde);
+  overflow: hidden;
 }
 
 #agregar-pedido > boton-rellenado {
@@ -39,4 +41,33 @@
   border: 1px solid var(--clr-neutral-80);
   border-radius: var(--br-borde);
   overflow: hidden;
+}
+
+.check {
+  aspect-ratio: 1;
+  width: 1.125rem;
+  margin: 0 var(--espaciado-jumbo) 0 0;
+  pointer-events: none;
+  accent-color: var(--clr-secundario-40);
+}
+
+boton-elevado {
+  position: sticky;
+  bottom: 0;
+}
+
+.mini-input {
+  padding: 0 var(--espaciado-mediano);
+  width: 6ch;
+  text-align: center;
+  min-height: 2rem;
+
+  appearance: none;
+  -moz-appearance: textfield;
+}
+
+.mini-input::-webkit-outer-spin-button,
+.mini-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

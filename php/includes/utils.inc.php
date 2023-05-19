@@ -1,6 +1,6 @@
 <?php
 function reemplazarEspacios(
-    string $string
+    ?string $string
 ): string
 {
   return preg_replace('/\s+/', ' ', trim($string));

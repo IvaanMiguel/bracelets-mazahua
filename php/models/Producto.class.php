@@ -19,7 +19,7 @@ class Producto extends Dbh
 
   protected function obtenerProductos()
   {
-    $stmt = $this->conectar()->prepare('SELECT idProducto, nombreProducto, idCategoriaProducto FROM producto');
+    $stmt = $this->conectar()->prepare('SELECT * FROM producto');
     $this->ejecutarSentencia($stmt);
 
     return $stmt->fetchAll();

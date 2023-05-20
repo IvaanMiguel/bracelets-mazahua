@@ -68,8 +68,9 @@
 
   <?php require_once PIE_PAGINA ?>
 
-  <script type='module' src='js/orders/tabs-controlador.js'></script>
   <script type='module' src='js/orders/buscar-cliente.js'></script>
   <script type='module' src='js/orders/seleccionar-productos.js'></script>
+  <script type='module' src='js/orders/entrega.js'></script>
+  <script type='module' src='js/orders/controllers/tabs-controlador.js'></script>
 </body>
 </html>

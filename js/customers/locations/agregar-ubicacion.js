@@ -46,7 +46,7 @@ ventanaPrincipal.addEventListener('guardarubicacion', () => {
       if (datos.status === 0) return;
 
       const ubicacionOpcion = document.createElement('option');
-      ubicacionOpcion.value = datos[0];
+      ubicacionOpcion.value = datos.contenido[0];
 
       const numeroExterior = popupAgregarUbicacion.numeroExterior
         ? `#${popupAgregarUbicacion.numeroExterior}`
@@ -76,7 +76,7 @@ ventanaPrincipal.addEventListener('guardarubicacion', () => {
       ubicacionesCliente.appendChild(ubicacionOpcion);
       ordenarClienteUbicaciones();
 
-      ubicacionesCliente.value = datos[0];
+      ubicacionesCliente.value = datos.contenido[0];
       ubicacionesCliente.dispatchEvent(new Event('change'));
 
       // popupEliminarUbicacion.actualizarInfoUbicacion();

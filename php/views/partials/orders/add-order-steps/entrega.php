@@ -24,21 +24,21 @@
       </form>
     </contenedor-flex>
     <contenedor-flex id='entrega-aplicacion' flex-direction='column' gap='var(--espaciado-grande)'>
-      <contenedor-flex flex-direction='column' gap='var(--espaciado-chico)'>
-        <wc-texto data-tipo-fuente='etiqueta-l'>Aplicación de entrega</wc-texto>
-        <contenedor-flex id='aplicaciones' flex-direction='row' gap='var(--espaciado-chico)'>
-          <label>
-            <input type='radio' name='aplicacion'>
-            <wc-texto data-tipo-fuente='etiqueta-l'>Uber</wc-texto>
-          </label>
-          <label>
-            <input type='radio' name='aplicacion'>
-            <wc-texto data-tipo-fuente='etiqueta-l'>Didi</wc-texto>
-          </label>
-        </contenedor-flex>
-      </contenedor-flex>
       <?php require DIR_PARCIALES . '/orders/add-order-steps/lista-ubicaciones.php' ?>
       <form>
+        <contenedor-flex flex-direction='column' gap='var(--espaciado-chico)'>
+          <wc-texto data-tipo-fuente='etiqueta-l'>Aplicación de entrega</wc-texto>
+          <contenedor-flex id='aplicaciones' flex-direction='row' gap='var(--espaciado-chico)'>
+            <label>
+              <input type='radio' name='aplicacion'>
+              <wc-texto data-tipo-fuente='etiqueta-l'>Uber</wc-texto>
+            </label>
+            <label>
+              <input type='radio' name='aplicacion'>
+              <wc-texto data-tipo-fuente='etiqueta-l'>Didi</wc-texto>
+            </label>
+          </contenedor-flex>
+        </contenedor-flex>
         <?php require DIR_PARCIALES . '/orders/add-order-steps/entrega-campos.php' ?>
       </form>
     </contenedor-flex>

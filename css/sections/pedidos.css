@@ -71,3 +71,7 @@ boton-elevado {
   -webkit-appearance: none;
   margin: 0;
 }
+
+#entrega-aplicacion form > :first-child {
+  margin-bottom: var(--espaciado-grande);
+}

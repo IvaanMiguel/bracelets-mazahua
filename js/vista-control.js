@@ -76,8 +76,8 @@ export const crearNotificacion = (titulo, mensaje, tipo) => {
 
 export const ordenarItems = (listaItems, callback) => {
   Array.prototype.slice.call(listaItems).sort((primerItem, segundoItem) => {
-    const primerItemTexto = primerItem.innerText;
-    const segundoItemTexto = segundoItem.innerText;
+    const primerItemTexto = primerItem.innerText.trim();
+    const segundoItemTexto = segundoItem.innerText.trim();
 
     return primerItemTexto.toLowerCase().localeCompare(segundoItemTexto.toLowerCase());
   }).forEach((item, i) => callback(item, i));

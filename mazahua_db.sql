@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS ubicacionEntrega(
 CREATE TABLE IF NOT EXISTS pedido(
     idPedido INT AUTO_INCREMENT PRIMARY KEY,
     idCliente INT NOT NULL,
-    tipoPago ENUM('Depósito','Transferencia','Efectivo') NOT NULL,
+    tipoPago ENUM('Depósito','Tarjeta','Efectivo') NOT NULL,
     totalPedido DECIMAL(11, 2) NOT NULL,
     anticipo DECIMAL(11, 2) NOT NULL,
     /* estadoPago  ENUM('Sin pagar', 'Anticipo', 'Pagado') DEFAULT 'Sin pagar' NOT NULL, */

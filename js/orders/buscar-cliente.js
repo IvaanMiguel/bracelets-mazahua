@@ -1,4 +1,7 @@
-import { ordenarClientes } from '../customers/ordenar-clientes.js';
+import {
+  ordenarClientes,
+  ordenarClienteUbicaciones
+} from '../customers/ordenar-clientes.js';
 import { crearNotificacion } from '../vista-control.js';
 import infoClientePopup from './controllers/info-cliente-popup.js';
 
@@ -56,11 +59,69 @@ ventanaPrincipal.addEventListener('mostrarcliente', (e) => {
     });
 });
 
+const ubicacionesCliente = document.body.querySelectorAll('.ubicaciones-cliente');
+const infoUbicacion = document.body.querySelectorAll('.info-ubicacion');
+
+const obtenerUbicaciones = (id) => {
+  const formData = new FormData();
+  formData.append('idCliente', id);
+
+  fetch('php/includes/locations/mostrar_ubicaciones.inc.php', {
+    method: 'POST',
+    body: formData
+  })
+    .then((respuesta) => respuesta.json())
+    .then((datos) => {
+      const ubicaciones = [];
+
+      datos.contenido.forEach((ubicacion) => {
+        const ubicacionOpcion = document.createElement('option');
+        ubicacionOpcion.value = ubicacion.id;
+        ubicacionOpcion.innerText = `
+          ${ubicacion.colonia}, ${ubicacion.callePrincipal} ${ubicacion.numeroExterior ? `#${ubicacion.numeroExterior}` : 'S.N.'}, C.P. ${ubicacion.cp}
+        `;
+
+        ubicacionOpcion.contenido = {
+          'Calle principal': ubicacion.callePrincipal,
+          'Calle(s) adyacente(s)': ubicacion.callesAdyacentes ? ubicacion.callesAdyacentes : 'No especificada(s)',
+          Colonia: ubicacion.colonia,
+          'Número exterior': ubicacion.numeroExterior ? ubicacion.numeroExterior : 'S.N.',
+          'Número interior': ubicacion.numeroInterior ? ubicacion.numeroInterior : 'S.N.',
+          'Código postal': ubicacion.cp
+        };
+
+        ubicaciones.push(ubicacionOpcion);
+      });
+
+      ubicacionesCliente.forEach((select) => {
+        [...select.children].forEach((opcion) => {
+          if (opcion.value) opcion.remove();
+        });
+
+        ubicaciones.forEach((ubicacion) => {
+          const item = ubicacion.cloneNode(true);
+          item.contenido = ubicacion.contenido;
+          select.add(item);
+        });
+
+        ordenarClienteUbicaciones(select);
+
+        select.value = select.firstElementChild.value;
+      });
+
+      infoUbicacion.forEach((info) => {
+        info.contenido = ubicacionesCliente[0].firstElementChild.contenido;
+      });
+    });
+};
+
 const infoCliente = document.getElementById('info-cliente');
 const idCliente = document.getElementById('id-cliente');
 
 ventanaPrincipal.addEventListener('seleccionarcliente', () => {
   if (!infoClientePopup.infoCargada) return;
+
+  obtenerUbicaciones(idClientePopup.value);
 
   infoCliente.contenido = infoClientePopup.info.contenido;
   idCliente.value = idClientePopup.value;

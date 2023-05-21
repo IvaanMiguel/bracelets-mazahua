@@ -1,7 +1,6 @@
-CREATE DATABASE IF NOT EXISTS braceletsMazahua;
-USE braceletsMazahua;
+CREATE DATABASE IF NOT EXISTS braceletsmazahua;
+USE braceletsmazahua;
 
--- CREACIÓN DE TABLAS
 CREATE TABLE IF NOT EXISTS usuario(
     idUsuario INT AUTO_INCREMENT PRIMARY KEY,
     nombreUsuario VARCHAR(20) NOT NULL UNIQUE,
@@ -48,33 +47,17 @@ CREATE TABLE IF NOT EXISTS producto(
         ON UPDATE CASCADE
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 
-/* CREATE TABLE IF NOT EXISTS puntoEncuentro(
-    idPuntoEncuentro INT AUTO_INCREMENT PRIMARY KEY,
-    nombreUbicacion VARCHAR(40) NOT NULL UNIQUE
-); */
-
 CREATE TABLE IF NOT EXISTS entrega(
     idEntrega INT AUTO_INCREMENT PRIMARY KEY,
-    tipoEntrega ENUM(/* 'Punto de encuentro', */'Domicilio', 'Aplicación', 'Pick up') NOT NULL,
+    tipoEntrega ENUM('Domicilio', 'Aplicación', 'Pick up') NOT NULL,
     aplicacion ENUM( 'No aplica', 'Uber', 'Didi') DEFAULT 'No aplica' NOT NULL,
-    -- idPuntoEncuentro INT DEFAULT 0 NOT NULL,
     nombreDestinatario VARCHAR(60) DEFAULT '' NOT NULL,
     telefonoDestinatario VARCHAR(14) DEFAULT '' NOT NULL,
     fechaEntrega DATE NOT NULL,
-    horaEntrega TIME DEFAULT NULL/*,
-    FOREIGN KEY(idPuntoEncuentro) REFERENCES puntoEncuentro(idPuntoEncuentro)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE */
-) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
-
-CREATE TABLE IF NOT EXISTS ubicacionEntrega(
-    idEntrega INT NOT NULL UNIQUE,
-    idUbicacionCliente INT NOT NULL,
-    FOREIGN KEY(idEntrega) REFERENCES entrega(idEntrega)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE,
-    FOREIGN KEY(idUbicacionCliente) REFERENCES ubicacionCliente(id)
-        ON DELETE CASCADE
+    horaEntrega TIME NOT NULL,
+    idUbicacionCliente INT,
+    FOREIGN KEY (idUbicacionCliente) REFERENCES ubicacioncliente(id)
+        ON DELETE NO ACTION
         ON UPDATE CASCADE
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 
@@ -84,54 +67,68 @@ CREATE TABLE IF NOT EXISTS pedido(
     tipoPago ENUM('Depósito','Tarjeta','Efectivo') NOT NULL,
     totalPedido DECIMAL(11, 2) NOT NULL,
     anticipo DECIMAL(11, 2) NOT NULL,
-    /* estadoPago  ENUM('Sin pagar', 'Anticipo', 'Pagado') DEFAULT 'Sin pagar' NOT NULL, */
     estadoPedido ENUM('Anticipo - sin entregar', 'Pagado - sin entregar', 'Entregado'),
-    idUsuario INT NOT NULL,
+    idEntrega INT,
     fechaCreacion DATETIME NOT NULL,
+    idUsuario INT NOT NULL,
+    FOREIGN KEY(idEntrega) REFERENCES entrega(idEntrega)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE,
     FOREIGN KEY(idCliente) REFERENCES cliente(id)
-        ON DELETE CASCADE
+        ON DELETE NO ACTION
         ON UPDATE CASCADE,
     FOREIGN KEY(idUsuario) REFERENCES usuario(idUsuario)
-        ON DELETE CASCADE
+        ON DELETE NO ACTION
         ON UPDATE CASCADE
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 
 CREATE TABLE IF NOT EXISTS pedidoProducto(
     idPedido INT NOT NULL,
     idProducto INT NOT NULL,
-    personalizado BOOLEAN DEFAULT 0,
     cantidadProducto INT NOT NULL,
     subtotalProducto DECIMAL(11, 2) NOT NULL,
     FOREIGN KEY(idPedido) REFERENCES pedido(idPedido)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
     FOREIGN KEY(idProducto) REFERENCES producto(idProducto)
-        ON DELETE RESTRICT
+        ON DELETE CASCADE
         ON UPDATE CASCADE
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 
-CREATE TABLE IF NOT EXISTS pedidoEntrega(
-    idPedido INT NOT NULL UNIQUE,
-    idEntrega INT NOT NULL,
-    FOREIGN KEY(idPedido) REFERENCES pedido(idPedido)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE,
-    FOREIGN KEY(idEntrega) REFERENCES entrega(idEntrega)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE
+CREATE TABLE IF NOT EXISTS pedidocompletado(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombreCliente VARCHAR(130) NOT NULL,
+    nombreDestinatario VARCHAR(130) NOT NULL,
+    celularDestinatario VARCHAR(12) NOT NULL,
+    tipoEntrega ENUM('Domicilio', 'Aplicación', 'Pick up') NOT NULL,
+    tipoPago ENUM('Depósito', 'Tarjeta', 'Efectivo') NOT NULL,
+    callePrincipal VARCHAR(30) NOT NULL,
+    callesAdyacentes VARCHAR(60),
+    colonia VARCHAR(60) NOT NULL,
+    numeroExterior VARCHAR(6),
+    numeroInterior VARCHAR(6),
+    cp CHAR(6) NOT NULL,
+    fechaEntrega DATE NOT NULL,
+    horaEntrega TIME NOT NULL,
+    totalProductos INT NOT NULL,
+    total DECIMAL(11, 2),
+    fechaCompletado DATETIME NOT NULL
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 
-/* CREATE TABLE IF NOT EXISTS envio(
-    idEnvio INT AUTO_INCREMENT PRIMARY KEY,
-    tipoEnvio ENUM('Básico','Estándar','Express') NOT NULL,
-    fechaEnvio DATE NOT NULL,
-    horaEnvio TIME NOT NULL,
-    idUbicacionCliente INT NOT NULL,
-    idPedido INT NOT NULL,
-    FOREIGN KEY(idUbicacionCliente) REFERENCES ubicacionCliente(idUbicacionCliente)
+CREATE TABLE IF NOT EXISTS productocomprado(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(20) NOT NULL,
+    cantidad INT NOT NULL,
+    subtotal DECIMAL(11, 2) NOT NULL
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
+
+CREATE TABLE IF NOT EXISTS productopedidocompletado(
+    idPedidoCompletado INT NOT NULL,
+    idProductoComprado INT NOT NULL,
+    FOREIGN KEY (idPedidoCompletado) REFERENCES pedidocompletado(id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
-    FOREIGN KEY(idPedido) REFERENCES pedido(idPedido)
+    FOREIGN KEY (idProductoComprado) REFERENCES productocomprado(id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
-); */
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;

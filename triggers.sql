@@ -1,6 +1,4 @@
 DROP TRIGGER IF EXISTS before_producto_update;
-
-DROP TRIGGER IF EXISTS before_producto_update;
 delimiter $$
 CREATE TRIGGER before_producto_update
 BEFORE UPDATE ON producto FOR EACH ROW

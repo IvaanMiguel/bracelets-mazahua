@@ -3,11 +3,17 @@ import ItemDivisor from '../../../components/item-divisor.js';
 const productosAgregados = {
   _listaItems: document.getElementById('productos-agregados'),
   _total: document.getElementById('total'),
+  _anticipo: document.getElementById('anticipo'),
   _productos: {},
 
   get listaItems () { return this._listaItems; },
 
   get total () { return this._total; },
+
+  get anticipo () { return this._anticipo; },
+
+  /** @param {number} total */
+  set anticipo (total) { this._anticipo.innerText = (total / 2).toFixed(2); },
 
   get productos () { return this._productos; },
 
@@ -28,6 +34,7 @@ const productosAgregados = {
         this._agregarItem(this._productos[productoInfo.nombre]);
 
         total.innerText = (+total.innerText + +productoInfo.precio).toFixed(2);
+        this.anticipo = +this.total.innerText;
       }
     };
   },
@@ -78,6 +85,7 @@ const productosAgregados = {
       subtotal.innerText = `$${subtotalActual.toFixed(2)} MXN`;
 
       this.total.innerText = (+this.total.innerText + (subtotalActual - subtotalPrevio)).toFixed(2);
+      this.anticipo = +this.total.innerText;
     });
 
     inputCantidad.addEventListener('change', () => {
@@ -94,6 +102,8 @@ const productosAgregados = {
   removerProducto (nombre) {
     const productoInfo = this.productos[nombre];
     this.total.innerText = (+this.total.innerText - productoInfo.precio * productoInfo.cantidad).toFixed(2);
+    this.anticipo = +this.total.innerText;
+
     delete this.productos[nombre];
   }
 };

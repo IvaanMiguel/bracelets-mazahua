@@ -1,17 +1,19 @@
 <contenedor-flex class='pedido-contenedor' flex-direction='column' padding='var(--espaciado-grande)'>
-  <contenedor-flex id='tipos-pago' flex-direction='row' gap='var(--espaciado-chico)'>
-    <label>
-      <input type='radio' name='tipo-pago' checked>
-      <wc-texto data-tipo-fuente='etiqueta-l'>Efectivo</wc-texto>
-    </label>
-    <label>
-      <input type='radio' name='tipo-pago'>
-      <wc-texto data-tipo-fuente='etiqueta-l'>Depósito</wc-texto>
-    </label>
-    <label>
-      <input type='radio' name='tipo-pago'>
-      <wc-texto data-tipo-fuente='etiqueta-l'>Tarjeta</wc-texto>
-    </label>
+  <contenedor-flex flex-direction='row' gap='var(--espaciado-chico)'>
+    <form id='tipos-pago'>
+      <label>
+        <input type='radio' name='tipo-pago' value='Efectivo' checked>
+        <wc-texto data-tipo-fuente='etiqueta-l'>Efectivo</wc-texto>
+      </label>
+      <label>
+        <input type='radio' name='tipo-pago' value='Depósito'>
+        <wc-texto data-tipo-fuente='etiqueta-l'>Depósito</wc-texto>
+      </label>
+      <label>
+        <input type='radio' name='tipo-pago' value='Tarjeta'>
+        <wc-texto data-tipo-fuente='etiqueta-l'>Tarjeta</wc-texto>
+      </label>
+    </form>
   </contenedor-flex>
   <wc-tabs id='pago-tabs' data-no-cabecera>
     <span></span>

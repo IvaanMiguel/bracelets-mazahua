@@ -21,11 +21,6 @@
   margin-top: var(--espaciado-chico);
 }
 
-#aplicaciones {
-  display: flex;
-  gap: var(--espaciado-chico);
-}
-
 #aplicaciones > *,
 #tipos-entrega > * {
   cursor: pointer;
@@ -72,6 +67,8 @@ boton-elevado {
   margin: 0;
 }
 
-#entrega-aplicacion form > :first-child {
-  margin-bottom: var(--espaciado-grande);
+#entrega-aplicacion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaciado-grande);
 }

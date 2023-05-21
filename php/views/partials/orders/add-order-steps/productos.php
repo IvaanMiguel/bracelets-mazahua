@@ -11,10 +11,18 @@
     <wc-texto slot='texto-cabecera' data-tipo-fuente='titulo-s'>Productos añadidos</wc-texto>
     <lista-controlador id='productos-agregados'></lista-controlador>
   </wc-colapsable>
-  <item-detalles>
-    <wc-texto data-tipo-fuente='etiqueta-m'>Total</wc-texto>
-    <wc-texto data-tipo-fuente='cuerpo-l'>
-      $<span id='total'>0.00</span> MXN
-    </wc-texto>
-  </item-detalles>
+  <contenedor-flex flex-direction='column'>
+    <item-detalles>
+      <wc-texto data-tipo-fuente='etiqueta-m'>Anticipo</wc-texto>
+      <wc-texto data-tipo-fuente='cuerpo-l'>
+        $<span id='anticipo'>0.00</span> MXN
+      </wc-texto>
+    </item-detalles>
+    <item-detalles>
+      <wc-texto data-tipo-fuente='etiqueta-m'>Total</wc-texto>
+      <wc-texto data-tipo-fuente='cuerpo-l'>
+        $<span id='total'>0.00</span> MXN
+      </wc-texto>
+    </item-detalles>
+  </contenedor-flex>
 </contenedor-flex>

@@ -1,5 +1,5 @@
 <lista-desplegable>
-  <select class='ubicaciones-cliente'>
+  <select class='ubicaciones-cliente' name='ubicacion'>
     <option selected hidden value=''>Sin ubicaciones para mostrar.</option>
   </select>
 </lista-desplegable>

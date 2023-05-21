@@ -106,11 +106,11 @@ const obtenerUbicaciones = (id) => {
 
         ordenarClienteUbicaciones(select);
 
-        select.value = select.firstElementChild.value;
+        select.value = select.children[1].value;
       });
 
       infoUbicacion.forEach((info) => {
-        info.contenido = ubicacionesCliente[0].firstElementChild.contenido;
+        info.contenido = ubicacionesCliente[0].children[1].contenido;
       });
     });
 };

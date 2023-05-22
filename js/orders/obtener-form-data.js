@@ -26,17 +26,34 @@ const obtenerFormularioEntradas = (formDataOrigen, formulario) => {
 
 /** @param {FormData} formData */
 const obtenerTipoEntrega = (formData) => {
+  let formulario;
+
   switch (formData.get('tipoEntrega')) {
     case 'Pick up':
-      obtenerFormularioEntradas(formData, document.getElementById('entrega-pick-up'));
+      formulario = document.getElementById('entrega-pick-up');
       break;
 
     case 'Domicilio':
-      obtenerFormularioEntradas(formData, document.getElementById('entrega-domicilio'));
+      formulario = document.getElementById('entrega-domicilio');
       break;
 
     case 'Aplicación':
-      obtenerFormularioEntradas(formData, document.getElementById('entrega-aplicacion'));
+      formulario = document.getElementById('entrega-aplicacion');
+      break;
+  }
+
+  obtenerFormularioEntradas(formData, formulario);
+};
+
+/** @param {FormData} formData */
+const obtenerTipoPago = (formData) => {
+  switch (formData.get('tipoPago')) {
+    case 'Depósito':
+      formData.append('detallesPago', 'Depósito a cuenta bancaria.');
+      break;
+
+    case 'Tarjeta':
+      formData.append('detallesPago', 'Pago con tarjeta que termina en...');
       break;
   }
 };
@@ -48,6 +65,9 @@ const obtenerFormData = () => {
 
   obtenerFormularioEntradas(formData, document.getElementById('tipos-entrega'));
   obtenerTipoEntrega(formData);
+
+  obtenerFormularioEntradas(formData, document.getElementById('tipos-pago'));
+  obtenerTipoPago(formData);
 
   return formData;
 };

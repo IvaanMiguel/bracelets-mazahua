@@ -1,4 +1,10 @@
-<?php require_once COMPROBAR_SESION ?>
+<?php
+  use classes\Respuesta;
+  use \controllers\orders\MostrarPedido;
+
+  require_once COMPROBAR_SESION;
+  require_once AUTOLOADER;
+?>
 
 <!DOCTYPE html>
 <html lang='es'>
@@ -26,12 +32,7 @@
 
       <div class='seccion' data-rol='secciones'>
         <?php
-          require_once AUTOLOADER;
-
-          use classes\Respuesta;
-          use \controllers\Pedido;
-
-          $pedido = new Pedido();
+          $pedido = new MostrarPedido();
           $resultado = $pedido->obtenerPedidosPendientes();
         ?>
           <div class='pedidos'>
@@ -49,9 +50,6 @@
                       </span>
                       <span class='cuerpo-mediano'>
                         <?= $pedidoPendiente['tipoPago']; ?>
-                      </span>
-                      <span class='cuerpo-mediano'>
-                        <?= $pedidoPendiente['estadoPedido'] ?>
                       </span>
                     </div>
                   <?php endforeach;

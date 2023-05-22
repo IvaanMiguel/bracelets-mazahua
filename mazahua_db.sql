@@ -48,11 +48,11 @@ CREATE TABLE IF NOT EXISTS producto(
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 
 CREATE TABLE IF NOT EXISTS entrega(
-    idEntrega INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     tipoEntrega ENUM('Domicilio', 'Aplicación', 'Pick up') NOT NULL,
-    aplicacion ENUM( 'No aplica', 'Uber', 'Didi') DEFAULT 'No aplica' NOT NULL,
-    nombreDestinatario VARCHAR(60) DEFAULT '' NOT NULL,
-    telefonoDestinatario VARCHAR(14) DEFAULT '' NOT NULL,
+    aplicacion ENUM('Uber', 'Didi'),
+    nombreDestinatario VARCHAR(130) NOT NULL,
+    telefonoDestinatario VARCHAR(12) NOT NULL,
     fechaEntrega DATE NOT NULL,
     horaEntrega TIME NOT NULL,
     idUbicacionCliente INT,
@@ -62,16 +62,16 @@ CREATE TABLE IF NOT EXISTS entrega(
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 
 CREATE TABLE IF NOT EXISTS pedido(
-    idPedido INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     idCliente INT NOT NULL,
-    tipoPago ENUM('Depósito','Tarjeta','Efectivo') NOT NULL,
-    totalPedido DECIMAL(11, 2) NOT NULL,
+    tipoPago ENUM('Depósito', 'Tarjeta', 'Efectivo') NOT NULL,
+    detallesPago VARCHAR(40),
+    total DECIMAL(11, 2) DEFAULT 0,
     anticipo DECIMAL(11, 2) NOT NULL,
-    estadoPedido ENUM('Anticipo - sin entregar', 'Pagado - sin entregar', 'Entregado'),
     idEntrega INT,
     fechaCreacion DATETIME NOT NULL,
     idUsuario INT NOT NULL,
-    FOREIGN KEY(idEntrega) REFERENCES entrega(idEntrega)
+    FOREIGN KEY(idEntrega) REFERENCES entrega(id)
         ON DELETE RESTRICT
         ON UPDATE CASCADE,
     FOREIGN KEY(idCliente) REFERENCES cliente(id)
@@ -82,12 +82,12 @@ CREATE TABLE IF NOT EXISTS pedido(
         ON UPDATE CASCADE
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 
-CREATE TABLE IF NOT EXISTS pedidoProducto(
+CREATE TABLE IF NOT EXISTS pedidoproducto(
     idPedido INT NOT NULL,
     idProducto INT NOT NULL,
-    cantidadProducto INT NOT NULL,
-    subtotalProducto DECIMAL(11, 2) NOT NULL,
-    FOREIGN KEY(idPedido) REFERENCES pedido(idPedido)
+    cantidad INT NOT NULL,
+    subtotal DECIMAL(11, 2) NOT NULL,
+    FOREIGN KEY(idPedido) REFERENCES pedido(id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
     FOREIGN KEY(idProducto) REFERENCES producto(idProducto)

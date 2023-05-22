@@ -35,3 +35,25 @@ BEGIN
     SET NEW.cp = IF (NEW.cp = '', OLD.cp, NEW.cp);
 END$$
 delimiter ;
+
+DROP TRIGGER IF EXISTS before_pedidoproducto_insert;
+delimiter $$
+CREATE TRIGGER before_pedidoproducto_insert
+BEFORE INSERT ON pedidoproducto FOR EACH ROW
+BEGIN
+    SET NEW.subtotal = (SELECT precio * NEW.cantidad FROM producto WHERE idProducto = NEW.idProducto);
+    UPDATE producto SET existencias = existencias - NEW.cantidad WHERE idProducto = NEW.idProducto;
+END$$
+delimiter ;
+
+DROP TRIGGER IF EXISTS after_pedidoproducto_insert;
+delimiter $$
+CREATE TRIGGER after_pedidoproducto_insert
+AFTER INSERT ON pedidoproducto FOR EACH ROW
+BEGIN
+    UPDATE pedido SET
+        total = total + NEW.subtotal,
+        anticipo = total / 2
+    WHERE id =  NEW.idPedido;
+END$$
+delimiter ;

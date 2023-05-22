@@ -7,7 +7,8 @@ use \controllers\Ubicacion;
 require_once dirname(__DIR__) . '/constantes.php';
 require_once AUTOLOADER;
 
-class UbicacionMensaje {
+class UbicacionMensaje
+{
   const UBICACION_REGISTRADA = [
     'titulo' => 'Nueva ubicación registrada',
     'mensaje' => 'La ubicación ha sido registrada con éxito.',

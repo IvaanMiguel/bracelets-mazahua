@@ -2,15 +2,15 @@
   <contenedor-flex flex-direction='row' gap='var(--espaciado-chico)'>
     <form id='tipos-pago'>
       <label>
-        <input type='radio' name='tipo-pago' value='Efectivo' checked>
+        <input type='radio' name='tipoPago' value='Efectivo' checked>
         <wc-texto data-tipo-fuente='etiqueta-l'>Efectivo</wc-texto>
       </label>
       <label>
-        <input type='radio' name='tipo-pago' value='Depósito'>
+        <input type='radio' name='tipoPago' value='Depósito'>
         <wc-texto data-tipo-fuente='etiqueta-l'>Depósito</wc-texto>
       </label>
       <label>
-        <input type='radio' name='tipo-pago' value='Tarjeta'>
+        <input type='radio' name='tipoPago' value='Tarjeta'>
         <wc-texto data-tipo-fuente='etiqueta-l'>Tarjeta</wc-texto>
       </label>
     </form>

@@ -45,15 +45,23 @@ const obtenerTipoEntrega = (formData) => {
   obtenerFormularioEntradas(formData, formulario);
 };
 
+const clabe = document.body.querySelector('[name="clabeCuenta"]');
+const tarjeta = document.body.querySelector('[name="numeroTarjeta"]');
+const titular = document.body.querySelector('[name="titular"]');
+
 /** @param {FormData} formData */
 const obtenerTipoPago = (formData) => {
   switch (formData.get('tipoPago')) {
     case 'Depósito':
-      formData.append('detallesPago', 'Depósito a cuenta bancaria.');
+      formData.append('clabeCuenta', clabe.value);
+      formData.append('detallesPago', `Cuenta que termina en ${clabe.value.replace(/\s/g, '').slice(-3, -1)}`);
       break;
 
     case 'Tarjeta':
-      formData.append('detallesPago', 'Pago con tarjeta que termina en...');
+      formData.append('numeroTarjeta', tarjeta.value);
+      formData.append('titular', titular.value);
+
+      formData.append('detallesPago', `Tarjeta que termina en ${tarjeta.value.replace(/\s/g, '').slice(-2)}`);
       break;
   }
 };

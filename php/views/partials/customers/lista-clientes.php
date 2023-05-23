@@ -1,7 +1,7 @@
 <lista-controlador id='lista-clientes'>
 
   <?php $i = 0;
-  if (count($clientes) !== 0):
+  if (count($clientes) > 0):
 
     foreach ($clientes as $cliente): ?>
       <item-divisor <?= ++$i === count($clientes) ? 'data-no-divisor' : '' ?>>

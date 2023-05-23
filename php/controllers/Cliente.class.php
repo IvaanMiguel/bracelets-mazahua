@@ -104,7 +104,7 @@ class Cliente extends \models\Cliente
   private const NOMBRE_MAX_LONGITUD = 50;
   private const APELLIDOS_MIN_LONGITUD = 4;
   private const APELLIDOS_MAX_LONGITUD = 80;
-  private const CELULAR_LONGITUD = 10;
+  public const CELULAR_LONGITUD = 10;
   private const EDAD_MINIMA = 1;
   private const EDAD_MAXIMA = 120;
 
@@ -176,9 +176,11 @@ class Cliente extends \models\Cliente
     return $this->obtenerClientes();
   }
 
-  public function mostrarCliente(): void
+  public function mostrarCliente(bool $noRespuesta = false)
   {
     $cliente =  $this->obtenerCliente($this->id);
+
+    if ($noRespuesta) return $cliente;
 
     echo (new Respuesta(
       Respuesta::STATUS_EXITO,

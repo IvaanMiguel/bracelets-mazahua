@@ -105,6 +105,13 @@ const productosAgregados = {
     this.anticipo = +this.total.innerText;
 
     delete this.productos[nombre];
+  },
+
+  removerProductos () {
+    this.total.innerText = '0.00';
+    this.anticipo = '0.00';
+
+    this._productos = {};
   }
 };
 

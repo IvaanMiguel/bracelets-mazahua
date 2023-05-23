@@ -65,7 +65,7 @@ class Producto extends Dbh
       string $nombre,
       int $idCategoria,
       string $precio,
-      string $existencias
+      ?string $existencias
   ): void
   {
     $stmt = $this->conectar()->prepare('UPDATE producto SET

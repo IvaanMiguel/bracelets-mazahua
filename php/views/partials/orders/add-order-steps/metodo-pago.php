@@ -27,10 +27,10 @@
       <contenedor-flex gap='var(--espaciado-chico)'>
         <campo-texto>
           <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>Número de tarjeta</wc-texto>
-          <input type='text' name='numero'>
+          <input type='text' name='numeroTarjeta'>
         </campo-texto>
       </contenedor-flex>
-      <contenedor-flex id='tarjeta-campos' flex-direction='row' gap='var(--espaciado-grande)'>
+      <!-- <contenedor-flex id='tarjeta-campos' flex-direction='row' gap='var(--espaciado-grande)'>
         <contenedor-flex gap='var(--espaciado-chico)'>
           <campo-texto>
             <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>Fecha de vencimiento</wc-texto>
@@ -43,7 +43,7 @@
             <input type='text' name='cvc'>
           </campo-texto>
         </contenedor-flex>
-      </contenedor-flex>
+      </contenedor-flex> -->
       <contenedor-flex gap='var(--espaciado-chico)'>
         <campo-texto>
           <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>Nombre del titular</wc-texto>

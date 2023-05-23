@@ -106,11 +106,11 @@ const obtenerUbicaciones = (id) => {
 
         ordenarClienteUbicaciones(select);
 
-        select.value = select.children[1].value;
+        select.value = select.children[0].value || select.children[0].value;
       });
 
       infoUbicacion.forEach((info) => {
-        info.contenido = ubicacionesCliente[0].children[1].contenido;
+        info.contenido = ubicacionesCliente[0].children[0].contenido || ubicacionesCliente[0].children[1].contenido;
       });
     });
 };
@@ -125,6 +125,14 @@ ventanaPrincipal.addEventListener('seleccionarcliente', () => {
 
   infoCliente.contenido = infoClientePopup.info.contenido;
   idCliente.value = idClientePopup.value;
+
+  document.body.querySelectorAll('[name="nombreDestinatario"]').forEach((input) => {
+    input.placeholder = `${infoCliente.contenido.Nombre} ${infoCliente.contenido['Apellido(s)']}`;
+  });
+
+  document.body.querySelectorAll('[name="celularDestinatario"]').forEach((input) => {
+    input.placeholder = `${infoCliente.contenido['Número de celular']}`;
+  });
 
   crearNotificacion('Cliente seleccionado', 'Cliente seleccionado con éxito.', 'exito');
 

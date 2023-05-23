@@ -233,6 +233,8 @@ class Producto extends \models\Producto
     }
     if ($this->existencias == 0 || !empty($this->existencias)) {
       $this->validarCantidadExistencias();
+    } else if (empty($this->existencias)) {
+      $this->existencias = null;
     }
 
     if (count($this->errores) > 0) {

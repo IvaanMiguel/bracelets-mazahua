@@ -21,7 +21,7 @@
     <contenedor-flex gap='var(--espaciado-chico)'>
       <campo-texto>
         <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>Hora de entrega</wc-texto>
-        <input type='time' name='horaEntrega'>
+        <input type='time' name='horaEntrega' max='23:59'>
       </campo-texto>
     </contenedor-flex>
   </contenedor-flex>

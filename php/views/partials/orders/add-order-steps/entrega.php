@@ -32,7 +32,7 @@
           <wc-texto data-tipo-fuente='etiqueta-l'>Aplicación de entrega</wc-texto>
           <contenedor-flex flex-direction='row' gap='var(--espaciado-chico)'>
             <label>
-              <input type='radio' name='aplicacion' value='Uber'>
+              <input type='radio' name='aplicacion' value='Uber' checked>
               <wc-texto data-tipo-fuente='etiqueta-l'>Uber</wc-texto>
             </label>
             <label>

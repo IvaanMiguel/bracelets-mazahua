@@ -70,7 +70,7 @@
 
   <script type='module' src='js/orders/buscar-cliente.js'></script>
   <script type='module' src='js/orders/seleccionar-productos.js'></script>
-  <script type='module' src='js/orders/entrega.js'></script>
+  <script type='module' src='js/orders/controllers/entrega-pago.js'></script>
   <script type='module' src='js/orders/agregar-pedido.js'></script>
   <script type='module' src='js/orders/controllers/tabs-controlador.js'></script>
 </body>

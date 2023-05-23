@@ -55,7 +55,7 @@ class CrearPedido extends Dbh
 
   private function crearEntrega(
     string $tipoEntrega,
-    string $aplicacion,
+    ?string $aplicacion,
     ?string $nombreDestinatario,
     ?string $celularDestinatario,
     string $fechaEntrega,

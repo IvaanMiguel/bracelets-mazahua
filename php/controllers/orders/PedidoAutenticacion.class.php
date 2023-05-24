@@ -40,7 +40,7 @@ class PedidoAutenticacion
       $cliente = Cliente::idClienteConstructor($idCliente);
       $infoCliente = $cliente->mostrarCliente(true)[0];
 
-      $nombreDestinatario = "{$infoCliente['nombre']} {$infoCliente['apellidos']}";
+      $nombreDestinatario = "{$infoCliente['apellidos']} {$infoCliente['nombre']}";
     } else {
       validarLongitud(
         $nombreDestinatario,

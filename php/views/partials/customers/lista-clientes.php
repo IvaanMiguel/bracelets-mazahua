@@ -6,7 +6,7 @@
     foreach ($clientes as $cliente): ?>
       <item-divisor <?= ++$i === count($clientes) ? 'data-no-divisor' : '' ?>>
         <lista-item>
-          <wc-texto data-tipo-fuente='titulo-s'><?= $cliente['nombre'] ?></wc-texto>
+          <wc-texto class='nombre-cliente-lista' data-tipo-fuente='titulo-s'><?= $cliente['nombre'] ?></wc-texto>
           <input class='id-cliente' type='hidden' value=<?= $cliente['id'] ?>>
         </lista-item>
       </item-divisor>

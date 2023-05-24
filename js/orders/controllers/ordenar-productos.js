@@ -11,7 +11,7 @@ export const ordenarProductos = (listaCategoria) => {
 };
 
 const ventana = document.getElementById('buscar-producto');
-const productosContenido = document.getElementById('productos-contenido');
+const listaProductos = document.getElementById('lista-productos');
 
 export const ordenarProductosCategorias = () => {
   const colapsables = ventana.querySelectorAll('wc-colapsable');
@@ -19,6 +19,6 @@ export const ordenarProductosCategorias = () => {
   ordenarItems([...colapsables].map((colapsable) => {
     return colapsable.querySelector('[slot="texto-cabecera"]');
   }), (colapsableTitulo) => {
-    productosContenido.appendChild(colapsableTitulo.parentElement);
+    listaProductos.appendChild(colapsableTitulo.parentElement);
   });
 };

@@ -101,3 +101,25 @@ export const crearEventoValidacion = (nombre, detalles) => {
     detail: detalles
   });
 };
+
+/** @param {string} fecha */
+export const obtenerFecha = (fecha) => {
+  const mes = [
+    'enero',
+    'febrero',
+    'marzo',
+    'abril',
+    'mayo',
+    'junio',
+    'julio',
+    'agosto',
+    'septiembre',
+    'octubre',
+    'noviembre',
+    'diciembre'
+  ];
+
+  fecha = fecha.split('-');
+
+  return `${fecha[2]} de ${mes[+fecha[1]]} de ${fecha[0]}`;
+};

@@ -36,13 +36,6 @@ hojaCSS.replaceSync(/*css*/`
     display: flex;
     gap: var(--espaciado-mediano);
   }
-
-  ::slotted([slot='info-extra']) {
-    font-size: var(--fs-etiqueta-chica);
-    line-height: var(--lh-etiqueta-chica);
-    letter-spacing: var(--ls-etiqueta-chica);
-    font-weight: var(--fw-medio);
-  }
 `);
 
 const template = document.createElement('template');

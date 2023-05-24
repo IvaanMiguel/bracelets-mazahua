@@ -43,9 +43,10 @@
                 data-etiqueta='Administrar pedidos'
                 data-expandir>
             </boton-texto>
-            <div>
-              <?php require_once 'partials/orders/administrar-pedidos.php' ?>
-            </div>
+            <wc-tabs id='subtab' data-tab='2' data-no-cabecera>
+              <?php require 'partials/orders/pedido-vista.php' ?>
+              <?php require 'partials/orders/administrar-pedidos.php' ?>
+            </wc-tabs>
             <boton-texto
                 slot='tab'
                 data-color-texto='var(--clr-fondo-10)'
@@ -73,5 +74,6 @@
   <script type='module' src='js/orders/controllers/entrega-pago.js'></script>
   <script type='module' src='js/orders/agregar-pedido.js'></script>
   <script type='module' src='js/orders/controllers/tabs-controlador.js'></script>
+  <script type='module' src='js/orders/mostrar-pedido.js'></script>
 </body>
 </html>

@@ -68,7 +68,7 @@ const obtenerTipoPago = (formData) => {
 
 const obtenerFormData = () => {
   const formData = new FormData();
-  formData.append('idCliente', document.getElementById('id-cliente').value);
+  formData.append('idCliente', document.getElementById('id-cliente-agregar').value);
   formData.append('productos', JSON.stringify(obtenerProductos()));
 
   obtenerFormularioEntradas(formData, document.getElementById('tipos-entrega'));

@@ -1,4 +1,4 @@
-<contenedor-flex class='pedido-contenedor' flex-direction='column' gap='var(--espaciado-grande)' padding='var(--espaciado-grande)'>
+<contenedor-flex class='ancho-fijo' flex-direction='column' gap='var(--espaciado-grande)' padding='var(--espaciado-grande)'>
   <contenedor-flex flex-direction='row' gap='var(--espaciado-chico)'>
     <form id='tipos-entrega'>
       <label>

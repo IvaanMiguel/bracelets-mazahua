@@ -4,8 +4,10 @@ import {
 } from '../customers/ordenar-clientes.js';
 import { crearNotificacion } from '../vista-control.js';
 import infoClientePopup from './controllers/info-cliente-popup.js';
+import { ordenarPedidos } from './controllers/ordenar-pedidos.js';
 
 ordenarClientes();
+ordenarPedidos('pedidos-pendientes');
 
 const listaClientes = document.getElementById('lista-clientes');
 
@@ -106,7 +108,7 @@ const obtenerUbicaciones = (id) => {
 
         ordenarClienteUbicaciones(select);
 
-        select.value = select.children[0].value || select.children[0].value;
+        select.value = select.children[0].value || select.children[1].value;
       });
 
       infoUbicacion.forEach((info) => {
@@ -116,7 +118,7 @@ const obtenerUbicaciones = (id) => {
 };
 
 const infoCliente = document.getElementById('info-cliente');
-const idCliente = document.getElementById('id-cliente');
+const idCliente = document.getElementById('id-cliente-agregar');
 
 ventanaPrincipal.addEventListener('seleccionarcliente', () => {
   if (!infoClientePopup.infoCargada) return;
@@ -127,7 +129,7 @@ ventanaPrincipal.addEventListener('seleccionarcliente', () => {
   idCliente.value = idClientePopup.value;
 
   document.body.querySelectorAll('[name="nombreDestinatario"]').forEach((input) => {
-    input.placeholder = `${infoCliente.contenido.Nombre} ${infoCliente.contenido['Apellido(s)']}`;
+    input.placeholder = `${infoCliente.contenido['Apellido(s)']} ${infoCliente.contenido.Nombre}`;
   });
 
   document.body.querySelectorAll('[name="celularDestinatario"]').forEach((input) => {

@@ -19,14 +19,14 @@
       data-evento='cerrar'>
   </boton-icono>
   <contenedor-flex flex-direction='column' gap='var(--espaciado-grande)'>
-    <contenedor-flex id='productos-contenido' gap='var(--espaciado-chico)'>
+    <contenedor-flex id='lista-productos' gap='var(--espaciado-chico)'>
       <?php if (count($categoriasActivas) > 0): ?>
         <?php foreach ($categoriasActivas as $categoriaActiva): ?>
           <wc-colapsable data-minicabecera>
             <wc-texto slot='texto-cabecera' data-tipo-fuente='titulo-s'>
               <?= $categoriaActiva['nombreCategoria'] ?>
             </wc-texto>
-            <lista-controlador id='lista-productos'>
+            <lista-controlador>
       
               <?php
                 $productosFiltrados = array_filter($productos, function($producto) use ($categoriaActiva) {

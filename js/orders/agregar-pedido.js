@@ -2,16 +2,23 @@ import obtenerFormData from './obtener-form-data.js';
 import { crearNotificacion, obtenerRespuesta } from '../vista-control.js';
 import productosAgregados from './controllers/lista-productos-agregados.js';
 import entregaFormulario from './controllers/entrega-formulario.js';
+import crearItemPedido from './controllers/crear-item-lista.js';
+import { ordenarPedidos } from './controllers/ordenar-pedidos.js';
 
 entregaFormulario.inicializar();
 
 const infoCliente = document.getElementById('info-cliente');
-const idCliente = document.getElementById('id-cliente');
+const idCliente = document.getElementById('id-cliente-agregar');
 const listaProductos = document.getElementById('lista-productos');
 const pagoEfectivo = document.body.querySelector('[value="Efectivo"]');
-const clabeCuenta = document.body.querySelector('[value="clabeCuenta"]');
-const numeroTarjeta = document.body.querySelector('[value="numeroTarjeta"]');
-const titular = document.body.querySelector('[value="titular"]');
+const clabeCuenta = document.body.querySelector('[name="clabeCuenta"]');
+const numeroTarjeta = document.body.querySelector('[name="numeroTarjeta"]');
+const titular = document.body.querySelector('[name="titular"]');
+const pedidosPendientesLista = document.getElementById('pedidos-pendientes');
+const totalPedidos = document.getElementById('total-pedidos');
+const totalPedidosPendientes = document.getElementById('total-pedidos-pendientes');
+const pedidosTitulo = document.getElementById('pedidos-titulo');
+const pedidosPendientesTitulo = document.getElementById('pedidos-pendientes-titulo');
 
 document.addEventListener('hacerpedido', () => {
   fetch('php/includes/orders/agregar_pedido.inc.php', {
@@ -25,6 +32,16 @@ document.addEventListener('hacerpedido', () => {
       });
 
       if (datos.status === 0) return;
+
+      pedidosPendientesLista.appendChild(crearItemPedido(datos.contenido[0]));
+      ordenarPedidos('pedidos-pendientes');
+
+      totalPedidos.innerText = +totalPedidos.innerText + 1;
+      totalPedidosPendientes.innerText = +totalPedidosPendientes.innerText + 1;
+      pedidosTitulo
+        .innerHTML = `${totalPedidos.outerHTML} pedido${+totalPedidos.innerText === 1 ? '' : 's'}`;
+      pedidosPendientesTitulo
+        .innerHTML = `${totalPedidosPendientes.outerHTML} pedido${+totalPedidosPendientes.innerText === 1 ? '' : 's'}`;
 
       // Reinicio de apartado de clientes.
       idCliente.value = '';

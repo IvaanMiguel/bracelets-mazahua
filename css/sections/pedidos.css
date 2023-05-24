@@ -1,9 +1,9 @@
-.pedido-contenedor {
+.ancho-fijo {
   max-width: var(--mw-formulario);
 }
 
-.pedido-contenedor info-detalles,
-#productos-contenido {
+.ancho-fijo info-detalles,
+#lista-productos {
   border: 1px solid var(--clr-neutral-80);
   border-radius: var(--br-borde);
   overflow: hidden;
@@ -13,7 +13,8 @@
   margin: var(--espaciado-jumbo) 0;
 }
 
-#agregar-pedido wc-colapsable {
+#agregar-pedido wc-colapsable,
+.contenedor-borde wc-colapsable {
   border: 1px solid var(--clr-neutral-80);
 }
 
@@ -71,4 +72,13 @@ boton-elevado {
   display: flex;
   flex-direction: column;
   gap: var(--espaciado-grande);
+}
+
+.contenedor-borde {
+  border: 1px solid var(--clr-neutral-80);
+  border-radius: var(--br-borde);
+}
+
+.flex-start {
+  align-items: flex-start;
 }

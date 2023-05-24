@@ -1,4 +1,4 @@
-<contenedor-flex class='pedido-contenedor' flex-direction='column' gap='var(--espaciado-grande)' padding='var(--espaciado-grande)'>
+<contenedor-flex class='ancho-fijo' flex-direction='column' gap='var(--espaciado-grande)' padding='var(--espaciado-grande)'>
   <boton-rellenado
       data-evento='buscarcliente'
       data-color-fondo='var(--clr-secundario-90)'
@@ -12,5 +12,5 @@
       <wc-texto data-tipo-fuente='etiqueta-l'>Ningún cliente selccionado</wc-texto>
     </contenedor-flex>
   </info-detalles>
-  <input id='id-cliente' type='hidden'>
+  <input id='id-cliente-agregar' type='hidden'>
 </contenedor-flex>

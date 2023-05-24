@@ -1,6 +1,8 @@
 CREATE DATABASE IF NOT EXISTS braceletsmazahua;
 USE braceletsmazahua;
 
+SET lc_time_names = 'es_MX';
+
 CREATE TABLE IF NOT EXISTS usuario(
     idUsuario INT AUTO_INCREMENT PRIMARY KEY,
     nombreUsuario VARCHAR(20) NOT NULL UNIQUE,
@@ -68,6 +70,7 @@ CREATE TABLE IF NOT EXISTS pedido(
     detallesPago VARCHAR(40),
     total DECIMAL(11, 2) DEFAULT 0,
     anticipo DECIMAL(11, 2) NOT NULL,
+    estadoAnticipo BOOL DEFAULT 0 NOT NULL,
     idEntrega INT,
     fechaCreacion DATETIME NOT NULL,
     idUsuario INT NOT NULL,

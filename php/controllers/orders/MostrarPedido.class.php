@@ -2,9 +2,17 @@
 
 namespace controllers\orders;
 
+use \classes\Respuesta;
 
 class MostrarPedido extends \models\orders\MostrarPedido
 {
+  private ?int $id;
+
+  public function __construct(?int $id = null)
+  {
+    $this->id  = $id;
+  }
+
   public function obtenerPedidosPendientes(): array
   {
     $respuesta = json_decode($this->seleccionarPedidosPendientes(), true);
@@ -23,6 +31,22 @@ class MostrarPedido extends \models\orders\MostrarPedido
       'tipo' => $respuesta['tipo'],
       'contenido' => $pedidosPendientes
     ];
+  }
+
+  public function mostrarPedidosPendientes(): array
+  {
+    return $this->obtenerPedidosPendientesLista();
+  }
+
+  public function mostrarPedidoPendiente()
+  {
+    $pedido = $this->obtnerPedidoPendiente($this->id);
+
+    echo (new Respuesta(
+      Respuesta::STATUS_EXITO,
+      Respuesta::ARRAY,
+      $pedido
+    ))->Json();
   }
 
   private function obtenerTipoEntrega(

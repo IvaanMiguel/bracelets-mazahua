@@ -4,10 +4,8 @@ import {
 } from '../customers/ordenar-clientes.js';
 import { crearNotificacion } from '../vista-control.js';
 import infoClientePopup from './controllers/info-cliente-popup.js';
-import { ordenarPedidos } from './controllers/ordenar-pedidos.js';
 
 ordenarClientes();
-ordenarPedidos('pedidos-pendientes');
 
 const listaClientes = document.getElementById('lista-clientes');
 

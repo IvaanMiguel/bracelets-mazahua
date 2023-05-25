@@ -10,7 +10,7 @@
       <wc-texto data-tipo-fuente='titulo-l'>Datos del cliente</wc-texto>
     </contenedor-flex>
     <contenedor-flex class='ancho-fijo'>
-      <item-detalles class='pedido-edicion'>
+      <item-detalles>
         <wc-texto data-tipo-fuente='etiqueta-m'>
           Pedido por
         </wc-texto>
@@ -48,7 +48,7 @@
       <lista-controlador id='lista-productos-pedidos'></lista-controlador>
     </wc-colapsable>
     <contenedor-flex class='ancho-fijo'>
-      <item-detalles class='pedido-edicion'>
+      <item-detalles>
         <wc-texto data-tipo-fuente='etiqueta-m'>
           Cantidad total de productos
         </wc-texto>
@@ -174,7 +174,7 @@
     </boton-rellenado>
     <boton-delineado
         class='pedido-edicion'
-        data-evento='editarinformacionpago'
+        data-evento='eliminarpedido'
         data-color-texto='var(--clr-error-40)'
         data-variante='texto-icono'
         data-etiqueta='Eliminar pedido'

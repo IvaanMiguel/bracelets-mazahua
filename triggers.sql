@@ -53,7 +53,21 @@ AFTER INSERT ON pedidoproducto FOR EACH ROW
 BEGIN
     UPDATE pedido SET
         total = total + NEW.subtotal,
-        anticipo = total / 2
+        anticipo = total / 2,
+        totalProductos = totalProductos + NEW.cantidad
     WHERE id =  NEW.idPedido;
+END$$
+delimiter ;
+
+DROP TRIGGER IF EXISTS before_pedido_delete;
+delimiter $$
+CREATE TRIGGER before_pedido_delete
+BEFORE DELETE ON pedido FOR EACH ROW
+BEGIN
+    DECLARE idEntregaPedido INT;
+    
+    SELECT idEntrega INTO idEntregaPedido FROM pedido WHERE id = OLD.id;
+    
+    DELETE FROM entrega WHERE id = idEntregaPedido;
 END$$
 delimiter ;

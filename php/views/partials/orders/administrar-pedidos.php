@@ -8,15 +8,15 @@
 
   $pedidos = new MostrarPedido();
   $pedidosPendientes = $pedidos->mostrarPedidosPendientes();
-
+  $pedidosCompletados = $pedidos->mostrarPedidosCompletados();
 ?>
 
 <lista-encabezada>
   <wc-texto id='pedidos-titulo' slot='titulo' data-tipo-fuente='titulo-l'>
     <span id='total-pedidos'>
-      <?= count($pedidosPendientes) ?>
+      <?= count($pedidosPendientes) + count($pedidosCompletados) ?>
     </span>
-    <?= 'pedido' . (count($pedidosPendientes) === 1 ? '' : 's') ?>
+    <?= 'pedido' . (count($pedidosPendientes) + count($pedidosCompletados) === 1 ? '' : 's') ?>
   </wc-texto>
   <wc-colapsable>
     <wc-texto id='pedidos-pendientes-titulo' slot='texto-cabecera' data-tipo-fuente='titulo-m'>
@@ -35,9 +35,9 @@
               </wc-texto>
               <wc-texto slot='info-extra' data-tipo-fuente='etiqueta-s'>
                 <?= $pedidoPendiente['totalProductos'] ?> producto<?= $pedidoPendiente['totalProductos'] == 1 ? '' : 's' ?>
-                en total. Entrega el <?= obtenerFecha($pedidoPendiente['fechaEntrega']) ?>.
+                en total. <span class='entrega-completado'>Entrega el <?= obtenerFecha($pedidoPendiente['fechaEntrega']) ?></span>.
               </wc-texto>
-              <input class='id-pedido-pendiente' type='hidden' value=<?= $pedidoPendiente['id'] ?>>
+              <input class='id-pedido' type='hidden' value=<?= $pedidoPendiente['id'] ?>>
             </lista-item>
           </item-divisor>
         <?php endforeach; ?>
@@ -45,17 +45,29 @@
     </lista-controlador>
   </wc-colapsable>
   <wc-colapsable>
-    <wc-texto slot='texto-cabecera' data-tipo-fuente='titulo-m'>
-      7 entrgados
+    <wc-texto id='pedidos-completados-titulo' slot='texto-cabecera' data-tipo-fuente='titulo-m'>
+      <span id='total-pedidos-completados'>
+        <?= count($pedidosCompletados) ?>
+      </span> entregados
     </wc-texto>
-    <md-icono slot='icono-cabecera' data-icono='expand_less' data-opsz='24'></md-icono>
-    <lista-controlador>
-      <!-- <item-divisor>
-        <lista-item>
-          <span slot='info-principal'>Item 1</span>
-          <span slot='info-extra'>Elemento 1</span>
-        </lista-item>
-      </item-divisor> -->
+    <lista-controlador id='pedidos-completados'>
+      <?php $i = 0; ?>
+      <?php if (count($pedidosCompletados) > 0): ?>
+        <?php foreach($pedidosCompletados as $pedidoCompletado): ?>
+          <item-divisor <?= ++$i === count($pedidosCompletados) ? 'data-no-divisor' : '' ?>>
+            <lista-item>
+              <wc-texto data-tipo-fuente='titulo-s'>
+                <?= $pedidoCompletado['nombreCliente'] ?>
+              </wc-texto>
+              <wc-texto slot='info-extra' data-tipo-fuente='etiqueta-s'>
+                <?= $pedidoCompletado['totalProductos'] ?> producto<?= $pedidoCompletado['totalProductos'] == 1 ? '' : 's' ?>
+                en total. <span class='entrega-completado'</span>Completado el <?= obtenerFecha($pedidoCompletado['fechaCompletado']) ?></span>.
+              </wc-texto>
+              <input class='id-pedido' type='hidden' value=<?= $pedidoCompletado['id'] ?>>
+            </lista-item>
+          </item-divisor>
+        <?php endforeach; ?>
+      <?php endif; ?>
     </lista-controlador>
   </wc-colapsable>
 </lista-encabezada>

@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS categoriaProducto(
 
 CREATE TABLE IF NOT EXISTS producto(
     idProducto INT AUTO_INCREMENT PRIMARY KEY,
-    nombreProducto VARCHAR(20) NOT NULL UNIQUE,
+    nombreProducto VARCHAR(50) NOT NULL UNIQUE,
     idCategoriaProducto INT NOT NULL,
     precio DECIMAL(5, 2) NOT NULL,
     existencias INT UNSIGNED NOT NULL,
@@ -71,11 +71,12 @@ CREATE TABLE IF NOT EXISTS pedido(
     total DECIMAL(11, 2) DEFAULT 0,
     anticipo DECIMAL(11, 2) NOT NULL,
     estadoAnticipo BOOL DEFAULT 0 NOT NULL,
+    totalProductos INT DEFAULT 0,
     idEntrega INT,
     fechaCreacion DATETIME NOT NULL,
     idUsuario INT NOT NULL,
     FOREIGN KEY(idEntrega) REFERENCES entrega(id)
-        ON DELETE RESTRICT
+        ON DELETE SET NULL
         ON UPDATE CASCADE,
     FOREIGN KEY(idCliente) REFERENCES cliente(id)
         ON DELETE NO ACTION
@@ -99,12 +100,14 @@ CREATE TABLE IF NOT EXISTS pedidoproducto(
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 
 CREATE TABLE IF NOT EXISTS pedidocompletado(
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT PRIMARY KEY,
     nombreCliente VARCHAR(130) NOT NULL,
     nombreDestinatario VARCHAR(130) NOT NULL,
     celularDestinatario VARCHAR(12) NOT NULL,
     tipoEntrega ENUM('Domicilio', 'Aplicación', 'Pick up') NOT NULL,
+    aplicacion ENUM('Uber', 'Didi'),
     tipoPago ENUM('Depósito', 'Tarjeta', 'Efectivo') NOT NULL,
+    detallesPago VARCHAR(40),
     callePrincipal VARCHAR(30) NOT NULL,
     callesAdyacentes VARCHAR(60),
     colonia VARCHAR(60) NOT NULL,
@@ -115,17 +118,22 @@ CREATE TABLE IF NOT EXISTS pedidocompletado(
     horaEntrega TIME NOT NULL,
     totalProductos INT NOT NULL,
     total DECIMAL(11, 2),
+    anticipo DECIMAL(11, 2),
     fechaCompletado DATETIME NOT NULL
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 
 CREATE TABLE IF NOT EXISTS productocomprado(
     id INT AUTO_INCREMENT PRIMARY KEY,
+    idPedidoCompletado INT NOT NULL,
     nombre VARCHAR(20) NOT NULL,
     cantidad INT NOT NULL,
-    subtotal DECIMAL(11, 2) NOT NULL
+    subtotal DECIMAL(11, 2) NOT NULL,
+    FOREIGN KEY (idPedidoCompletado) REFERENCES pedidocompletado(id)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 
-CREATE TABLE IF NOT EXISTS productopedidocompletado(
+/* CREATE TABLE IF NOT EXISTS productopedidocompletado(
     idPedidoCompletado INT NOT NULL,
     idProductoComprado INT NOT NULL,
     FOREIGN KEY (idPedidoCompletado) REFERENCES pedidocompletado(id)
@@ -134,4 +142,4 @@ CREATE TABLE IF NOT EXISTS productopedidocompletado(
     FOREIGN KEY (idProductoComprado) REFERENCES productocomprado(id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
-) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin; */

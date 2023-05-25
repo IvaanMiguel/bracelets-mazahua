@@ -5,7 +5,6 @@ namespace models\orders;
 session_start();
 
 use \classes\Dbh;
-use \classes\Respuesta;
 
 class CrearPedido extends Dbh
 {

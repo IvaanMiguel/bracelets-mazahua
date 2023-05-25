@@ -34,14 +34,13 @@ document.addEventListener('hacerpedido', () => {
       if (datos.status === 0) return;
 
       pedidosPendientesLista.appendChild(crearItemPedido(datos.contenido[0]));
-      ordenarPedidos('pedidos-pendientes');
 
       totalPedidos.innerText = +totalPedidos.innerText + 1;
       totalPedidosPendientes.innerText = +totalPedidosPendientes.innerText + 1;
       pedidosTitulo
         .innerHTML = `${totalPedidos.outerHTML} pedido${+totalPedidos.innerText === 1 ? '' : 's'}`;
       pedidosPendientesTitulo
-        .innerHTML = `${totalPedidosPendientes.outerHTML} pedido${+totalPedidosPendientes.innerText === 1 ? '' : 's'}`;
+        .innerHTML = `${totalPedidosPendientes.outerHTML} por entregar`;
 
       // Reinicio de apartado de clientes.
       idCliente.value = '';
@@ -76,5 +75,7 @@ document.addEventListener('hacerpedido', () => {
       clabeCuenta.value = '';
       numeroTarjeta.value = '';
       titular.value = '';
+
+      ordenarPedidos('pedidos-pendientes');
     });
 });

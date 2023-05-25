@@ -107,8 +107,20 @@ class Mensaje
   ];
 
   const NUMERO_TARJETA_LONGITUD_INVALIDA = [
-    'titulo' => 'Npumero de tarjeta inválido',
+    'titulo' => 'Número de tarjeta inválido',
     'mensaje' => 'El número de tarjeta debe contar con ' . PedidoAutenticacion::NUMERO_TARJETA_LONGITUD . ' números.',
+    'ambito' => 'notificacion'
+  ];
+
+  const PEDIDO_ELIMINADO = [
+    'titulo' => 'Pedido eliminado',
+    'mensaje' => 'El pedido ha sido eliminado con éxito.',
+    'ambito' => 'notificacion'
+  ];
+
+  const PEDIDO_COMPLETADO = [
+    'titulo' => 'Pedido completado',
+    'mensaje' => 'El pedido ha sido sido marcado como completado con éxito.',
     'ambito' => 'notificacion'
   ];
 }

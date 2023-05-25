@@ -66,6 +66,8 @@
 
   <?php require_once POPUPS_PEDIDOS . '/buscar-cliente.php' ?>
   <?php require_once POPUPS_PEDIDOS . '/buscar-producto.php' ?>
+  <?php require_once POPUPS_PEDIDOS . '/eliminar-pedido.php' ?>
+  <?php require_once POPUPS_PEDIDOS . '/completar-pedido.php' ?>
 
   <?php require_once PIE_PAGINA ?>
 
@@ -74,6 +76,9 @@
   <script type='module' src='js/orders/controllers/entrega-pago.js'></script>
   <script type='module' src='js/orders/agregar-pedido.js'></script>
   <script type='module' src='js/orders/controllers/tabs-controlador.js'></script>
-  <script type='module' src='js/orders/mostrar-pedido.js'></script>
+  <script type='module' src='js/orders/mostrar-pedido-pendiente.js'></script>
+  <script type='module' src='js/orders/eliminar-pedido.js'></script>
+  <script type='module' src='js/orders/completar-pedido.js'></script>
+  <script type='module' src='js/orders/mostrar-pedido-completado.js'></script>
 </body>
 </html>

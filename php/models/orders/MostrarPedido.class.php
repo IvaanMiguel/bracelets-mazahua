@@ -28,9 +28,49 @@ class MostrarPedido extends Dbh
     return $stmt->fetchAll();
   }
 
-  protected function obtnerPedidoPendiente(int $id)
+  protected function obtenerPedidoPendiente(
+    int $id
+  ): array|bool
   {
     $stmt = $this->conectar()->prepare('SELECT * FROM vwpedidoinfo WHERE id = ?;');
+    $this->ejecutarSentencia($stmt, array($id));
+
+    return $stmt->fetchAll();
+  }
+
+  protected function obtenerProductosPedidoPendiente(
+    int $id
+  ): array|bool
+  {
+    $stmt = $this->conectar()->prepare('SELECT * FROM vwpedidoproductoinfo WHERE idPedido = ?;');
+    $this->ejecutarSentencia($stmt, array($id));
+
+    return $stmt->fetchAll();
+  }
+
+  protected function obtenerPedidosCompletados()
+  {
+    $stmt = $this->conectar()->prepare('SELECT * FROM pedidocompletado;');
+    $this->ejecutarSentencia($stmt);
+
+    return $stmt->fetchAll();
+  }
+
+  protected function obtenerPedidoCompletado(
+    int $id
+  ): array|bool
+  {
+    $stmt = $this->conectar()->prepare('SELECT * FROM pedidocompletado WHERE id = ?;');
+    $this->ejecutarSentencia($stmt, array($id));
+
+    return $stmt->fetchAll();
+  }
+
+  protected function obtenerProductosPedidoCompletado(
+    int $id
+  ): array|bool
+  {
+    $stmt = $this->conectar()->prepare('SELECT * FROM productocomprado WHERE idPedidoCompletado = ?;');
     $this->ejecutarSentencia($stmt, array($id));
 
     return $stmt->fetchAll();

@@ -119,7 +119,27 @@ export const obtenerFecha = (fecha) => {
     'diciembre'
   ];
 
-  fecha = fecha.split('-');
+  fecha = fecha.split(' ')[0].split('-');
+
+  console.log(fecha);
 
   return `${fecha[2]} de ${mes[+fecha[1]]} de ${fecha[0]}`;
+};
+
+export const obtenerTipoEntrega = (pedido) => {
+  let tipoEntrega;
+
+  switch (pedido.tipoEntrega) {
+    case 'Aplicación':
+      tipoEntrega = `A través de la aplicación de ${pedido.aplicacion}`;
+      break;
+
+    case 'Domicilio':
+      tipoEntrega = 'A domicilio';
+      break;
+
+    default: tipoEntrega = pedido.tipoEntrega;
+  }
+
+  return tipoEntrega;
 };

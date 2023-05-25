@@ -100,7 +100,7 @@ class Producto extends \models\Producto
   ];
 
   public const NOMBRE_MIN_LONGITUD = 4;
-  public const NOMBRE_MAX_LONGITUD = 20;
+  public const NOMBRE_MAX_LONGITUD = 50;
   public const PRECIO_MIN_CANTIDAD = 20;
   public const PRECIO_MAX_CANTIDAD = 999.99;
   public const EXISTENCIAS_MAX_CANTIDAD = 50;

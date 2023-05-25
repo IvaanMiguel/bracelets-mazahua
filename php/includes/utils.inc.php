@@ -52,7 +52,7 @@ function obtenerFecha(string $fecha): string
     12 => 'diciembre'
   ];
 
-  $arrayFecha = explode('-', $fecha);
+  $arrayFecha = explode('-', explode(' ', $fecha)[0]);
 
   if (intval($arrayFecha[0]) === 0 || intval($arrayFecha[1]) === 0 || intval($arrayFecha[2]) === 0) {
     return '';

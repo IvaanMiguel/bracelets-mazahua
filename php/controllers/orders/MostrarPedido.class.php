@@ -40,12 +40,50 @@ class MostrarPedido extends \models\orders\MostrarPedido
 
   public function mostrarPedidoPendiente()
   {
-    $pedido = $this->obtnerPedidoPendiente($this->id);
+    $pedido = $this->obtenerPedidoPendiente($this->id);
 
     echo (new Respuesta(
       Respuesta::STATUS_EXITO,
       Respuesta::ARRAY,
       $pedido
+    ))->Json();
+  }
+
+  public function mostrarProductosPedidoPendiente()
+  {
+    $productos = $this->obtenerProductosPedidoPendiente($this->id);
+
+    echo (new Respuesta(
+      Respuesta::STATUS_EXITO,
+      Respuesta::ARRAY,
+      $productos
+    ))->Json();
+  }
+
+  public function mostrarPedidosCompletados()
+  {
+    return $this->obtenerPedidosCompletados();
+  }
+
+  public function mostrarPedidoCompletado()
+  {
+    $pedido = $this->obtenerPedidoCompletado($this->id);
+
+    echo (new Respuesta(
+      Respuesta::STATUS_EXITO,
+      Respuesta::ARRAY,
+      $pedido
+    ))->Json();
+  }
+
+  public function mostrarProductosPedidoCompletado()
+  {
+    $productos = $this->obtenerProductosPedidoCompletado($this->id);
+
+    echo (new Respuesta(
+      Respuesta::STATUS_EXITO,
+      Respuesta::ARRAY,
+      $productos
     ))->Json();
   }
 

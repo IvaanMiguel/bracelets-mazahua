@@ -12,9 +12,9 @@ INNER JOIN categoriaproducto cp ON p.idCategoriaProducto = cp.idCategoriaProduct
 
 CREATE OR REPLACE VIEW vwpedidospendienteslista AS
 SELECT p.id,
-CONCAT_WS(' ', apellidos, nombre) nombreCliente,
-SUM(cantidad) totalProductos,
-fechaEntrega
+    CONCAT_WS(' ', apellidos, nombre) nombreCliente,
+    SUM(cantidad) totalProductos,
+    fechaEntrega
 FROM pedido p
 INNER JOIN cliente c ON p.idCliente = c.id
 INNER JOIN pedidoproducto pp ON pp.idPedido = p.id
@@ -23,20 +23,27 @@ GROUP BY p.id;
 
 CREATE OR REPLACE VIEW vwpedidoinfo AS
 SELECT p.id,
-CONCAT_WS(' ', apellidos, nombre) nombreCliente,
-nombreDestinatario,
-telefonoDestinatario,
-tipoEntrega,
-uc.id idUbicacion,
-colonia,
-callePrincipal,
-cp,
-e.id idEntrega,
-fechaEntrega,
-horaEntrega,
-estadoAnticipo,
-tipoPago,
-detallesPago
+    CONCAT_WS(' ', apellidos, nombre) nombreCliente,
+    nombreDestinatario,
+    telefonoDestinatario,
+    tipoEntrega,
+    aplicacion,
+    uc.id idUbicacion,
+    callePrincipal,
+    callesAdyacentes,
+    colonia,
+    numeroExterior,
+    numeroInterior,
+    cp,
+    e.id idEntrega,
+    fechaEntrega,
+    horaEntrega,
+    total,
+    anticipo,
+    estadoAnticipo,
+    totalProductos,
+    tipoPago,
+    detallesPago
 FROM pedido p
 INNER JOIN entrega e ON e.id = p.idEntrega
 LEFT JOIN ubicacioncliente uc ON e.idUbicacionCliente = uc.id

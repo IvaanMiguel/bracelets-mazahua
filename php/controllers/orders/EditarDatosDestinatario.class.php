@@ -10,7 +10,6 @@ use \controllers\orders\PedidoAutenticacion;
 require_once dirname(__DIR__) . '/../constantes.php';
 require_once UTILS;
 
-
 class EditarDatosDestinatario extends \models\orders\EditarDatosDestinatario
 {
   private int $id;

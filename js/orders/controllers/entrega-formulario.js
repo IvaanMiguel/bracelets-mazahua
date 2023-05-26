@@ -1,3 +1,5 @@
+import { formatearFecha } from '../../vista-control.js';
+
 const entregaFormulario = {
   _tipoEntrega: document.body.querySelectorAll('#agregar-pedido [name="tipoEntrega"]'),
   _nombreDestinatario: document.body.querySelectorAll('#agregar-pedido [name="nombreDestinatario"]'),
@@ -85,9 +87,9 @@ const entregaFormulario = {
 
     this._inicializarInputs();
 
-    this._horaFormato = `${this._horaMinima.getHours()}:${String(this._horaMinima.getMinutes()).padStart(2, '0')}`;
+    this._horaFormato = `${String(this._horaMinima.getHours()).padStart(2, '0')}:${String(this._horaMinima.getMinutes()).padStart(2, '0')}`;
 
-    this.fechaEntrega = this._formatearFecha();
+    this.fechaEntrega = formatearFecha(this._fechaActual);
     this.horaEntrega = this._horaFormato;
     this._actualizarHoraMinima();
 
@@ -102,7 +104,7 @@ const entregaFormulario = {
   },
 
   actualizarFecha () {
-    this.fechaEntrega = this._formatearFecha();
+    this.fechaEntrega = formatearFecha(this._fechaActual);
   },
 
   reiniciar () {
@@ -163,13 +165,6 @@ const entregaFormulario = {
         inputs.forEach((auxInput) => (auxInput.value = input.value));
       });
     });
-  },
-
-  _formatearFecha () {
-    const mes = String(this._fechaActual.getMonth() + 1).padStart(2, '0');
-    const dia = String(this._fechaActual.getDate()).padStart(2, '0');
-
-    return `${this._fechaActual.getFullYear()}-${mes}-${dia}`;
   }
 };
 

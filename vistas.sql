@@ -23,6 +23,7 @@ GROUP BY p.id;
 
 CREATE OR REPLACE VIEW vwpedidoinfo AS
 SELECT p.id,
+    p.idCliente,
     CONCAT_WS(' ', apellidos, nombre) nombreCliente,
     nombreDestinatario,
     telefonoDestinatario,

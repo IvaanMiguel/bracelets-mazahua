@@ -59,8 +59,8 @@ ventanaPrincipal.addEventListener('mostrarcliente', (e) => {
     });
 });
 
-const ubicacionesCliente = document.body.querySelectorAll('.ubicaciones-cliente');
-const infoUbicacion = document.body.querySelectorAll('.info-ubicacion');
+const ubicacionesCliente = document.body.querySelectorAll('#agregar-pedido .ubicaciones-cliente');
+const infoUbicacion = document.body.querySelectorAll('#agregar-pedido .info-ubicacion');
 
 const obtenerUbicaciones = (id) => {
   const formData = new FormData();

@@ -2,6 +2,8 @@ import ItemDivisor from '../../components/item-divisor.js';
 import { ordenarPedidos } from './controllers/ordenar-pedidos.js';
 import vistaPedidoFormulario from './controllers/vista-pedido-formulario.js';
 import datosDestinatarioPopup from './controllers/popups/datos-destinatario.js';
+import datosEntregaPopup from './controllers/popups/datos-entrega.js';
+import { ordenarClienteUbicaciones } from '../customers/ordenar-clientes.js';
 
 vistaPedidoFormulario.inicializar();
 ordenarPedidos('pedidos-pendientes');
@@ -21,6 +23,8 @@ document.addEventListener('regresarpedidos', () => {
   vistaPedidoFormulario.reiniciar();
   datosDestinatarioPopup.reiniciar();
   datosDestinatarioPopup.reiniciarPlaceholders();
+
+  datosEntregaPopup.reiniciar();
 });
 
 const idPedidoInput = document.getElementById('id-pedido');
@@ -43,10 +47,18 @@ document.addEventListener('mostrarpedidopendiente', (e) => {
     .then((respuesta) => respuesta.json())
     .then((datos) => {
       obtenerProductos(formData);
+
       const pedido = datos.contenido[0];
+
+      obtenerUbicaciones(pedido);
 
       datosDestinatarioPopup.nombreDestinatarioPlaceholder = pedido.nombreDestinatario;
       datosDestinatarioPopup.celularDestinatarioPlaceholder = pedido.telefonoDestinatario;
+
+      datosEntregaPopup.tipoEntrega = pedido.tipoEntrega;
+      datosEntregaPopup.aplicacion = pedido.aplicacion;
+      datosEntregaPopup.fechaEntrega = pedido.fechaEntrega;
+      datosEntregaPopup.horaEntrega = pedido.horaEntrega.slice(0, 5);
 
       vistaPedidoFormulario.mostrarInformacion(pedido);
     });
@@ -82,5 +94,46 @@ const obtenerProductos = (formData) => {
       });
 
       totalProductosItem.innerText = totalProductos;
+    });
+};
+
+const obtenerUbicaciones = (pedido) => {
+  const formData = new FormData();
+  formData.append('idCliente', pedido.idCliente);
+
+  fetch('php/includes/locations/mostrar_ubicaciones.inc.php', {
+    method: 'POST',
+    body: formData
+  })
+    .then((respuesta) => respuesta.json())
+    .then((datos) => {
+      datos.contenido.forEach((ubicacion) => {
+        const ubicacionOpcion = document.createElement('option');
+        ubicacionOpcion.value = ubicacion.id;
+        ubicacionOpcion.innerText = `
+          ${ubicacion.colonia}, ${ubicacion.callePrincipal} ${ubicacion.numeroExterior ? `#${ubicacion.numeroExterior}` : 'S.N.'}, C.P. ${ubicacion.cp}
+        `;
+
+        datosEntregaPopup.ubicaciones.appendChild(ubicacionOpcion);
+
+        ubicacionOpcion.contenido = {
+          'Calle principal': ubicacion.callePrincipal,
+          'Calle(s) adyacente(s)': ubicacion.callesAdyacentes ? ubicacion.callesAdyacentes : 'No especificada(s)',
+          Colonia: ubicacion.colonia,
+          'Número exterior': ubicacion.numeroExterior ? ubicacion.numeroExterior : 'S.N.',
+          'Número interior': ubicacion.numeroInterior ? ubicacion.numeroInterior : 'S.N.',
+          'Código postal': ubicacion.cp
+        };
+      });
+
+      ordenarClienteUbicaciones(datosEntregaPopup.ventana.querySelector('[name="ubicacion"]'));
+
+      if (pedido.tipoEntrega === 'Pick up') {
+        datosEntregaPopup.ubicaciones.value = datosEntregaPopup.ubicaciones.children[0].value || datosEntregaPopup.ubicaciones.children[1].value;
+      } else {
+        datosEntregaPopup.ubicaciones.value = pedido.idUbicacion;
+      }
+
+      datosEntregaPopup.ubicaciones.dispatchEvent(new Event('change'));
     });
 };

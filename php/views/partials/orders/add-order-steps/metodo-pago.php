@@ -1,5 +1,6 @@
 <contenedor-flex class='ancho-fijo' flex-direction='column' padding='var(--espaciado-grande)'>
-  <contenedor-flex flex-direction='row' gap='var(--espaciado-chico)'>
+  <?php require DIR_PARCIALES . '/orders/add-order-steps/metodo-pago-campos.php' ?>
+  <!-- <contenedor-flex flex-direction='row' gap='var(--espaciado-chico)'>
     <form id='tipos-pago'>
       <label>
         <input type='radio' name='tipoPago' value='Efectivo' checked>
@@ -29,7 +30,7 @@
           <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>Número de tarjeta</wc-texto>
           <input type='text' name='numeroTarjeta'>
         </campo-texto>
-      </contenedor-flex>
+      </contenedor-flex> -->
       <!-- <contenedor-flex id='tarjeta-campos' flex-direction='row' gap='var(--espaciado-grande)'>
         <contenedor-flex gap='var(--espaciado-chico)'>
           <campo-texto>
@@ -44,12 +45,12 @@
           </campo-texto>
         </contenedor-flex>
       </contenedor-flex> -->
-      <contenedor-flex gap='var(--espaciado-chico)'>
+      <!-- <contenedor-flex gap='var(--espaciado-chico)'>
         <campo-texto>
           <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>Nombre del titular</wc-texto>
           <input type='text' name='titular'>
         </campo-texto>
       </contenedor-flex>
     </contenedor-flex>
-  </wc-tabs>
+  </wc-tabs> -->
 </contenedor-flex>

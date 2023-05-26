@@ -74,7 +74,7 @@ const obtenerFormData = () => {
   obtenerFormularioEntradas(formData, document.getElementById('tipos-entrega'));
   obtenerTipoEntrega(formData);
 
-  obtenerFormularioEntradas(formData, document.getElementById('tipos-pago'));
+  obtenerFormularioEntradas(formData, document.body.querySelector('#agregar-pedido .tipos-pago'));
   obtenerTipoPago(formData);
 
   return formData;

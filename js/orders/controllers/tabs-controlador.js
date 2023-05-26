@@ -1,6 +1,6 @@
 const enlazarTabs = (radioContenedor, tabsId) => {
-  const tabs = document.getElementById(tabsId);
-  const contenedor = document.getElementById(radioContenedor);
+  const tabs = document.body.querySelector(tabsId);
+  const contenedor = document.body.querySelector(radioContenedor);
 
   [...contenedor.children].forEach((item, i) => {
     item.querySelector('input').addEventListener('change', () => {
@@ -9,5 +9,5 @@ const enlazarTabs = (radioContenedor, tabsId) => {
   });
 };
 
-enlazarTabs('tipos-entrega', 'entrega-tabs');
-enlazarTabs('tipos-pago', 'pago-tabs');
+enlazarTabs('#tipos-entrega', '#entrega-tabs');
+enlazarTabs('#agregar-pedido .tipos-pago', '#agregar-pedido .pago-tabs');

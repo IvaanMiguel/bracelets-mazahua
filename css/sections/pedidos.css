@@ -33,7 +33,8 @@
 }
 
 #lista-clientes,
-#contenedor-datos-personales {
+#contenedor-datos-personales,
+.info-ubicacion {
   border: 1px solid var(--clr-neutral-80);
   border-radius: var(--br-borde);
   overflow: hidden;
@@ -81,4 +82,8 @@ boton-elevado {
 
 .flex-start {
   align-items: flex-start;
+}
+
+#popup-campos > :not(:last-child) > :last-child {
+  margin-bottom: var(--espaciado-grande);
 }

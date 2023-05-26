@@ -143,7 +143,7 @@
         <wc-texto id='detalles-pago' data-tipo-fuente='cuerpo-l'></wc-texto>
       </item-detalles>
     </contenedor-flex>
-    <boton-rellenado
+    <!-- <boton-rellenado
         class='pedido-edicion'
         data-evento='editarinformacionpago'
         data-color-fondo='var(--clr-secundario-90)'
@@ -151,7 +151,7 @@
         data-variante='texto-icono'
         data-etiqueta='Editar información de pago'
         data-icono='edit'>
-    </boton-rellenado>
+    </boton-rellenado> -->
   </contenedor-flex>
   <contenedor-flex flex-direction='row' gap='var(--espaciado-grande)'>
     <boton-rellenado

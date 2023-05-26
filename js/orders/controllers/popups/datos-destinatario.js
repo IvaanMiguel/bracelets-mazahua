@@ -1,13 +1,13 @@
 const datosDestinatarioPopup = {
   _ventana: document.getElementById('editar-datos-destinatario'),
 
-  get ventana () { return this._ventana; },
-
   /** @type {HTMLInputElement} */
   _nombreDestinatario: null,
 
   /** @type {HTMLInputElement} */
   _celularDestinatario: null,
+
+  get ventana () { return this._ventana; },
 
   /** @param {string} string */
   set nombreDestinatarioPlaceholder (string) {

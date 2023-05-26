@@ -126,6 +126,14 @@ export const obtenerFecha = (fecha) => {
   return `${fecha[2]} de ${mes[+fecha[1]]} de ${fecha[0]}`;
 };
 
+/** @param {Date} fecha */
+export const formatearFecha = (fecha) => {
+  const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+  const dia = String(fecha.getDate()).padStart(2, '0');
+
+  return `${fecha.getFullYear()}-${mes}-${dia}`;
+};
+
 export const obtenerTipoEntrega = (pedido) => {
   let tipoEntrega;
 

@@ -1,6 +1,6 @@
-<ventana-emergente id='editar-datos-destinatario' data-cierre-explicito>
+<ventana-emergente id='editar-informacion-pago' data-cierre-explicito>
   <wc-texto slot='cabecera-inicio' data-tipo-fuente='titulo-l'>
-    Editando datos de destinatario
+    Editando información de pago
   </wc-texto>
   <boton-icono
       slot='cabecera-final'
@@ -8,29 +8,12 @@
       data-color-texto='#ffffff'
       data-evento='verificarcierre'>
   </boton-icono>
-  <form>
-    <contenedor-flex flex-direction='column' gap='var(--espaciado-grande)'>
-      <contenedor-flex gap='var(--espaciado-chico)'>
-        <campo-texto>
-          <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>
-            Nombre de destinatario
-          </wc-texto>
-          <input name='nombreDestinatario' placeholder='Cargando...'>
-        </campo-texto>
-      </contenedor-flex>
-      <contenedor-flex gap='var(--espaciado-chico)'>
-        <campo-texto>
-          <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>
-            Celular de destinatario
-          </wc-texto>
-          <input name='celularDestinatario' placeholder='Cargando...'>
-        </campo-texto>
-      </contenedor-flex>
-    </contenedor-flex>
-  </form>
+  <contenedor-flex flex-direction='column' gap='var(--espaciado-grande)'>
+    <?php require DIR_PARCIALES . '/orders/add-order-steps/metodo-pago-campos.php' ?> 
+  </contenedor-flex>
   <boton-rellenado
       slot='pie-inicio'
-      data-evento='actualizardatosdestinatario'
+      data-evento='actualizarinformacionpago'
       data-color-fondo='var(--clr-primario-40)'
       data-color-texto='#ffffff'
       data-etiqueta='Guardar cambios'
@@ -48,7 +31,7 @@
   </boton-delineado>
 </ventana-emergente>
 
-<ventana-emergente id='descartar-editar-datos-destinatario'>
+<ventana-emergente id='descartar-editar-informacion-pago'>
   <wc-texto slot='cabecera-inicio' data-tipo-fuente='titulo-l'>
     ¿Descartar cambios?
   </wc-texto>

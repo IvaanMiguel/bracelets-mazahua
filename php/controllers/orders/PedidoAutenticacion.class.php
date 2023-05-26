@@ -42,18 +42,19 @@ class PedidoAutenticacion
 
       $nombreDestinatario = "{$infoCliente['apellidos']} {$infoCliente['nombre']}";
     } else {
-      validarLongitud(
-        $nombreDestinatario,
-        self::NOMBRE_DESTINATARIO_MIN_LONGITUD,
-        self::NOMBRE_DESTINATARIO_MAX_LONGITUD,
-        Mensaje::NOMBRE_DESTINATARIO_CORTO,
-        Mensaje::NOMBRE_DESTINATARIO_LARGO,
-        self::$errores
-      );
+      self::validarNombreDestinatarioFormato($nombreDestinatario);
+      // validarLongitud(
+      //   $nombreDestinatario,
+      //   self::NOMBRE_DESTINATARIO_MIN_LONGITUD,
+      //   self::NOMBRE_DESTINATARIO_MAX_LONGITUD,
+      //   Mensaje::NOMBRE_DESTINATARIO_CORTO,
+      //   Mensaje::NOMBRE_DESTINATARIO_LARGO,
+      //   self::$errores
+      // );
 
-      if (!ctype_alpha(validarCaracteresEspeciales($nombreDestinatario))) {
-        array_push(self::$errores, Mensaje::NOMBRE_DESTINATARIO_INVALIDO);
-      }
+      // if (!ctype_alpha(validarCaracteresEspeciales($nombreDestinatario))) {
+      //   array_push(self::$errores, Mensaje::NOMBRE_DESTINATARIO_INVALIDO);
+      // }
     }
   }
 
@@ -67,11 +68,12 @@ class PedidoAutenticacion
 
       $celularDestinatario = "{$infoCliente['celular']}";
     } else {
-      if (!is_numeric($celularDestinatario)){ 
-        array_push(self::$errores, Mensaje::CELULAR_INVALIDO);
-      } else if (strlen($celularDestinatario) !== Cliente::CELULAR_LONGITUD) {
-        array_push(self::$errores, Mensaje::CELULAR_LONGITUD_INVALIDA);
-      }
+      self::validarCelularDestinatarioFormato($celularDestinatario);
+      // if (!is_numeric($celularDestinatario)){ 
+      //   array_push(self::$errores, Mensaje::CELULAR_INVALIDO);
+      // } else if (strlen($celularDestinatario) !== Cliente::CELULAR_LONGITUD) {
+      //   array_push(self::$errores, Mensaje::CELULAR_LONGITUD_INVALIDA);
+      // }
     }
   }
 
@@ -105,9 +107,12 @@ class PedidoAutenticacion
       self::$errores
     );
 
-    if (!ctype_alpha(validarCaracteresEspeciales($titular))) {
+    if (!self::caracteresValidos($titular)) {
       array_push(self::$errores, Mensaje::NOMBRE_DESTINATARIO_INVALIDO);
     }
+    // if (!ctype_alpha(validarCaracteresEspeciales($titular))) {
+    //   array_push(self::$errores, Mensaje::NOMBRE_DESTINATARIO_INVALIDO);
+    // }
   }
 
   public static function validarNumeroTarjeta(string $numeroTarjeta)
@@ -122,5 +127,40 @@ class PedidoAutenticacion
     } else if (strlen($numeroTarjeta) !== self::NUMERO_TARJETA_LONGITUD) {
       array_push(self::$errores, Mensaje::NUMERO_TARJETA_LONGITUD_INVALIDA);
     }
+  }
+
+  public static function validarNombreDestinatarioFormato(string $nombreDestinatario)
+  {
+    validarLongitud(
+      $nombreDestinatario,
+      self::NOMBRE_DESTINATARIO_MIN_LONGITUD,
+      self::NOMBRE_DESTINATARIO_MAX_LONGITUD,
+      Mensaje::NOMBRE_DESTINATARIO_CORTO_NOTI,
+      Mensaje::NOMBRE_DESTINATARIO_LARGO_NOTI,
+      self::$errores
+    );
+
+    if (!self::caracteresValidos($nombreDestinatario)) {
+      array_push(self::$errores, Mensaje::NOMBRE_DESTINATARIO_INVALIDO_NOTI);
+    }
+    // if (!ctype_alpha(validarCaracteresEspeciales($nombreDestinatario))) {
+    //   array_push(self::$errores, Mensaje::NOMBRE_DESTINATARIO_INVALIDO);
+    // }
+  }
+
+  public static function validarCelularDestinatarioFormato(string $celularDestinatario)
+  {
+    if (!is_numeric($celularDestinatario)){ 
+      array_push(self::$errores, Mensaje::CELULAR_INVALIDO_NOTI);
+    } else if (strlen($celularDestinatario) !== Cliente::CELULAR_LONGITUD) {
+      array_push(self::$errores, Mensaje::CELULAR_LONGITUD_INVALIDA_NOTI);
+    }
+  }
+
+  public static function caracteresValidos(
+    string $string
+  ): bool
+  {
+    return ctype_alpha(validarCaracteresEspeciales($string));
   }
 }

@@ -65,9 +65,17 @@ CREATE TRIGGER before_pedido_delete
 BEFORE DELETE ON pedido FOR EACH ROW
 BEGIN
     DECLARE idEntregaPedido INT;
-    
     SELECT idEntrega INTO idEntregaPedido FROM pedido WHERE id = OLD.id;
-    
     DELETE FROM entrega WHERE id = idEntregaPedido;
+END$$
+delimiter ;
+
+DROP TRIGGER IF EXISTS before_entrega_update;
+delimiter $$
+CREATE TRIGGER before_entrega_update
+BEFORE UPDATE ON entrega FOR EACH ROW
+BEGIN
+    SET NEW.nombreDestinatario = IF (NEW.nombreDestinatario = '', OLD.nombreDestinatario, NEW.nombreDestinatario);
+    SET NEW.telefonoDestinatario = IF (NEW.telefonoDestinatario = '', OLD.telefonoDestinatario, NEW.telefonoDestinatario);
 END$$
 delimiter ;

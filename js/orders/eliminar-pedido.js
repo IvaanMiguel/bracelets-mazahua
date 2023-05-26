@@ -1,4 +1,6 @@
 import { obtenerRespuesta } from '../vista-control.js';
+import vistaPedidoFormulario from './controllers/vista-pedido-formulario.js';
+import datosDestinatarioPopup from './controllers/popups/datos-destinatario.js';
 
 const ventanaPrincipal = document.getElementById('eliminar-pedido');
 
@@ -38,5 +40,7 @@ ventanaPrincipal.addEventListener('confirmareliminarpedido', () => {
         .innerHTML = `${totalPedidosPendientes.outerHTML} pedido${+totalPedidosPendientes.innerText === 1 ? '' : 's'}`;
 
       subtab.seleccionarTab(2);
+      vistaPedidoFormulario.reiniciar();
+      datosDestinatarioPopup.reiniciarPlaceholders();
     });
 });

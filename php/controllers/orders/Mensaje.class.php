@@ -28,34 +28,64 @@ class Mensaje
     'ambito' => 'notificacion'
   ];
 
-  const NOMBRE_DESTINATARIO_CORTO = [
+  const NOMBRE_DESTINATARIO_CORTO_NOTI = [
     'titulo' => 'Nombre del destinatario muy corto',
     'mensaje' => 'El nombre del destinatario debe tener como mínimo ' . PedidoAutenticacion::NOMBRE_DESTINATARIO_MIN_LONGITUD . ' caracteres.',
     'ambito' => 'notificacion'
   ];
 
+  const NOMBRE_DESTINATARIO_LARGO_NOTI = [
+    'titulo' => 'Nombre del destinatario muy largo',
+    'mensaje' => 'El nombre del destinatario debe tener como máximo ' . PedidoAutenticacion::NOMBRE_DESTINATARIO_MAX_LONGITUD . ' caracteres.',
+    'ambito' => 'notificacion'
+  ];
+
+  const NOMBRE_DESTINATARIO_CORTO = [
+    'titulo' => 'Nombre del destinatario muy corto',
+    'mensaje' => 'El nombre del destinatario debe tener como mínimo ' . PedidoAutenticacion::NOMBRE_DESTINATARIO_MIN_LONGITUD . ' caracteres.',
+    'ambito' => 'nombreDestinatario'
+  ];
+
   const NOMBRE_DESTINATARIO_LARGO = [
     'titulo' => 'Nombre del destinatario muy largo',
     'mensaje' => 'El nombre del destinatario debe tener como máximo ' . PedidoAutenticacion::NOMBRE_DESTINATARIO_MAX_LONGITUD . ' caracteres.',
+    'ambito' => 'nombreDestinatario'
+  ];
+
+  const NOMBRE_DESTINATARIO_INVALIDO_NOTI = [
+    'titulo' => 'Nombre del destinatario inváldo',
+    'mensaje' => 'El nombre del destinatario solo debe contener letras y espacios.',
     'ambito' => 'notificacion'
   ];
 
   const NOMBRE_DESTINATARIO_INVALIDO = [
     'titulo' => 'Nombre del destinatario inváldo',
     'mensaje' => 'El nombre del destinatario solo debe contener letras y espacios.',
+    'ambito' => 'nombreDestinatario'
+  ];
+
+  const CELULAR_LONGITUD_INVALIDA_NOTI = [
+    'titulo' => 'Celular del destinatario inválido',
+    'mensaje' => 'El celular debe tener como mínimo ' . Cliente::CELULAR_LONGITUD . ' números.',
     'ambito' => 'notificacion'
   ];
 
   const CELULAR_LONGITUD_INVALIDA = [
     'titulo' => 'Celular del destinatario inválido',
     'mensaje' => 'El celular debe tener como mínimo ' . Cliente::CELULAR_LONGITUD . ' números.',
+    'ambito' => 'celularDestinatario'
+  ];
+
+  const CELULAR_INVALIDO_NOTI = [
+    'titulo' => 'Celular del destinatario inválido',
+    'mensaje' => 'El celular ingresado no es válido.',
     'ambito' => 'notificacion'
   ];
 
   const CELULAR_INVALIDO = [
     'titulo' => 'Celular del destinatario inválido',
     'mensaje' => 'El celular ingresado no es válido.',
-    'ambito' => 'notificacion'
+    'ambito' => 'celularDestinatario'
   ];
 
   const CLABE_VACÍA = [
@@ -121,6 +151,12 @@ class Mensaje
   const PEDIDO_COMPLETADO = [
     'titulo' => 'Pedido completado',
     'mensaje' => 'El pedido ha sido sido marcado como completado con éxito.',
+    'ambito' => 'notificacion'
+  ];
+
+  const DATOS_DESTINATARIO_ACTUALIZADOS = [
+    'titulo' => 'Datos de destinatario actualizados',
+    'mensaje' => 'Los datos de destinatario han sido actualizados con éxito.',
     'ambito' => 'notificacion'
   ];
 }

@@ -1,5 +1,6 @@
 import { obtenerFecha, obtenerRespuesta } from '../vista-control.js';
 import { ordenarPedidos } from './controllers/ordenar-pedidos.js';
+import vistaPedidoFormulario from './controllers/vista-pedido-formulario.js';
 
 const ventanaPrincipal = document.getElementById('completar-pedido');
 
@@ -28,9 +29,7 @@ ventanaPrincipal.addEventListener('confirmarcompletarpedido', () => {
 
       if (datos.status === 0) return;
 
-      document.body.querySelectorAll('.pedido-edicion').forEach((item) => {
-        item.style.display = 'none';
-      });
+      vistaPedidoFormulario.alternarEdicionPedido('ocultar');
 
       const itemObsoleto = listaPedidosPendientes.querySelector(`.id-pedido[value='${idPedidoInput.value}']`)
         .closest('item-divisor');
@@ -58,6 +57,7 @@ ventanaPrincipal.addEventListener('confirmarcompletarpedido', () => {
       ordenarPedidos('pedidos-completados');
 
       idPedidoInput.value = '';
+
       ventanaPrincipal.cerrarVentana();
     });
 });

@@ -68,6 +68,7 @@
   <?php require_once POPUPS_PEDIDOS . '/buscar-producto.php' ?>
   <?php require_once POPUPS_PEDIDOS . '/eliminar-pedido.php' ?>
   <?php require_once POPUPS_PEDIDOS . '/completar-pedido.php' ?>
+  <?php require_once POPUPS_PEDIDOS . '/editar-informacion-destinatario.php' ?>
 
   <?php require_once PIE_PAGINA ?>
 
@@ -80,5 +81,6 @@
   <script type='module' src='js/orders/eliminar-pedido.js'></script>
   <script type='module' src='js/orders/completar-pedido.js'></script>
   <script type='module' src='js/orders/mostrar-pedido-completado.js'></script>
+  <script type='module' src='js/orders/editar-datos-destinatario.js'></script>
 </body>
 </html>

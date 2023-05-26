@@ -32,7 +32,7 @@
     <input id='id-pedido' type='hidden'>
     <boton-rellenado
         class='pedido-edicion'
-        data-evento='editardatoscliente'
+        data-evento='editardatosdestinatario'
         data-color-fondo='var(--clr-secundario-90)'
         data-color-texto='var(--clr-secundario-10)'
         data-variante='texto-icono'
@@ -92,18 +92,9 @@
           Dirección de entrega
         </wc-texto>
         <contenedor-flex>
-          <wc-texto data-tipo-fuente='cuerpo-l'>
-            Colonia
-            <span id='entrega-colonia'></span>
-          </wc-texto>
-          <wc-texto data-tipo-fuente='cuerpo-l'>
-            Calle
-            <span id='entrega-calle'></span>
-          </wc-texto>
-          <wc-texto data-tipo-fuente='cuerpo-l'>
-            Código postal
-            <span id='codigo-postal'></span>
-          </wc-texto>
+          <wc-texto id='entrega-colonia' data-tipo-fuente='cuerpo-l'></wc-texto>
+          <wc-texto id='entrega-calle' data-tipo-fuente='cuerpo-l'></wc-texto>
+          <wc-texto id='codigo-postal' data-tipo-fuente='cuerpo-l'></wc-texto>
         </contenedor-flex>
       </item-detalles>
       <item-detalles>

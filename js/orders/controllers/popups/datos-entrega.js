@@ -1,5 +1,3 @@
-import { formatearFecha } from '../../../vista-control.js';
-
 const datosEntregaPopup = {
   _ventana: document.getElementById('editar-informacion-entrega'),
 
@@ -20,10 +18,6 @@ const datosEntregaPopup = {
 
   /** @type {HTMLInputElement} */
   _horaEntrega: null,
-
-  // _fechaActual: new Date(),
-  // _horaMinima: new Date(new Date().getTime() + 5 * 60000),
-  // _horaFormato: '',
 
   /** @type {HTMLElement} */
   _contenedorUbicaciones: null,
@@ -91,14 +85,8 @@ const datosEntregaPopup = {
     this._contenedorUbicaciones = this.ventana.querySelector('#contenedor-ubicaciones');
     this._contenedorAplicaciones = this.ventana.querySelector('#contenedor-aplicaciones');
 
-    // this.fechaEntrega = formatearFecha(this._fechaActual);
-    // this.horaEntrega = this._horaFormato;
-
-    // this._actualizarHoraMinima();
-
     this._enlazarTiposEntrega();
     this._enlazarUbicaciones();
-    // setInterval(this._actualizarHoraMinima.bind(this), 4 * 60 * 1000);
   },
 
   reiniciar () {
@@ -114,24 +102,6 @@ const datosEntregaPopup = {
       </contenedor-flex>
     `;
   },
-
-  // actualizarHora () {
-  //   this._horaMinima = new Date(new Date().getTime() + 5 * 60000);
-  //   this._horaFormato = `${this._horaMinima.getHours()}:${String(this._horaMinima.getMinutes()).padStart(2, '0')}`;
-
-  //   this.horaEntrega = this._horaFormato;
-  // },
-
-  // actualizarFecha () {
-  //   this.fechaEntrega = formatearFecha(this._fechaActual);
-  // },
-
-  // _actualizarHoraMinima () {
-  //   this._horaMinima = new Date(new Date().getTime() + 5 * 60000);
-  //   this._horaFormato = `${this._horaMinima.getHours()}:${String(this._horaMinima.getMinutes()).padStart(2, '0')}`;
-
-  //   this._horaEntrega.min = this._horaFormato;
-  // },
 
   _enlazarTiposEntrega () {
     this._tipoEntrega.forEach((input) => {

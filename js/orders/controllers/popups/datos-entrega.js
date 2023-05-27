@@ -1,3 +1,5 @@
+import { formatearFecha } from '../../../vista-control.js';
+
 const datosEntregaPopup = {
   _ventana: document.getElementById('editar-informacion-entrega'),
 
@@ -25,6 +27,8 @@ const datosEntregaPopup = {
   /** @type {HTMLElement} */
   _contenedorAplicaciones: null,
 
+  _fechaActual: new Date(),
+
   get ventana () { return this._ventana; },
 
   /** @param {string} tipoEntrega */
@@ -38,15 +42,16 @@ const datosEntregaPopup = {
   },
 
   get tipoEntrega () {
-    this._tipoEntrega.forEach((input) => {
-      if (input.checked) return input.value;
-    });
+    const input = [...this._tipoEntrega].find((input) => input.checked);
+    return input.value || null;
   },
 
   get ubicaciones () { return this._ubicaciones; },
 
   /** @param {string|number} id */
   set idUbicacion (id) { this._ubicaciones.value = id; },
+
+  get idUbicacion () { return this._ubicaciones.value; },
 
   /** @param {string} aplicacion */
   set aplicacion (aplicacion) {
@@ -58,29 +63,28 @@ const datosEntregaPopup = {
   },
 
   get aplicacion () {
-    this._aplicacion.forEach((input) => {
-      if (input.checked) return input.value;
-    });
+    const input = [...this._aplicacion].find((input) => input.checked);
+    return input.value || null;
   },
 
   /** @param {string} fecha */
-  set fechaEntrega (fecha) {
-    this._fechaEntrega.value = fecha;
-    this._fechaEntrega.min = fecha;
-  },
+  set fechaEntrega (fecha) { this._fechaEntrega.value = fecha; },
+
+  get fechaEntrega () { return this._fechaEntrega.value; },
 
   /** @param {string} hora */
   set horaEntrega (hora) { this._horaEntrega.value = hora; },
 
-  inicializar () {
-    // this._horaFormato = `${this._horaMinima.getHours()}:${String(this._horaMinima.getMinutes()).padStart(2, '0')}`;
+  get horaEntrega () { return this._horaEntrega.value; },
 
+  inicializar () {
     this._tipoEntrega = this.ventana.querySelectorAll('[name="tipoEntrega"]');
     this._ubicaciones = this.ventana.querySelector('[name="ubicacion"]');
     this._infoUbicacion = this.ventana.querySelector('.info-ubicacion');
     this._aplicacion = this.ventana.querySelectorAll('[name="aplicacion"]');
     this._fechaEntrega = this.ventana.querySelector('[name="fechaEntrega"]');
     this._horaEntrega = this.ventana.querySelector('[name="horaEntrega"]');
+    this._fechaEntrega.min = formatearFecha(this._fechaActual);
 
     this._contenedorUbicaciones = this.ventana.querySelector('#contenedor-ubicaciones');
     this._contenedorAplicaciones = this.ventana.querySelector('#contenedor-aplicaciones');
@@ -93,6 +97,10 @@ const datosEntregaPopup = {
     this.tipoEntrega = 'Pick up';
     this.aplicacion = 'Uber';
 
+    this.reiniciarUbicaciones();
+  },
+
+  reiniciarUbicaciones () {
     this.idUbicacion = '';
     this._ubicaciones.replaceChildren();
 

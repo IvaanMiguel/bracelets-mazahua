@@ -120,10 +120,7 @@ export const obtenerFecha = (fecha) => {
   ];
 
   fecha = fecha.split(' ')[0].split('-');
-
-  console.log(fecha);
-
-  return `${fecha[2]} de ${mes[+fecha[1]]} de ${fecha[0]}`;
+  return `${fecha[2]} de ${mes[+fecha[1] - 1]} de ${fecha[0]}`;
 };
 
 /** @param {Date} fecha */

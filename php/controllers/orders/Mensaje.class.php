@@ -159,4 +159,10 @@ class Mensaje
     'mensaje' => 'Los datos de destinatario han sido actualizados con éxito.',
     'ambito' => 'notificacion'
   ];
+
+  const DATOS_ENTREGA_ACTUALIZADOS = [
+    'titulo' => 'Datos de entrega actualizados',
+    'mensaje' => 'Los datos de entrega han sido actualizados con éxito.',
+    'ambito' => 'notificacion'
+  ];
 }

@@ -92,9 +92,14 @@
           Dirección de entrega
         </wc-texto>
         <contenedor-flex>
-          <wc-texto id='entrega-colonia' data-tipo-fuente='cuerpo-l'></wc-texto>
-          <wc-texto id='entrega-calle' data-tipo-fuente='cuerpo-l'></wc-texto>
-          <wc-texto id='codigo-postal' data-tipo-fuente='cuerpo-l'></wc-texto>
+          <wc-texto data-tipo-fuente='cuerpo-l'>
+            <span id='entrega-calle-principal' title='Calle principal'></span>
+            <span id='entrega-numero-exterior' title='Número exterior'></span>
+          </wc-texto>
+          <wc-texto id='entrega-numero-interior' data-tipo-fuente='cuerpo-l' title='Número interior'></wc-texto>
+          <wc-texto id='entrega-calles-adyacentes' data-tipo-fuente='cuerpo-l' title='Calles adyacentes'></wc-texto>
+          <wc-texto id='entrega-colonia' data-tipo-fuente='cuerpo-l' title='Colonia'></wc-texto>
+          <wc-texto id='codigo-postal' data-tipo-fuente='cuerpo-l' title='Código postal'></wc-texto>
         </contenedor-flex>
       </item-detalles>
       <item-detalles>

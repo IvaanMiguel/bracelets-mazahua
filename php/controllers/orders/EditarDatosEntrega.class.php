@@ -45,7 +45,7 @@ class EditarDatosEntrega extends \models\orders\EditarDatosEntrega
     echo (new Respuesta(
       Respuesta::STATUS_EXITO,
       Respuesta::ARRAY,
-      array(Mensaje::DATOS_DESTINATARIO_ACTUALIZADOS)
+      array(Mensaje::DATOS_ENTREGA_ACTUALIZADOS)
     ))->Json();
   }
 }

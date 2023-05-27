@@ -15,30 +15,13 @@ class EditarDatosEntrega extends Dbh
     ?string $aplicacion
   )
   {
-    // $columnas = 'fechaEntrega = ?, horaEntrega = ?';
-    // $valores = array($fechaEntrega, $horaEntrega);
-
-    // switch ($tipoEntrega) {
-    //   case 'Domicilio':
-    //     $columnas .= ', idUbicacionCliente = ?';
-    //     array_push($valores, $idUbicacion);
-    //     break;
-
-    //   case 'Aplicación':
-    //     $columnas .= ', idUbicacionCliente = ?, aplicacion = ?';
-    //     array_push($valores, $idUbicacion, $aplicacion);
-    //     break;
-    // }
-
-    // array_push($valores, $id);
-
     $stmt = $this->conectar()->prepare(
       'UPDATE entrega SET
         tipoEntrega = ?,
         aplicacion = ?,
         fechaEntrega = ?,
         horaEntrega = ?,
-        idUbicacion = ?
+        idUbicacionCliente = ?
       WHERE id = ?;
     ');
     $this->ejecutarSentencia($stmt, array(

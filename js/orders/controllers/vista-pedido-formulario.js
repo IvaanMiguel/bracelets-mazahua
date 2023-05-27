@@ -12,8 +12,11 @@ const vistaPedidoFormulario = {
   _anticipoRequerido: document.getElementById('anticipo-requerido'),
   _costoTotal: document.getElementById('costo-total'),
   _tipoEntrega: document.getElementById('tipo-entrega'),
+  _entregaCallePrincipal: document.getElementById('entrega-calle-principal'),
+  _entregaCallesAdyacentes: document.getElementById('entrega-calles-adyacentes'),
   _entregaColonia: document.getElementById('entrega-colonia'),
-  _entregaCalle: document.getElementById('entrega-calle'),
+  _entregaNumeroExterior: document.getElementById('entrega-numero-exterior'),
+  _entregaNumeroInterior: document.getElementById('entrega-numero-interior'),
   _codigoPostal: document.getElementById('codigo-postal'),
   _fechaEntrega: document.getElementById('fecha-entrega'),
   _horaEntrega: document.getElementById('hora-entrega'),
@@ -38,7 +41,54 @@ const vistaPedidoFormulario = {
     this._pedidoCelularDestinatario.innerText = string;
   },
 
+  /** @param {string} string */
+  set tipoEntrega (string) {
+    this._tipoEntrega.innerText = string;
+  },
+
   get idPedido () { return this._idPedido.value; },
+
+  /** @param {string} string */
+  set entregaCallePrincipal (string) {
+    this._entregaCallePrincipal.innerText = string;
+  },
+
+  /** @param {string} string */
+  set entregaCallesAdyacentes (string) {
+    this._entregaCallesAdyacentes.innerText = string;
+  },
+
+  /** @param {string} string */
+  set entregaColonia (string) {
+    this._entregaColonia.innerText = string;
+  },
+
+  /** @param {string} string */
+  set entregaNumeroExterior (string) {
+    this._entregaNumeroExterior.innerText = string;
+  },
+
+  /** @param {string} string */
+  set entregaNumeroInterior (string) {
+    this._entregaNumeroInterior.innerText = string;
+  },
+
+  /** @param {string} string */
+  set codigoPostal (string) {
+    this._codigoPostal.innerText = string;
+  },
+
+  /** @param {string} string */
+  set fechaEntrega (string) {
+    this._fechaEntrega.innerText = string;
+  },
+
+  /** @param {string} string */
+  set horaEntrega (string) {
+    this._horaEntrega.innerText = string;
+  },
+
+  get direccionEntrega () { return this._direccionEntrega; },
 
   inicializar () {
     this.reiniciar();
@@ -54,8 +104,12 @@ const vistaPedidoFormulario = {
     this._anticipoRequerido.innerText = this._CARGANDO;
     this._costoTotal.innerText = this._CARGANDO;
     this._tipoEntrega.innerText = this._CARGANDO;
+    this._entregaCallePrincipal.innerText = this._CARGANDO;
+    this._entregaCallesAdyacentes.innerText = this._CARGANDO;
     this._entregaColonia.innerText = this._CARGANDO;
-    this._entregaCalle.innerText = this._CARGANDO;
+    this._entregaNumeroExterior.innerText = '';
+    this._entregaNumeroInterior.innerText = this._CARGANDO;
+    this._entregaColonia.innerText = this._CARGANDO;
     this._codigoPostal.innerText = this._CARGANDO;
     this._fechaEntrega.innerText = this._CARGANDO;
     this._horaEntrega.innerText = this._CARGANDO;
@@ -75,21 +129,25 @@ const vistaPedidoFormulario = {
     this._pedidoCelularDestinatario.innerText = pedido.telefonoDestinatario || pedido.celularDestinatario;
     this._tipoEntrega.innerText = obtenerTipoEntrega(pedido);
     this._fechaEntrega.innerText = obtenerFecha(pedido.fechaEntrega);
-    this._horaEntrega.innerText = pedido.horaEntrega.slice(0, 5);
+    this._horaEntrega.innerText = `${pedido.horaEntrega.slice(0, 5)} hrs.`;
+
+    this._entregaCallePrincipal.innerText = pedido.callePrincipal;
+    this._entregaCallesAdyacentes.innerText = pedido.callesAdyacentes || 'Sin calles adyacentes';
     this._entregaColonia.innerText = pedido.colonia;
-    this._entregaCalle.innerText = pedido.callePrincipal;
-    this._codigoPostal.innerText = pedido.cp;
+    this._entregaNumeroExterior.innerText = pedido.numeroExterior
+      ? `#${pedido.numeroExterior}`
+      : 'S.N.';
+    this._entregaNumeroInterior.innerText = pedido.numeroInterior
+      ? `int. ${pedido.numeroInterior}`
+      : 'Sin número interior';
+    this._codigoPostal.innerText = `C.P. ${pedido.cp}`;
+
     this._anticipoRequerido.innerText = `$${pedido.anticipo} MXN`;
     this._costoTotal.innerText = `$${pedido.total} MXN`;
-
-    pedido.tipoEntrega === 'Pick up'
-      ? this._direccionEntrega.style.display = 'none'
-      : this._direccionEntrega.style.display = null;
-
     this._estadoAnticipo.innerText = pedido.estadoAnticipo ? 'Pagado' : 'No pagado';
-    pedido.tipoPago === 'Efectivo'
-      ? this._itemDetallesPago.style.display = 'none'
-      : this._itemDetallesPago.style.display = null;
+
+    this.ocultarDireccion(pedido.tipoEntrega === 'Pick up');
+    this.ocultarDetallesPago(pedido.tipoPago === 'Efectivo');
 
     this._metodoPago.innerText = pedido.tipoPago;
     this._detallesPago.innerText = pedido.detallesPago;
@@ -102,6 +160,14 @@ const vistaPedidoFormulario = {
     } else if (estado === 'ocultar') {
       this._pedidoEdicionItems.forEach((item) => (item.style.display = 'none'));
     }
+  },
+
+  ocultarDireccion (ocultar = true) {
+    this._direccionEntrega.style.display = ocultar ? 'none' : 'flex';
+  },
+
+  ocultarDetallesPago (ocultar = true) {
+    this._itemDetallesPago.style.display = ocultar ? 'none' : 'flex';
   }
 };
 

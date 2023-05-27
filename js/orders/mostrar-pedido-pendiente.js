@@ -98,6 +98,8 @@ const obtenerProductos = (formData) => {
 };
 
 const obtenerUbicaciones = (pedido) => {
+  datosEntregaPopup.reiniciarUbicaciones();
+
   const formData = new FormData();
   formData.append('idCliente', pedido.idCliente);
 

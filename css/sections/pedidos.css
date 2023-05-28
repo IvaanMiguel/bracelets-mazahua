@@ -3,7 +3,8 @@
 }
 
 .ancho-fijo info-detalles,
-#lista-productos {
+.lista-productos,
+.productos-comprados {
   border: 1px solid var(--clr-neutral-80);
   border-radius: var(--br-borde);
   overflow: hidden;
@@ -86,4 +87,14 @@ boton-elevado {
 
 #popup-campos > :not(:last-child) > :last-child {
   margin-bottom: var(--espaciado-grande);
+}
+
+#buscar-producto-popup {
+  padding: 3px 2px;
+}
+
+#editar-productos-pedidos .lista-productos {
+  overflow: auto;
+  max-height: 60vh;
+  max-height: 60svh;
 }

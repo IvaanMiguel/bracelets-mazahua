@@ -51,6 +51,6 @@ LEFT JOIN ubicacioncliente uc ON e.idUbicacionCliente = uc.id
 INNER JOIN cliente c ON p.idCliente = c.id;
 
 CREATE OR REPLACE VIEW vwpedidoproductoinfo AS
-SELECT idPedido, nombreProducto, cantidad, subtotal
+SELECT idPedido, p.idProducto, nombreProducto, cantidad, subtotal, existencias
 FROM pedidoproducto pp
 INNER JOIN producto p ON pp.idProducto = p.idProducto;

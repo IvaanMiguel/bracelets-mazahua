@@ -3,6 +3,7 @@ import { ordenarPedidos } from './controllers/ordenar-pedidos.js';
 import vistaPedidoFormulario from './controllers/vista-pedido-formulario.js';
 import datosDestinatarioPopup from './controllers/popups/datos-destinatario.js';
 import datosEntregaPopup from './controllers/popups/datos-entrega.js';
+import productosPopup from './controllers/popups/productos.js';
 import { ordenarClienteUbicaciones } from '../customers/ordenar-clientes.js';
 
 vistaPedidoFormulario.inicializar();
@@ -23,6 +24,7 @@ document.addEventListener('regresarpedidos', () => {
   vistaPedidoFormulario.reiniciar();
   datosDestinatarioPopup.reiniciar();
   datosDestinatarioPopup.reiniciarPlaceholders();
+  productosPopup.reiniciar();
 
   datosEntregaPopup.reiniciar();
 });
@@ -75,10 +77,18 @@ const obtenerProductos = (formData) => {
     .then((respuesta) => respuesta.json())
     .then((datos) => {
       vistaPedidoFormulario.limpiarProductosPedidos();
+      productosPopup.reiniciar();
 
       let totalProductos = 0;
 
       datos.contenido.forEach((producto, i) => {
+        productosPopup.agregarProducto(
+          producto.idProducto,
+          producto.nombreProducto,
+          producto.cantidad,
+          producto.subtotal,
+          producto.existencias
+        );
         totalProductos += producto.cantidad;
         const itemDivisor = new ItemDivisor();
         itemDivisor.innerHTML = /*html*/`
@@ -87,6 +97,7 @@ const obtenerProductos = (formData) => {
               ${producto.cantidad} × ${producto.nombreProducto}
             </wc-texto>
             <wc-texto data-tipo-fuente='etiqueta-l'>$${producto.subtotal} MXN</wc-texto>
+            <input class='id-producto' type='hidden' value=${producto.idProducto}>
           </item-detalles>
         `;
 

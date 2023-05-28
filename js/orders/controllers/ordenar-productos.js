@@ -10,11 +10,15 @@ export const ordenarProductos = (listaCategoria) => {
   });
 };
 
-const ventana = document.getElementById('buscar-producto');
-const listaProductos = document.getElementById('lista-productos');
+// const ventana = document.getElementById('buscar-producto');
+// const listaProductos = document.getElementById('lista-productos');
 
-export const ordenarProductosCategorias = () => {
-  const colapsables = ventana.querySelectorAll('wc-colapsable');
+/**
+ * @param {HTMLElement} scope
+ * @param {HTMLElement} listaProductos
+ */
+export const ordenarProductosCategorias = (scope, listaProductos) => {
+  const colapsables = scope.querySelectorAll('wc-colapsable');
 
   ordenarItems([...colapsables].map((colapsable) => {
     return colapsable.querySelector('[slot="texto-cabecera"]');

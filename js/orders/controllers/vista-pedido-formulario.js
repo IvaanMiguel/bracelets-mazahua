@@ -90,6 +90,27 @@ const vistaPedidoFormulario = {
 
   get direccionEntrega () { return this._direccionEntrega; },
 
+  get listaProductosPedidos () { return this._listaProductosPedidos; },
+
+  get totalProductos () { return this._totalProductos.innerText; },
+
+  /** @param {string} string */
+  set totalProductos (string) {
+    this._totalProductos.innerText = string;
+  },
+
+  get costoTotal () { return this._costoTotal.innerText; },
+
+  set costoTotal (string) {
+    this._costoTotal.innerText = string;
+  },
+
+  get anticipoRequerido () { return this._anticipoRequerido.innerText; },
+
+  set anticipoRequerido (string) {
+    this._anticipoRequerido.innerText = string;
+  },
+
   inicializar () {
     this.reiniciar();
   },
@@ -142,8 +163,8 @@ const vistaPedidoFormulario = {
       : 'Sin número interior';
     this._codigoPostal.innerText = `C.P. ${pedido.cp}`;
 
-    this._anticipoRequerido.innerText = `$${pedido.anticipo} MXN`;
-    this._costoTotal.innerText = `$${pedido.total} MXN`;
+    this._anticipoRequerido.innerText = pedido.anticipo;
+    this._costoTotal.innerText = pedido.total;
     this._estadoAnticipo.innerText = pedido.estadoAnticipo ? 'Pagado' : 'No pagado';
 
     this.ocultarDireccion(pedido.tipoEntrega === 'Pick up');

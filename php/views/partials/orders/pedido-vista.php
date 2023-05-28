@@ -58,13 +58,17 @@
         <wc-texto data-tipo-fuente='etiqueta-m'>
           Anticipo requerido
         </wc-texto>
-        <wc-texto id='anticipo-requerido' data-tipo-fuente='cuerpo-l'></wc-texto>
+        <wc-texto data-tipo-fuente='cuerpo-l'>
+          $<span id='anticipo-requerido'></span> MXN
+        </wc-texto>
       </item-detalles>
       <item-detalles>
         <wc-texto data-tipo-fuente='etiqueta-m'>
           Costo total
         </wc-texto>
-        <wc-texto id='costo-total' data-tipo-fuente='cuerpo-l'></wc-texto>
+        <wc-texto data-tipo-fuente='cuerpo-l'>
+          $<span id='costo-total'></span> MXN
+        </wc-texto>
       </item-detalles>
     </contenedor-flex>
     <boton-rellenado

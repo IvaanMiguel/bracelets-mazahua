@@ -59,6 +59,25 @@ BEGIN
 END$$
 delimiter ;
 
+DROP TRIGGER IF EXISTS before_pedidoproducto_delete;
+delimiter $$
+CREATE TRIGGER before_pedidoproducto_delete
+BEFORE DELETE ON pedidoproducto FOR EACH ROW
+BEGIN
+    UPDATE pedido
+    SET
+	    total = total - OLD.subtotal,
+        anticipo = total / 2,
+        totalProductos = totalProductos - OLD.cantidad
+	WHERE id = OLD.idPedido;
+    
+    UPDATE producto
+    SET
+        existencias = existencias + OLD.cantidad
+	WHERE idProducto = OLD.idProducto;
+END$$
+delimiter ;
+
 DROP TRIGGER IF EXISTS before_pedido_delete;
 delimiter $$
 CREATE TRIGGER before_pedido_delete

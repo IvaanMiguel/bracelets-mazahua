@@ -165,4 +165,16 @@ class Mensaje
     'mensaje' => 'Los datos de entrega han sido actualizados con éxito.',
     'ambito' => 'notificacion'
   ];
+
+  const PRODUCTO_UNICO = [
+    'titulo' => 'Producto único en el pedido',
+    'mensaje' => 'Un pedido no puede quedarse sin productos.',
+    'ambito' => 'notificacion'
+  ];
+
+  const PRODUCTO_ELIMINADO = [
+    'titulo' => 'Producto eliminado del pedido',
+    'mensaje' => 'El producto ha sido eliminado del pedido exitosamente.',
+    'ambito' => 'notificacion'
+  ];
 }

@@ -6,7 +6,7 @@ import productosAgregados from './controllers/lista-productos-agregados.js';
 
 const ventanaPrincipal = document.getElementById('buscar-producto');
 
-ordenarProductosCategorias();
+ordenarProductosCategorias(ventanaPrincipal, ventanaPrincipal.querySelector('.lista-productos'));
 ventanaPrincipal.querySelectorAll('wc-colapsable lista-controlador')
   .forEach((listaCategoria) => ordenarProductos(listaCategoria));
 

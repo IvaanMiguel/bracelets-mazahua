@@ -31,7 +31,7 @@ import WCColapsable from '../../components/wc-colapsable.js';
         const producto = new ItemDivisor();
         producto.innerHTML = /*html*/`
           <lista-item>
-            <wc-texto data-tipo-fuente='titulo-s'>
+            <wc-texto id='nombre-producto' data-tipo-fuente='titulo-s'>
               ${nombreInput.value}
             </wc-texto>
             <input class='id-producto' type='hidden' value=${datos.contenido[0]}>

@@ -133,12 +133,12 @@
   <contenedor-flex class='contenedor-borde' gap='var(--espaciado-grande)' padding='var(--espaciado-jumbo)'>
     <wc-texto data-tipo-fuente='titulo-l'>Información de pago</wc-texto>
     <contenedor-flex class='ancho-fijo'>
-      <item-detalles class='pedido-edicion'>
+      <!-- <item-detalles class='pedido-edicion'>
         <wc-texto data-tipo-fuente='etiqueta-m'>
           Anticipo
         </wc-texto>
         <wc-texto id='estado-anticipo' data-tipo-fuente='cuerpo-l'></wc-texto>
-      </item-detalles>
+      </item-detalles> -->
       <item-detalles>
         <wc-texto data-tipo-fuente='etiqueta-m'>
           Método de pago

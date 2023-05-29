@@ -8,6 +8,8 @@ const ventana = datosEntregaPopup.ventana;
 document.addEventListener('editardatosentrega', () => ventana.mostrarVentana());
 ventana.addEventListener('cerrar', () => ventana.cerrarVentana());
 
+const listaPedidosPendientes = document.getElementById('pedidos-pendientes');
+
 ventana.addEventListener('actualizardatosentrega', () => {
   const formData = new FormData();
   const tipoEntrega = datosEntregaPopup.tipoEntrega;
@@ -32,10 +34,13 @@ ventana.addEventListener('actualizardatosentrega', () => {
       vistaPedidoFormulario.ocultarDireccion(datosEntregaPopup.tipoEntrega === 'Pick up');
       actualizarUbicacion();
 
-      console.log(datosEntregaPopup.fechaEntrega);
-      console.log(datosEntregaPopup.horaEntrega);
+      const fechaEntrega = obtenerFecha(datosEntregaPopup.fechaEntrega);
+      const pedidoItem = listaPedidosPendientes.querySelector(`.id-pedido[value='${vistaPedidoFormulario.idPedido}']`)
+        .parentElement;
 
-      vistaPedidoFormulario.fechaEntrega = obtenerFecha(datosEntregaPopup.fechaEntrega);
+      pedidoItem.querySelector('.fecha-entrega-pedido').innerText = fechaEntrega;
+
+      vistaPedidoFormulario.fechaEntrega = fechaEntrega;
       vistaPedidoFormulario.horaEntrega = `${datosEntregaPopup.horaEntrega} hrs.`;
 
       ventana.cerrarVentana();

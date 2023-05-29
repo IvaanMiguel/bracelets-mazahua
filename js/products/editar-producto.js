@@ -95,6 +95,9 @@ import WCColapsable from '../../components/wc-colapsable.js';
 
         const itemProducto = document.body.querySelector(`.id-producto[value='${idProductoInput.value}']`)
           .closest('item-divisor');
+
+        itemProducto.querySelector('#nombre-producto').classList.remove('no-existencias');
+
         const originalListaCategoria = document.body.querySelector(`wc-colapsable lista-controlador[id='${idCategoriaInput.value}']`);
         let nuevaListaCategoria = document.body.querySelector(`wc-colapsable lista-controlador[id='${categoriaInput.value}']`);
 

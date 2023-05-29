@@ -16,6 +16,8 @@ const hojaCSS = /*css*/`
 
     width: 25rem;
     padding: var(--espaciado-jumbo);
+
+    transition: opacity .2s ease 0s;
   }
 
   :host([data-tipo='error']) {
@@ -24,6 +26,10 @@ const hojaCSS = /*css*/`
 
   :host([data-tipo='exito']) {
     --_color-tipo: var(--clr-exito-40);
+  }
+
+  :host(:hover) {
+    opacity: .5;
   }
 `;
 

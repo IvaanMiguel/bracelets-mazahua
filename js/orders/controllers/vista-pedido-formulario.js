@@ -1,4 +1,5 @@
 import { obtenerTipoEntrega, obtenerFecha } from '../../vista-control.js';
+import ItemDivisor from '../../../components/item-divisor.js';
 
 const vistaPedidoFormulario = {
   _CARGANDO: 'Cargando...',
@@ -20,7 +21,7 @@ const vistaPedidoFormulario = {
   _codigoPostal: document.getElementById('codigo-postal'),
   _fechaEntrega: document.getElementById('fecha-entrega'),
   _horaEntrega: document.getElementById('hora-entrega'),
-  _estadoAnticipo: document.getElementById('estado-anticipo'),
+  // _estadoAnticipo: document.getElementById('estado-anticipo'),
   _metodoPago: document.getElementById('metodo-pago'),
   _detallesPago: document.getElementById('detalles-pago'),
   _pedidoEdicionItems: document.body.querySelectorAll('.pedido-edicion'),
@@ -134,7 +135,7 @@ const vistaPedidoFormulario = {
     this._codigoPostal.innerText = this._CARGANDO;
     this._fechaEntrega.innerText = this._CARGANDO;
     this._horaEntrega.innerText = this._CARGANDO;
-    this._estadoAnticipo.innerText = this._CARGANDO;
+    // this._estadoAnticipo.innerText = this._CARGANDO;
     this._metodoPago.innerText = this._CARGANDO;
     this._detallesPago.innerText = this._CARGANDO;
   },
@@ -165,7 +166,7 @@ const vistaPedidoFormulario = {
 
     this._anticipoRequerido.innerText = pedido.anticipo;
     this._costoTotal.innerText = pedido.total;
-    this._estadoAnticipo.innerText = pedido.estadoAnticipo ? 'Pagado' : 'No pagado';
+    // this._estadoAnticipo.innerText = pedido.estadoAnticipo ? 'Pagado' : 'No pagado';
 
     this.ocultarDireccion(pedido.tipoEntrega === 'Pick up');
     this.ocultarDetallesPago(pedido.tipoPago === 'Efectivo');
@@ -189,6 +190,25 @@ const vistaPedidoFormulario = {
 
   ocultarDetallesPago (ocultar = true) {
     this._itemDetallesPago.style.display = ocultar ? 'none' : 'flex';
+  },
+
+  agregarProductoPedido (id, nombre, cantidad, subtotal) {
+    const itemDivisor = new ItemDivisor();
+    itemDivisor.innerHTML = /*html*/`
+      <item-detalles>
+        <wc-texto data-tipo-fuente='etiqueta-l'>
+          <span class='cantidad-producto-pedido'>${cantidad}</span> × ${nombre}
+        </wc-texto>
+        <wc-texto data-tipo-fuente='etiqueta-l'>
+          $<span class='subtotal-producto-pedido'>${subtotal}</span> MXN
+        </wc-texto>
+        <input class='id-producto' type='hidden' value=${id}>
+      </item-detalles>
+    `;
+
+    this._listaProductosPedidos.appendChild(itemDivisor);
+
+    if (itemDivisor.previousElementSibling) itemDivisor.previousElementSibling.dataNoDivisor = false;
   }
 };
 

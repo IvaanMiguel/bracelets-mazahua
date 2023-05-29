@@ -21,7 +21,7 @@
       <lista-controlador class='productos-comprados'></lista-controlador>
       <contenedor-flex flex-direction='row' gap='var(--espaciado-grande)' padding='3px 2px'>
         <boton-rellenado
-            data-evento='actualizardatosentrega'
+            data-evento='actualizarproductospedidos'
             data-color-fondo='var(--clr-primario-40)'
             data-color-texto='#ffffff'
             data-etiqueta='Guardar cambios'

@@ -1,4 +1,5 @@
 import { obtenerRespuesta } from '../vista-control.js';
+import productosPedidos from './controllers/lista-productos-pedidos.js';
 import productosPopup from './controllers/popups/productos.js';
 import vistaPedidoFormulario from './controllers/vista-pedido-formulario.js';
 
@@ -15,14 +16,17 @@ ventana.addEventListener('verificarcierre', () => {
     return;
   }
 
+  productosPopup.tabs.seleccionarTab(1);
   ventana.cerrarVentana();
 });
 
-ventana.addEventListener('buscarproductonuevo', () => productosPopup.tabs.seleccionarTab(2));
-ventana.addEventListener('regresar', () => productosPopup.tabs.seleccionarTab(1));
-
 ventanaConfirmacion.addEventListener('cancelarcierre', () => ventanaConfirmacion.cerrarVentana());
-ventanaConfirmacion.addEventListener('cerrarventanas', () => ventana.cerrarVentana());
+ventanaConfirmacion.addEventListener('cerrarventanas', () => {
+  ventana.cerrarVentana();
+  productosPopup.reiniciarCampos();
+  productosPopup.tabs.seleccionarTab(1);
+  ventanaConfirmacion.cerrarVentana();
+});
 
 ventana.addEventListener('confirmarremoverproductopedido', (e) => {
   const productoItem = e.target.parentElement;
@@ -60,8 +64,8 @@ confirmarRemoverProducto.addEventListener('removerproductopedido', () => {
 
       if (!datos.status) return;
 
-      const productoItem = productosPopup.productosComprados.querySelector(`.id-producto-pedido[value='${idProducto}']`)
-        .parentElement;
+      const productoItem = productosPopup.listaProductosComprados
+        .querySelector(`.id-producto-pedido[value='${idProducto}']`).parentElement;
 
       const cantidad = productoItem.querySelector('.mini-input').placeholder;
       const subtotal = productoItem.querySelector('.subtotal-producto').innerText;
@@ -71,6 +75,8 @@ confirmarRemoverProducto.addEventListener('removerproductopedido', () => {
       vistaPedidoFormulario.anticipoRequerido = (vistaPedidoFormulario.costoTotal / 2).toFixed(2);
 
       productoItem.remove();
+
+      delete productosPedidos.productos[idProducto];
 
       listaProductosPedidos.querySelector(`.id-producto[value='${idProducto}']`)
         .parentElement.remove();

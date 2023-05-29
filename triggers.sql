@@ -78,6 +78,32 @@ BEGIN
 END$$
 delimiter ;
 
+DROP TRIGGER IF EXISTS before_pedidoproducto_update;
+delimiter $$
+CREATE TRIGGER before_pedidoproducto_update
+BEFORE UPDATE ON pedidoproducto FOR EACH ROW
+BEGIN
+    DECLARE precioProducto DECIMAL(11, 2);
+    DECLARE cantidadActualizada INT;
+
+    SELECT precio INTO precioProducto FROM producto WHERE idProducto = NEW.idProducto;
+	SET cantidadActualizada = NEW.cantidad - OLD.cantidad;
+    SET NEW.subtotal = NEW.cantidad * precioProducto;
+
+    UPDATE producto
+    SET
+        existencias = existencias - cantidadActualizada
+	WHERE idProducto = NEW.idProducto;
+    
+    UPDATE pedido 
+    SET
+        total = total + (NEW.subtotal - OLD.subtotal),
+        anticipo = total / 2,
+        totalProductos = totalProductos + cantidadActualizada
+	WHERE id = NEW.idPedido;
+END$$
+delimiter ;
+
 DROP TRIGGER IF EXISTS before_pedido_delete;
 delimiter $$
 CREATE TRIGGER before_pedido_delete

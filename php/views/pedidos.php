@@ -76,7 +76,6 @@
 
   <script type='module' src='js/orders/buscar-cliente.js'></script>
   <script type='module' src='js/orders/seleccionar-productos.js'></script>
-  <script type='module' src='js/orders/controllers/entrega-pago.js'></script>
   <script type='module' src='js/orders/agregar-pedido.js'></script>
   <script type='module' src='js/orders/controllers/tabs-controlador.js'></script>
   <script type='module' src='js/orders/mostrar-pedido-pendiente.js'></script>
@@ -85,6 +84,8 @@
   <script type='module' src='js/orders/mostrar-pedido-completado.js'></script>
   <script type='module' src='js/orders/editar-datos-destinatario.js'></script>
   <script type='module' src='js/orders/editar-informacion-entrega.js'></script>
-  <script type='module' src='js/orders/editar-productos.js'></script>
+  <script type='module' src='js/orders/eliminar-producto.js'></script>
+  <script type='module' src='js/orders/actualizar-productos.js'></script>
+  <script type='module' src='js/orders/agregar-productos.js'></script>
 </body>
 </html>

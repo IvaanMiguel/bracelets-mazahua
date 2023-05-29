@@ -177,4 +177,16 @@ class Mensaje
     'mensaje' => 'El producto ha sido eliminado del pedido exitosamente.',
     'ambito' => 'notificacion'
   ];
+
+  const PRODUCTOS_ACTUALIZADOS = [
+    'titulo' => 'Productos del pedido actualizados',
+    'mensaje' => 'Los productos del pedido han sido actualizados con éxito.',
+    'ambito' => 'notificacion'
+  ];
+
+  const PRODUCTOS_AGREGADOS = [
+    'titulo' => 'Nuevos productos agregados',
+    'mensaje' => 'Se han agregado nuevo productos al pedido exitosamente.',
+    'ambito' => 'notificacion'
+  ];
 }

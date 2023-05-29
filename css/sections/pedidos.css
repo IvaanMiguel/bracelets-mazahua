@@ -93,7 +93,7 @@ boton-elevado {
   padding: 3px 2px;
 }
 
-#editar-productos-pedidos .lista-productos {
+#editar-productos-pedidos :where(.lista-productos, .productos-comprados){
   overflow: auto;
   max-height: 60vh;
   max-height: 60svh;

@@ -77,13 +77,12 @@ class CrearPedido extends Dbh
     return $conexion->lastInsertId();
   }
 
-  private function agregarProductos(
+  public function agregarProductos(
     int $idPedido,
     array $productos,
   ): void
   {
     $tuplas = $this->obtenerProductos($idPedido, $productos);
-
     $placeholders = implode(', ', array_fill(0, count($productos), '(?, ?, ?)'));
 
     $stmt = $this->conectar()->prepare(

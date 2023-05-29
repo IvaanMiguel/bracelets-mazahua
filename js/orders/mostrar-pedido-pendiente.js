@@ -1,9 +1,9 @@
-import ItemDivisor from '../../components/item-divisor.js';
 import { ordenarPedidos } from './controllers/ordenar-pedidos.js';
 import vistaPedidoFormulario from './controllers/vista-pedido-formulario.js';
 import datosDestinatarioPopup from './controllers/popups/datos-destinatario.js';
 import datosEntregaPopup from './controllers/popups/datos-entrega.js';
 import productosPopup from './controllers/popups/productos.js';
+import productosPedidos from './controllers/lista-productos-pedidos.js';
 import { ordenarClienteUbicaciones } from '../customers/ordenar-clientes.js';
 
 vistaPedidoFormulario.inicializar();
@@ -17,7 +17,6 @@ pedidosPendientesLista.querySelectorAll('lista-item').forEach((item) => {
 });
 
 const subtab = document.getElementById('subtab');
-const listaProductosPedidos = document.getElementById('lista-productos-pedidos');
 
 document.addEventListener('regresarpedidos', () => {
   subtab.seleccionarTab(2);
@@ -25,6 +24,8 @@ document.addEventListener('regresarpedidos', () => {
   datosDestinatarioPopup.reiniciar();
   datosDestinatarioPopup.reiniciarPlaceholders();
   productosPopup.reiniciar();
+  productosPopup.nuevosProductosAgregados = [];
+  productosPedidos.productos = [];
 
   datosEntregaPopup.reiniciar();
 });
@@ -82,26 +83,24 @@ const obtenerProductos = (formData) => {
       let totalProductos = 0;
 
       datos.contenido.forEach((producto, i) => {
-        productosPopup.agregarProducto(
+        productosPedidos.producto = producto;
+
+        productosPedidos.agregarProducto(
           producto.idProducto,
           producto.nombreProducto,
           producto.cantidad,
           producto.subtotal,
           producto.existencias
         );
-        totalProductos += producto.cantidad;
-        const itemDivisor = new ItemDivisor();
-        itemDivisor.innerHTML = /*html*/`
-          <item-detalles>
-            <wc-texto data-tipo-fuente='etiqueta-l'>
-              ${producto.cantidad} × ${producto.nombreProducto}
-            </wc-texto>
-            <wc-texto data-tipo-fuente='etiqueta-l'>$${producto.subtotal} MXN</wc-texto>
-            <input class='id-producto' type='hidden' value=${producto.idProducto}>
-          </item-detalles>
-        `;
 
-        listaProductosPedidos.appendChild(itemDivisor);
+        vistaPedidoFormulario.agregarProductoPedido(
+          producto.idProducto,
+          producto.nombreProducto,
+          producto.cantidad,
+          producto.subtotal
+        );
+
+        totalProductos += producto.cantidad;
       });
 
       totalProductosItem.innerText = totalProductos;

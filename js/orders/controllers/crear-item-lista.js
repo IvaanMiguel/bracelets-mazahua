@@ -10,7 +10,7 @@ const crearItemPedido = (idPedido) => {
 
   let totalProductos = 0;
 
-  document.body.querySelectorAll('.mini-input').forEach((input) => {
+  document.body.querySelectorAll('#agregar-pedido .mini-input').forEach((input) => {
     totalProductos += +input.value || 1;
   });
 
@@ -21,8 +21,8 @@ const crearItemPedido = (idPedido) => {
         ${nombreCliente}
       </wc-texto>
       <wc-texto slot='info-extra' data-tipo-fuente='etiqueta-s'>
-        ${totalProductos} producto${totalProductos === 1 ? '' : 's'} en total.
-        <span class='entrega-completado'>Entrega el ${obtenerFecha(fechaEntrega)}</span>.
+        <span class='total-productos-pedido'>${totalProductos}</span> producto${totalProductos === 1 ? '' : 's'} en total.
+        <span class='entrega-completado'>Entrega el <span class='fecha-entrega-pedido'>${obtenerFecha(fechaEntrega)}</span></span>.
       </wc-texto>
       <input class='id-pedido' type='hidden' value='${idPedido}'>
     </lista-item>

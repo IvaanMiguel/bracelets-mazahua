@@ -22,3 +22,7 @@ contenedor-colapsable form {
 info-detalles {
   max-width: var(--mw-formulario);
 }
+
+.no-existencias {
+  color: var(--clr-neutral-80);
+}

@@ -39,8 +39,8 @@ ventanaPrincipal.addEventListener('confirmareliminarpedido', () => {
       pedidosPendientesTitulo
         .innerHTML = `${totalPedidosPendientes.outerHTML} pedido${+totalPedidosPendientes.innerText === 1 ? '' : 's'}`;
 
-      subtab.seleccionarTab(2);
       vistaPedidoFormulario.reiniciar();
       datosDestinatarioPopup.reiniciarPlaceholders();
+      document.dispatchEvent(new CustomEvent('regresarpedidos'));
     });
 });

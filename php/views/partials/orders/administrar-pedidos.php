@@ -34,8 +34,8 @@
                 <?= $pedidoPendiente['nombreCliente'] ?>
               </wc-texto>
               <wc-texto slot='info-extra' data-tipo-fuente='etiqueta-s'>
-                <?= $pedidoPendiente['totalProductos'] ?> producto<?= $pedidoPendiente['totalProductos'] == 1 ? '' : 's' ?>
-                en total. <span class='entrega-completado'>Entrega el <?= obtenerFecha($pedidoPendiente['fechaEntrega']) ?></span>.
+                <span class='total-productos-pedido'><?= $pedidoPendiente['totalProductos'] ?></span> <span class='producto-s'>producto<?= $pedidoPendiente['totalProductos'] == 1 ? '' : 's' ?></span>
+                en total. <span class='entrega-completado'>Entrega el <span class='fecha-entrega-pedido'><?= obtenerFecha($pedidoPendiente['fechaEntrega']) ?></span></span>.
               </wc-texto>
               <input class='id-pedido' type='hidden' value=<?= $pedidoPendiente['id'] ?>>
             </lista-item>

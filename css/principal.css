@@ -36,11 +36,16 @@ menu-lateral {
     opacity .2s ease 0s;
 }
 
-menu-lateral:not(:defined) {
+menu-lateral :not(:defined) {
   flex: 1;
+  width: 15rem;
   opacity: 0;
-  max-width: 15rem;
-  min-width: min-content;
+}
+
+menu-lateral[data-retraido] :not(:defined) {
+  flex: unset;
+  width: 5.125rem;
+  opacity: 0;
 }
 
 wc-tabs {
@@ -51,4 +56,17 @@ wc-tabs:not(:defined) {
   opacity: 0;
   flex: 1;
   width: 100%;
+}
+
+menu-lateral boton-rellenado {
+  transition: opacity .2s ease 0s;
+}
+
+menu-lateral boton-rellenado :not(:defined) {
+  display: inline-flex;
+
+  height: 2.5rem;
+  width: 0;
+
+  opacity: 0;
 }

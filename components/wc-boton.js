@@ -76,6 +76,12 @@ export default class WCBoton extends HTMLElement {
         max-width: min-content;
       }
 
+      :host([data-variante='icono']) span {
+        width: 0;
+        opacity: 0;
+        font-size: 0;
+      }
+
       :host([data-expandir]) button, :host([data-expandir]) a {
         flex: 1;
       }
@@ -106,7 +112,7 @@ export default class WCBoton extends HTMLElement {
 
         transition:
           width 0.2s ease 0s,
-          font-size 0.2s ease 0s,
+          font-size 0.25s ease 0s,
           opacity 0.2s ease 0s;
       }
     `);

@@ -21,3 +21,4 @@
 </ventana-emergente>
 
 <script src='js/cerrar-sesion.js'></script>
+<script src='js/menu-local-storage.js'></script>

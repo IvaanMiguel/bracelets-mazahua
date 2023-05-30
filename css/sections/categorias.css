@@ -5,3 +5,8 @@ form contenedor-flex {
 form campo-texto {
   max-width: var(--mw-formulario);
 }
+
+boton-rellenado[data-etiqueta='Categorías'] {
+  --clr-fondo: #ffffff;
+  --clr-texto: var(--clr-primario-40);
+}

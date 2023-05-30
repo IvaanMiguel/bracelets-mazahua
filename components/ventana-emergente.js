@@ -35,7 +35,7 @@ hojaCSS.replaceSync(/*css*/`
     display: flex;
     flex-direction: column;
 
-    width: clamp(18.75rem, 50%, 40rem);
+    width: clamp(18.75rem, 65%, 40rem);
     box-sizing: border-box;
     overflow: hidden;
     max-height: 90%;

@@ -26,3 +26,8 @@ info-detalles {
 .no-existencias {
   color: var(--clr-neutral-80);
 }
+
+boton-rellenado[data-etiqueta='Productos'] {
+  --clr-fondo: #ffffff;
+  --clr-texto: var(--clr-primario-40);
+}

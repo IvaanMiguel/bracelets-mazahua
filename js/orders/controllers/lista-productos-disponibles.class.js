@@ -32,8 +32,6 @@ export class ListaProductosDisponibles {
     } else {
       delete this._productosSeleccionados[id];
     }
-
-    console.log(this._productosSeleccionados);
   }
 
   desmarcarProductos () {

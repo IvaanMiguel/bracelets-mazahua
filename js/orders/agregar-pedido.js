@@ -55,8 +55,6 @@ document.addEventListener('hacerpedido', () => {
         const infoProducto = productosAgregados.productos[producto];
         const id = infoProducto.id;
 
-        console.log(infoProducto);
-
         productosDisponiblesCreacion.actualizarProductoDisponible(id, infoProducto.cantidad);
         productosDisponiblesEdicion.actualizarProductoDisponible(id, infoProducto.cantidad);
       }

@@ -69,8 +69,6 @@ const productosPedidos = {
         delete this._productosModificados[indexProducto];
         this._productosModificados = this._productosModificados.filter((item) => item);
       }
-
-      console.log(this._productosModificados);
     });
   },
 

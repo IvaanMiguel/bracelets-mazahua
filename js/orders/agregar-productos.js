@@ -15,8 +15,6 @@ document.addEventListener('seleccionarnuevosproductos', () => {
   formData.append('idPedido', idPedido);
   formData.append('productos', JSON.stringify(productos));
 
-  console.log(productos);
-
   if (!Object.keys(productos).length) return;
 
   fetch('php/includes/orders/agregar_productos_pedido.inc.php', {
@@ -35,8 +33,6 @@ document.addEventListener('seleccionarnuevosproductos', () => {
       for (const productoId in productos) {
         const producto = productos[productoId];
         const id = producto.id;
-
-        console.log(producto);
 
         const productoItem = [...productosDisponiblesEdicion.listaItems].find((item) => {
           return item.querySelector(`.id-producto[value='${id}']`);

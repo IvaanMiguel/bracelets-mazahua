@@ -7,10 +7,6 @@ import { productosDisponiblesCreacion } from './init.js';
 
 const ventanaPrincipal = document.getElementById('buscar-producto');
 
-ordenarProductosCategorias(ventanaPrincipal, ventanaPrincipal.querySelector('.lista-productos'));
-ventanaPrincipal.querySelectorAll('wc-colapsable lista-controlador')
-  .forEach((listaCategoria) => ordenarProductos(listaCategoria));
-
 document.addEventListener('ventanaoculta', () => {
   productosDisponiblesCreacion.desmarcarProductos();
   productosDisponiblesCreacion.productosSeleccionados = {};

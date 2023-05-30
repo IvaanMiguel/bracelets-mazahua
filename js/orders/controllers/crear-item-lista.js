@@ -21,7 +21,7 @@ const crearItemPedido = (idPedido) => {
         ${nombreCliente}
       </wc-texto>
       <wc-texto slot='info-extra' data-tipo-fuente='etiqueta-s'>
-        <span class='total-productos-pedido'>${totalProductos}</span> producto${totalProductos === 1 ? '' : 's'} en total.
+        <span class='total-productos-pedido'>${totalProductos}</span> <span class='producto-s'>producto${totalProductos === 1 ? '' : 's'}</span> en total.
         <span class='entrega-completado'>Entrega el <span class='fecha-entrega-pedido'>${obtenerFecha(fechaEntrega)}</span></span>.
       </wc-texto>
       <input class='id-pedido' type='hidden' value='${idPedido}'>

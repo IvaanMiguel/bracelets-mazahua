@@ -37,8 +37,6 @@ ventanaPrincipal.addEventListener('confirmareliminarpedido', () => {
         productosDisponiblesEdicion.actualizarProductoDisponible(producto.id, -producto.cantidad);
       }
 
-      console.log(productosPedidos.productos);
-
       listaPedidosPendientes.querySelector(`.id-pedido[value='${idPedidoInput.value}']`)
         .parentElement.remove();
 

@@ -24,8 +24,10 @@
 }
 
 #aplicaciones > *,
-#tipos-entrega > * {
+#tipos-entrega > *,
+.tipos-pago > * {
   cursor: pointer;
+  user-select: none;
 }
 
 #tarjeta-campos *,

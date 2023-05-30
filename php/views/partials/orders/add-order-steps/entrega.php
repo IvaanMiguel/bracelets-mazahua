@@ -30,7 +30,7 @@
         <?php require DIR_PARCIALES . '/orders/add-order-steps/lista-ubicaciones.php' ?>
         <contenedor-flex flex-direction='column' gap='var(--espaciado-chico)'>
           <wc-texto data-tipo-fuente='etiqueta-l'>Aplicación de entrega</wc-texto>
-          <contenedor-flex flex-direction='row' gap='var(--espaciado-chico)'>
+          <contenedor-flex id='aplicaciones' flex-direction='row' gap='var(--espaciado-chico)'>
             <label>
               <input type='radio' name='aplicacion' value='Uber' checked>
               <wc-texto data-tipo-fuente='etiqueta-l'>Uber</wc-texto>

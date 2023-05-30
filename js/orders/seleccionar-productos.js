@@ -1,7 +1,3 @@
-import {
-  ordenarProductos,
-  ordenarProductosCategorias
-} from './controllers/ordenar-productos.js';
 import productosAgregados from './controllers/lista-productos-agregados.js';
 import { productosDisponiblesCreacion } from './init.js';
 

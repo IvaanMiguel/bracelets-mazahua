@@ -1,6 +1,8 @@
 import { obtenerRespuesta } from '../vista-control.js';
 import vistaPedidoFormulario from './controllers/vista-pedido-formulario.js';
 import datosDestinatarioPopup from './controllers/popups/datos-destinatario.js';
+import productosPedidos from './controllers/lista-productos-pedidos.js';
+import { productosDisponiblesCreacion, productosDisponiblesEdicion } from './init.js';
 
 const ventanaPrincipal = document.getElementById('eliminar-pedido');
 
@@ -8,7 +10,6 @@ document.addEventListener('eliminarpedido', () => ventanaPrincipal.mostrarVentan
 ventanaPrincipal.addEventListener('cancelar', () => ventanaPrincipal.cerrarVentana());
 
 const idPedidoInput = document.getElementById('id-pedido');
-const subtab = document.getElementById('subtab');
 const listaPedidosPendientes = document.getElementById('pedidos-pendientes');
 const totalPedidos = document.getElementById('total-pedidos');
 const pedidosTitulo = document.getElementById('pedidos-titulo');
@@ -28,6 +29,15 @@ ventanaPrincipal.addEventListener('confirmareliminarpedido', () => {
       ventanaPrincipal.cerrarVentana();
 
       obtenerRespuesta(datos);
+
+      for (const id in productosPedidos.productos) {
+        const producto = productosPedidos.productos[id];
+
+        productosDisponiblesCreacion.actualizarProductoDisponible(producto.id, -producto.cantidad);
+        productosDisponiblesEdicion.actualizarProductoDisponible(producto.id, -producto.cantidad);
+      }
+
+      console.log(productosPedidos.productos);
 
       listaPedidosPendientes.querySelector(`.id-pedido[value='${idPedidoInput.value}']`)
         .parentElement.remove();

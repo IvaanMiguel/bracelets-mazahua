@@ -1,13 +1,3 @@
-<?php
-  require_once AUTOLOADER;
-
-  use controllers\Producto;
-
-  $vistaProducto = Producto::vistaProductoConstructor();
-  $categoriasActivas = json_decode($vistaProducto->mostrarCategoriasActivas(), true)['contenido'];
-  $productos = json_decode($vistaProducto->mostrarProductos(), true)['contenido'];
-?>
-
 <ventana-emergente id='buscar-producto' data-no-pie data-cierre-explicito>
   <wc-texto slot='cabecera-inicio' data-tipo-fuente='titulo-l'>
     Seleccionando productos

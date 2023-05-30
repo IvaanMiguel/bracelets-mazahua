@@ -1,8 +1,8 @@
 import productosAgregados from './controllers/lista-productos-agregados.js';
 
-const obtenerProductos = () => {
+export const obtenerProductos = (productosArr) => {
   const productos = [];
-  const productosSeleccionados = productosAgregados.productos;
+  const productosSeleccionados = productosArr;
 
   for (const producto in productosSeleccionados) {
     productos.push({
@@ -69,7 +69,7 @@ const obtenerTipoPago = (formData) => {
 const obtenerFormData = () => {
   const formData = new FormData();
   formData.append('idCliente', document.getElementById('id-cliente-agregar').value);
-  formData.append('productos', JSON.stringify(obtenerProductos()));
+  formData.append('productos', JSON.stringify(obtenerProductos(productosAgregados.productos)));
 
   obtenerFormularioEntradas(formData, document.getElementById('tipos-entrega'));
   obtenerTipoEntrega(formData);

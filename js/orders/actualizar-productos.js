@@ -2,6 +2,7 @@ import { obtenerRespuesta } from '../vista-control.js';
 import productosPedidos from './controllers/lista-productos-pedidos.js';
 import vistaPedidoFormulario from './controllers/vista-pedido-formulario.js';
 import productosPopup from './controllers/popups/productos.js';
+import { productosDisponiblesEdicion, productosDisponiblesCreacion } from './init.js';
 
 productosPedidos.incializar();
 
@@ -28,15 +29,21 @@ document.addEventListener('actualizarproductospedidos', () => {
         productosPedidos.productosModificados.forEach((producto) => {
           const productoActualizadoItem = ventanaProductos
             .querySelector(`.id-producto-pedido[value='${producto.id}']`).parentElement;
+          const cantidadNueva = productoActualizadoItem.querySelector('.mini-input').value;
 
           productoActualizadoItem.querySelector('.mini-input').placeholder = producto.cantidad;
+
+          const diferenciaCantidad = +cantidadNueva - productosPedidos.productos[producto.id].cantidad;
+
+          productosDisponiblesCreacion.actualizarProductoDisponible(producto.id, diferenciaCantidad);
+          productosDisponiblesEdicion.actualizarProductoDisponible(producto.id, diferenciaCantidad);
+
+          productosPedidos.productos[producto.id].cantidad = cantidadNueva;
 
           const productoItem = vistaPedidoFormulario.listaProductosPedidos
             .querySelector(`.id-producto[value='${producto.id}']`).parentElement;
 
-          productoItem.querySelector('.cantidad-producto-pedido')
-            .innerText = productoActualizadoItem.querySelector('.mini-input').value;
-
+          productoItem.querySelector('.cantidad-producto-pedido').innerText = cantidadNueva;
           productoItem.querySelector('.subtotal-producto-pedido')
             .innerText = productoActualizadoItem.querySelector('.subtotal-producto').innerText;
         });
@@ -47,10 +54,14 @@ document.addEventListener('actualizarproductospedidos', () => {
           .forEach((cantidad) => (totalProductos += +cantidad.innerText));
         vistaPedidoFormulario.totalProductos = totalProductos;
 
-        const pedidoItem = listaPedidosPendientes.querySelector(`.id-pedido[value='${vistaPedidoFormulario.idPedido}']`)
+        const pedidoItem = listaPedidosPendientes
+          .querySelector(`.id-pedido[value='${vistaPedidoFormulario.idPedido}']`)
           .parentElement;
+
         pedidoItem.querySelector('.total-productos-pedido').innerText = totalProductos;
-        pedidoItem.querySelector('.producto-s').innerText = totalProductos === 1 ? 'producto' : 'productos';
+        pedidoItem.querySelector('.producto-s').innerText = totalProductos === 1
+          ? 'producto'
+          : 'productos';
 
         let costoTotal = 0;
 

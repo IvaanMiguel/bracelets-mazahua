@@ -74,7 +74,6 @@ const productosAgregados = {
     productoItem.querySelector('item-detalles boton-icono').dataColorTexto = 'var(--clr-error-40)';
 
     const subtotal = productoItem.querySelector('.subtotal');
-
     const inputCantidad = productoItem.querySelector('[name="cantidad"]');
 
     inputCantidad.addEventListener('input', () => {

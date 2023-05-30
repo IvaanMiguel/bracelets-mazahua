@@ -98,3 +98,7 @@ boton-elevado {
   max-height: 60vh;
   max-height: 60svh;
 }
+
+.no-existencias {
+  color: var(--clr-neutral-80);
+}

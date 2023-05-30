@@ -4,12 +4,12 @@ import productosAgregados from './controllers/lista-productos-agregados.js';
 import entregaFormulario from './controllers/entrega-formulario.js';
 import crearItemPedido from './controllers/crear-item-lista.js';
 import { ordenarPedidos } from './controllers/ordenar-pedidos.js';
+import { productosDisponiblesCreacion, productosDisponiblesEdicion } from './init.js';
 
 entregaFormulario.inicializar();
 
 const infoCliente = document.getElementById('info-cliente');
 const idCliente = document.getElementById('id-cliente-agregar');
-const listaProductos = document.querySelectorAll('.lista-productos');
 const pagoEfectivo = document.body.querySelector('[value="Efectivo"]');
 const clabeCuenta = document.body.querySelector('[name="clabeCuenta"]');
 const numeroTarjeta = document.body.querySelector('[name="numeroTarjeta"]');
@@ -54,18 +54,11 @@ document.addEventListener('hacerpedido', () => {
       for (const producto in productosAgregados.productos) {
         const infoProducto = productosAgregados.productos[producto];
         const id = infoProducto.id;
-        const existenciasRestantes = infoProducto.existencias - infoProducto.cantidad;
 
-        if (existenciasRestantes === 0) {
-          listaProductos.forEach((lista) => {
-            lista.querySelector(`[value="${id}"]`).parentElement.remove();
-          });
-        } else {
-          listaProductos.forEach((lista) => {
-            lista.querySelector(`[value="${id}"]`).parentElement.querySelector('.existencias')
-              .innerText = existenciasRestantes;
-          });
-        }
+        console.log(infoProducto);
+
+        productosDisponiblesCreacion.actualizarProductoDisponible(id, infoProducto.cantidad);
+        productosDisponiblesEdicion.actualizarProductoDisponible(id, infoProducto.cantidad);
       }
 
       productosAgregados.listaItems.replaceChildren();

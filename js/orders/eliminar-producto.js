@@ -2,6 +2,7 @@ import { obtenerRespuesta } from '../vista-control.js';
 import productosPedidos from './controllers/lista-productos-pedidos.js';
 import productosPopup from './controllers/popups/productos.js';
 import vistaPedidoFormulario from './controllers/vista-pedido-formulario.js';
+import { productosDisponiblesEdicion, productosDisponiblesCreacion } from './init.js';
 
 productosPopup.inicializar();
 const ventana = productosPopup.ventana;
@@ -69,6 +70,9 @@ confirmarRemoverProducto.addEventListener('removerproductopedido', () => {
 
       const cantidad = productoItem.querySelector('.mini-input').placeholder;
       const subtotal = productoItem.querySelector('.subtotal-producto').innerText;
+
+      productosDisponiblesEdicion.actualizarProductoDisponible(idProducto, -cantidad);
+      productosDisponiblesCreacion.actualizarProductoDisponible(idProducto, -cantidad);
 
       vistaPedidoFormulario.totalProductos -= cantidad;
       vistaPedidoFormulario.costoTotal = (vistaPedidoFormulario.costoTotal - subtotal).toFixed(2);

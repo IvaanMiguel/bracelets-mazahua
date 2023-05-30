@@ -112,6 +112,12 @@ BEGIN
     DECLARE idEntregaPedido INT;
     SELECT idEntrega INTO idEntregaPedido FROM pedido WHERE id = OLD.id;
     DELETE FROM entrega WHERE id = idEntregaPedido;
+    
+    UPDATE producto p
+    INNER JOIN pedidoproducto pp ON p.idProducto = pp.idProducto
+    SET
+        p.existencias = p.existencias + pp.cantidad
+	WHERE pp.idPedido = OLD.id;
 END$$
 delimiter ;
 

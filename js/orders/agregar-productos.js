@@ -2,19 +2,22 @@ import { obtenerRespuesta } from '../vista-control.js';
 import productosPopup from './controllers/popups/productos.js';
 import productosPedidos from './controllers/lista-productos-pedidos.js';
 import vistaPedidoFormulario from './controllers/vista-pedido-formulario.js';
+import { obtenerProductos } from './obtener-form-data.js';
+import { productosDisponiblesEdicion, productosDisponiblesCreacion } from './init.js';
 
-const listasProductos = document.body.querySelectorAll('.lista-productos');
 const listaPedidosPendientes = document.getElementById('pedidos-pendientes');
 
 document.addEventListener('seleccionarnuevosproductos', () => {
-  const productos = productosPopup.nuevosProductosAgregados;
+  const productos = obtenerProductos(productosDisponiblesEdicion.productosSeleccionados);
   const idPedido = vistaPedidoFormulario.idPedido;
 
   const formData = new FormData();
   formData.append('idPedido', idPedido);
   formData.append('productos', JSON.stringify(productos));
+
   console.log(productos);
-  if (!productos.length) return;
+
+  if (!Object.keys(productos).length) return;
 
   fetch('php/includes/orders/agregar_productos_pedido.inc.php', {
     method: 'POST',
@@ -22,8 +25,6 @@ document.addEventListener('seleccionarnuevosproductos', () => {
   })
     .then((respuesta) => respuesta.json())
     .then((datos) => {
-      console.log(productosPedidos.productos);
-
       obtenerRespuesta(datos);
 
       if (!datos.status) return;
@@ -31,25 +32,22 @@ document.addEventListener('seleccionarnuevosproductos', () => {
       let aumentoTotalProductos = 0;
       let aumentoCostoTotal = 0;
 
-      productos.forEach((producto, i) => {
+      for (const productoId in productos) {
+        const producto = productos[productoId];
         const id = producto.id;
 
-        const productoItem = productosPopup.listaProductosDisponibles
-          .querySelector(`.id-producto[value='${id}']`).parentElement;
+        console.log(producto);
+
+        const productoItem = [...productosDisponiblesEdicion.listaItems].find((item) => {
+          return item.querySelector(`.id-producto[value='${id}']`);
+        });
 
         const nombre = productoItem.querySelector('.nombre').innerText;
         const precio = productoItem.querySelector('.precio').innerText;
         const existenciasActualizadas = productoItem.querySelector('.existencias').innerText - 1;
 
-        console.log(existenciasActualizadas);
-
-        if (!existenciasActualizadas) {
-          listasProductos.forEach((listaProducto) => {
-            listaProducto.querySelector(`.id-producto[value='${id}']`).parentElement.remove();
-          });
-        }
-
-        productoItem.querySelector('.existencias').innerText = existenciasActualizadas;
+        productosDisponiblesEdicion.actualizarProductoDisponible(id);
+        productosDisponiblesCreacion.actualizarProductoDisponible(id);
 
         productosPedidos.productos[id] = {
           id,
@@ -63,7 +61,7 @@ document.addEventListener('seleccionarnuevosproductos', () => {
 
         aumentoTotalProductos += producto.cantidad;
         aumentoCostoTotal += +precio;
-      });
+      }
 
       vistaPedidoFormulario.totalProductos = +vistaPedidoFormulario.totalProductos + aumentoTotalProductos;
       vistaPedidoFormulario.costoTotal = (+vistaPedidoFormulario.costoTotal + aumentoCostoTotal).toFixed(2);
@@ -77,8 +75,8 @@ document.addEventListener('seleccionarnuevosproductos', () => {
       const totalPedido = pedidoItem.querySelector('.total-productos-pedido');
       totalPedido.innerText = +totalPedido.innerText + aumentoTotalProductos;
 
-      productosPopup.nuevosProductosAgregados = [];
+      productosPopup.nuevosProductosAgregados = {};
       productosPopup.tabs.seleccionarTab(1);
-      productosPopup.reiniciarProductosDisponibles();
+      productosDisponiblesEdicion.desmarcarProductos();
     });
 });

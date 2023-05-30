@@ -24,8 +24,8 @@ document.addEventListener('regresarpedidos', () => {
   datosDestinatarioPopup.reiniciar();
   datosDestinatarioPopup.reiniciarPlaceholders();
   productosPopup.reiniciar();
-  productosPopup.nuevosProductosAgregados = [];
-  productosPedidos.productos = [];
+  productosPopup.nuevosProductosAgregados = {};
+  productosPedidos.productos = {};
 
   datosEntregaPopup.reiniciar();
 });

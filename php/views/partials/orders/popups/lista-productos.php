@@ -1,3 +1,13 @@
+<?php
+  require_once AUTOLOADER;
+
+  use controllers\Producto;
+
+  $vistaProducto = Producto::vistaProductoConstructor();
+  $categoriasActivas = json_decode($vistaProducto->mostrarCategoriasActivas(), true)['contenido'];
+  $productos = json_decode($vistaProducto->mostrarProductos(), true)['contenido'];
+?>
+
 <contenedor-flex class='lista-productos' gap='var(--espaciado-chico)'>
   <?php if (count($categoriasActivas) > 0): ?>
     <?php foreach ($categoriasActivas as $categoriaActiva): ?>
@@ -5,7 +15,7 @@
         <wc-texto slot='texto-cabecera' data-tipo-fuente='titulo-s'>
           <?= $categoriaActiva['nombreCategoria'] ?>
         </wc-texto>
-        <lista-controlador>
+        <lista-controlador id='<?= $categoriaActiva['idCategoriaProducto'] ?>'>
   
           <?php
             $productosFiltrados = array_filter($productos, function($producto) use ($categoriaActiva) {
@@ -16,9 +26,9 @@
           ?>
   
           <?php foreach ($productosFiltrados as $producto): ?>
-            <?php if ($producto['existencias'] <= 0) continue; ?>
+            <?php // if ($producto['existencias'] <= 0) continue; ?>
             <item-divisor <?= ++$i === count($productosFiltrados) ? 'data-no-divisor' : '' ?>>
-              <lista-item data-no-final>
+              <lista-item class='<?= $producto['existencias'] <= 0 ? 'no-existencias' : '' ?>' data-no-final>
                 <item-detalles>
                   <input class='check' slot='inicio' type='checkbox'>
                   <wc-texto class='nombre'><?= $producto['nombreProducto'] ?></wc-texto>

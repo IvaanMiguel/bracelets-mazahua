@@ -1,4 +1,4 @@
-import productosPedidos from '../lista-productos-pedidos.js';
+import { productosDisponiblesEdicion } from '../../init.js';
 
 const productosPopup = {
   _ventana: document.getElementById('editar-productos-pedidos'),
@@ -12,17 +12,11 @@ const productosPopup = {
 
   _listaProductosComprados: null,
 
-  _listaProductosDisponibles: null,
-
-  _nuevosProductosAgregados: [],
+  _nuevosProductosAgregados: {},
 
   get ventana () { return this._ventana; },
 
   get tabs () { return this._tabs; },
-
-  get productosDisponiblesItems () {
-    return this._listaProductosDisponibles.querySelectorAll('lista-item');
-  },
 
   /** @param {string|number} id */
   set productoSeleccionado (id) {
@@ -39,15 +33,11 @@ const productosPopup = {
     this._nuevosProductosAgregados = productos;
   },
 
-  get listaProductosDisponibles () { return this._listaProductosDisponibles; },
-
   inicializar () {
     this._productosComprados = this.ventana.querySelector('.productos-comprados');
     this._tabs = this.ventana.querySelector('.tabs-productos-popup');
     this._listaProductosComprados = this.ventana.querySelector('.productos-comprados');
     this._listaProductosDisponibles = this.ventana.querySelector('.lista-productos');
-
-    this._inicializarProductosDisponibles();
 
     this._buscarProductoNuevoEvt();
     this._regresarEvt();
@@ -75,50 +65,16 @@ const productosPopup = {
     return camposEditados;
   },
 
-  reiniciarProductosDisponibles () {
-    this.productosDisponiblesItems.forEach((item) => {
-      const checkbox = item.querySelector('.check');
-      checkbox.checked = false;
-    });
-  },
-
-  _inicializarProductosDisponibles () {
-    this.productosDisponiblesItems.forEach((item) => {
-      const checkbox = item.querySelector('.check');
-      item.addEventListener('click', () => {
-        checkbox.checked = !checkbox.checked;
-
-        const idProducto = item.querySelector('.id-producto').value;
-
-        console.log(productosPedidos.productos);
-        if (productosPedidos.productos[idProducto]) return;
-
-        if (checkbox.checked) {
-          this._nuevosProductosAgregados.push({
-            id: idProducto,
-            cantidad: 1
-          });
-        } else {
-          const indice = this._nuevosProductosAgregados.indexOf(idProducto);
-          this._nuevosProductosAgregados = this._nuevosProductosAgregados.splice(indice, indice);
-        }
-
-        console.log(this._nuevosProductosAgregados);
-      });
-    });
-  },
-
   _buscarProductoNuevoEvt () {
     this.ventana.addEventListener('buscarproductonuevo', () => {
       this._tabs.seleccionarTab(2);
 
       this._listaProductosComprados.querySelectorAll('.id-producto-pedido').forEach((id) => {
-        const productoId = this._listaProductosDisponibles.querySelector(`.id-producto[value='${id.value}']`);
+        const productoId = [...productosDisponiblesEdicion.listaItems].find((item) => {
+          return item.querySelector(`.id-producto[value='${id.value}']`);
+        });
 
-        let productoItem;
-        if (productoId) productoItem = productoId.parentElement;
-
-        if (!productoItem) return;
+        const productoItem = productoId.parentElement;
         productoItem.querySelector('.check').checked = true;
       });
     });
@@ -127,8 +83,8 @@ const productosPopup = {
   _regresarEvt () {
     this.ventana.addEventListener('regresar', () => {
       this._tabs.seleccionarTab(1);
-      this.reiniciarProductosDisponibles();
-      this._nuevosProductosAgregados = [];
+      productosDisponiblesEdicion.desmarcarProductos();
+      productosDisponiblesEdicion.productosSeleccionados = {};
     });
   },
 
@@ -136,7 +92,7 @@ const productosPopup = {
     this.ventana.addEventListener('ventanaoculta', () => {
       this.ventana.dispatchEvent(new CustomEvent('regresar'));
       this.reiniciarCampos();
-      this._nuevosProductosAgregados = [];
+      productosDisponiblesEdicion.productosSeleccionados = {};
     });
   }
 };

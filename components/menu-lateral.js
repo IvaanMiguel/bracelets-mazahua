@@ -45,6 +45,8 @@ class MenuLateral extends HTMLElement {
   constructor () {
     super();
 
+    if (!this.dataRetraido) this.style.minWidth = '15rem';
+
     this._actualizarMenu = this.actualizarMenu.bind(this);
 
     this.attachShadow({ mode: 'open' }).adoptedStyleSheets = [hojaCSS];
@@ -52,24 +54,9 @@ class MenuLateral extends HTMLElement {
   }
 
   actualizarMenu () {
+    this.style.minWidth = null;
+
     this.dataRetraido = !this.dataRetraido;
-  }
-
-  actualizarBotones () {
-    this.querySelectorAll('[href], [data-evento="confirmarcierresesion"]').forEach((boton) => {
-      const etiqueta = boton.shadowRoot.querySelector('span');
-
-      if (this.dataRetraido) {
-        boton.dataVariante = 'icono';
-        etiqueta.style.width = '0';
-        etiqueta.style.opacity = '0';
-        etiqueta.style.fontSize = '0';
-        return;
-      }
-
-      boton.dataVariante = 'texto-icono';
-      etiqueta.style = null;
-    });
   }
 
   get dataRetraido () { return this.hasAttribute('data-retraido'); }
@@ -82,16 +69,6 @@ class MenuLateral extends HTMLElement {
 
   disconnectedCallback () {
     this.removeEventListener('alternarmenu', this._actualizarMenu);
-  }
-
-  attributeChangedCallback (name, oldValue, newValue) {
-    if (oldValue === newValue) return;
-
-    switch (name) {
-      case 'data-retraido':
-        this.actualizarBotones();
-        break;
-    }
   }
 }
 

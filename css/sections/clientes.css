@@ -35,3 +35,8 @@ wc-tabs form {
   border: 1px solid var(--clr-neutral-80);
   border-radius: var(--br-borde);
 }
+
+boton-rellenado[data-etiqueta='Clientes'] {
+  --clr-fondo: #ffffff;
+  --clr-texto: var(--clr-primario-40);
+}

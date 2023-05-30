@@ -45,3 +45,8 @@
   color: var(--clr-primario-40);
   box-shadow: var(--bs-elevacion-1);
 }
+
+boton-rellenado[data-etiqueta='Inicio'] {
+  --clr-fondo: #ffffff;
+  --clr-texto: var(--clr-primario-40);
+}

@@ -1,7 +1,7 @@
 const hojaCSS = new CSSStyleSheet();
 hojaCSS.replaceSync(/*css*/`
   :host {
-    --transiciones: flex .2s ease 0s;
+    --transiciones: flex .3s ease 0s;
 
     display: flex;
     flex-direction: column;

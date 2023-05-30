@@ -1,5 +1,6 @@
 import popupEditarUbicacion from '../popups/editar-ubicacion.js';
 import { obtenerRespuesta } from '../../vista-control.js';
+import { ordenarClienteUbicaciones } from '../ordenar-clientes.js';
 
 const ventanaPrincipal = popupEditarUbicacion.ventana;
 
@@ -54,7 +55,7 @@ ventanaPrincipal.addEventListener('actualizarubicacion', () => {
       const codigoPostal = popupEditarUbicacion.codigoPostal || ubicacionObsoleta['Código postal'];
 
       ubicacionOpcion.innerText = `
-        ${colonia}, ${callePrincipal} #${numeroExterior}, C.P. ${codigoPostal}
+        ${colonia}, ${callePrincipal} ${numeroExterior === 'S.N.' ? '' : '#'}${numeroExterior}, C.P. ${codigoPostal}
       `;
 
       const ubicacionActualizada = {
@@ -68,6 +69,8 @@ ventanaPrincipal.addEventListener('actualizarubicacion', () => {
 
       ubicacionOpcion.contenido = ubicacionActualizada;
       informacionUbicacion.contenido = ubicacionActualizada;
+
+      ordenarClienteUbicaciones();
 
       ubicacionesCliente.dispatchEvent(new Event('change'));
 

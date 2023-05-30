@@ -18,6 +18,10 @@ hojaCSS.replaceSync(/*css*/`
     display: flex;
   }
 
+  :host([data-no-pie]) :where(wc-divisor, .pie) {
+    display: none;
+  }
+
   .fondo {
     height: 100%;
     width: 100%;
@@ -34,6 +38,7 @@ hojaCSS.replaceSync(/*css*/`
     width: clamp(18.75rem, 50%, 40rem);
     box-sizing: border-box;
     overflow: hidden;
+    max-height: 90%;
 
     background-color: #fff;
     border-radius: var(--br-borde);
@@ -58,6 +63,10 @@ hojaCSS.replaceSync(/*css*/`
     box-sizing: border-box;
   }
 
+  .contenido {
+    overflow: auto;
+  }
+
   .pie {
     display: flex;
     justify-content: space-between;
@@ -73,7 +82,7 @@ template.innerHTML = /*html*/`
       <slot name='cabecera-inicio'></slot>
       <slot name='cabecera-final'></slot>
     </div>
-    <div>
+    <div class='contenido'>
       <slot></slot>
     </div>
     <wc-divisor></wc-divisor>
@@ -104,7 +113,10 @@ class VentanaEmergente extends HTMLElement {
 
   mostrarVentana () { this.dataMostrar = true; }
 
-  cerrarVentana () { this.dataMostrar = false; }
+  cerrarVentana () {
+    this.dataMostrar = false;
+    this.dispatchEvent(new CustomEvent('ventanaoculta', { bubbles: true, composed: true }));
+  }
 
   get dataMostrar () { return this.hasAttribute('data-mostrar'); }
 

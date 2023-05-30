@@ -1,17 +1,21 @@
-.pedido-contenedor {
+.ancho-fijo {
   max-width: var(--mw-formulario);
 }
 
-.pedido-contenedor info-detalles {
+.ancho-fijo info-detalles,
+.lista-productos,
+.productos-comprados {
   border: 1px solid var(--clr-neutral-80);
   border-radius: var(--br-borde);
+  overflow: hidden;
 }
 
 #agregar-pedido > boton-rellenado {
   margin: var(--espaciado-jumbo) 0;
 }
 
-#agregar-pedido wc-colapsable {
+#agregar-pedido wc-colapsable,
+.contenedor-borde wc-colapsable {
   border: 1px solid var(--clr-neutral-80);
 }
 
@@ -19,29 +23,84 @@
   margin-top: var(--espaciado-chico);
 }
 
-#total {
-  display: flex;
-  align-items: center;
-  gap: var(--espaciado-chico);
-}
-
-#total > * {
-  flex: 1;
-
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-#aplicaciones {
-  display: flex;
-  gap: var(--espaciado-chico);
-}
-
-#aplicaciones > * {
+#aplicaciones > *,
+#tipos-entrega > *,
+.tipos-pago > * {
   cursor: pointer;
+  user-select: none;
 }
 
-#tarjeta-campos > * {
+#tarjeta-campos *,
+.campos-ubicacion * {
   flex: 1;
+}
+
+#lista-clientes,
+#contenedor-datos-personales,
+.info-ubicacion {
+  border: 1px solid var(--clr-neutral-80);
+  border-radius: var(--br-borde);
+  overflow: hidden;
+}
+
+.check {
+  aspect-ratio: 1;
+  width: 1.125rem;
+  margin: 0 var(--espaciado-jumbo) 0 0;
+  pointer-events: none;
+  accent-color: var(--clr-secundario-40);
+}
+
+boton-elevado {
+  position: sticky;
+  bottom: 0;
+}
+
+.mini-input {
+  padding: 0 var(--espaciado-mediano);
+  width: 6ch;
+  text-align: center;
+  min-height: 2rem;
+
+  appearance: none;
+  -moz-appearance: textfield;
+}
+
+.mini-input::-webkit-outer-spin-button,
+.mini-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#entrega-aplicacion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaciado-grande);
+}
+
+.contenedor-borde {
+  border: 1px solid var(--clr-neutral-80);
+  border-radius: var(--br-borde);
+}
+
+.flex-start {
+  align-items: flex-start;
+}
+
+#popup-campos > :not(:last-child) > :last-child {
+  margin-bottom: var(--espaciado-grande);
+}
+
+#buscar-producto-popup {
+  padding: 3px 2px;
+}
+
+#editar-productos-pedidos :where(.lista-productos, .productos-comprados){
+  overflow: auto;
+  max-height: 60vh;
+  max-height: 60svh;
+}
+
+.no-existencias {
+  color: var(--clr-neutral-80);
 }

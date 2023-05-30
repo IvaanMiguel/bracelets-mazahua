@@ -21,6 +21,7 @@ class ContenedorFlex extends HTMLElement {
         --padding: 0;
 
         display: flex;
+        justify-content: var(--justify-content);
         flex-direction: var(--flex-direction);
         align-items: var(--align-items);
         gap: var(--gap);

@@ -1,6 +1,6 @@
 <?php
 function reemplazarEspacios(
-    string $string
+    ?string $string
 ): string
 {
   return preg_replace('/\s+/', ' ', trim($string));
@@ -33,4 +33,30 @@ function validarLongitud(
   } else if ($longitud > $maxLongitud) {
     array_push($array, $mensajeLargo);
   }
+}
+
+function obtenerFecha(string $fecha): string
+{
+  $mes = [
+    1 => 'enero',
+    2 => 'febrero',
+    3 => 'marzo',
+    4 => 'abril',
+    5 => 'mayo',
+    6 => 'junio',
+    7 => 'julio',
+    8 => 'agosto',
+    9 => 'septiembre',
+    10 => 'octubre',
+    11 => 'noviembre',
+    12 => 'diciembre'
+  ];
+
+  $arrayFecha = explode('-', explode(' ', $fecha)[0]);
+
+  if (intval($arrayFecha[0]) === 0 || intval($arrayFecha[1]) === 0 || intval($arrayFecha[2]) === 0) {
+    return '';
+  }
+
+  return "{$arrayFecha[2]} de {$mes[intval($arrayFecha[1])]} de {$arrayFecha[0]}";
 }

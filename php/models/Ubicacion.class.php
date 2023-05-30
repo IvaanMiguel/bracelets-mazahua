@@ -18,10 +18,10 @@ class Ubicacion extends Dbh
 
   protected function crearUbicacion(
       string $callePrincipal,
-      string $callesAdyacentes,
+      ?string $callesAdyacentes,
       string $colonia,
-      string $numeroExterior,
-      string $numeroInterior,
+      ?string $numeroExterior,
+      ?string $numeroInterior,
       string $cp,
       int $idCliente
   ): string|false

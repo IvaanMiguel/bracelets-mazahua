@@ -26,6 +26,7 @@ define('CABECERA', DIR_PARCIALES . '/cabecera.php');
 define('PIE_PAGINA', DIR_PARCIALES . '/pie-pagina.php');
 
 define('POPUPS_CLIENTES', DIR_PARCIALES . '/customers/popups');
+define('POPUPS_PEDIDOS', DIR_PARCIALES . '/orders/popups');
 
 define('URL_RAIZ', '/braceletsmazahua');
 define('URL_INICIO', URL_RAIZ . '/');

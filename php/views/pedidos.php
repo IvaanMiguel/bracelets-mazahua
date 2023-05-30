@@ -23,6 +23,7 @@
   <script type='module' src='components/ventana-emergente.js'></script>
   <script type='module' src='components/wc-tabs.js'></script>
   <script type='module' src='components/info-detalles.js'></script>
+  <script type='module' src='components/lista-desplegable.js'></script>
 </head>
 <body>
   <main class='contenedor'>
@@ -42,9 +43,10 @@
                 data-etiqueta='Administrar pedidos'
                 data-expandir>
             </boton-texto>
-            <div>
-              <?php require_once 'partials/orders/administrar-pedidos.php' ?>
-            </div>
+            <wc-tabs id='subtab' data-tab='2' data-no-cabecera>
+              <?php require 'partials/orders/pedido-vista.php' ?>
+              <?php require 'partials/orders/administrar-pedidos.php' ?>
+            </wc-tabs>
             <boton-texto
                 slot='tab'
                 data-color-texto='var(--clr-fondo-10)'
@@ -62,30 +64,29 @@
     </div>
   </main>
 
-  <ventana-emergente id='remover-ubicacion'>
-    <span slot='cabecera-inicio'>Remover ubicación</span>
-    <boton-icono slot='cabecera-final' data-icono='close' data-color-texto='#ffffff'></boton-icono>
-    <span>
-      La información de dicha ubicación ya no se guardará junto con el cliente si es removida, ¿deseas continuar?
-    </span>
-    <boton-rellenado
-        slot='pie-final'
-        data-evento='removerubicacion'
-        data-color-fondo='var(--clr-primario-40)'
-        data-color-texto='#ffffff'>
-      <span slot='etiqueta'>Sí</span>
-    </boton-rellenado>
-    <boton-delineado
-        slot='pie-final'
-        data-evento='cerrarventana'
-        data-color-texto='var(--clr-primario-40)'
-        data-color-fondo="#ffffff">
-      <span slot='etiqueta'>No</span>
-    </boton-delineado>
-  </ventana-emergente>
+  <?php require_once POPUPS_PEDIDOS . '/buscar-cliente.php' ?>
+  <?php require_once POPUPS_PEDIDOS . '/buscar-producto.php' ?>
+  <?php require_once POPUPS_PEDIDOS . '/eliminar-pedido.php' ?>
+  <?php require_once POPUPS_PEDIDOS . '/completar-pedido.php' ?>
+  <?php require_once POPUPS_PEDIDOS . '/editar-informacion-destinatario.php' ?>
+  <?php require_once POPUPS_PEDIDOS . '/editar-informacion-entrega.php' ?>
+  <?php require_once POPUPS_PEDIDOS . '/editar-productos.php' ?>
 
   <?php require_once PIE_PAGINA ?>
 
-  <script src='js/clientes/confirmar-remover-ubicacion.js'></script>
+  <script type='module' src='js/orders/init.js'></script>
+  <script type='module' src='js/orders/buscar-cliente.js'></script>
+  <script type='module' src='js/orders/seleccionar-productos.js'></script>
+  <script type='module' src='js/orders/eliminar-producto.js'></script>
+  <script type='module' src='js/orders/agregar-pedido.js'></script>
+  <script type='module' src='js/orders/controllers/tabs-controlador.js'></script>
+  <script type='module' src='js/orders/mostrar-pedido-pendiente.js'></script>
+  <script type='module' src='js/orders/eliminar-pedido.js'></script>
+  <script type='module' src='js/orders/completar-pedido.js'></script>
+  <script type='module' src='js/orders/mostrar-pedido-completado.js'></script>
+  <script type='module' src='js/orders/editar-datos-destinatario.js'></script>
+  <script type='module' src='js/orders/editar-informacion-entrega.js'></script>
+  <script type='module' src='js/orders/actualizar-productos.js'></script>
+  <script type='module' src='js/orders/agregar-productos.js'></script>
 </body>
 </html>

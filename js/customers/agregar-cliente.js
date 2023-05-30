@@ -152,6 +152,8 @@ document.addEventListener('guardarcliente', () => {
         }));
       });
 
+      if (+totalClientes.innerText === 0) listaClientes.replaceChildren();
+
       listaClientes.appendChild(cliente);
 
       totalClientes.innerText = +totalClientes.innerText + 1;

@@ -37,7 +37,9 @@
         <?php foreach ($productosFiltrados as $producto): ?>
           <item-divisor <?= ++$i === count($productosFiltrados) ? 'data-no-divisor' : '' ?>>
             <lista-item>
-              <wc-texto data-tipo-fuente='titulo-s'><?= $producto['nombreProducto'] ?></wc-texto>
+              <wc-texto id='nombre-producto' <?= $producto['existencias'] === 0 ? 'class="no-existencias"' : '' ?> data-tipo-fuente='titulo-s'>
+                <?= $producto['nombreProducto'] ?>
+              </wc-texto>
               <input class='id-producto' type='hidden' value=<?= $producto['idProducto'] ?>>
             </lista-item>
           </item-divisor>

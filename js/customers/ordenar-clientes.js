@@ -11,9 +11,7 @@ export const ordenarClientes = () => {
   });
 };
 
-const ubicacionesCliente = document.getElementById('ubicaciones-cliente');
-
-export const ordenarClienteUbicaciones = () => {
+export const ordenarClienteUbicaciones = (ubicacionesCliente = document.getElementById('ubicaciones-cliente')) => {
   const ubicacionesItems = ubicacionesCliente.querySelectorAll('option');
 
   ordenarItems(ubicacionesItems, (ubicacion) => ubicacionesCliente.appendChild(ubicacion));

@@ -76,8 +76,8 @@ export const crearNotificacion = (titulo, mensaje, tipo) => {
 
 export const ordenarItems = (listaItems, callback) => {
   Array.prototype.slice.call(listaItems).sort((primerItem, segundoItem) => {
-    const primerItemTexto = primerItem.innerText;
-    const segundoItemTexto = segundoItem.innerText;
+    const primerItemTexto = primerItem.innerText.trim();
+    const segundoItemTexto = segundoItem.innerText.trim();
 
     return primerItemTexto.toLowerCase().localeCompare(segundoItemTexto.toLowerCase());
   }).forEach((item, i) => callback(item, i));
@@ -100,4 +100,51 @@ export const crearEventoValidacion = (nombre, detalles) => {
     composed: true,
     detail: detalles
   });
+};
+
+/** @param {string} fecha */
+export const obtenerFecha = (fecha) => {
+  const mes = [
+    'enero',
+    'febrero',
+    'marzo',
+    'abril',
+    'mayo',
+    'junio',
+    'julio',
+    'agosto',
+    'septiembre',
+    'octubre',
+    'noviembre',
+    'diciembre'
+  ];
+
+  fecha = fecha.split(' ')[0].split('-');
+  return `${fecha[2]} de ${mes[+fecha[1] - 1]} de ${fecha[0]}`;
+};
+
+/** @param {Date} fecha */
+export const formatearFecha = (fecha) => {
+  const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+  const dia = String(fecha.getDate()).padStart(2, '0');
+
+  return `${fecha.getFullYear()}-${mes}-${dia}`;
+};
+
+export const obtenerTipoEntrega = (pedido) => {
+  let tipoEntrega;
+
+  switch (pedido.tipoEntrega) {
+    case 'Aplicación':
+      tipoEntrega = `A través de la aplicación de ${pedido.aplicacion}`;
+      break;
+
+    case 'Domicilio':
+      tipoEntrega = 'A domicilio';
+      break;
+
+    default: tipoEntrega = pedido.tipoEntrega;
+  }
+
+  return tipoEntrega;
 };

@@ -19,7 +19,7 @@
       <img class='contenido__logo' src='images/logo.png' alt='Logo de Bracelets Mazahua'>
       <form class='formulario'>
         <wc-texto data-tipo-fuente='titulo-l'>Iniciar sesión</wc-texto>
-        <contenedor-flex flex-direction='column' gap='var(--espaciado-grande)'>
+        <contenedor-flex id='campos' flex-direction='column' gap='var(--espaciado-grande)'>
           <campo-texto>
             <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>
               Nombre de usuario o dirección de email

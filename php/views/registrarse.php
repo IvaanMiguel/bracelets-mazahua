@@ -17,7 +17,7 @@
       <img class='contenido__logo' src='images/logo.png' alt='Bracelets Mazahua'>
       <form class='formulario'>
         <wc-texto data-tipo-fuente='titulo-l'>Crear cuenta</wc-texto>
-        <contenedor-flex flex-direction='column' gap='var(--espaciado-grande)'>
+        <contenedor-flex id='campos' flex-direction='column' gap='var(--espaciado-grande)'>
           <campo-texto>
             <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>Nombre de usuario</wc-texto>
             <wc-emergente slot='etiqueta'

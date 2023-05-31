@@ -8,7 +8,7 @@ document.addEventListener('registrarusuario', () => {
     .then((respuesta) => respuesta.json())
     .then((datos) => {
       obtenerRespuesta(datos, (itemError) => {
-        document.querySelector('.campos').after(itemError);
+        document.getElementById('campos').after(itemError);
       });
     });
 });

@@ -30,48 +30,51 @@
     <div class='contenido'>
       <?php require_once CABECERA ?>
 
-      <div class='seccion' data-rol='secciones'>
+      <div class='seccion'>
         <?php
           $pedido = new MostrarPedido();
           $resultado = $pedido->obtenerPedidosPendientes();
         ?>
           <div class='pedidos'>
-            <h1 class='titulo-grande txt-fondo-alternativo'>Pedidos pendientes</h1>
-            <div class='pedidos-pendientes'>
+            <wc-texto data-tipo-fuente='titulo-l'>Pedidos pendientes</wc-texto>
+            <contenedor-flex id='pedidos-pendientes' class='pedidos-pendientes' gap='var(--espaciado-grande)' padding='var(--espaciado-grande)'>
               <?php switch ($resultado['tipo']):
                 case Respuesta::ARRAY:
+
                   foreach ($resultado['contenido'] as $pedidoPendiente): ?>
-                    <div class='pedido-info' title='Clic para más información'>
-                      <span class='cuerpo-mediano'>
-                        <?= $pedidoPendiente['nombreCliente'] ?>
-                      </span>
-                      <span class='cuerpo-mediano'>
-                        <?= $pedidoPendiente['tipoEntrega']; ?>
-                      </span>
-                      <span class='cuerpo-mediano'>
-                        <?= $pedidoPendiente['tipoPago']; ?>
-                      </span>
-                    </div>
+                    <contenedor-flex class='pedido-info' flex-direction='column' title='Clic para más información'>
+                      <?php foreach ($pedidoPendiente as $clave => $valor): ?>
+                        <?php if ($clave === 'id') continue; ?>
+                        <wc-texto class='texto-pedido' data-tipo-fuente='cuerpo-m'><?= $valor ?></wc-texto>
+                      <?php endforeach; ?>
+                      <input class='id-pedido' type='hidden' value=<?= $pedidoPendiente['id'] ?>>
+                    </contenedor-flex>
                   <?php endforeach;
+
                   break;
 
                 case Respuesta::MENSAJE: ?>
-                  <span class='titulo-mediano sin-pedidos'>
-                    <?= $resultado['contenido'] ?>
-                  </span>
+                  <contenedor-flex padding='var(--espaciado-jumbo)' margin='auto'>
+                    <wc-texto data-tipo-fuente='titulo-m'>
+                      <?= $resultado['contenido'] ?>
+                    </wc-texto>
+                  </contenedor-flex>
                   <?php break;
 
                 default: ?>
-                  <span class='titulo-mediano sin-pedidos'>
-                    Ha habido un problema para recuperar los pedidos pendientes.
-                  </span>
+                  <contenedor-flex padding='var(--espaciado-jumbo)' margin='auto'>
+                    <wc-texto data-tipo-fuente='titulo-m'>
+                      Ha habido un problema para recuperar los pedidos pendientes.
+                    </wc-texto>
+                  </contenedor-flex>
               <?php endswitch; ?>
-            </div>
+            </contenedor-flex>
           </div>
       </div>
     </div>
   </main>
 
   <?php require_once PIE_PAGINA ?>
+  <script src='js/pedido-inicio.js'></script>
 </body>
 </html>

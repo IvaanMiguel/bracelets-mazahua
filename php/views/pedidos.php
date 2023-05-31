@@ -32,7 +32,7 @@
     <div class='contenido'>
       <?php require_once CABECERA ?>
 
-      <div class='seccion' data-rol='secciones'>
+      <div class='seccion'>
         <contenedor-flex padding='var(--espaciado-chico) var(--espaciado-jumbo) 0'>
           <wc-tabs>
             <boton-texto
@@ -74,6 +74,7 @@
 
   <?php require_once PIE_PAGINA ?>
 
+  <script type='module' src='js/pedido-local-storage.js'></script>
   <script type='module' src='js/orders/init.js'></script>
   <script type='module' src='js/orders/buscar-cliente.js'></script>
   <script type='module' src='js/orders/seleccionar-productos.js'></script>

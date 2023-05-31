@@ -1,6 +1,6 @@
 <form>
   <contenedor-flex id='formulario-producto' class='contenedor-borde' flex-direction='column' gap='var(--espaciado-grande)' padding='var(--espaciado-jumbo)'>
-    <h1 class='titulo-grande'>Datos del producto</h1>
+    <wc-texto data-tipo-fuente='titulo-l'>Datos del producto</wc-texto>
     <contenedor-flex class='campos' flex-direction='column' gap='var(--espaciado-grande)'>
       <contenedor-flex gap='var(--espaciado-chico)'>
         <campo-texto>

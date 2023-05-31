@@ -6,7 +6,6 @@
 <head>
   <?php  require_once HEAD_TAGS ?>
 
-  <link rel='stylesheet' href='css/estilos.css'>
   <link rel='stylesheet' href='css/formularios-usuario.css'>
 
   <script type='module' src='components/campo-texto.js'></script>
@@ -16,15 +15,16 @@
 </head>
 <body>
   <main class='contenedor'>
-    <div class='contenido'>
+    <div>
       <img class='contenido__logo' src='images/logo.png' alt='Logo de Bracelets Mazahua'>
       <form class='formulario'>
-        <h2 class='titulo-grande'>Iniciar sesión</h2>
-        <div class='campos'>
+        <wc-texto data-tipo-fuente='titulo-l'>Iniciar sesión</wc-texto>
+        <contenedor-flex flex-direction='column' gap='var(--espaciado-grande)'>
           <campo-texto>
-            <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>Nombre de usuario o dirección de email</wc-texto>
+            <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>
+              Nombre de usuario o dirección de email
+            </wc-texto>
             <input
-                type='text'
                 name='idUsuario'
                 value=<?= ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['nombreUsuario'])) ? $_GET['nombreUsuario'] : '' ?>>
           </campo-texto>
@@ -32,30 +32,31 @@
             <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>Contraseña</wc-texto>
             <input slot='campo' type='password' name='clave'>
           </campo-clave>
-        </div>
+        </contenedor-flex>
         <boton-rellenado
+            class='margin-auto'
             data-color-fondo='var(--clr-primario-40)'
             data-color-texto='#ffffff'
             data-etiqueta='Iniciar sesión'
             data-evento='iniciarsesion'
             type='button'>
-          <span slot='etiqueta'>Iniciar sesión</span>
         </boton-rellenado>
       </form>
     </div>
-    <div class='divisor'>
-      <div class='divisor__texto'>
+    <contenedor-flex flex-direction='column' gap='var(--espaciado-mediano)'>
+      <contenedor-flex flex-direction='row' gap='var(--espaciado-chico)' align-items='center'>
         <div class='linea'></div>
-        <span class='cuerpo-chico'>¿No tienes una cuenta?</span>
+        <wc-texto data-tipo-fuente='cuerpo-s'>¿No tienes una cuenta?</wc-texto>
         <div class='linea'></div>
-      </div>
+      </contenedor-flex>
       <boton-rellenado
+          class='margin-auto'
           data-color-fondo='var(--clr-primario-40)'
           data-color-texto='#ffffff'
           data-etiqueta='Crear una cuenta'
           href=<?= URL_REGISTRARSE ?>>
       </boton-rellenado>
-    </div>
+    </contenedor-flex>
   </main>
   <script type='module' src='js/iniciar-sesion.js'></script>
 </body>

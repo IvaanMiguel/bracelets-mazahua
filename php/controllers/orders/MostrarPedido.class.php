@@ -21,6 +21,7 @@ class MostrarPedido extends \models\orders\MostrarPedido
 
     $pedidosPendientes = array_map(function(array $pedidoPendiente): array {
       return [
+        'id' => $pedidoPendiente['id'],
         'nombreCliente' => 'De: ' . $pedidoPendiente['nombreCliente'],
         'tipoEntrega' => $this->obtenerTipoEntrega($pedidoPendiente['tipoEntrega']),
         'tipoPago' => $this->obtenerTipoPago($pedidoPendiente['tipoPago'])

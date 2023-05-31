@@ -16,19 +16,11 @@
 }
 
 .cabecera {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: var(--espaciado-jumbo);
   border-bottom: 1px solid var(--clr-borde);
 }
 
 .seccion {
-  position: relative;
-
   overflow-y: auto;
-  flex: 1;
 }
 
 menu-lateral {
@@ -69,4 +61,14 @@ menu-lateral boton-rellenado :not(:defined) {
   width: 0;
 
   opacity: 0;
+}
+
+contenedor-flex {
+  transition: opacity 10s ease 0s;  
+}
+
+contenedor-flex :not(:defined) {
+  opacity: 0;
+  display: inline;
+  height: 1.75rem;
 }

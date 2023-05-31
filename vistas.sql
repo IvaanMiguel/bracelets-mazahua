@@ -1,8 +1,7 @@
 CREATE OR REPLACE VIEW vwpedidospendientes AS
-SELECT CONCAT_WS(" ", nombre, apellidos) nombreCliente, tipoEntrega, tipoPago
+SELECT p.id, CONCAT_WS(" ", nombre, apellidos) nombreCliente, tipoEntrega, tipoPago
 FROM pedido p
 INNER JOIN cliente c ON p.idCliente = c.id
-/* INNER JOIN pedidoEntrega pe ON p.idPedido = pe.idPedido */
 INNER JOIN entrega e ON p.idEntrega = e.id;
 
 CREATE OR REPLACE VIEW vwProductos AS

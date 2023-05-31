@@ -33,7 +33,7 @@
     <div class='contenido'>
       <?php require_once CABECERA ?>
 
-      <div class='seccion' data-rol='secciones'>
+      <div class='seccion'>
         <contenedor-flex padding='var(--espaciado-chico) var(--espaciado-jumbo) 0'>
           <wc-tabs>
             <boton-texto

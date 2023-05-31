@@ -7,25 +7,15 @@
 }
 
 .pedidos-pendientes {
-  display: flex;
   flex-wrap: wrap;
-  gap: var(--espaciado-mediano);
 
-  padding: var(--espaciado-mediano);
   border-radius: var(--br-borde);
-  background-color: #b800710d;
-}
-
-.sin-pedidos {
-  padding: var(--espaciado-jumbo);
-  margin: auto;
+  background-color: var(--clr-primario-opacidad-1);
 }
 
 .pedido-info {
-  display: flex;
-  flex-direction: column;
-
-  width: 12.5rem;
+  max-width: 15.625rem;
+  width: 100%;
   padding: var(--espaciado-grande);
   border-radius: var(--br-borde);
   box-sizing: border-box;
@@ -36,14 +26,15 @@
   transition: box-shadow 0.2s ease 0s;
 }
 
-.pedido-info:hover {
-  box-shadow: var(--bs-elevacion-1), inset 0 0 0 1px var(--clr-borde);
+.texto-pedido {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-[name='inicio'] {
-  background-color: #fff;
-  color: var(--clr-primario-40);
-  box-shadow: var(--bs-elevacion-1);
+.pedido-info:hover {
+  box-shadow: var(--bs-elevacion-1), inset 0 0 0 1px var(--clr-secundario-90);
+  background-color: var(--clr-primario-opacidad-2);
 }
 
 boton-rellenado[data-etiqueta='Inicio'] {

@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS cliente(
     email VARCHAR(255) UNIQUE
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 
-CREATE TABLE IF NOT EXISTS ubicacionCliente(
+CREATE TABLE IF NOT EXISTS ubicacioncliente(
     id INT AUTO_INCREMENT PRIMARY KEY,
     callePrincipal VARCHAR(30) NOT NULL,
     callesAdyacentes VARCHAR(60),
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS ubicacionCliente(
         ON UPDATE CASCADE
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 
-CREATE TABLE IF NOT EXISTS categoriaProducto(
+CREATE TABLE IF NOT EXISTS categoriaproducto(
     idCategoriaProducto INT AUTO_INCREMENT PRIMARY KEY,
     nombreCategoria VARCHAR(30) NOT NULL UNIQUE
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
@@ -132,14 +132,3 @@ CREATE TABLE IF NOT EXISTS productocomprado(
         ON DELETE RESTRICT
         ON UPDATE CASCADE
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
-
-/* CREATE TABLE IF NOT EXISTS productopedidocompletado(
-    idPedidoCompletado INT NOT NULL,
-    idProductoComprado INT NOT NULL,
-    FOREIGN KEY (idPedidoCompletado) REFERENCES pedidocompletado(id)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE,
-    FOREIGN KEY (idProductoComprado) REFERENCES productocomprado(id)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
-) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin; */

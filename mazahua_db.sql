@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS pedido(
     tipoPago ENUM('Depósito', 'Tarjeta', 'Efectivo') NOT NULL,
     detallesPago VARCHAR(40),
     total DECIMAL(11, 2) DEFAULT 0,
-    anticipo DECIMAL(11, 2) NOT NULL,
+    anticipo DECIMAL(11, 2) DEFAULT 0 NOT NULL,
     estadoAnticipo BOOL DEFAULT 0 NOT NULL,
     totalProductos INT DEFAULT 0,
     idEntrega INT,

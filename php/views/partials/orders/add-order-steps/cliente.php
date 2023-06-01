@@ -9,7 +9,7 @@
   </boton-rellenado>
   <info-detalles id='info-cliente'>
     <contenedor-flex margin='auto' padding='var(--espaciado-chico)'>
-      <wc-texto data-tipo-fuente='etiqueta-l'>Ningún cliente selccionado</wc-texto>
+      <wc-texto data-tipo-fuente='etiqueta-l'>Ningún cliente seleccionado</wc-texto>
     </contenedor-flex>
   </info-detalles>
   <input id='id-cliente-agregar' type='hidden'>

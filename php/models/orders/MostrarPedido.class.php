@@ -9,7 +9,7 @@ class MostrarPedido extends Dbh
 {
   protected function seleccionarPedidosPendientes(): bool|string
   {
-    $stmt = $this->conectar()->prepare('SELECT * FROM vwPedidosPendientes;');
+    $stmt = $this->conectar()->prepare('SELECT * FROM vwpedidospendientes;');
     $this->ejecutarSentencia($stmt);
     $tuplas = $stmt->fetchAll();
 

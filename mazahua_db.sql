@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS producto(
     idCategoriaProducto INT NOT NULL,
     precio DECIMAL(5, 2) NOT NULL,
     existencias INT UNSIGNED NOT NULL,
-    FOREIGN KEY(idCategoriaProducto) REFERENCES categoriaProducto(idCategoriaProducto)
+    FOREIGN KEY(idCategoriaProducto) REFERENCES categoriaproducto(idCategoriaProducto)
         ON DELETE NO ACTION
         ON UPDATE CASCADE
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;

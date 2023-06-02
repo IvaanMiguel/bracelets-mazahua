@@ -43,4 +43,12 @@ class Categoria extends Dbh
     $stmt = $this->conectar()->prepare('DELETE FROM categoriaproducto WHERE idCategoriaProducto = ?;');
     $this->ejecutarSentencia($stmt, array($idCategoria));
   }
+
+  protected function categoriaEnUso(int $idCategoria): bool
+  {
+    $stmt = $this->conectar()->prepare('SELECT idCategoriaProducto FROM producto WHERE idCategoriaProducto = ?;');
+    $this->ejecutarSentencia($stmt, array($idCategoria));
+
+    return count($stmt->fetchAll()) > 0;
+  }
 }

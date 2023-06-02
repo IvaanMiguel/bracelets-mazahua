@@ -33,6 +33,7 @@ import { obtenerRespuesta } from '../vista-control.js';
       .then((respuesta) => respuesta.json())
       .then((datos) => {
         obtenerRespuesta(datos);
+        ventanaEliminar.cerrarVentana();
 
         if (datos.status === 0) return;
 
@@ -64,8 +65,6 @@ import { obtenerRespuesta } from '../vista-control.js';
         idCategoriaInput.value = '';
 
         subtab.seleccionarTab(2);
-
-        ventanaEliminar.cerrarVentana();
       });
   });
 })();

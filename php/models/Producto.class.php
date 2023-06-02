@@ -68,6 +68,8 @@ class Producto extends Dbh
       ?string $existencias
   ): void
   {
+    var_dump($precio);
+
     $stmt = $this->conectar()->prepare('UPDATE producto SET
         nombreProducto = ?,
         idCategoriaProducto = ?,
@@ -82,5 +84,13 @@ class Producto extends Dbh
   {
     $stmt = $this->conectar()->prepare('DELETE FROM producto WHERE idProducto = ?;');
     $this->ejecutarSentencia($stmt, array($id));
+  }
+
+  protected function productoEnUso(int $id): bool
+  {
+    $stmt = $this->conectar()->prepare('SELECT idProducto FROM pedidoproducto WHERE idProducto = ?;');
+    $this->ejecutarSentencia($stmt, array($id));
+
+    return count($stmt->fetchAll()) > 0;
   }
 }

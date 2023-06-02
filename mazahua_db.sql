@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS producto(
     idProducto INT AUTO_INCREMENT PRIMARY KEY,
     nombreProducto VARCHAR(50) NOT NULL UNIQUE,
     idCategoriaProducto INT NOT NULL,
-    precio DECIMAL(5, 2) NOT NULL,
+    precio DECIMAL(5, 2) UNSIGNED NOT NULL,
     existencias INT UNSIGNED NOT NULL,
     FOREIGN KEY(idCategoriaProducto) REFERENCES categoriaproducto(idCategoriaProducto)
         ON DELETE NO ACTION

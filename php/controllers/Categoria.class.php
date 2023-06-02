@@ -51,6 +51,12 @@ class Categoria extends \models\Categoria
     'ambito' => 'general'
   ];
 
+  public const CATEGORIA_EN_USO = [
+    'titulo' => 'Categoría en uso',
+    'mensaje' => 'La categoría está en uso, elimina o mueve los productos en ella a otra categoría.',
+    'ambito' => 'notificacion'
+  ];
+
   public const NOMBRE_MIN_LONGITUD = 4;
   public const NOMBRE_MAX_LONGITUD = 30;
 
@@ -106,6 +112,13 @@ class Categoria extends \models\Categoria
 
   public function removerCategoria()
   {
+    $this->validarCategoriaEnUso();
+
+    if (count($this->errores) > 0) {
+      $respuesta = new Respuesta(Respuesta::STATUS_ERROR, Respuesta::ARRAY, $this->errores);
+      exit($respuesta->Json());
+    }
+
     $this->eliminarCategoria($this->idCategoria);
 
     echo (new Respuesta(Respuesta::STATUS_EXITO, Respuesta::ARRAY, array(self::CATEGORIA_ELIMINADA)))->Json();
@@ -140,6 +153,13 @@ class Categoria extends \models\Categoria
       array_push($this->errores, self::NOMBRE_CORTO);
     } else if (strlen($this->nombreCategoria) > self::NOMBRE_MAX_LONGITUD) {
       array_push($this->errores, self::NOMBRE_LARGO);
+    }
+  }
+
+  private function validarCategoriaEnUso(): void
+  {
+    if ($this->categoriaEnUso($this->idCategoria)) {
+      array_push($this->errores, self::CATEGORIA_EN_USO);
     }
   }
 }

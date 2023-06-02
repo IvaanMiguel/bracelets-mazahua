@@ -99,6 +99,12 @@ class Producto extends \models\Producto
     'ambito' => 'precio'
   ];
 
+  public const PRODUCTO_EN_USO = [
+    'titulo' => 'Producto en uso',
+    'mensaje' => 'El producto se encuentra en uno o más pedidos pendientes.',
+    'ambito' => 'notificacion'
+  ];
+
   public const NOMBRE_MIN_LONGITUD = 4;
   public const NOMBRE_MAX_LONGITUD = 50;
   public const PRECIO_MIN_CANTIDAD = 20;
@@ -246,7 +252,7 @@ class Producto extends \models\Producto
         $this->idProducto,
         $this->nombre,
         $this->idCategoria,
-        $this->precio,
+        intval($this->precio),
         $this->existencias
     );
 
@@ -255,6 +261,13 @@ class Producto extends \models\Producto
   
   public function removerProducto()
   {
+    $this->validarProductoEnUso();
+
+    if (count($this->errores) > 0) {
+      $respuesta = new Respuesta(Respuesta::STATUS_ERROR, Respuesta::ARRAY, $this->errores);
+      exit($respuesta->Json());
+    }
+
     $this->eliminarProducto($this->idProducto);
 
     echo (new Respuesta(Respuesta::STATUS_EXITO, Respuesta::ARRAY, array(self::PRODUCTO_ELIMINADO)))->Json();
@@ -313,6 +326,13 @@ class Producto extends \models\Producto
       array_push($this->errores, self::EXISTENCIAS_MENOR_CERO);
     } else if ($this->existencias > self::EXISTENCIAS_MAX_CANTIDAD) {
       array_push($this->errores, self::EXISTENCIAS_EXCEDIDAS);
+    }
+  }
+
+  private function validarProductoEnUso(): void
+  {
+    if ($this->productoEnUso($this->idProducto)) {
+      array_push($this->errores, self::PRODUCTO_EN_USO);
     }
   }
 }

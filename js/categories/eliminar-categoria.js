@@ -26,10 +26,10 @@ ventanaEliminar.addEventListener('confirmareliminarcategoria', () => {
     .then((respuesta) => respuesta.json())
     .then((datos) => {
       obtenerRespuesta(datos);
+      ventanaEliminar.cerrarVentana();
 
       if (datos.status !== 1) return;
 
-      ventanaEliminar.cerrarVentana();
       ventanaEliminar.listaItem.remove();
 
       const categorias = document.querySelectorAll('lista-controlador item-divisor lista-item');

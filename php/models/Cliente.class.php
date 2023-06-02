@@ -84,6 +84,14 @@ class Cliente extends Dbh
     return count($stmt->fetchAll()) > 0;
   }
 
+  protected function conPedidosPendientes(int $idCliente): bool
+  {
+    $stmt = $this->conectar()->prepare('SELECT idCliente FROM pedido WHERE idCliente = ?;');
+    $this->ejecutarSentencia($stmt, array($idCliente));
+
+    return count($stmt->fetchAll()) > 0;
+  }
+
   private function insertarUbicaciones(
       string $id,
       array $ubicaciones

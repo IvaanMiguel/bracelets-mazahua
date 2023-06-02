@@ -35,6 +35,7 @@ ventanaEliminar.addEventListener('confirmareliminarcliente', () => {
     .then((respuesta) => respuesta.json())
     .then((datos) => {
       obtenerRespuesta(datos);
+      ventanaEliminar.cerrarVentana();
 
       if (datos.status === 0) return;
 
@@ -61,8 +62,6 @@ ventanaEliminar.addEventListener('confirmareliminarcliente', () => {
       });
 
       subtab.seleccionarTab(2);
-
-      ventanaEliminar.cerrarVentana();
       clienteFormulario.defaultPlaceholder();
     });
 });

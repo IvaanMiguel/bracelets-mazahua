@@ -100,6 +100,12 @@ class Cliente extends \models\Cliente
     'ambito' => 'notificacion'
   ];
 
+  public const CLIENTE_CON_PEDIDOS = [
+    'titulo' => 'Cliente con pedidos pendientes',
+    'mensaje' => 'El cliente cuenta con uno o más pedidos pendientes a su nombre.',
+    'ambito' => 'notificacion'
+  ];
+
   private const NOMBRE_MIN_LONGITUD = 3;
   private const NOMBRE_MAX_LONGITUD = 50;
   private const APELLIDOS_MIN_LONGITUD = 4;
@@ -257,7 +263,7 @@ class Cliente extends \models\Cliente
       $this->id,
       $this->nombre,
       $this->apellidos,
-      $this->edad,
+      intval($this->edad),
       $this->celular,
       $this->email
     );
@@ -271,6 +277,17 @@ class Cliente extends \models\Cliente
 
   public function removerCliente(): void
   {
+    $this->verificarPedidosPendientes();
+
+    if (count($this->errores) > 0) {
+      $respuesta = new Respuesta(
+        Respuesta::STATUS_ERROR,
+        Respuesta::ARRAY,
+        $this->errores
+      );
+      exit($respuesta->Json());
+    }
+
     $this->eliminarCliente($this->id);
 
     echo (new Respuesta(
@@ -384,5 +401,12 @@ class Cliente extends \models\Cliente
   private function cammposVacios(): bool
   {
     return (empty($this->nombre) || empty($this->apellidos) || empty($this->edad) || empty($this->celular));
+  }
+
+  private function verificarPedidosPendientes(): void
+  {
+    if ($this->conPedidosPendientes($this->id)) {
+      array_push($this->errores, self::CLIENTE_CON_PEDIDOS);
+    }
   }
 }

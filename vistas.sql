@@ -55,12 +55,13 @@ SELECT
     p.idProducto,
     precio,
     nombreProducto,
+    nombreCategoria,
     cantidad,
     subtotal,
     existencias
 FROM pedidoproducto pp
-INNER JOIN
-    producto p ON pp.idProducto = p.idProducto;
+INNER JOIN producto p ON pp.idProducto = p.idProducto
+INNER JOIN categoriaproducto cp ON p.idCategoriaProducto = cp.idCategoriaProducto;
 
 CREATE OR REPLACE VIEW vwproductoscategorias AS
 SELECT

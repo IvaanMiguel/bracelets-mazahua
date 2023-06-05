@@ -27,24 +27,27 @@ fetch('php/includes/dashboard/mostrar_ventas_meses.inc.php', {
         datasets: [{
           label: 'Total de ventas',
           data: totalesVentas,
-          fill: false,
+          fill: true,
           tension: 0.1,
           yAxisID: 'y'
-        }, {
+        }/* , {
           label: 'Total de productos vendidos',
           data: totalesProductos,
           fill: false,
           tension: 0.1,
           yAxisID: 'y1'
-        }]
+        }*/]
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
+          legend: {
+            display: false
+          },
           title: {
             display: true,
-            text: 'Ganancias y Ventas de Productos Mensuales',
+            text: 'Ventas de Productos Mensuales',
             font: {
               size: 16,
               family: "'Roboto', sans-serif"
@@ -65,15 +68,15 @@ fetch('php/includes/dashboard/mostrar_ventas_meses.inc.php', {
             type: 'linear',
             display: true,
             position: 'left'
-          },
-          y1: {
-            type: 'linear',
-            display: true,
-            position: 'right',
-            grid: {
-              drawOnChartArea: false
-            }
           }
+          // y1: {
+          //   type: 'linear',
+          //   display: true,
+          //   position: 'right',
+          //   grid: {
+          //     drawOnChartArea: false
+          //   }
+          // }
         }
       }
     });

@@ -43,7 +43,7 @@ fetch('php/includes/dashboard/mostrar_pedidos_clientes.inc.php', {
         plugins: {
           title: {
             display: true,
-            text: 'Pedidos Hechos por Cliente',
+            text: 'Clientes con más pedidos creados',
             font: {
               size: 16,
               family: "'Roboto', sans-serif"

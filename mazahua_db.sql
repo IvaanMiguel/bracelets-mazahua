@@ -128,6 +128,7 @@ CREATE TABLE IF NOT EXISTS productocomprado(
     id INT AUTO_INCREMENT PRIMARY KEY,
     idPedidoCompletado INT NOT NULL,
     nombre VARCHAR(50) NOT NULL,
+    nombreCategoria VARCHAR(30) NOT NULL DEFAULT '',
     cantidad INT NOT NULL,
     subtotal DECIMAL(11, 2) NOT NULL,
     FOREIGN KEY (idPedidoCompletado) REFERENCES pedidocompletado(id)

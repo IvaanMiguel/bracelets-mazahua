@@ -5,6 +5,7 @@ namespace controllers\orders;
 use \classes\Respuesta;
 use \controllers\orders\Mensaje;
 use \controllers\orders\PedidoAutenticacion;
+use \controllers\Cliente;
 
 require_once dirname(__DIR__) . '/../constantes.php';
 require_once UTILS;
@@ -103,6 +104,9 @@ class CrearPedido extends \models\orders\CrearPedido
       $this->fechaEntrega,
       $this->horaEntrega
     );
+
+    $cliente = Cliente::idClienteConstructor($this->idCliente);
+    $cliente->actualizarPedidosCreados();
 
     echo (new Respuesta(
       Respuesta::STATUS_EXITO,

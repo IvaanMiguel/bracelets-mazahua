@@ -19,6 +19,7 @@ define('CATEGORIAS', DIR_VISTAS . '/categorias.php');
 define('PEDIDOS', DIR_VISTAS . '/pedidos.php');
 define('REGISTRARSE', DIR_VISTAS . '/registrarse.php');
 define('INICIAR_SESION', DIR_VISTAS . '/iniciar-sesion.php');
+define('DASHBOARD', DIR_VISTAS . '/dashboard.php');
 
 define('HEAD_TAGS', DIR_PARCIALES . '/head-tags.php');
 define('MENU', DIR_PARCIALES . '/menu.php');
@@ -36,3 +37,4 @@ define('URL_CATEGORIAS', URL_RAIZ . '/categorias');
 define('URL_PEDIDOS', URL_RAIZ . '/pedidos');
 define('URL_REGISTRARSE', URL_RAIZ . '/registrarse');
 define('URL_INICIAR_SESION', URL_RAIZ . '/iniciar-sesion');
+define('URL_DASHBOARD', URL_RAIZ . '/dashboard');

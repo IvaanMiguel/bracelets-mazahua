@@ -68,8 +68,6 @@ class Producto extends Dbh
       ?string $existencias
   ): void
   {
-    var_dump($precio);
-
     $stmt = $this->conectar()->prepare('UPDATE producto SET
         nombreProducto = ?,
         idCategoriaProducto = ?,

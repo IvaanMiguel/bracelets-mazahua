@@ -297,6 +297,16 @@ class Cliente extends \models\Cliente
     ))->Json();
   }
 
+  public function actualizarPedidosCreados(): void
+  {
+    $this->agregarPedidoCreado($this->id);
+  }
+
+  public function actualizarPedidosCompletados(): void
+  {
+    $this->agregarPedidoCompletado($this->id);
+  }
+
   private function caracteresInvalidos(string $string): bool
   {
     return !ctype_alpha(validarCaracteresEspeciales($string));

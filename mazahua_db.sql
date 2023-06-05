@@ -16,7 +16,9 @@ CREATE TABLE IF NOT EXISTS cliente(
     apellidos VARCHAR(80) NOT NULL,
     edad INT NOT NULL,
     celular VARCHAR(12) NOT NULL UNIQUE,
-    email VARCHAR(255) UNIQUE
+    email VARCHAR(255) UNIQUE,
+    pedidosCreados INT UNSIGNED NOT NULL DEFAULT 0,
+    pedidosCompletados INT UNSIGNED NOT NULL DEFAULT 0
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 
 CREATE TABLE IF NOT EXISTS ubicacioncliente(
@@ -125,10 +127,22 @@ CREATE TABLE IF NOT EXISTS pedidocompletado(
 CREATE TABLE IF NOT EXISTS productocomprado(
     id INT AUTO_INCREMENT PRIMARY KEY,
     idPedidoCompletado INT NOT NULL,
-    nombre VARCHAR(20) NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
     cantidad INT NOT NULL,
     subtotal DECIMAL(11, 2) NOT NULL,
     FOREIGN KEY (idPedidoCompletado) REFERENCES pedidocompletado(id)
         ON DELETE RESTRICT
         ON UPDATE CASCADE
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
+
+CREATE TABLE IF NOT EXISTS pedidosrelacion(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    pedidosCreados INT UNSIGNED NOT NULL DEFAULT 0,
+    pedidosCompletados INT UNSIGNED NOT NULL DEFAULt 0
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
+
+CREATE TABLE IF NOT EXISTS metodopagoutilizado(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre ENUM('Depósito', 'Tarjeta', 'Efectivo') NOT NULL,
+    vecesUsado INT UNSIGNED NOT NULL DEFAULT 0
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;

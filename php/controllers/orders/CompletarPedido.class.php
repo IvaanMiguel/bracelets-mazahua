@@ -4,6 +4,7 @@ namespace controllers\orders;
 
 use \classes\Respuesta;
 use \controllers\orders\EliminarPedido;
+use \controllers\Cliente;
 
 class CompletarPedido extends \models\orders\CompletarPedido
 {
@@ -18,9 +19,12 @@ class CompletarPedido extends \models\orders\CompletarPedido
 
   public function finalizarPedido()
   {
-
     $fechaCompletado = $this->completarPedido($this->id);
 
+    $idCliente = $this->obtenerIdCliente($this->id);
+    $cliente = Cliente::idClienteConstructor($idCliente);
+    $cliente->actualizarPedidosCompletados();
+    
     $pedido = new EliminarPedido($this->id);
     $pedido->removerPedido(true);
 

@@ -78,11 +78,13 @@ class CompletarPedido extends Dbh
     $stmt = $this->conectar()->prepare('INSERT INTO productocomprado (
       idPedidoCompletado,
       nombre,
+      nombreCategoria,
       cantidad,
       subtotal)
     SELECT
       idPedido,
       nombreProducto,
+      nombreCategoria,
       cantidad,
       subtotal
     FROM vwpedidoproductoinfo

@@ -6,9 +6,9 @@ use \classes\Respuesta;
 
 class Dashboard extends \models\Dashboard
 {
-  public function mostrarProductosCategorias()
+  public function mostrarVentasCategorias()
   {
-    $productosCategorias = $this->obtenerProductosCategorias();
+    $productosCategorias = $this->obtenerVentasCategorias();
 
     echo (new Respuesta(
       Respuesta::STATUS_EXITO,

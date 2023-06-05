@@ -6,9 +6,13 @@ use \classes\Dbh;
 
 class Dashboard extends Dbh
 {
-  protected function obtenerProductosCategorias(): array|false
+  protected function obtenerVentasCategorias(): array|false
   {
-    $stmt = $this->conectar()->prepare('SELECT * FROM vwproductoscategorias;');
+    $stmt = $this->conectar()->prepare('SELECT
+      nombreCategoria,
+      SUM(subtotal) total
+    FROM productocomprado
+    GROUP BY nombreCategoria;');
     $this->ejecutarSentencia($stmt);
 
     return $stmt->fetchAll();
@@ -37,8 +41,10 @@ class Dashboard extends Dbh
 
   protected function obtenerPedidosClientes()
   {
-    $stmt = $this->conectar()->prepare('SELECT CONCAT_WS(" ", nombre, apellidos) nombre, pedidosCreados, pedidosCompletados
-      FROM cliente;
+      $stmt = $this->conectar()->prepare('SELECT CONCAT_WS(" ", nombre, apellidos) nombre, pedidosCreados, pedidosCompletados
+        FROM cliente
+        ORDER BY pedidosCreados DESC
+        LIMIT 5;
     ');
     $this->ejecutarSentencia($stmt);
 

@@ -7,5 +7,5 @@ require_once AUTOLOADER;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $dashboard = new Dashboard();
-  $dashboard->mostrarProductosCategorias();
+  $dashboard->mostrarVentasCategorias();
 }

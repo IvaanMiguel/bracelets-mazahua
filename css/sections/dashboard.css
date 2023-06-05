@@ -47,15 +47,6 @@ boton-rellenado[data-etiqueta='Dashboard'] {
   grid-area: d;
 }
 
-.producto-frecuente > * {
-  width: 100%;
-  text-align: center;
-
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 .productos-categorias {
   grid-area: c;
 }
@@ -76,4 +67,17 @@ boton-rellenado[data-etiqueta='Dashboard'] {
   grid-area: h;
 
   text-align: center;
+}
+
+.dashboard-icono {
+  font-size: 3rem;
+}
+
+.dashboard > * > * {
+  width: 100%;
+  text-align: center;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

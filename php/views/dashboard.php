@@ -28,6 +28,7 @@
   <script type='module' src='components/ventana-emergente.js'></script>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
 </head>
 <body>
   <main class='contenedor'>
@@ -43,30 +44,34 @@
             <canvas id='porcentaje-pedidos'></canvas>
           </contenedor-flex>
           <contenedor-flex class='cliente-estrella' justify-content='center' align-items='center'>
-            <wc-texto data-tipo-fuente='titulo-l'>
+            <span class="material-symbols-rounded dashboard-icono">
+              star
+            </span>
+            <wc-texto data-tipo-fuente='etiqueta-s'>
               Cliente estrella
             </wc-texto>
-            <wc-texto data-tipo-fuente='cuerpo-l'><?= $clienteEstrella['nombreCliente'] ?></wc-texto>
-            <wc-texto data-tipo-fuente='titulo-l'>
+            <wc-texto data-tipo-fuente='titulo-l'><?= $clienteEstrella['nombreCliente'] ?></wc-texto>
+            <wc-texto data-tipo-fuente='etiqueta-s'>
               Ingresos generados
             </wc-texto>
-            <wc-texto data-tipo-fuente='cuerpo-l'>$<?= $clienteEstrella['total'] ?> MXN</wc-texto>
+            <wc-texto data-tipo-fuente='titulo-l'>$<?= $clienteEstrella['total'] ?> MXN</wc-texto>
           </contenedor-flex>
           <contenedor-flex class='producto-frecuente' justify-content='center' align-items='center'>
-            <wc-texto data-tipo-fuente='titulo-l'>
+            <span class="material-symbols-rounded dashboard-icono">
+              sell
+            </span>
+            <wc-texto data-tipo-fuente='etiqueta-s'>
               Producto más vendido
             </wc-texto>
-            <wc-texto data-tipo-fuente='cuerpo-l'>
+            <wc-texto data-tipo-fuente='titulo-l'>
               <?= $productoMasVendido['nombre'] ?>
             </wc-texto>
-            <wc-texto data-tipo-fuente='titulo-m'>
+            <wc-texto data-tipo-fuente='etiqueta-s'>
               <?= $productoMasVendido['cantidad'] ?>
               <?= ($productoMasVendido['cantidad'] == 1 ? 'unidad vendida' : 'unidades vendidas') ?>
+              por
             </wc-texto>
-            <wc-texto data-tipo-fuente='titulo-m'>
-              Ingresos generados
-            </wc-texto>
-            <wc-texto data-tipo-fuente='cuerpo-m'>
+            <wc-texto data-tipo-fuente='titulo-l'>
               $<?= $productoMasVendido['total'] ?> MXN
             </wc-texto>
           </contenedor-flex>
@@ -77,14 +82,20 @@
             <canvas id='pedidos-clientes'></canvas>
           </contenedor-flex>
           <contenedor-flex class='metodo-pago-frecuente' justify-content='center' align-items='center'>
-            <wc-texto data-tipo-fuente='titulo-l'>Método de pago más utilizado</wc-texto>
-            <wc-texto data-tipo-fuente='cuerpo-l'><?= $tipoPagoFrecuente ?></wc-texto>
+            <span class="material-symbols-rounded dashboard-icono">
+              payments
+            </span>
+            <wc-texto data-tipo-fuente='etiqueta-s'>Método de pago más utilizado</wc-texto>
+            <wc-texto data-tipo-fuente='titulo-l'><?= $tipoPagoFrecuente ?></wc-texto>
           </contenedor-flex>
           <contenedor-flex class='ingresos-totales' justify-content='center' align-items='center'>
-            <wc-texto data-tipo-fuente='titulo-l'>
+            <span class="material-symbols-rounded dashboard-icono">
+              paid
+            </span>
+            <wc-texto data-tipo-fuente='etiqueta-s'>
               Ingresos totales
             </wc-texto>
-            <wc-texto data-tipo-fuente='cuerpo-l'>
+            <wc-texto data-tipo-fuente='titulo-l'>
               $<?= $ingresosTotales ?> MXN
             </wc-texto>
           </contenedor-flex>

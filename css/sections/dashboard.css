@@ -1,0 +1,79 @@
+boton-rellenado[data-etiqueta='Dashboard'] {
+  --clr-fondo: #ffffff;
+  --clr-texto: var(--clr-primario-40);
+}
+
+.seccion {
+  height: 100vh;
+  height: 100svh;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-rows: repeat(7, 160px);
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  grid-template-areas:
+    'a b c c'
+    'a d c c'
+    'e e c c'
+    'e e c c'
+    'e e h i'
+    'j j j j'
+    'j j j j';
+  gap: var(--espaciado-chico);
+}
+
+.dashboard > * {
+  box-sizing: border-box;
+
+  border: 1px solid var(--clr-neutral-80);
+  border-radius: var(--br-borde);
+  padding: var(--espaciado-chico);
+
+  overflow: hidden;
+}
+
+.porcentaje-pedidos {
+  grid-area: a;
+}
+
+.cliente-estrella {
+  grid-area: b;
+
+  text-align: center;
+}
+
+.producto-frecuente {
+  grid-area: d;
+}
+
+.producto-frecuente > * {
+  width: 100%;
+  text-align: center;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.productos-categorias {
+  grid-area: c;
+}
+
+.pedidos-clientes {
+  grid-area: e;
+}
+
+.ventas-meses {
+  grid-area: j;
+}
+
+.ingresos-totales {
+  grid-area: i;
+}
+
+.metodo-pago-frecuente {
+  grid-area: h;
+
+  text-align: center;
+}

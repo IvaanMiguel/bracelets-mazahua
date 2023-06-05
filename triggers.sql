@@ -66,15 +66,15 @@ BEFORE DELETE ON pedidoproducto FOR EACH ROW
 BEGIN
     UPDATE pedido
     SET
-	    total = total - OLD.subtotal,
+        total = total - OLD.subtotal,
         anticipo = total / 2,
         totalProductos = totalProductos - OLD.cantidad
-	WHERE id = OLD.idPedido;
+    WHERE id = OLD.idPedido;
     
     UPDATE producto
     SET
         existencias = existencias + OLD.cantidad
-	WHERE idProducto = OLD.idProducto;
+    WHERE idProducto = OLD.idProducto;
 END$$
 delimiter ;
 
@@ -87,20 +87,35 @@ BEGIN
     DECLARE cantidadActualizada INT;
 
     SELECT precio INTO precioProducto FROM producto WHERE idProducto = NEW.idProducto;
-	SET cantidadActualizada = NEW.cantidad - OLD.cantidad;
+    SET cantidadActualizada = NEW.cantidad - OLD.cantidad;
     SET NEW.subtotal = NEW.cantidad * precioProducto;
 
     UPDATE producto
     SET
         existencias = existencias - cantidadActualizada
-	WHERE idProducto = NEW.idProducto;
+    WHERE idProducto = NEW.idProducto;
     
     UPDATE pedido 
     SET
         total = total + (NEW.subtotal - OLD.subtotal),
         anticipo = total / 2,
         totalProductos = totalProductos + cantidadActualizada
-	WHERE id = NEW.idPedido;
+    WHERE id = NEW.idPedido;
+END$$
+delimiter ;
+
+DROP TRIGGER IF EXISTS before_pedido_insert;
+delimiter $$
+CREATE TRIGGER before_pedido_insert
+BEFORE INSERT ON pedido FOR EACH ROW
+BEGIN
+    UPDATE pedidosrelacion
+    SET pedidosCreados = pedidosCreados + 1
+    WHERE id = 1;
+    
+    UPDATE metodopagoutilizado
+    SET vecesUsado = vecesUsado + 1
+    WHERE nombre = NEW.tipoPago;
 END$$
 delimiter ;
 
@@ -117,7 +132,7 @@ BEGIN
     INNER JOIN pedidoproducto pp ON p.idProducto = pp.idProducto
     SET
         p.existencias = p.existencias + pp.cantidad
-	WHERE pp.idPedido = OLD.id;
+    WHERE pp.idPedido = OLD.id;
 END$$
 delimiter ;
 
@@ -128,5 +143,19 @@ BEFORE UPDATE ON entrega FOR EACH ROW
 BEGIN
     SET NEW.nombreDestinatario = IF (NEW.nombreDestinatario = '', OLD.nombreDestinatario, NEW.nombreDestinatario);
     SET NEW.telefonoDestinatario = IF (NEW.telefonoDestinatario = '', OLD.telefonoDestinatario, NEW.telefonoDestinatario);
+END$$
+delimiter ;
+
+DROP TRIGGER IF EXISTS before_pedidocompletado_insert;
+delimiter $$
+CREATE TRIGGER before_pedidocompletado_insert
+BEFORE INSERT ON pedidocompletado FOR EACH ROW
+BEGIN
+    DECLARE idCliente INT DEFAULT 0;
+    SELECT pi.idCliente INTO idCliente FROM vwpedidoinfo pi WHERE id = NEW.id;
+
+    UPDATE pedidosrelacion
+    SET pedidosCompletados = pedidosCompletados + 1
+    WHERE id = 1;
 END$$
 delimiter ;

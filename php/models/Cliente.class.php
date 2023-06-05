@@ -36,7 +36,7 @@ class Cliente extends Dbh
   ): string|false
   {
     $conexion = $this->conectar();
-    $clienteStmt = $conexion->prepare('INSERT INTO cliente VALUES (0, ?, ?, ?, ?, ?);');
+    $clienteStmt = $conexion->prepare('INSERT INTO cliente VALUES (0, ?, ?, ?, ?, ?, 0, 0);');
     $this->ejecutarSentencia($clienteStmt, array(
         $nombre,
         $apellidos,
@@ -90,6 +90,18 @@ class Cliente extends Dbh
     $this->ejecutarSentencia($stmt, array($idCliente));
 
     return count($stmt->fetchAll()) > 0;
+  }
+
+  protected function agregarPedidoCreado(int $id): void
+  {
+    $stmt = $this->conectar()->prepare('UPDATE cliente SET pedidosCreados = pedidosCreados + 1 WHERE id = ?;');
+    $this->ejecutarSentencia($stmt, array($id));
+  }
+
+  protected function agregarPedidoCompletado(int $id): void
+  {
+    $stmt = $this->conectar()->prepare('UPDATE cliente SET pedidosCompletados = pedidosCompletados + 1 WHERE id = ?;');
+    $this->ejecutarSentencia($stmt, array($id));
   }
 
   private function insertarUbicaciones(

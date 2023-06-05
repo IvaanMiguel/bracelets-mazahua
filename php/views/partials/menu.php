@@ -24,6 +24,11 @@ $menuBotones = [
     'etiqueta' => 'Pedidos',
     'icono' => 'inventory',
     'href' => URL_PEDIDOS
+  ],
+  [
+    'etiqueta' => 'Dashboard',
+    'icono' => 'dashboard',
+    'href' => URL_DASHBOARD
   ]
 ]
 ?>

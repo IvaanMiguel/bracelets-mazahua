@@ -137,3 +137,11 @@ VALUES
     ('Brazalete de Piedras Naturales', 10, 59.99, 5),
     ('Brazalete de Acero', 10, 34.99, 4),
     ('Brazalete de Diamantes', 10, 199.99, 2);
+
+INSERT INTO pedidosrelacion VALUES(0, 0, 0);
+
+INSERT INTO metodopagoutilizado
+VALUES
+    (0, 'Efectivo', 0),
+    (0, 'Depósito', 0),
+    (0, 'Tarjeta', 0);

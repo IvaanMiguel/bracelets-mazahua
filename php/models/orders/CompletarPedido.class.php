@@ -65,6 +65,14 @@ class CompletarPedido extends Dbh
     return $stmtFechaCompletado->fetch(PDO::FETCH_COLUMN);
   }
 
+  public function obtenerIdCliente(int $idPedido)
+  {
+    $stmt = $this->conectar()->prepare('SELECT idCliente FROM pedido WHERE id = ?;');
+    $this->ejecutarSentencia($stmt, array($idPedido));
+
+    return $stmt->fetchColumn();
+  }
+
   private function completarProductos(int $id)
   {
     $stmt = $this->conectar()->prepare('INSERT INTO productocomprado (

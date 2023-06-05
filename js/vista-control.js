@@ -102,23 +102,23 @@ export const crearEventoValidacion = (nombre, detalles) => {
   });
 };
 
+export const mes = [
+  'enero',
+  'febrero',
+  'marzo',
+  'abril',
+  'mayo',
+  'junio',
+  'julio',
+  'agosto',
+  'septiembre',
+  'octubre',
+  'noviembre',
+  'diciembre'
+];
+
 /** @param {string} fecha */
 export const obtenerFecha = (fecha) => {
-  const mes = [
-    'enero',
-    'febrero',
-    'marzo',
-    'abril',
-    'mayo',
-    'junio',
-    'julio',
-    'agosto',
-    'septiembre',
-    'octubre',
-    'noviembre',
-    'diciembre'
-  ];
-
   fecha = fecha.split(' ')[0].split('-');
   return `${fecha[2]} de ${mes[+fecha[1] - 1]} de ${fecha[0]}`;
 };

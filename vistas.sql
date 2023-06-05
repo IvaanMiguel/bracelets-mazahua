@@ -61,3 +61,12 @@ SELECT
 FROM pedidoproducto pp
 INNER JOIN
     producto p ON pp.idProducto = p.idProducto;
+
+CREATE OR REPLACE VIEW vwproductoscategorias AS
+SELECT
+    nombreCategoria,
+    p.idCategoriaProducto,
+    COUNT(p.idCategoriaProducto) AS totalProductos
+FROM producto p
+INNER JOIN categoriaproducto cp ON p.idCategoriaProducto = cp.idCategoriaProducto
+GROUP BY p.idCategoriaProducto;

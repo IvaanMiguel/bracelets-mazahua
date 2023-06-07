@@ -43,3 +43,7 @@ ventanaConfirmacion.addEventListener('confirmarremover', () => {
 
   productosAgregados.removerProducto(nombre);
 });
+
+ventanaConfirmacion.addEventListener('cancelarremover', () => {
+  ventanaConfirmacion.cerrarVentana();
+});

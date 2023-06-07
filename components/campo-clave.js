@@ -29,11 +29,14 @@ hojaCSS.replaceSync(/*css*/`
 
   .campo {
     display: flex;
+
     min-height: 2.5rem;
     box-sizing: border-box;
     width: 100%;
     flex-grow: 1;
     overflow: hidden;
+
+    position: relative;
 
     border: 1px solid var(--clr-borde);
     border-radius: var(--br-borde);
@@ -44,7 +47,7 @@ hojaCSS.replaceSync(/*css*/`
     color: var(--clr-fondo-10);
     flex: 1;
     border: none;
-    padding-left: var(--espaciado-jumbo);
+    padding: 0 2.875rem 0 var(--espaciado-jumbo);
 
     font-size: var(--fs-cuerpo-mediano);
     line-height: var(--lh-cuerpo-mediano);
@@ -57,6 +60,11 @@ hojaCSS.replaceSync(/*css*/`
   }
 
   md-icono {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
     margin: auto var(--espaciado-jumbo) auto var(--espaciado-mediano);
   }
 `);

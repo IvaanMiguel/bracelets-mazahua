@@ -54,6 +54,13 @@ hojaCSS.replaceSync(/*css*/`
     font-weight: var(--fw-normal);
     color: var(--clr-primario-40);
   }
+  :host([data-tipo-fuente='cuerpo-ss']) {
+    font-size: var(--fs-cuerpo-chico);
+    line-height: var(--lh-cuerpo-chico);
+    letter-spacing: var(--ls-cuerpo-chico);
+    font-weight: var(--fw-normal);
+    color: var(--clr-primario-90);
+  }
 
   :host([data-tipo-fuente='etiqueta-l']) {
     font-size: var(--fs-etiqueta-grande);

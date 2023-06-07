@@ -81,3 +81,45 @@ boton-rellenado[data-etiqueta='Dashboard'] {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+@media screen and (max-width: 926px) {
+  .dashboard {
+    grid-template-rows: repeat(11, 160px);
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    grid-template-areas:
+      'a b'
+      'a d'
+      'c c'
+      'c c'
+      'c c'
+      'e e'
+      'e e'
+      'e e'
+      'h i'
+      'j j'
+      'j j';
+  }
+}
+
+@media screen and (max-width: 526px) {
+  .dashboard > * {
+    grid-area: unset;
+  }
+
+  
+  .dashboard {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(15, minmax(160px, 1fr));
+    grid-template-areas: unset;
+  }
+
+  .porcentaje-pedidos,
+  .productos-categorias,
+  .pedidos-clientes {
+    grid-row: span 3;
+  }
+
+  .ventas-meses {
+    grid-row: span 2;
+  }
+}

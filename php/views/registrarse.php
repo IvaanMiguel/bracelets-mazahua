@@ -56,7 +56,7 @@
     <contenedor-flex flex-direction='column' gap='var(--espaciado-mediano)'>
       <contenedor-flex flex-direction='row' gap='var(--espaciado-chico)' align-items='center'>
         <div class='linea'></div>
-        <wc-texto data-tipo-fuente='cuerpo-s'>¿Ya tienes una cuenta?</wc-texto>
+        <wc-texto data-tipo-fuente='cuerpo-ss'>¿Ya tienes una cuenta?</wc-texto>
         <div class='linea'></div>
       </contenedor-flex>
       <boton-rellenado

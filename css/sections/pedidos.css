@@ -84,6 +84,7 @@ boton-elevado {
 .contenedor-borde {
   border: 1px solid var(--clr-neutral-80);
   border-radius: var(--br-borde);
+  background-color: var(--clr-primario-90);
 }
 
 .flex-start {

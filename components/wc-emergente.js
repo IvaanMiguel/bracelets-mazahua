@@ -11,6 +11,7 @@ hojaCSS.replaceSync(/*css*/`
 
   div {
     position: absolute;
+    z-index: 10;
     display: none;
 
     background-color: var(--clr-superficie-90);

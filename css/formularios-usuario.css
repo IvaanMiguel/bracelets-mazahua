@@ -15,7 +15,7 @@
   margin-bottom: var(--espaciado-jumbo);
   box-sizing: border-box;
   border-radius: var(--br-borde);
-  background: linear-gradient(#ffd9e5,#b70070 );
+  background-color: var(--clr-primario-90);
   box-shadow: var(--bs-elevacion-1);
 }
 

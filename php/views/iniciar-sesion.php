@@ -35,8 +35,8 @@
         </contenedor-flex>
         <boton-rellenado
             class='margin-auto'
-            data-color-fondo='var(--clr-fondo-hover)'
-            data-color-texto='var(--clr-primario-40)'
+            data-color-fondo='var(--clr-primario-40)'
+            data-color-texto='#ffffff'
             data-etiqueta='Iniciar sesión'
             data-evento='iniciarsesion'
             type='button'>

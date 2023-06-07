@@ -25,10 +25,8 @@ const hojaCSS = /*css*/`
 
   .cabecera {
     display: flex;
-
     position: sticky;
     top: var(--espaciado-chico);
-
     overflow: hidden;
     border-radius: 1.5rem;
     background-color: var(--clr-fondo-99);
@@ -81,10 +79,9 @@ const hojaCSS = /*css*/`
     width: 100%;
     height: 100%;
     overflow-y: auto;
-
     transform: translateX(var(--_translate-tab));
     transition: transform .2s ease 0s,
-      grid-template-rows .1s ease 0s;
+    grid-template-rows .1s ease 0s;
   }
 `;
 

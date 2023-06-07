@@ -3,7 +3,6 @@ hojaCSS.replaceSync(/*css*/`
   :host {
     display: flex;
     flex-direction: column;
-
     box-sizing: border-box;
     border-radius: var(--br-borde);
   }
@@ -30,22 +29,21 @@ hojaCSS.replaceSync(/*css*/`
     display: flex;
     justify-content: space-between;
     align-items: center;
-  
     height: 3.5rem;
     padding: 0 var(--espaciado-jumbo);
     border-radius: var(--br-borde);
     cursor: pointer;
     user-select: none;
-
-    background-color: var(--clr-terciario-90);
-    color: var(--clr-terciario-10);
+    background-color: var(--clr-fondo-hover);
+    color: var(--clr-primario-40);
   }
 
   .contenido {
     display: grid;
     grid-template-rows: 1fr;
-
     transition: grid-template-rows .2s ease 0s;
+    background: var(--clr-primario-90);
+    
   }
 
   .contenido > * {

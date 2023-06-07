@@ -10,14 +10,13 @@
 .formulario {
   display: flex;
   flex-direction: column;
-  gap: var(--espaciado-grande);
-
-  padding: var(--espaciado-grande);
-  margin-bottom: var(--espaciado-grande);
+  gap: var(--espaciado-jumbo);
+  padding: var(--espaciado-jumbo);
+  margin-bottom: var(--espaciado-jumbo);
   box-sizing: border-box;
-
-  border: 1px solid var(--clr-borde);
   border-radius: var(--br-borde);
+  background: linear-gradient(#ffd9e5,#b70070 );
+  box-shadow: var(--bs-elevacion-1);
 }
 
 .contenido__logo {
@@ -25,7 +24,7 @@
 }
 
 .linea {
-  border-bottom: 0.5px solid #000;
+  border-bottom: 3px solid var(--clr-primario-40);
   flex-grow: 1;
 }
 

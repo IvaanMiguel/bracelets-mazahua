@@ -1,6 +1,7 @@
 .contenedor-borde {
-  border: 1px solid var(--clr-neutral-80);
+  border: 1px solid var(--clr-primario-90);
   border-radius: var(--br-borde);
+  background-color: var(--clr-primario-90);
 }
 
 :where(lista-desplegable, info-detalles, .campos) {
@@ -15,13 +16,13 @@ wc-tabs form {
   display: flex;
   flex-direction: column;
   gap: var(--espaciado-grande);
-
   margin-bottom: var(--espaciado-jumbo);
 }
 
 .formulario-contenedor {
-  border: 1px solid var(--clr-borde);
+  border: 1px solid var(--clr-primario-40);
   border-radius: var(--br-borde);
+  background: var(--clr-primario-90);
 }
 
 .campos-horizontal > *,

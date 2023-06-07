@@ -10,14 +10,14 @@
   flex-wrap: wrap;
 
   border-radius: var(--br-borde);
-  background-color: var(--clr-primario-opacidad-1);
+  background-color: var(--clr-primario-90);
 }
 
 .pedido-info {
   max-width: 15.625rem;
   width: 100%;
   padding: var(--espaciado-grande);
-  border-radius: var(--br-borde);
+  border-radius: 2px var(--br-borde);
   box-sizing: border-box;
 
   user-select: none;

@@ -27,6 +27,8 @@ class ContenedorFlex extends HTMLElement {
         gap: var(--gap);
         margin: var(--margin);
         padding: var(--padding);
+        
+        
       }
     `);
 

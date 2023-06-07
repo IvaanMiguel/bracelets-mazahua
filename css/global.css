@@ -3,13 +3,20 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--clr-fondo-99);
+  background: linear-gradient(#ffd9e5,#b70070 );
   color: var(--clr-fondo-10);
   font-family: var(--ff-principal);
   box-sizing: border-box;
+  font-size: var(--fs-titulo-grande);
+  font-weight: var(--fw-medio);
 }
+
 
 h1,
 h2 {
   margin: 0;
+}
+
+html{
+  height: 100svh;
 }

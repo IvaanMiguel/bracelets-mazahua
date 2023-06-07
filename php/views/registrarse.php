@@ -45,8 +45,8 @@
         </contenedor-flex>
         <boton-rellenado
             class='margin-auto'
-            data-color-fondo='var(--clr-primario-40)'
-            data-color-texto='#ffffff'
+            data-color-fondo='var(--clr-primario-90)'
+            data-color-texto='var(--clr-primario-40)'
             data-etiqueta='Crear cuenta'
             type='button'
             data-evento='registrarusuario'>
@@ -61,8 +61,8 @@
       </contenedor-flex>
       <boton-rellenado
           class='margin-auto'
-          data-color-fondo='var(--clr-primario-40)'
-          data-color-texto='#ffffff'
+          data-color-fondo='var(--clr-primario-90)'
+          data-color-texto='var(--clr-primario-40)'
           data-etiqueta='Iniciar sesión'
           href=<?= URL_INICIAR_SESION ?>>
       </boton-rellenado>

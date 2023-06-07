@@ -19,16 +19,16 @@ hojaCSS.replaceSync(/*css*/`
   }
 
   slot:not([name='etiqueta'], [name='error'])::slotted(*) {
-    background-color: transparent;
+    background-color: var(--clr-fondo-hover);
     display: flex;
     min-height: 2.5rem;
     padding: 0 var(--espaciado-jumbo);
-    box-sizing: border-box;
+    box-sizing:  border-box;
     width: 100%;
     flex-grow: 1;
     overflow: hidden;
 
-    border: 1px solid var(--clr-borde);
+    border: 1px solid var(--clr-primario-40);
     border-radius: var(--br-borde);
 
     font-size: var(--fs-cuerpo-mediano);
@@ -38,7 +38,7 @@ hojaCSS.replaceSync(/*css*/`
   }
 
   slot:not([name='etiqueta'], [name='error'])::slotted(*:focus-visible) {
-    outline: 2px solid var(--clr-primario-40);
+    outline: 1px solid var(--clr-primario-40);
     outline-offset: -2px;
   }
 `);

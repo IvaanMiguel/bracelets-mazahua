@@ -5,6 +5,7 @@ const hojaCSS = /*css*/`
     display: flex;
     flex-direction: column;
     gap: var(--espaciado-chico);
+    
   }
 
   :host([data-desplegado]) md-icono {
@@ -24,8 +25,8 @@ const hojaCSS = /*css*/`
     flex: 1;
     padding: 0 1rem;
 
-    background-color: transparent;
-    border: 1px solid var(--clr-borde);
+    background-color: var(--clr-fondo-hover);
+    border: 1px solid var(--clr-primario-40);
     border-radius: var(--br-borde);
     outline-color: var(--clr-primario-40);
 

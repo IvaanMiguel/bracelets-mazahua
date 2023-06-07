@@ -5,9 +5,10 @@
 .ancho-fijo info-detalles,
 .lista-productos,
 .productos-comprados {
-  border: 1px solid var(--clr-neutral-80);
+  border: 1px solid var(--clr-fondo-hover);
   border-radius: var(--br-borde);
   overflow: hidden;
+  background: var(--clr-fondo-hover);
 }
 
 #agregar-pedido > boton-rellenado {
@@ -16,7 +17,8 @@
 
 #agregar-pedido wc-colapsable,
 .contenedor-borde wc-colapsable {
-  border: 1px solid var(--clr-neutral-80);
+  border: 2px solid  var(--clr-primario-90);
+  
 }
 
 #agregar-pedido wc-colapsable + wc-colapsable {
@@ -38,9 +40,10 @@
 #lista-clientes,
 #contenedor-datos-personales,
 .info-ubicacion {
-  border: 1px solid var(--clr-neutral-80);
+  border: 2px solid var(--clr-primario-90);
   border-radius: var(--br-borde);
   overflow: hidden;
+  background-color: var(--clr-primario-90);
 }
 
 .check {

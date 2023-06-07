@@ -73,7 +73,7 @@
   --clr-superficie-primario-5: rgb(183, 0, 113, .05);
   --clr-superficie-primario-9: rgb(183, 0, 113, .09);
 
-  --clr-borde: #837378; /* Outline */
+  --clr-borde: #6c0022; /* Outline */
   --clr-error-40: #ba1a1a;
   --clr-exito-40: #3a9537;
 
@@ -93,7 +93,7 @@
   --clr-terciario-10: #001a41; /* On tertiary container */
   --clr-terciario-40: #005ac1; /* Tertiary */
   --clr-terciario-90: #d8e2ff; /* Tertiary container */
-  
+
   --clr-neutral-80: #cfc4c6;
   
   --clr-fondo-hover: #f6f6f6;

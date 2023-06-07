@@ -7,8 +7,8 @@ const hojaCSS = /*css*/`
     gap: var(--espaciado-mediano);
 
     box-shadow: var(--bs-elevacion-3);
-    border-radius: var(--br-borde);
-    background-color: var(--clr-fondo-99);
+    border-radius: var(--clr-primario-40);
+    background-color: var(--clr-fondo-hover);
     color: var(--_color-tipo);
 
     outline: 1px solid var(--_color-tipo);

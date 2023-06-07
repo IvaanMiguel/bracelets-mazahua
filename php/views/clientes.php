@@ -34,7 +34,9 @@
 
       <div class='seccion'>
         <contenedor-flex padding='var(--espaciado-chico) var(--espaciado-jumbo) 0'>
+          
           <wc-tabs>
+            
             <boton-texto
                 slot='tab'
                 data-color-texto='var(--clr-fondo-10)'

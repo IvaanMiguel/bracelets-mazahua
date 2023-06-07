@@ -21,14 +21,16 @@ hojaCSS.replaceSync(/*css*/`
     --font-size: var(--fs-titulo-grande);
     --line-height: var(--lh-titulo-grande);
     --letter-spacing: var(--ls-titulo-grande);
-    --font-weight: var(--fw-normal);
+    --font-weight: var(--fw-medio);
+      
   }
 
   :host([data-tipo-fuente='titulo-m']) {
     --font-size: var(--fs-titulo-mediano);
-    --line-height: var(--lh-titulo-mediano);
+    --line-height: var(--lh-titulo-grande);
     --letter-spacing: var(--ls-titulo-mediano);
     --font-weight: var(--fw-medio);
+    
   }
 
   :host([data-tipo-fuente='titulo-s']) {
@@ -50,6 +52,7 @@ hojaCSS.replaceSync(/*css*/`
     line-height: var(--lh-cuerpo-chico);
     letter-spacing: var(--ls-cuerpo-chico);
     font-weight: var(--fw-normal);
+    color: var(--clr-primario-40);
   }
 
   :host([data-tipo-fuente='etiqueta-l']) {
@@ -57,6 +60,8 @@ hojaCSS.replaceSync(/*css*/`
     line-height: var(--lh-etiqueta-grande);
     letter-spacing: var(--ls-etiqueta-grande);
     font-weight: var(--fw-medio);
+    color: var(--clr-primario-10);
+    
   }
 
   :host([data-tipo-fuente='etiqueta-m']) {

@@ -12,6 +12,7 @@ hojaCSS.replaceSync(/*css*/`
     position: fixed;
     top: 0;
     z-index: 998;
+    
   }
 
   :host([data-mostrar]) {
@@ -40,7 +41,7 @@ hojaCSS.replaceSync(/*css*/`
     overflow: hidden;
     max-height: 90%;
 
-    background-color: #fff;
+    background-color: var(--clr-primario-90);
     border-radius: var(--br-borde);
     box-shadow: var(--bs-elevacion-3);
 

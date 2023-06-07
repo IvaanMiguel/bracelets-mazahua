@@ -9,7 +9,7 @@ hojaCSS.replaceSync(/*css*/`
   :host([data-orientacion='horizontal']) {
     width: 100%;
     max-height: 0px;
-    border-bottom: 1px solid var(--clr-neutral-80);
+    border-bottom: 2px solid var(--clr-fondo-hover);
   }
 
   :host([data-orientacion='vertical']) {

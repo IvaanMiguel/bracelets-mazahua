@@ -45,7 +45,7 @@
           <form>
             <contenedor-flex gap='var(--espaciado-chico)'>
               <campo-texto>
-                <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>Nueva categoría</wc-texto>
+                <wc-texto slot='etiqueta' data-tipo-fuente='etiqueta-l'>Nueva categoría (nombre)</wc-texto>
                 <input name='nuevaCategoria'>
               </campo-texto>
             </contenedor-flex>
@@ -135,7 +135,7 @@
         slot='pie-inicio'
         data-evento='verificarcierre'
         data-color-texto='var(--clr-primario-40)'
-        data-color-fondo='#ffffff'
+        data-color-fondo='#ffd9e5'
         data-etiqueta='Descartar cambios'
         data-variante='texto-icono'
         data-icono='close'>

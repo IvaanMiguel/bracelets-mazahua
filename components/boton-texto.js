@@ -18,6 +18,7 @@ hojaCSS.replaceSync(/*css*/`
   button:focus-visible::after, a:focus-visible::after {
     background-color: var(--clr-active);
   }
+  
 `);
 
 class BotonTexto extends WCBoton {

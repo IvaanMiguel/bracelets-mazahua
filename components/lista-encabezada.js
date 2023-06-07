@@ -4,11 +4,12 @@ hojaCSS.replaceSync(/*css*/`
     display: flex;
     flex-direction: column;
     gap: var(--espaciado-chico);
-
-    border-radius: var(--br-borde);
-    border: 1px solid var(--clr-neutral-80);
+    border-radius: 5px var(--br-borde);
+    border: 1px solid var(--clr-primario-90);
     overflow: hidden;
     margin-bottom: var(--espaciado-grande);
+    background-color: var(--clr-primario-90);
+    
   }
 
   div {

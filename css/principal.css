@@ -5,18 +5,22 @@
   height: 100svh;
   box-sizing: border-box;
   overflow: hidden;
+  
 }
 
 .contenido {
   display: flex;
   flex-direction: column;
   flex: 2;
-
   overflow: hidden;
+  
 }
 
 .cabecera {
-  border-bottom: 1px solid var(--clr-borde);
+  border-bottom: 3px solid var(--clr-borde);
+  color: var(--clr-primario-40);
+  border-radius: var(--br-borde);
+  
 }
 
 .seccion {
@@ -71,4 +75,5 @@ contenedor-flex :not(:defined) {
   opacity: 0;
   display: inline;
   height: 1.75rem;
+  
 }

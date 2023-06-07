@@ -1,7 +1,7 @@
 <contenedor-flex class='ancho-fijo' flex-direction='column' gap='var(--espaciado-grande)' padding='var(--espaciado-grande)'>
   <boton-rellenado
       data-evento='buscarcliente'
-      data-color-fondo='var(--clr-secundario-90)'
+      data-color-fondo='var(--clr-fondo-hover)'
       data-color-texto='var(--clr-secundario-10)'
       data-etiqueta='Buscar cliente'
       data-icono='search'

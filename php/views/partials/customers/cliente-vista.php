@@ -31,14 +31,14 @@
       <boton-rellenado
           data-evento='agregarnuevaubicacion'
           data-color-fondo='var(--clr-secundario-90)'
-          data-color-texto='var(--clr-secundario-10)'
+          data-color-texto='var(--clr-primario-10)'
           data-variante='texto-icono'
           data-etiqueta='Agregar ubicación'
           data-icono='add_location'>
       </boton-rellenado>
       <boton-delineado
           data-evento='editarubicacion'
-          data-color-texto='var(--clr-secundario-40)'
+          data-color-texto='var(--clr-primario-40)'
           data-variante='texto-icono'
           data-etiqueta='Editar ubicación'
           data-icono='edit'>

@@ -3,6 +3,7 @@ hojaCSS.replaceSync(/*css*/`
   :host {
     display: flex;
     flex-direction: column;
+    
   }
 `);
 

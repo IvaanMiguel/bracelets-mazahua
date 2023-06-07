@@ -3,11 +3,13 @@ import WCBoton from './wc-boton.js';
 const hojaCSS = new CSSStyleSheet();
 hojaCSS.replaceSync(/*css*/`
   :host {
-    --clr-contorno: var(--clr-borde);
+    --clr-contorno: var(-clr-primario-90);
   }
 
   button, a {
     border: 1px solid var(--clr-contorno);
+    background-color: var(--clr-fondo-hover);
+    
   }
 
   button:hover::after, a:hover::after {

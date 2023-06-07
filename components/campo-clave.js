@@ -40,7 +40,7 @@ hojaCSS.replaceSync(/*css*/`
   }
 
   ::slotted([slot='campo']) {
-    background-color: transparent;
+    background-color: var(--clr-fondo-hover);
     color: var(--clr-fondo-10);
     flex: 1;
     border: none;

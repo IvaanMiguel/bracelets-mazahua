@@ -16,8 +16,8 @@
 </wc-colapsable>
 <boton-rellenado
     data-evento='hacerpedido'
-    data-color-fondo='var(--clr-primario-40)'
-    data-color-texto='#ffffff'
+    data-color-fondo='var(--clr-primario-90)'
+    data-color-texto='var(--clr-primario-40)'
     data-etiqueta='Hacer pedido'
     data-variante='texto-icono'
     data-icono='task'>

@@ -20,7 +20,7 @@ wc-tabs form {
 }
 
 .formulario-contenedor {
-  border: 1px solid var(--clr-primario-40);
+  border: 1px solid var(--clr-primario-90);
   border-radius: var(--br-borde);
   background: var(--clr-primario-90);
 }

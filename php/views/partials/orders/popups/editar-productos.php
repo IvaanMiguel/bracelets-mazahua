@@ -12,8 +12,8 @@
     <contenedor-flex flex-direction='column' gap='var(--espaciado-grande)'>
       <boton-rellenado
           data-evento='buscarproductonuevo'
-          data-color-fondo='var(--clr-secundario-90)'
-          data-color-texto='var(--clr-secundario-10)'
+          data-color-fondo='var(--clr-fondo-hover)'
+          data-color-texto='var(--clr-primario-10)'
           data-etiqueta='Buscar producto'
           data-icono='search'
           data-variante='texto-icono'>

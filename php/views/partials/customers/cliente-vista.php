@@ -12,8 +12,8 @@
     <input id='id-cliente' type='hidden'>
     <boton-rellenado
         data-evento='editardatospersonales'
-        data-color-fondo='var(--clr-secundario-90)'
-        data-color-texto='var(--clr-secundario-10)'
+        data-color-fondo='var(--clr-fondo-hover)'
+        data-color-texto='var(--clr-primario-10)'
         data-variante='texto-icono'
         data-etiqueta='Editar datos personales'
         data-icono='edit'>
@@ -30,7 +30,7 @@
     <contenedor-flex flex-direction='row' gap='var(--espaciado-grande)'>
       <boton-rellenado
           data-evento='agregarnuevaubicacion'
-          data-color-fondo='var(--clr-secundario-90)'
+          data-color-fondo='var(--clr-fondo-hover)'
           data-color-texto='var(--clr-primario-10)'
           data-variante='texto-icono'
           data-etiqueta='Agregar ubicación'

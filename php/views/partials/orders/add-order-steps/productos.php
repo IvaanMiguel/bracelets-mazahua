@@ -1,8 +1,8 @@
 <contenedor-flex class='ancho-fijo' flex-direction='column' gap='var(--espaciado-grande)' padding='var(--espaciado-grande)'>
   <boton-rellenado
       data-evento='buscarproducto'
-      data-color-fondo='var(--clr-secundario-90)'
-      data-color-texto='var(--clr-secundario-10)'
+      data-color-fondo='var(--clr-fondo-hover)'
+      data-color-texto='var(--clr-primario-40)'
       data-variante='texto-icono'
       data-icono='search'
       data-etiqueta='Buscar productos'>

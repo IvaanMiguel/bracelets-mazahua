@@ -37,7 +37,7 @@
       type='button'
       data-evento='agregarproducto'
       data-color-fondo='var(--clr-primario-90)'
-      data-color-texto='var(--clr-primario-40)'
+      data-color-texto='var(--clr-primario-10)'
       data-variante='texto-icono'
       data-icono='save'
       data-etiqueta='Guardar producto'>

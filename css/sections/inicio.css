@@ -8,7 +8,6 @@
 
 .pedidos-pendientes {
   flex-wrap: wrap;
-
   border-radius: var(--br-borde);
   background-color: var(--clr-primario-90);
 }

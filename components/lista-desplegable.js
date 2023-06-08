@@ -15,7 +15,6 @@ const hojaCSS = /*css*/`
   div {
     display: flex;
     align-items: center;
-
     position: relative;
     cursor: pointer;
   }
@@ -24,7 +23,6 @@ const hojaCSS = /*css*/`
     min-height: 2.5rem;
     flex: 1;
     padding: 0 1rem;
-
     background-color: var(--clr-fondo-hover);
     border: 1px solid var(--clr-primario-40);
     border-radius: var(--br-borde);
@@ -42,7 +40,6 @@ const hojaCSS = /*css*/`
   md-icono {
     position: absolute;
     right: 1rem;
-
     transition: transform .15s ease 0s;
   }
 `;

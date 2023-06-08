@@ -82,8 +82,8 @@
       </wc-colapsable>
     </contenedor-flex>
     <boton-rellenado
-        data-color-fondo='var(--clr-secundario-90)'
-        data-color-texto='var(--clr-primario-40)'
+        data-color-fondo='var(--clr-fondo-hover)'
+        data-color-texto='var(--clr-primario-10)'
         data-evento='agregarubicacion'
         type='button'
         data-variante='texto-icono'
@@ -92,7 +92,7 @@
     </boton-rellenado>
   </contenedor-flex>
   <boton-rellenado
-      data-color-fondo='var(--clr-primario-90)'
+      data-color-fondo='var(--clr-secundario-90)'
       data-color-texto='var(--clr-primario-40)'
       data-evento='guardarcliente'
       type='button'

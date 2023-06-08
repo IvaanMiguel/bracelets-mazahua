@@ -15,14 +15,12 @@ hojaCSS.replaceSync(/*css*/`
   div {
     display: flex;
     flex-direction: column;
-
     padding: 1rem 1rem .25rem 1rem;
   }
 
   span {
     margin: auto;
     padding: var(--espaciado-grande) 0;
-
     font-size: var(--fs-etiqueta-grande);
     line-height: var(--lh-etiqueta-grande);
     letter-spacing: var(--ls-etiqueta-grande);

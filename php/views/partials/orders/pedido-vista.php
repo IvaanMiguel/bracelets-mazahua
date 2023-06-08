@@ -33,8 +33,8 @@
     <boton-rellenado
         class='pedido-edicion'
         data-evento='editardatosdestinatario'
-        data-color-fondo='var(--clr-secundario-90)'
-        data-color-texto='var(--clr-secundario-10)'
+        data-color-fondo='var(--clr-fondo-hover)'
+        data-color-texto='var(--clr-primario-10)'
         data-variante='texto-icono'
         data-etiqueta='Editar datos de destinatario'
         data-icono='edit'>
@@ -74,8 +74,8 @@
     <boton-rellenado
         class='pedido-edicion'
         data-evento='editarproductospedidos'
-        data-color-fondo='var(--clr-secundario-90)'
-        data-color-texto='var(--clr-secundario-10)'
+        data-color-fondo='var(--clr-fondo-hover)'
+        data-color-texto='var(--clr-primario-10)'
         data-variante='texto-icono'
         data-etiqueta='Editar productos pedidos'
         data-icono='edit'>
@@ -122,8 +122,8 @@
     <boton-rellenado
         class='pedido-edicion'
         data-evento='editardatosentrega'
-        data-color-fondo='var(--clr-secundario-90)'
-        data-color-texto='var(--clr-secundario-10)'
+        data-color-fondo='var(--clr-fondo-hover)'
+        data-color-texto='var(--clr-primario-10)'
         data-variante='texto-icono'
         data-etiqueta='Editar datos de entrega'
         data-icono='edit'>
@@ -166,8 +166,8 @@
     <boton-rellenado
         class='pedido-edicion'
         data-evento='completarpedido'
-        data-color-fondo='var(--clr-primario-40)'
-        data-color-texto='#ffffff'
+        data-color-fondo='var(--clr-secundario-90)'
+        data-color-texto='var(--clr-primario-10)'
         data-variante='texto-icono'
         data-etiqueta='Completar pedido'
         data-icono='check'>

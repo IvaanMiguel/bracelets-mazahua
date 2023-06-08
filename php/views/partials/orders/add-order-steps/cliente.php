@@ -2,7 +2,7 @@
   <boton-rellenado
       data-evento='buscarcliente'
       data-color-fondo='var(--clr-fondo-hover)'
-      data-color-texto='var(--clr-secundario-10)'
+      data-color-texto='var(--clr-primario-40)'
       data-etiqueta='Buscar cliente'
       data-icono='search'
       data-variante='texto-icono'>

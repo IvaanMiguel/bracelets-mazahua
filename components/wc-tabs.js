@@ -6,14 +6,12 @@ const hojaCSS = /*css*/`
     --_tabs: 0;
     --_translate-tab: 0;
     --_translate-span: 0;
-
     --tab-alto: 3rem;
     --gap: var(--espaciado-chico);
     
     display: flex;
     flex-direction: column;
     gap: var(--gap);
-    
     position: relative;
     width: 100%;
     flex: 1;
@@ -47,7 +45,6 @@ const hojaCSS = /*css*/`
   ::slotted([slot='tab']) {
     --boton-alto: var(--tab-alto);
     --boton-justify-content: center;
-
     gap: var(--espaciado-mediano);
     flex: 1;
     padding: 0;
@@ -60,10 +57,8 @@ const hojaCSS = /*css*/`
     height: 100%;
     width: var(--_span-ancho);
     z-index: -1;
-
     border-radius: inherit;
     background-color: var(--clr-superficie-primario-9);
-
     transform: translateX(var(--_translate-span));
     transition: transform .2s ease-in-out 0s;
   }
@@ -71,7 +66,6 @@ const hojaCSS = /*css*/`
   .contenido {
     display: grid;
     grid-template-columns: repeat(var(--_tabs), 100%);
-
     overflow: hidden;
   }
 

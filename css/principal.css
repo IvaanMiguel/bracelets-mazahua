@@ -18,9 +18,7 @@
 
 .cabecera {
   border-bottom: 3px solid var(--clr-borde);
-  color: var(--clr-primario-40);
-  border-radius: var(--br-borde);
-  
+  color: var(--clr-primario-40); 
 }
 
 .seccion {

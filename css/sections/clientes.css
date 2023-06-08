@@ -8,10 +8,6 @@
   max-width: var(--mw-formulario);
 }
 
-wc-colapsable {
-  border: 1px solid var(--clr-neutral-80);
-}
-
 wc-tabs form {
   display: flex;
   flex-direction: column;

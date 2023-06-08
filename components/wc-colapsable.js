@@ -5,7 +5,6 @@ hojaCSS.replaceSync(/*css*/`
     flex-direction: column;
     box-sizing: border-box;
     border-radius: var(--br-borde);
-    overflow: hidden;
   }
 
   :host([data-minicabecera]) .cabecera {
@@ -30,12 +29,14 @@ hojaCSS.replaceSync(/*css*/`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     height: 3.5rem;
     padding: 0 var(--espaciado-jumbo);
     cursor: pointer;
     user-select: none;
     background-color: var(--clr-fondo-hover);
     color: var(--clr-primario-40);
+    border-radius: var(--br-borde);
   }
 
   .contenido {

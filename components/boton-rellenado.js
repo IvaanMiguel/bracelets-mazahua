@@ -3,7 +3,7 @@ import WCBoton from './wc-boton.js';
 const hojaCSS = new CSSStyleSheet();
 hojaCSS.replaceSync(/*css*/`
   button:hover::after, a:hover::after {
-    background-color: var(--clr-hover);
+  background-color: var(--clr-hover);
   }
 
   button:hover, a:hover {

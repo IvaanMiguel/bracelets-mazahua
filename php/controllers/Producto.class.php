@@ -71,7 +71,7 @@ class Producto extends \models\Producto
 
   public const EXISTENCIAS_INVALIDAS = [
     'titulo' => 'Existencias inválidas',
-    'mensaje' => 'Las existencias deben ser un valor numérico.',
+    'mensaje' => 'Cantidad de existencias ingresada inválida.',
     'ambito' => 'existenciasIniciales'
   ];
 
@@ -320,7 +320,7 @@ class Producto extends \models\Producto
 
   private function validarCantidadExistencias(): void
   {
-    if (!is_numeric($this->existencias)) {
+    if (str_contains($this->existencias, '.') || !is_numeric($this->existencias)) {
       array_push($this->errores, self::EXISTENCIAS_INVALIDAS);
     } else if ($this->existencias <= 0) {
       array_push($this->errores, self::EXISTENCIAS_MENOR_CERO);

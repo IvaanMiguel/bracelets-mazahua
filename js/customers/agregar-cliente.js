@@ -13,6 +13,7 @@ document.addEventListener('campovalidacion', (e) => {
   if (!esValido) {
     if (campoIndice === -1) camposInvalidos.push(campo);
   } else {
+    if (campoIndice === -1) return;
     camposInvalidos.splice(campoIndice, 1);
   }
 });

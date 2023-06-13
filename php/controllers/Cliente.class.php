@@ -64,6 +64,12 @@ class Cliente extends \models\Cliente
     'ambito' => 'celular'
   ];
 
+  public const CELULAR_EXISTENTE = [
+    'titulo' => 'Celular existente',
+    'mensaje' => 'El número de celular ingresado ya existe.',
+    'ambito' => 'celular'
+  ];
+
   public const EDAD_MUY_JOVEN = [
     'titulo' => 'Edad no válida',
     'mensaje' => 'La edad no puede ser menor a ' . self::EDAD_MINIMA . ' año.',
@@ -78,7 +84,7 @@ class Cliente extends \models\Cliente
 
   public const EDAD_INVALIDA = [
     'titulo' => 'Edad no válida',
-    'mensaje' => 'La edad ingresada no es válida',
+    'mensaje' => 'La edad ingresada no es válida.',
     'ambito' => 'edad'
   ];
 
@@ -370,6 +376,8 @@ class Cliente extends \models\Cliente
       array_push($this->errores, self::CELULAR_INVALIDO);
     } else if (strlen($this->celular) !== self::CELULAR_LONGITUD) {
       array_push($this->errores, self::CELULAR_LONGITUD_INVALIDA);
+    } else if ($this->celularExistente($this->celular)) {
+      array_push($this->errores, self::CELULAR_EXISTENTE);
     }
   }
 
@@ -377,7 +385,7 @@ class Cliente extends \models\Cliente
   {
     if ($this->edad != 0 && empty($this->edad)) return;
 
-    if (!is_numeric($this->edad)) {
+    if (str_contains($this->edad, '.') || !is_numeric($this->edad)) {
       array_push($this->errores, self::EDAD_INVALIDA);
       return;
     }

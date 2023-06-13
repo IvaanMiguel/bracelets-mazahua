@@ -74,6 +74,16 @@ class Cliente extends Dbh
     $this->ejecutarSentencia($stmt, array($id));
   }
 
+  protected function celularExistente(
+    int $celular
+  )
+  {
+    $stmt = $this->conectar()->prepare('SELECT celular FROM cliente WHERE celular = ?;');
+    $this->ejecutarSentencia($stmt, array($celular));
+
+    return count($stmt->fetchAll()) > 0;
+  }
+
   protected function emailExistente(
       string $email
   ): bool

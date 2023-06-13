@@ -21,8 +21,8 @@ CREATE TABLE IF NOT EXISTS cliente(
 
 CREATE TABLE IF NOT EXISTS ubicacioncliente(
     id INT AUTO_INCREMENT PRIMARY KEY,
-    callePrincipal VARCHAR(30) NOT NULL,
-    callesAdyacentes VARCHAR(60),
+    callePrincipal VARCHAR(100) NOT NULL,
+    callesAdyacentes VARCHAR(150),
     colonia VARCHAR(60) NOT NULL,
     numeroExterior VARCHAR(6),
     numeroInterior VARCHAR(6),
@@ -108,8 +108,8 @@ CREATE TABLE IF NOT EXISTS pedidocompletado(
     aplicacion ENUM('Uber', 'Didi'),
     tipoPago ENUM('Depósito', 'Tarjeta', 'Efectivo') NOT NULL,
     detallesPago VARCHAR(40),
-    callePrincipal VARCHAR(30) NOT NULL,
-    callesAdyacentes VARCHAR(60),
+    callePrincipal VARCHAR(100) NOT NULL,
+    callesAdyacentes VARCHAR(150),
     colonia VARCHAR(60) NOT NULL,
     numeroExterior VARCHAR(6),
     numeroInterior VARCHAR(6),

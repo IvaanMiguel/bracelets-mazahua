@@ -11,9 +11,9 @@ require_once UTILS;
 class Ubicacion extends \models\Ubicacion
 {
   public const CALLE_PRINCIPAL_MIN_LONGITUD = 3;
-  public const CALLE_PRINCIPAL_MAX_LONGITUD = 30;
+  public const CALLE_PRINCIPAL_MAX_LONGITUD = 100;
   public const CALLES_ADYACENTES_MIN_LONGITUD = 3;
-  public const CALLES_ADYACENTES_MAX_LONGITUD = 60;
+  public const CALLES_ADYACENTES_MAX_LONGITUD = 150;
   public const COLONIA_MIN_LONGITUD = 6;
   public const COLONIA_MAX_LONGITUD = 60;
   public const NUMERO_EXTERIOR_MIN_LONGITUD = 3;
